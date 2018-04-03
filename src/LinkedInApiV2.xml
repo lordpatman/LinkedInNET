@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <ApiGroup Name="Profiles">
+    <ApiMethod MethodName="GetMyProfile" HttpMethod="GET" ReturnType="Person" Path="/v2/me?{FieldSelector}"
+      Title="the profile of the current user" Remark="See https://developer.linkedin.com/docs/guide/v2/people/profile-api"
+      RequiresUserAuthentication="1" UsesAcceptLanguage="1" />
+
+    <ReturnType Name="person" ClassName="Person" AutoGenerateFieldSelectors="1">
+      <!-- Basic profile fields -->
+      <Field Name="id" Title="a unique identifier token for this member" />
+      <Field Name="firstName" Type="Common.MultiLocaleString">
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="lastName" Type="Common.MultiLocaleString">
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="maidenName" Type="Common.MultiLocaleString" >
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="phoneticFirstName" Type="Common.MultiLocaleString">
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="phoneticLastName" Type="Common.MultiLocaleString" >
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="headline" Type="Common.MultiLocaleString">
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="location" Type="Location" Title="a unique identifier token for this member"/>
+      <Field Name="industryName" Type="Common.MultiLocaleRichText" >
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="summary" Type="Common.MultiLocaleRichText">
+        <Field Name="localized" PropertyName="Localized"/>
+        <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
+      </Field>
+      <Field Name="specialties" Type="Common.MultiLocaleRichText" />
+      <Field Name="positions" Type="Position" />
+      <Field Name="profilePicture" Type="ProfilePicture">
+        <FieldSelector Name="profilePicture(displayImage~~~playableStreams)" PropertyName="DisplayImageLoaded" />
+      </Field>
+      <Field Name="vanityName" Title="a unique identifier token for this member" />
+      <Field Name="lastModified" Type="long?" Title="a unique identifier token for this member" />
+      <Field Name="organizations" Type="JObject" Title="a unique identifier token for this member" />
+    </ReturnType>
+
+    <ReturnType Name="location" ClassName="Location">
+      <Field Name="countryCode" PropertyName="CountryCode"/>
+      <Field Name="postalCode" PropertyName="PostalCode" />
+      <Field Name="standardizedLocationUrn" PropertyName="StandardizedLocationUrn" />
+      <Field Name="userSelectedGeoPlaceCode" PropertyName="UserSelectedGeoPlaceCode" />
+    </ReturnType>
+
+    <ReturnType Name="position" ClassName="Position">
+      <Field Name="id" PropertyName="Id" />
+      <Field Name="company" PropertyName="Company" />
+      <Field Name="companyName" PropertyName="CompanyName" Type="Common.MultiLocaleString"/>
+      <Field Name="description" PropertyName="Description" Type="Common.MultiLocaleRichText"/>
+      <Field Name="endMonthYear" PropertyName="EndMonthYear" Type="DateParts"/>
+      <Field Name="location" PropertyName="Location" Type="Location"/>
+      <Field Name="locationName" PropertyName="LocationName" Type="Common.MultiLocaleRichText"/>
+      <Field Name="richMediaAssociations" PropertyName="RichMediaAssociations" IsCollection="1" Type="RichMediaURN"/>
+      <Field Name="startMonthYear" PropertyName="startMonthYear" Type="DateParts"/>
+      <Field Name="title" PropertyName="Title" Type="Common.MultiLocaleString"/>
+    </ReturnType>
+
+    <ReturnType Name="dateParts" ClassName="DateParts">
+      <Field Name="year" Type="short?" />
+      <Field Name="month" Type="short?" />
+      <Field Name="day" Type="short?" />
+    </ReturnType>
+
+    <ReturnType Name="richMediaURN" ClassName="RichMediaURN">
+      <Field Name="content" PropertyName="Content" Type="JObject"/>
+      <Field Name="description" PropertyName="Description" Type="Common.MultiLocaleRichText"/>
+      <Field Name="id" PropertyName="Id" Type="long?"/>
+      <Field Name="member" PropertyName="Member" Type="JObject"/>
+      <Field Name="thumbnailImage" PropertyName="ThumbnailImage" Type="JObject"/>
+      <Field Name="title" PropertyName="title" Type="Common.MultiLocaleString"/>
+    </ReturnType>
+
+    <ReturnType Name="profilePicture" ClassName="ProfilePicture">
+      <Field Name="displayImage" />
+      <Field Name="displayImage~" PropertyName="DisplayImageLoaded" Type="DisplayImageLoaded"/>
+    </ReturnType>
+
+    <ReturnType Name="displayImageLoaded" ClassName="DisplayImageLoaded">
+      <Field Name="elements" Type="DisplayImageElements" IsCollection="1"/>
+    </ReturnType>
+
+    <ReturnType Name="displayImageElements" ClassName="DisplayImageElements">
+      <Field Name="artifact"  />
+      <Field Name="authorizationMethod"  />
+      <Field Name="identifiers" Type="DisplayImageElementIdentifiers" IsCollection="1"/>
+    </ReturnType>
+
+    <ReturnType Name="displayImageElementIdentifiers" ClassName="DisplayImageElementIdentifiers">
+      <Field Name="identifier"  />
+      <Field Name="file"  />
+      <Field Name="index"  />
+      <Field Name="mediaType"  />
+      <Field Name="identifierExpiresInSeconds" Type="long?" />
+    </ReturnType>
+
+
+    <FieldGroup Name="BasicFields">
+      <Name Name="id" />
+      <Name Name="firstName" />
+      <Name Name="lastName" />
+      <Name Name="maidenName" />
+      <Name Name="phoneticFirstName" />
+      <Name Name="phoneticLastName" />
+      <Name Name="headline" />
+      <Name Name="location" />
+      <Name Name="industryName" />
+      <Name Name="summary" />
+      <Name Name="specialties"/>
+      <Name Name="positions" />
+      <Name Name="pictureInfo" />
+      <Name Name="profilePicture" />
+      <Name Name="vanityName" />
+      <Name Name="lastModified" />
+    </FieldGroup>
+  </ApiGroup>
+
+
+  <ApiGroup Name="Organizations">
+    <ApiMethod MethodName="GetById" HttpMethod="GET" Path="/v2/organizations/{CompanyId}" ReturnType="Organization"
+      Title="retrieve a company by using the company ID"
+      RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
+
+    <ApiMethod MethodName="GetUserAdminApprOrganizations" HttpMethod="GET" 
+              Path="/v2/organizationalEntityAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;state=APPROVED&amp;{FieldSelector}" ReturnType="OrganizationalEntityAcls"
+              Title="retrieve list of companies where current user is administrator and is approved"
+              RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
+
+    <ReturnType Name="organization" ClassName="Organization" AutoGenerateFieldSelectors="1">
+      <Field Name="id" Type="long" IsDefault="1" />
+      <Field Name="name" Type="Common.MultiLocaleString" IsDefault="1" />
+      <Field Name="logo" Type="CroppedImage" />
+      <Field Name="vanityName" />
+    </ReturnType>
+
+    <ReturnType Name="croppedImage" ClassName="CroppedImage">
+      <Field Name="height" Type="int" />
+      <Field Name="width" Type="int" />
+      <Field Name="x" Type="int"  />
+      <Field Name="y" Type="int" />
+      <Field Name="cropped" />
+      <Field Name="original" />
+    </ReturnType>
+  
+    <ReturnType Name="OrganizationalEntityAcls" ClassName="OrganizationalEntityAcls" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" Type="OrgEntElements" IsCollection="1">
+        <FieldSelector Name="elements*(*,organizationalTarget~(id))" PropertyName="OrgEntElementsId" />    
+        <FieldSelector Name="elements*(*,organizationalTarget~(logo))" PropertyName="OrgEntElementsLogo" />    
+        <FieldSelector Name="elements*(*,organizationalTarget~(name))" PropertyName="OrgEntElementsName" />    
+        <FieldSelector Name="elements*(*,organizationalTarget~(id,logo,name))" PropertyName="OrgEntElementsAll" />
+      </Field>
+    </ReturnType>
+    
+    <ReturnType Name="OrgEntElements" ClassName="OrgEntElements" AutoGenerateFieldSelectors="1">
+      <Field Name="state" />
+      <Field Name="role" />
+      <Field Name="roleAssignee" />
+      <Field Name="organizationalTarget" />
+      <Field Name="organizationalTarget~" PropertyName="Organization" Type="Organization">
+        <FieldSelector Name="organizationalTarget~(id)" PropertyName="Organization" />
+      </Field>
+    </ReturnType>
+               
+  </ApiGroup>
+
+  <ApiGroup Name="Shares">
+    <ApiMethod MethodName="Post" HttpMethod="POST"
+                   Path="/v2/shares"
+                   PostReturnType="Common.PostShare"
+                   ReturnType="Common.PostShareResult"
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Title="Share a profile/ company update based on an existing update."
+                   Remark="See https://developer.linkedin.com/docs/guide/v2/shares/share-api" />
+  </ApiGroup>
+
+
+  <ApiGroup Name="Common">
+    <ReturnType Name="PostShare">
+      <Field Name="owner" />
+      <Field Name="text" Type="PostShareText" />
+      <Field Name="subject" />
+      <Field Name="distribution"  Type="Distribution" />
+      <Field Name="content" Type="PostShareContent" />
+    </ReturnType>
+
+    <ReturnType Name="text" ClassName="PostShareText">
+      <Field Name="text" />
+    </ReturnType>
+
+    <ReturnType Name="postShareContent" ClassName="PostShareContent">
+      <Field Name="contentEntities" Type="PostShareContentEntities" IsCollection="1"/>
+      <Field Name="title"/>
+    </ReturnType>
+
+    <ReturnType Name="postShareContentEntities" ClassName="PostShareContentEntities">
+      <Field Name="entityLocation"/>
+      <Field Name="thumbnails" Type="PostShareContentThumbnails" IsCollection="1" />
+    </ReturnType>
+
+    <ReturnType Name="PostShareContentThumbnails" ClassName="PostShareContentThumbnails">
+      <Field Name="imageSpecificContent" Type="JObject"   />
+      <Field Name="publishers"  Type="JObject"   />
+      <Field Name="resolvedUrl" />
+      <Field Name="authors" Type="JObject" />
+    </ReturnType>
+
+    <ReturnType Name="PostShareResult">
+      <Field Name="owner" />
+      <Field Name="activity" />
+      <Field Name="edited" Type="bool"  />
+      <Field Name="created" Type="ShareTime"  />
+      <Field Name="subject" />
+      <Field Name="id" />
+      <Field Name="lastModified" Type="ShareTime" />
+      <Field Name="text" Type="PostShareText" />
+      <Field Name="distribution"  Type="Distribution"  />
+      <Field Name="content" Type="PostShareContent"/>
+    </ReturnType>
+
+    <ReturnType Name="multiLocaleString" ClassName="MultiLocaleString">
+      <Field Name="localized" PropertyName="Localized" Type="JObject" />
+      <Field Name="preferredLocale" PropertyName="PreferredLocale" Type="JObject" />
+    </ReturnType>
+
+    <ReturnType Name="multiLocaleRichText" ClassName="MultiLocaleRichText">
+      <Field Name="localized" PropertyName="Localized" Type="JObject" />
+      <Field Name="preferredLocale" PropertyName="PreferredLocale" Type="JObject" />
+    </ReturnType>
+
+    <ReturnType Name="shareCreated" ClassName="ShareTime">
+      <Field Name="actor"/>
+      <Field Name="time" Type="long" />
+    </ReturnType>
+
+    <ReturnType Name="distribution" ClassName="Distribution">
+      <Field Name="linkedInDistributionTarget" PropertyName="LinkedInDistributionTarget" Type="LinkedInDistributionTarget" />
+    </ReturnType>
+
+    <ReturnType Name="LlinkedInDistributionTarget" ClassName="LinkedInDistributionTarget">
+      <Field Name="visibleToGuest" PropertyName="VisibleToGuest" Type="bool" />
+    </ReturnType>
+  </ApiGroup>
+</Root>

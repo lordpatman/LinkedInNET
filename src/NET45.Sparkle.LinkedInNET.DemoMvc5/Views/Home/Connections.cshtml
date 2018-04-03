@@ -1,4 +1,4 @@
-﻿@model Sparkle.LinkedInNET.Profiles.Connections
+﻿@*@model Sparkle.LinkedInNET.Profiles.Connections
 @{
     ViewBag.Title = "Connections";
 }
@@ -10,5 +10,5 @@
 <h2>@item.Firstname @item.Lastname</h2>
 <p>@Html.ActionLink("profile", "FullProfile", new { id = item.Id, })</p>
 <pre>@Newtonsoft.Json.JsonConvert.SerializeObject(item, Newtonsoft.Json.Formatting.Indented)</pre>
-}
+}*@
 

@@ -192,7 +192,7 @@ namespace Sparkle.LinkedInNET
                 var tree = this.Decompose();
                 tree = this.Recompose(tree);
                 var items = tree.Select(f => f.ToString()).ToArray();
-                return ":(" + string.Join(",", items) + ")";
+                return "projection=(" + string.Join(",", items) + ")";
             }
         }
 

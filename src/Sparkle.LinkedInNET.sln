@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET35.Sparkle.LinkedInNET", "NET35.Sparkle.LinkedInNET\NET35.Sparkle.LinkedInNET.csproj", "{452CAE7A-152B-40EF-8DD7-965854B1931C}"
 EndProject
@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		LinkedInApi.xml = LinkedInApi.xml
+		LinkedInApiV2.xml = LinkedInApiV2.xml
 		ToDo.md = ToDo.md
 	EndProjectSection
 EndProject
@@ -76,5 +77,8 @@ Global
 		{8680529C-5040-4799-AC12-6ABE541AB1A5} = {D6564F95-4467-467E-8C00-932C46CE8954}
 		{080DE9CE-B826-49CA-855D-25AED27D488A} = {D6564F95-4467-467E-8C00-932C46CE8954}
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987} = {8D0D8676-86DB-4BFF-AB3D-96754919BBD8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F63A77D8-5558-4368-90FD-A9404ED3E432}
 	EndGlobalSection
 EndGlobal

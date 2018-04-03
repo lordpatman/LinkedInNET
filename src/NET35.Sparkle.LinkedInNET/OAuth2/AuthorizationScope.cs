@@ -72,5 +72,11 @@ namespace Sparkle.LinkedInNET.OAuth2
         /// https://developer.linkedin.com/docs/share-on-linkedin
         /// </remarks>
         WriteShare = 0x200,
+
+        /// <summary>
+        /// Read write company page (rw_organization).
+        /// Edit company pages for which I am an Admin and post status updates on behalf of those companies.
+        /// </summary>
+        ReadWriteOrganization = 0x400,
     }
 }

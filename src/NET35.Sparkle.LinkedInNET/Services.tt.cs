@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// XML document found at '\src\NET35.Sparkle.LinkedInNET\..\LinkedInApi.xml'
+// XML document found at '\src\NET35.Sparkle.LinkedInNET\..\LinkedInApiV2.xml'
 
 #region ReturnTypes for Profiles
 
@@ -18,6 +18,7 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Name: 'person'
@@ -26,36 +27,6 @@ namespace Sparkle.LinkedInNET.Profiles
     public class Person
     {
         /// <summary>
-        /// Field: 'first-name' (default)
-        /// </summary>
-        [XmlElement(ElementName = "first-name")]
-        [JsonProperty(PropertyName = "firstName")]
-        public string Firstname { get; set; }
-
-        /// <summary>
-        /// Field: 'last-name' (default)
-        /// </summary>
-        [XmlElement(ElementName = "last-name")]
-        [JsonProperty(PropertyName = "lastName")]
-        public string Lastname { get; set; }
-
-        /// <summary>
-        /// Field: 'headline' (default)
-        /// Field: 'headline' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "headline")]
-        [JsonProperty(PropertyName = "headline")]
-        public string Headline { get; set; }
-
-        /// <summary>
-        /// Field: 'site-standard-profile-request/url' (default)
-        /// Field: 'site-standard-profile-request' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "site-standard-profile-request")]
-        [JsonProperty(PropertyName = "siteStandardProfileRequest")]
-        public SiteStandardProfileRequest SiteStandardProfileRequest { get; set; }
-
-        /// <summary>
         /// Field: 'id' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "id")]
@@ -63,418 +34,156 @@ namespace Sparkle.LinkedInNET.Profiles
         public string Id { get; set; }
 
         /// <summary>
-        /// Field: 'maiden-name' (on-demand)
+        /// Field: 'firstName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "maiden-name")]
+        [XmlElement(ElementName = "firstName")]
+        [JsonProperty(PropertyName = "firstName")]
+        public Common.MultiLocaleString FirstName { get; set; }
+
+        /// <summary>
+        /// Field: 'lastName' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastName")]
+        [JsonProperty(PropertyName = "lastName")]
+        public Common.MultiLocaleString LastName { get; set; }
+
+        /// <summary>
+        /// Field: 'maidenName' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "maidenName")]
         [JsonProperty(PropertyName = "maidenName")]
-        public string MaidenName { get; set; }
+        public Common.MultiLocaleString MaidenName { get; set; }
 
         /// <summary>
-        /// Field: 'formatted-name' (on-demand)
+        /// Field: 'phoneticFirstName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "formatted-name")]
-        [JsonProperty(PropertyName = "formattedName")]
-        public string FormattedName { get; set; }
-
-        /// <summary>
-        /// Field: 'phonetic-first-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phonetic-first-name")]
+        [XmlElement(ElementName = "phoneticFirstName")]
         [JsonProperty(PropertyName = "phoneticFirstName")]
-        public string PhoneticFirstName { get; set; }
+        public Common.MultiLocaleString PhoneticFirstName { get; set; }
 
         /// <summary>
-        /// Field: 'phonetic-last-name' (on-demand)
+        /// Field: 'phoneticLastName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "phonetic-last-name")]
+        [XmlElement(ElementName = "phoneticLastName")]
         [JsonProperty(PropertyName = "phoneticLastName")]
-        public string PhoneticLastName { get; set; }
+        public Common.MultiLocaleString PhoneticLastName { get; set; }
 
         /// <summary>
-        /// Field: 'formatted-phonetic-name' (on-demand)
+        /// Field: 'headline' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "formatted-phonetic-name")]
-        [JsonProperty(PropertyName = "formattedPhoneticName")]
-        public string FormattedPhoneticName { get; set; }
+        [XmlElement(ElementName = "headline")]
+        [JsonProperty(PropertyName = "headline")]
+        public Common.MultiLocaleString Headline { get; set; }
 
         /// <summary>
-        /// Field: 'location:(name)' (on-demand)
-        /// Field: 'location:(country:(code))' (on-demand)
+        /// Field: 'location' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "location")]
         [JsonProperty(PropertyName = "location")]
         public Location Location { get; set; }
 
         /// <summary>
-        /// Field: 'industry' (on-demand)
+        /// Field: 'industryName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "industry")]
-        [JsonProperty(PropertyName = "industry")]
-        public string Industry { get; set; }
-
-        /// <summary>
-        /// Field: 'distance' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "distance")]
-        [JsonProperty(PropertyName = "distance")]
-        public int? Distance { get; set; }
-
-        /// <summary>
-        /// Field: 'relation-to-viewer' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "relation-to-viewer")]
-        [JsonProperty(PropertyName = "relationToViewer")]
-        public RelationToViewer RelationToViewer { get; set; }
-
-        /// <summary>
-        /// Field: 'current-status-timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "current-status-timestamp")]
-        [JsonProperty(PropertyName = "currentStatusTimestamp")]
-        public long? CurrentStatusTimestamp { get; set; }
-
-        /// <summary>
-        /// Field: 'current-share' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "current-share")]
-        [JsonProperty(PropertyName = "currentShare")]
-        public Sparkle.LinkedInNET.Common.Share CurrentShare { get; set; }
-
-        /// <summary>
-        /// Field: 'num-connections' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-connections")]
-        [JsonProperty(PropertyName = "numConnections")]
-        public int NumConnections { get; set; }
-
-        /// <summary>
-        /// Field: 'num-connections-capped' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-connections-capped")]
-        [JsonProperty(PropertyName = "numConnectionsCapped")]
-        public bool? NumConnectionsCapped { get; set; }
+        [XmlElement(ElementName = "industryName")]
+        [JsonProperty(PropertyName = "industryName")]
+        public Common.MultiLocaleRichText IndustryName { get; set; }
 
         /// <summary>
         /// Field: 'summary' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "summary")]
         [JsonProperty(PropertyName = "summary")]
-        public string Summary { get; set; }
+        public Common.MultiLocaleRichText Summary { get; set; }
 
         /// <summary>
         /// Field: 'specialties' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "specialties")]
         [JsonProperty(PropertyName = "specialties")]
-        public Specialties Specialties { get; set; }
+        public Common.MultiLocaleRichText Specialties { get; set; }
 
         /// <summary>
         /// Field: 'positions' (on-demand)
-        /// Field: 'positions:(id,title,start-date,end-date,is-current,company)'
-        /// Field: 'positions:(id)'
-        /// Field: 'positions:(title)'
-        /// Field: 'positions:(summary)'
-        /// Field: 'positions:(start-date)'
-        /// Field: 'positions:(end-date)'
-        /// Field: 'positions:(is-current)'
-        /// Field: 'positions:(company)'
         /// </summary>
         [XmlElement(ElementName = "positions")]
         [JsonProperty(PropertyName = "positions")]
-        public PersonPositions Positions { get; set; }
+        public Position Positions { get; set; }
 
         /// <summary>
-        /// Field: 'picture-url' (on-demand)
+        /// Field: 'profilePicture' (on-demand)
+        /// Field: 'profilePicture(displayImage~~~playableStreams)'
         /// </summary>
-        [XmlElement(ElementName = "picture-url")]
-        [JsonProperty(PropertyName = "pictureUrl")]
-        public string PictureUrl { get; set; }
+        [XmlElement(ElementName = "profilePicture")]
+        [JsonProperty(PropertyName = "profilePicture")]
+        public ProfilePicture ProfilePicture { get; set; }
 
         /// <summary>
-        /// Field: 'api-standard-profile-request' (on-demand)
-        /// Field: 'api-standard-profile-request:(url)'
-        /// Field: 'api-standard-profile-request:(headers)'
+        /// Field: 'vanityName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "api-standard-profile-request")]
-        [JsonProperty(PropertyName = "apiStandardProfileRequest")]
-        public ProfileRequest ApiStandardProfileRequest { get; set; }
+        [XmlElement(ElementName = "vanityName")]
+        [JsonProperty(PropertyName = "vanityName")]
+        public string VanityName { get; set; }
 
         /// <summary>
-        /// Field: 'public-profile-url' (on-demand)
+        /// Field: 'lastModified' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "public-profile-url")]
-        [JsonProperty(PropertyName = "publicProfileUrl")]
-        public string PublicProfileUrl { get; set; }
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public long? LastModified { get; set; }
 
         /// <summary>
-        /// Field: 'email-address' (on-demand)
+        /// Field: 'organizations' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "email-address")]
-        [JsonProperty(PropertyName = "emailAddress")]
-        public string EmailAddress { get; set; }
-
-        /// <summary>
-        /// Field: 'last-modified-timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "last-modified-timestamp")]
-        [JsonProperty(PropertyName = "lastModifiedTimestamp")]
-        public string LastModifiedTimestamp { get; set; }
-
-        /// <summary>
-        /// Field: 'proposal-comments' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "proposal-comments")]
-        [JsonProperty(PropertyName = "proposalComments")]
-        public string ProposalComments { get; set; }
-
-        /// <summary>
-        /// Field: 'associations' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "associations")]
-        [JsonProperty(PropertyName = "associations")]
-        public string Associations { get; set; }
-
-        /// <summary>
-        /// Field: 'interests' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "interests")]
-        [JsonProperty(PropertyName = "interests")]
-        public string Interests { get; set; }
-
-        /// <summary>
-        /// Field: 'publications' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "publications")]
-        [JsonProperty(PropertyName = "publications")]
-        public Publications Publications { get; set; }
-
-        /// <summary>
-        /// Field: 'patents' (on-demand)
-        /// Field: 'patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)'
-        /// </summary>
-        [XmlElement(ElementName = "patents")]
-        [JsonProperty(PropertyName = "patents")]
-        public Patents Patents { get; set; }
-
-        /// <summary>
-        /// Field: 'languages' (on-demand)
-        /// Field: 'languages:(id)'
-        /// Field: 'languages:(language)'
-        /// Field: 'languages:(proficiency)'
-        /// </summary>
-        [XmlElement(ElementName = "languages")]
-        [JsonProperty(PropertyName = "languages")]
-        public Languages Languages { get; set; }
-
-        /// <summary>
-        /// Field: 'skills' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "skills")]
-        [JsonProperty(PropertyName = "skills")]
-        public Skills Skills { get; set; }
-
-        /// <summary>
-        /// Field: 'certifications' (on-demand)
-        /// Field: 'certifications:(id,name,authority:(name),number,start-date,end-date)'
-        /// </summary>
-        [XmlElement(ElementName = "certifications")]
-        [JsonProperty(PropertyName = "certifications")]
-        public Certifications Certifications { get; set; }
-
-        /// <summary>
-        /// Field: 'educations' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "educations")]
-        [JsonProperty(PropertyName = "educations")]
-        public Educations Educations { get; set; }
-
-        /// <summary>
-        /// Field: 'courses' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "courses")]
-        [JsonProperty(PropertyName = "courses")]
-        public Courses Courses { get; set; }
-
-        /// <summary>
-        /// Field: 'volunteer' (on-demand)
-        /// Field: 'volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))'
-        /// </summary>
-        [XmlElement(ElementName = "volunteer")]
-        [JsonProperty(PropertyName = "volunteer")]
-        public Volunteer Volunteer { get; set; }
-
-        /// <summary>
-        /// Field: 'three-current-positions' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "three-current-positions")]
-        [JsonProperty(PropertyName = "threeCurrentPositions")]
-        public PersonPositions ThreeCurrentPositions { get; set; }
-
-        /// <summary>
-        /// Field: 'three-past-positions' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "three-past-positions")]
-        [JsonProperty(PropertyName = "threePastPositions")]
-        public PersonPositions ThreePastPositions { get; set; }
-
-        /// <summary>
-        /// Field: 'num-recommenders' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-recommenders")]
-        [JsonProperty(PropertyName = "numRecommenders")]
-        public string NumRecommenders { get; set; }
-
-        /// <summary>
-        /// Field: 'recommendations-received' (on-demand)
-        /// Field: 'recommendations-received'
-        /// Field: 'recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline))'
-        /// </summary>
-        [XmlElement(ElementName = "recommendations-received")]
-        [JsonProperty(PropertyName = "recommendationsReceived")]
-        public Recommendations RecommendationsReceived { get; set; }
-
-        /// <summary>
-        /// Field: 'following' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "following")]
-        [JsonProperty(PropertyName = "following")]
-        public FollowingInfos Following { get; set; }
-
-        /// <summary>
-        /// Field: 'job-bookmarks' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "job-bookmarks")]
-        [JsonProperty(PropertyName = "jobBookmarks")]
-        public JobBookmarks JobBookmarks { get; set; }
-
-        /// <summary>
-        /// Field: 'suggestions' (on-demand)
-        /// </summary>
-        ////[XmlElement(ElementName = "suggestions")]
-        ////[JsonProperty(PropertyName = "suggestions")]
-        public string Suggestions { get; set; }
-
-        /// <summary>
-        /// Field: 'date-of-birth' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "date-of-birth")]
-        [JsonProperty(PropertyName = "dateOfBirth")]
-        public DateParts DateOfBirth { get; set; }
-
-        /// <summary>
-        /// Field: 'member-url-resources' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "member-url-resources")]
-        [JsonProperty(PropertyName = "memberUrlResources")]
-        public UrlResources MemberUrlResources { get; set; }
-
-        /// <summary>
-        /// Field: 'related-profile-views' (on-demand)
-        /// </summary>
-        ////[XmlElement(ElementName = "related-profile-views")]
-        ////[JsonProperty(PropertyName = "relatedProfileViews")]
-        public string RelatedProfileViews { get; set; }
-
-        /// <summary>
-        /// Field: 'honors-awards' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "honors-awards")]
-        [JsonProperty(PropertyName = "honorsAwards")]
-        public HonorsAwards HonorsAwards { get; set; }
-
-        /// <summary>
-        /// Field: 'phone-numbers' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phone-numbers")]
-        [JsonProperty(PropertyName = "phoneNumbers")]
-        public PhoneNumbers PhoneNumbers { get; set; }
-
-        /// <summary>
-        /// Field: 'bound-account-types' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "bound-account-types")]
-        [JsonProperty(PropertyName = "boundAccountTypes")]
-        public string BoundAccountTypes { get; set; }
-
-        /// <summary>
-        /// Field: 'im-accounts' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "im-accounts")]
-        [JsonProperty(PropertyName = "imAccounts")]
-        public ImAccounts ImAccounts { get; set; }
-
-        /// <summary>
-        /// Field: 'main-address' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "main-address")]
-        [JsonProperty(PropertyName = "mainAddress")]
-        public string MainAddress { get; set; }
-
-        /// <summary>
-        /// Field: 'twitter-accounts' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "twitter-accounts")]
-        [JsonProperty(PropertyName = "twitterAccounts")]
-        public TwitterAccounts TwitterAccounts { get; set; }
-
-        /// <summary>
-        /// Field: 'primary-twitter-account' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "primary-twitter-account")]
-        [JsonProperty(PropertyName = "primaryTwitterAccount")]
-        public TwitterAccount PrimaryTwitterAccount { get; set; }
-
-        /// <summary>
-        /// Field: 'connections' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "connections")]
-        [JsonProperty(PropertyName = "connections")]
-        public Connections Connections { get; set; }
-
-        /// <summary>
-        /// Field: 'group-memberships' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "group-memberships")]
-        [JsonProperty(PropertyName = "groupMemberships")]
-        public string GroupMemberships { get; set; }
-
-        /// <summary>
-        /// Field: 'network' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "network")]
-        [JsonProperty(PropertyName = "network")]
-        public string Network { get; set; }
+        [XmlElement(ElementName = "organizations")]
+        [JsonProperty(PropertyName = "organizations")]
+        public JObject Organizations { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, connections)
+// WriteReturnTypes(Profiles, location)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'connections'
+    /// Name: 'location'
     /// </summary>
-    [Serializable, XmlRoot("connections")]
-    public class Connections
+    [Serializable, XmlRoot("location")]
+    public class Location
     {
         /// <summary>
-        /// Field: 'total' (on-demand)
+        /// Field: 'countryCode' (on-demand)
         /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
+        [XmlElement(ElementName = "countryCode")]
+        [JsonProperty(PropertyName = "countryCode")]
+        public string CountryCode { get; set; }
 
         /// <summary>
-        /// Field: 'person' (on-demand)
+        /// Field: 'postalCode' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Person> Person { get; set; }
+        [XmlElement(ElementName = "postalCode")]
+        [JsonProperty(PropertyName = "postalCode")]
+        public string PostalCode { get; set; }
+
+        /// <summary>
+        /// Field: 'standardizedLocationUrn' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "standardizedLocationUrn")]
+        [JsonProperty(PropertyName = "standardizedLocationUrn")]
+        public string StandardizedLocationUrn { get; set; }
+
+        /// <summary>
+        /// Field: 'userSelectedGeoPlaceCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "userSelectedGeoPlaceCode")]
+        [JsonProperty(PropertyName = "userSelectedGeoPlaceCode")]
+        public string UserSelectedGeoPlaceCode { get; set; }
 
     }
 }
@@ -486,153 +195,100 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Name: 'position'
     /// </summary>
     [Serializable, XmlRoot("position")]
-    public class PersonPosition
+    public class Position
     {
         /// <summary>
         /// Field: 'id' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "id")]
         [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'title' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "title")]
-        [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Field: 'summary' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "summary")]
-        [JsonProperty(PropertyName = "summary")]
-        public string Summary { get; set; }
-
-        /// <summary>
-        /// Field: 'start-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "start-date")]
-        [JsonProperty(PropertyName = "startDate")]
-        public DateParts StartDate { get; set; }
-
-        /// <summary>
-        /// Field: 'end-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "end-date")]
-        [JsonProperty(PropertyName = "endDate")]
-        public DateParts EndDate { get; set; }
-
-        /// <summary>
-        /// Field: 'is-current' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-current")]
-        [JsonProperty(PropertyName = "isCurrent")]
-        public bool IsCurrent { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Field: 'company' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "company")]
         [JsonProperty(PropertyName = "company")]
-        public CompanyIdentifier Company { get; set; }
+        public string Company { get; set; }
+
+        /// <summary>
+        /// Field: 'companyName' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "companyName")]
+        [JsonProperty(PropertyName = "companyName")]
+        public Common.MultiLocaleString CompanyName { get; set; }
+
+        /// <summary>
+        /// Field: 'description' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "description")]
+        [JsonProperty(PropertyName = "description")]
+        public Common.MultiLocaleRichText Description { get; set; }
+
+        /// <summary>
+        /// Field: 'endMonthYear' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "endMonthYear")]
+        [JsonProperty(PropertyName = "endMonthYear")]
+        public DateParts EndMonthYear { get; set; }
+
+        /// <summary>
+        /// Field: 'location' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "location")]
+        [JsonProperty(PropertyName = "location")]
+        public Location Location { get; set; }
+
+        /// <summary>
+        /// Field: 'locationName' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "locationName")]
+        [JsonProperty(PropertyName = "locationName")]
+        public Common.MultiLocaleRichText LocationName { get; set; }
+
+        /// <summary>
+        /// Field: 'richMediaAssociations' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "richMediaAssociations")]
+        [JsonProperty(PropertyName = "richMediaAssociations")]
+        public List<RichMediaURN> RichMediaAssociations { get; set; }
+
+        /// <summary>
+        /// Field: 'startMonthYear' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "startMonthYear")]
+        [JsonProperty(PropertyName = "startMonthYear")]
+        public DateParts startMonthYear { get; set; }
+
+        /// <summary>
+        /// Field: 'title' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "title")]
+        [JsonProperty(PropertyName = "title")]
+        public Common.MultiLocaleString Title { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, positions)
+// WriteReturnTypes(Profiles, dateParts)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'positions'
+    /// Name: 'dateParts'
     /// </summary>
-    [Serializable, XmlRoot("positions")]
-    public class PersonPositions
-    {
-        /// <summary>
-        /// Field: 'position' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "position")]
-        [JsonProperty(PropertyName = "values")]
-        public List<PersonPosition> Position { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, CompanyIdentifier)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyIdentifier'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyIdentifier")]
-    public class CompanyIdentifier
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'type' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "type")]
-        [JsonProperty(PropertyName = "type")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Field: 'industry' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "industry")]
-        [JsonProperty(PropertyName = "industry")]
-        public string Industry { get; set; }
-
-        /// <summary>
-        /// Field: 'ticker' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "ticker")]
-        [JsonProperty(PropertyName = "ticker")]
-        public string Ticker { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, DateParts)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'DateParts'
-    /// </summary>
-    [Serializable, XmlRoot("DateParts")]
+    [Serializable, XmlRoot("dateParts")]
     public class DateParts
     {
         /// <summary>
@@ -659,1823 +315,211 @@ namespace Sparkle.LinkedInNET.Profiles
     }
 }
 
-// WriteReturnTypes(Profiles, relation-to-viewer)
+// WriteReturnTypes(Profiles, richMediaURN)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'relation-to-viewer'
+    /// Name: 'richMediaURN'
     /// </summary>
-    [Serializable, XmlRoot("relation-to-viewer")]
-    public class RelationToViewer
+    [Serializable, XmlRoot("richMediaURN")]
+    public class RichMediaURN
     {
         /// <summary>
-        /// Field: 'distance' (on-demand)
+        /// Field: 'content' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "distance")]
-        [JsonProperty(PropertyName = "distance")]
-        public int? Distance { get; set; }
+        [XmlElement(ElementName = "content")]
+        [JsonProperty(PropertyName = "content")]
+        public JObject Content { get; set; }
 
         /// <summary>
-        /// Field: 'related-connections' (on-demand)
+        /// Field: 'description' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "related-connections")]
-        [JsonProperty(PropertyName = "relatedConnections")]
-        public string RelatedConnections { get; set; }
+        [XmlElement(ElementName = "description")]
+        [JsonProperty(PropertyName = "description")]
+        public Common.MultiLocaleRichText Description { get; set; }
 
-        /// <summary>
-        /// Field: 'connections' (on-demand)
-        /// </summary>
-        ////[XmlElement(ElementName = "connections")]
-        ////[JsonProperty(PropertyName = "connections")]
-        public int? Connections { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, languages)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'languages'
-    /// </summary>
-    [Serializable, XmlRoot("languages")]
-    public class Languages
-    {
-        /// <summary>
-        /// Field: 'language' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "language")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Language> Language { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, language)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'language'
-    /// </summary>
-    [Serializable, XmlRoot("language")]
-    public class Language
-    {
         /// <summary>
         /// Field: 'id' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "id")]
         [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
+        public long? Id { get; set; }
 
         /// <summary>
-        /// Field: 'language' (on-demand)
+        /// Field: 'member' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "language")]
-        [JsonProperty(PropertyName = "language")]
-        public LanguageInfo LanguageInfo { get; set; }
+        [XmlElement(ElementName = "member")]
+        [JsonProperty(PropertyName = "member")]
+        public JObject Member { get; set; }
 
         /// <summary>
-        /// Field: 'proficiency' (on-demand)
+        /// Field: 'thumbnailImage' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "proficiency")]
-        [JsonProperty(PropertyName = "proficiency")]
-        public LanguageProficiency Proficiency { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, LanguageInfo)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'LanguageInfo'
-    /// </summary>
-    [Serializable, XmlRoot("LanguageInfo")]
-    public class LanguageInfo
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, LanguageProficiency)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'LanguageProficiency'
-    /// </summary>
-    [Serializable, XmlRoot("LanguageProficiency")]
-    public class LanguageProficiency
-    {
-        /// <summary>
-        /// Field: 'level' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "level")]
-        [JsonProperty(PropertyName = "level")]
-        public string Level { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, skills)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'skills'
-    /// </summary>
-    [Serializable, XmlRoot("skills")]
-    public class Skills
-    {
-        /// <summary>
-        /// Field: 'skill' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "skill")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Skill> Skill { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, skill)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'skill'
-    /// </summary>
-    [Serializable, XmlRoot("skill")]
-    public class Skill
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'skill' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "skill")]
-        [JsonProperty(PropertyName = "skill")]
-        public SkillName SkillName { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, skill)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'skill'
-    /// </summary>
-    [Serializable, XmlRoot("skill")]
-    public class SkillName
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, certifications)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'certifications'
-    /// </summary>
-    [Serializable, XmlRoot("certifications")]
-    public class Certifications
-    {
-        /// <summary>
-        /// Field: 'certification' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "certification")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Certification> Certification { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, certification)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'certification'
-    /// </summary>
-    [Serializable, XmlRoot("certification")]
-    public class Certification
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'authority:(name)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "authority")]
-        [JsonProperty(PropertyName = "authority")]
-        public Authority Authority { get; set; }
-
-        /// <summary>
-        /// Field: 'number' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "number")]
-        [JsonProperty(PropertyName = "number")]
-        public string Number { get; set; }
-
-        /// <summary>
-        /// Field: 'start-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "start-date")]
-        [JsonProperty(PropertyName = "startDate")]
-        public DateParts StartDate { get; set; }
-
-        /// <summary>
-        /// Field: 'end-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "end-date")]
-        [JsonProperty(PropertyName = "endDate")]
-        public DateParts EndDate { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, educations)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'educations'
-    /// </summary>
-    [Serializable, XmlRoot("educations")]
-    public class Educations
-    {
-        /// <summary>
-        /// Field: 'education' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "education")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Education> Education { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, education)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'education'
-    /// </summary>
-    [Serializable, XmlRoot("education")]
-    public class Education
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public long Id { get; set; }
-
-        /// <summary>
-        /// Field: 'school-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "school-name")]
-        [JsonProperty(PropertyName = "schoolName")]
-        public string SchoolName { get; set; }
-
-        /// <summary>
-        /// Field: 'notes' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "notes")]
-        [JsonProperty(PropertyName = "notes")]
-        public string Notes { get; set; }
-
-        /// <summary>
-        /// Field: 'activities' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "activities")]
-        [JsonProperty(PropertyName = "activities")]
-        public string Activities { get; set; }
-
-        /// <summary>
-        /// Field: 'field-of-study' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "field-of-study")]
-        [JsonProperty(PropertyName = "fieldOfStudy")]
-        public string FieldOfStudy { get; set; }
-
-        /// <summary>
-        /// Field: 'degree' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "degree")]
-        [JsonProperty(PropertyName = "degree")]
-        public string Degree { get; set; }
-
-        /// <summary>
-        /// Field: 'start-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "start-date")]
-        [JsonProperty(PropertyName = "startDate")]
-        public DateParts StartDate { get; set; }
-
-        /// <summary>
-        /// Field: 'end-date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "end-date")]
-        [JsonProperty(PropertyName = "endDate")]
-        public DateParts EndDate { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, courses)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'courses'
-    /// </summary>
-    [Serializable, XmlRoot("courses")]
-    public class Courses
-    {
-        /// <summary>
-        /// Field: 'course' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "course")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Course> Course { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, course)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'course'
-    /// </summary>
-    [Serializable, XmlRoot("course")]
-    public class Course
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'number' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "number")]
-        [JsonProperty(PropertyName = "number")]
-        public string Number { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, volunteer)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'volunteer'
-    /// </summary>
-    [Serializable, XmlRoot("volunteer")]
-    public class Volunteer
-    {
-        /// <summary>
-        /// Field: 'volunteer-experiences' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "volunteer-experiences")]
-        [JsonProperty(PropertyName = "volunteerExperiences")]
-        public VolunteerExperiences VolunteerExperiences { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, volunteer-experiences)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'volunteer-experiences'
-    /// </summary>
-    [Serializable, XmlRoot("volunteer-experiences")]
-    public class VolunteerExperiences
-    {
-        /// <summary>
-        /// Field: 'volunteer-experience' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "volunteer-experience")]
-        [JsonProperty(PropertyName = "values")]
-        public List<VolunteerExperience> VolunteerExperience { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, volunteer-experience)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'volunteer-experience'
-    /// </summary>
-    [Serializable, XmlRoot("volunteer-experience")]
-    public class VolunteerExperience
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'role' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "role")]
-        [JsonProperty(PropertyName = "role")]
-        public string Role { get; set; }
-
-        /// <summary>
-        /// Field: 'organization:(name)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "organization")]
-        [JsonProperty(PropertyName = "organization")]
-        public Organization Organization { get; set; }
-
-        /// <summary>
-        /// Field: 'cause:(name)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "cause")]
-        [JsonProperty(PropertyName = "cause")]
-        public Cause Cause { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, recommendations)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'recommendations'
-    /// </summary>
-    [Serializable, XmlRoot("recommendations")]
-    public class Recommendations
-    {
-        /// <summary>
-        /// Field: 'recommendation' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "recommendation")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Recommendation> Recommendation { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, recommendation)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'recommendation'
-    /// </summary>
-    [Serializable, XmlRoot("recommendation")]
-    public class Recommendation
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'recommendation-type:(code)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "recommendation-type")]
-        [JsonProperty(PropertyName = "recommendationType")]
-        public RecommendationType RecommendationType { get; set; }
-
-        /// <summary>
-        /// Field: 'recommendation-text' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "recommendation-text")]
-        [JsonProperty(PropertyName = "recommendationText")]
-        public string RecommendationText { get; set; }
-
-        /// <summary>
-        /// Field: 'recommender' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "recommender")]
-        [JsonProperty(PropertyName = "recommender")]
-        public Person Recommender { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, phone-numbers)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'phone-numbers'
-    /// </summary>
-    [Serializable, XmlRoot("phone-numbers")]
-    public class PhoneNumbers
-    {
-        /// <summary>
-        /// Field: 'phone-number' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phone-number")]
-        [JsonProperty(PropertyName = "values")]
-        public List<PhoneNumber> PhoneNumber { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, phone-number)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'phone-number'
-    /// </summary>
-    [Serializable, XmlRoot("phone-number")]
-    public class PhoneNumber
-    {
-        /// <summary>
-        /// Field: 'phone-type' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phone-type")]
-        [JsonProperty(PropertyName = "phoneType")]
-        public string Type { get; set; }
-
-        /// <summary>
-        /// Field: 'phone-number' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phone-number")]
-        [JsonProperty(PropertyName = "phoneNumber")]
-        public string Number { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, publications)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'publications'
-    /// </summary>
-    [Serializable, XmlRoot("publications")]
-    public class Publications
-    {
-        /// <summary>
-        /// Field: 'publication' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "publication")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Publication> Publication { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, publication)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'publication'
-    /// </summary>
-    [Serializable, XmlRoot("publication")]
-    public class Publication
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        [XmlElement(ElementName = "thumbnailImage")]
+        [JsonProperty(PropertyName = "thumbnailImage")]
+        public JObject ThumbnailImage { get; set; }
 
         /// <summary>
         /// Field: 'title' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "title")]
         [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Field: 'publisher:(name)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "publisher")]
-        [JsonProperty(PropertyName = "publisher")]
-        public Publisher Publisher { get; set; }
-
-        /// <summary>
-        /// Field: 'authors:(id)' (on-demand)
-        /// Field: 'authors:(name)' (on-demand)
-        /// Field: 'authors:(person)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "authors")]
-        [JsonProperty(PropertyName = "authors")]
-        public Authors Authors { get; set; }
-
-        /// <summary>
-        /// Field: 'date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "date")]
-        [JsonProperty(PropertyName = "date")]
-        public DateParts Date { get; set; }
-
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Field: 'summary' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "summary")]
-        [JsonProperty(PropertyName = "summary")]
-        public string Summary { get; set; }
+        public Common.MultiLocaleString title { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, patents)
+// WriteReturnTypes(Profiles, profilePicture)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'patents'
+    /// Name: 'profilePicture'
     /// </summary>
-    [Serializable, XmlRoot("patents")]
-    public class Patents
+    [Serializable, XmlRoot("profilePicture")]
+    public class ProfilePicture
     {
         /// <summary>
-        /// Field: 'patent' (on-demand)
+        /// Field: 'displayImage' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "patent")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Patent> Patent { get; set; }
+        [XmlElement(ElementName = "displayImage")]
+        [JsonProperty(PropertyName = "displayImage")]
+        public string DisplayImage { get; set; }
+
+        /// <summary>
+        /// Field: 'displayImage~' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "displayImage~")]
+        [JsonProperty(PropertyName = "displayImage~")]
+        public DisplayImageLoaded DisplayImageLoaded { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, patent)
+// WriteReturnTypes(Profiles, displayImageLoaded)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'patent'
+    /// Name: 'displayImageLoaded'
     /// </summary>
-    [Serializable, XmlRoot("patent")]
-    public class Patent
+    [Serializable, XmlRoot("displayImageLoaded")]
+    public class DisplayImageLoaded
     {
         /// <summary>
-        /// Field: 'id' (on-demand)
+        /// Field: 'elements' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'title' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "title")]
-        [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Field: 'date' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "date")]
-        [JsonProperty(PropertyName = "date")]
-        public DateParts Date { get; set; }
-
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Field: 'summary' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "summary")]
-        [JsonProperty(PropertyName = "summary")]
-        public string Summary { get; set; }
-
-        /// <summary>
-        /// Field: 'number' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "number")]
-        [JsonProperty(PropertyName = "number")]
-        public string Number { get; set; }
-
-        /// <summary>
-        /// Field: 'status' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "status")]
-        [JsonProperty(PropertyName = "status")]
-        public Status Status { get; set; }
-
-        /// <summary>
-        /// Field: 'office:(name)' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "office")]
-        [JsonProperty(PropertyName = "office")]
-        public Office Office { get; set; }
-
-        /// <summary>
-        /// Field: 'inventors' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "inventors")]
-        [JsonProperty(PropertyName = "inventors")]
-        public Inventors Inventors { get; set; }
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<DisplayImageElements> Elements { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, status)
+// WriteReturnTypes(Profiles, displayImageElements)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'status'
+    /// Name: 'displayImageElements'
     /// </summary>
-    [Serializable, XmlRoot("status")]
-    public class Status
+    [Serializable, XmlRoot("displayImageElements")]
+    public class DisplayImageElements
     {
         /// <summary>
-        /// Field: 'id' (on-demand)
+        /// Field: 'artifact' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
+        [XmlElement(ElementName = "artifact")]
+        [JsonProperty(PropertyName = "artifact")]
+        public string Artifact { get; set; }
 
         /// <summary>
-        /// Field: 'name' (on-demand)
+        /// Field: 'authorizationMethod' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [XmlElement(ElementName = "authorizationMethod")]
+        [JsonProperty(PropertyName = "authorizationMethod")]
+        public string AuthorizationMethod { get; set; }
+
+        /// <summary>
+        /// Field: 'identifiers' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "identifiers")]
+        [JsonProperty(PropertyName = "identifiers")]
+        public List<DisplayImageElementIdentifiers> Identifiers { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Profiles, inventors)
+// WriteReturnTypes(Profiles, displayImageElementIdentifiers)
 namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'inventors'
+    /// Name: 'displayImageElementIdentifiers'
     /// </summary>
-    [Serializable, XmlRoot("inventors")]
-    public class Inventors
+    [Serializable, XmlRoot("displayImageElementIdentifiers")]
+    public class DisplayImageElementIdentifiers
     {
         /// <summary>
-        /// Field: 'inventor' (on-demand)
+        /// Field: 'identifier' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "inventor")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Inventor> Inventor { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, inventor)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'inventor'
-    /// </summary>
-    [Serializable, XmlRoot("inventor")]
-    public class Inventor
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
+        [XmlElement(ElementName = "identifier")]
+        [JsonProperty(PropertyName = "identifier")]
+        public string Identifier { get; set; }
 
         /// <summary>
-        /// Field: 'name' (on-demand)
+        /// Field: 'file' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [XmlElement(ElementName = "file")]
+        [JsonProperty(PropertyName = "file")]
+        public string File { get; set; }
 
         /// <summary>
-        /// Field: 'person' (on-demand)
+        /// Field: 'index' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "person")]
-        public InventorPerson Person { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, person)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'person'
-    /// </summary>
-    [Serializable, XmlRoot("person")]
-    public class InventorPerson
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        [XmlElement(ElementName = "index")]
+        [JsonProperty(PropertyName = "index")]
+        public string Index { get; set; }
 
         /// <summary>
-        /// Field: 'first-name' (on-demand)
+        /// Field: 'mediaType' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "first-name")]
-        [JsonProperty(PropertyName = "firstName")]
-        public string FirstName { get; set; }
+        [XmlElement(ElementName = "mediaType")]
+        [JsonProperty(PropertyName = "mediaType")]
+        public string MediaType { get; set; }
 
         /// <summary>
-        /// Field: 'last-name' (on-demand)
+        /// Field: 'identifierExpiresInSeconds' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "last-name")]
-        [JsonProperty(PropertyName = "lastName")]
-        public string LastName { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, member-url-resources)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'member-url-resources'
-    /// </summary>
-    [Serializable, XmlRoot("member-url-resources")]
-    public class UrlResources
-    {
-        /// <summary>
-        /// Field: 'member-url-resource' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "member-url-resource")]
-        [JsonProperty(PropertyName = "values")]
-        public List<UrlResource> MemberUrlResource { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, member-url-resource)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'member-url-resource'
-    /// </summary>
-    [Serializable, XmlRoot("member-url-resource")]
-    public class UrlResource
-    {
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, ProfileRequest)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'ProfileRequest'
-    /// </summary>
-    [Serializable, XmlRoot("ProfileRequest")]
-    public class ProfileRequest
-    {
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-        /// <summary>
-        /// Field: 'headers' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "headers")]
-        [JsonProperty(PropertyName = "headers")]
-        public RequestHeaders Headers { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, headers)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'headers'
-    /// </summary>
-    [Serializable, XmlRoot("headers")]
-    public class RequestHeaders
-    {
-        /// <summary>
-        /// Field: 'http-header' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "http-header")]
-        [JsonProperty(PropertyName = "values")]
-        public List<RequestHeader> HttpHeader { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, http-header)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'http-header'
-    /// </summary>
-    [Serializable, XmlRoot("http-header")]
-    public class RequestHeader
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'value' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "value")]
-        [JsonProperty(PropertyName = "value")]
-        public string Value { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, FollowingInfos)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'FollowingInfos'
-    /// </summary>
-    [Serializable, XmlRoot("FollowingInfos")]
-    public class FollowingInfos
-    {
-        /// <summary>
-        /// Field: 'people' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "people")]
-        [JsonProperty(PropertyName = "people")]
-        public FollowingInfosPeople People { get; set; }
-
-        /// <summary>
-        /// Field: 'companies' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "companies")]
-        [JsonProperty(PropertyName = "companies")]
-        public FollowingInfosCompanies Companies { get; set; }
-
-        /// <summary>
-        /// Field: 'industries' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "industries")]
-        [JsonProperty(PropertyName = "industries")]
-        public FollowingInfosIndustries Industries { get; set; }
-
-        /// <summary>
-        /// Field: 'special-editions' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "special-editions")]
-        [JsonProperty(PropertyName = "specialEditions")]
-        public FollowingInfosSpecialEditions SpecialEditions { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, FollowingInfosPeople)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'FollowingInfosPeople'
-    /// </summary>
-    [Serializable, XmlRoot("FollowingInfosPeople")]
-    public class FollowingInfosPeople
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public string Total { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, FollowingInfosCompanies)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'FollowingInfosCompanies'
-    /// </summary>
-    [Serializable, XmlRoot("FollowingInfosCompanies")]
-    public class FollowingInfosCompanies
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public string Total { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, FollowingInfosIndustries)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'FollowingInfosIndustries'
-    /// </summary>
-    [Serializable, XmlRoot("FollowingInfosIndustries")]
-    public class FollowingInfosIndustries
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public string Total { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, FollowingInfosSpecialEditions)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'FollowingInfosSpecialEditions'
-    /// </summary>
-    [Serializable, XmlRoot("FollowingInfosSpecialEditions")]
-    public class FollowingInfosSpecialEditions
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public string Total { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, job-bookmarks)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'job-bookmarks'
-    /// </summary>
-    [Serializable, XmlRoot("job-bookmarks")]
-    public class JobBookmarks
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public string Total { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, honors-awards)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'honors-awards'
-    /// </summary>
-    [Serializable, XmlRoot("honors-awards")]
-    public class HonorsAwards
-    {
-        /// <summary>
-        /// Field: 'honor-award' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "honor-award")]
-        [JsonProperty(PropertyName = "values")]
-        public List<HonorAward> HonorAward { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, honor-award)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'honor-award'
-    /// </summary>
-    [Serializable, XmlRoot("honor-award")]
-    public class HonorAward
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'issuer' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "issuer")]
-        [JsonProperty(PropertyName = "issuer")]
-        public string Issuer { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, twitter-accounts)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'twitter-accounts'
-    /// </summary>
-    [Serializable, XmlRoot("twitter-accounts")]
-    public class TwitterAccounts
-    {
-        /// <summary>
-        /// Field: 'twitter-account' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "twitter-account")]
-        [JsonProperty(PropertyName = "values")]
-        public List<TwitterAccount> TwitterAccount { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, twitter-account)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'twitter-account'
-    /// </summary>
-    [Serializable, XmlRoot("twitter-account")]
-    public class TwitterAccount
-    {
-        /// <summary>
-        /// Field: 'provider-account-id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "provider-account-id")]
-        [JsonProperty(PropertyName = "providerAccountId")]
-        public long ProviderAccountId { get; set; }
-
-        /// <summary>
-        /// Field: 'provider-account-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "provider-account-name")]
-        [JsonProperty(PropertyName = "providerAccountName")]
-        public string ProviderAccountName { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, im-accounts)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'im-accounts'
-    /// </summary>
-    [Serializable, XmlRoot("im-accounts")]
-    public class ImAccounts
-    {
-        /// <summary>
-        /// Field: 'im-account' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "im-account")]
-        [JsonProperty(PropertyName = "values")]
-        public List<ImAccount> ImAccount { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, im-account)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'im-account'
-    /// </summary>
-    [Serializable, XmlRoot("im-account")]
-    public class ImAccount
-    {
-        /// <summary>
-        /// Field: 'im-account-type' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "im-account-type")]
-        [JsonProperty(PropertyName = "imAccountType")]
-        public string ImAccountType { get; set; }
-
-        /// <summary>
-        /// Field: 'im-account-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "im-account-name")]
-        [JsonProperty(PropertyName = "imAccountName")]
-        public string ImAccountName { get; set; }
-
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, picture-urls)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'picture-urls'
-    /// </summary>
-    [Serializable, XmlRoot("picture-urls")]
-    public class PictureUrls
-    {
-        /// <summary>
-        /// Field: 'picture-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "picture-url")]
-        [JsonProperty(PropertyName = "values")]
-        public List<string> PictureUrl { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, specialties)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'specialties'
-    /// </summary>
-    [Serializable, XmlRoot("specialties")]
-    public class Specialties
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'specialty' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "specialty")]
-        [JsonProperty(PropertyName = "values")]
-        public List<string> Specialty { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, site-standard-profile-request)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'site-standard-profile-request'
-    /// </summary>
-    [Serializable, XmlRoot("site-standard-profile-request")]
-    public class SiteStandardProfileRequest
-    {
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, location)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'location'
-    /// </summary>
-    [Serializable, XmlRoot("location")]
-    public class Location
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'country' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "country")]
-        [JsonProperty(PropertyName = "country")]
-        public Country Country { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, country)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'country'
-    /// </summary>
-    [Serializable, XmlRoot("country")]
-    public class Country
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, authority)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'authority'
-    /// </summary>
-    [Serializable, XmlRoot("authority")]
-    public class Authority
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, organization)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'organization'
-    /// </summary>
-    [Serializable, XmlRoot("organization")]
-    public class Organization
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, cause)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'cause'
-    /// </summary>
-    [Serializable, XmlRoot("cause")]
-    public class Cause
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, recommendation-type)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'recommendation-type'
-    /// </summary>
-    [Serializable, XmlRoot("recommendation-type")]
-    public class RecommendationType
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, publisher)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'publisher'
-    /// </summary>
-    [Serializable, XmlRoot("publisher")]
-    public class Publisher
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, authors)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'authors'
-    /// </summary>
-    [Serializable, XmlRoot("authors")]
-    public class Authors
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'person' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "person")]
-        public string Person { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Profiles, office)
-namespace Sparkle.LinkedInNET.Profiles
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'office'
-    /// </summary>
-    [Serializable, XmlRoot("office")]
-    public class Office
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        [XmlElement(ElementName = "identifierExpiresInSeconds")]
+        [JsonProperty(PropertyName = "identifierExpiresInSeconds")]
+        public long? IdentifierExpiresInSeconds { get; set; }
 
     }
 }
@@ -2488,22 +532,50 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'person', 'connections', 'position', 'positions', 'CompanyIdentifier', 'DateParts', 'relation-to-viewer', 'languages', 'language', 'LanguageInfo', 'LanguageProficiency', 'skills', 'skill', 'skill', 'certifications', 'certification', 'educations', 'education', 'courses', 'course', 'volunteer', 'volunteer-experiences', 'volunteer-experience', 'recommendations', 'recommendation', 'phone-numbers', 'phone-number', 'publications', 'publication', 'patents', 'patent', 'status', 'inventors', 'inventor', 'person', 'member-url-resources', 'member-url-resource', 'ProfileRequest', 'headers', 'http-header', 'FollowingInfos', 'FollowingInfosPeople', 'FollowingInfosCompanies', 'FollowingInfosIndustries', 'FollowingInfosSpecialEditions', 'job-bookmarks', 'honors-awards', 'honor-award', 'twitter-accounts', 'twitter-account', 'im-accounts', 'im-account', 'picture-urls', 'specialties', 'site-standard-profile-request', 'location', 'country', 'authority', 'organization', 'cause', 'recommendation-type', 'publisher', 'authors', 'office' return types.
+    /// Field selectors for the 'person', 'location', 'position', 'dateParts', 'richMediaURN', 'profilePicture', 'displayImageLoaded', 'displayImageElements', 'displayImageElementIdentifiers' return types.
     /// </summary>
     public static class ProfilesFields {
         /// <summary>
-        /// Includes the field 'first-name'.
+        /// Includes the field 'id'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithFirstName(this FieldSelector<Person> me) { return me.Add("first-name"); }
+        public static FieldSelector<Person> WithId(this FieldSelector<Person> me) { return me.Add("id"); }
         
         /// <summary>
-        /// Includes the field 'last-name'.
+        /// Includes the field 'firstName'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLastName(this FieldSelector<Person> me) { return me.Add("last-name"); }
+        public static FieldSelector<Person> WithFirstName(this FieldSelector<Person> me) { return me.Add("firstName"); }
+        
+        /// <summary>
+        /// Includes the field 'lastName'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Person> WithLastName(this FieldSelector<Person> me) { return me.Add("lastName"); }
+        
+        /// <summary>
+        /// Includes the field 'maidenName'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Person> WithMaidenName(this FieldSelector<Person> me) { return me.Add("maidenName"); }
+        
+        /// <summary>
+        /// Includes the field 'phoneticFirstName'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Person> WithPhoneticFirstName(this FieldSelector<Person> me) { return me.Add("phoneticFirstName"); }
+        
+        /// <summary>
+        /// Includes the field 'phoneticLastName'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Person> WithPhoneticLastName(this FieldSelector<Person> me) { return me.Add("phoneticLastName"); }
         
         /// <summary>
         /// Includes the field 'headline'.
@@ -2513,116 +585,18 @@ namespace Sparkle.LinkedInNET.Profiles
         public static FieldSelector<Person> WithHeadline(this FieldSelector<Person> me) { return me.Add("headline"); }
         
         /// <summary>
-        /// Includes the field 'site-standard-profile-request'.
+        /// Includes the field 'location'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithSiteStandardProfileRequestUrl(this FieldSelector<Person> me) { return me.Add("site-standard-profile-request"); }
+        public static FieldSelector<Person> WithLocation(this FieldSelector<Person> me) { return me.Add("location"); }
         
         /// <summary>
-        /// Includes the field 'id'.
+        /// Includes the field 'industryName'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithId(this FieldSelector<Person> me) { return me.Add("id"); }
-        
-        /// <summary>
-        /// Includes the field 'maiden-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithMaidenName(this FieldSelector<Person> me) { return me.Add("maiden-name"); }
-        
-        /// <summary>
-        /// Includes the field 'formatted-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithFormattedName(this FieldSelector<Person> me) { return me.Add("formatted-name"); }
-        
-        /// <summary>
-        /// Includes the field 'phonetic-first-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPhoneticFirstName(this FieldSelector<Person> me) { return me.Add("phonetic-first-name"); }
-        
-        /// <summary>
-        /// Includes the field 'phonetic-last-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPhoneticLastName(this FieldSelector<Person> me) { return me.Add("phonetic-last-name"); }
-        
-        /// <summary>
-        /// Includes the field 'formatted-phonetic-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithFormattedPhoneticName(this FieldSelector<Person> me) { return me.Add("formatted-phonetic-name"); }
-        
-        /// <summary>
-        /// Includes the field 'location:(name)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLocationName(this FieldSelector<Person> me) { return me.Add("location:(name)"); }
-        
-        /// <summary>
-        /// Includes the field 'location:(country:(code))'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLocationCountryCode(this FieldSelector<Person> me) { return me.Add("location:(country:(code))"); }
-        
-        /// <summary>
-        /// Includes the field 'industry'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithIndustry(this FieldSelector<Person> me) { return me.Add("industry"); }
-        
-        /// <summary>
-        /// Includes the field 'distance'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithDistance(this FieldSelector<Person> me) { return me.Add("distance"); }
-        
-        /// <summary>
-        /// Includes the field 'relation-to-viewer'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithRelationToViewer(this FieldSelector<Person> me) { return me.Add("relation-to-viewer"); }
-        
-        /// <summary>
-        /// Includes the field 'current-status-timestamp'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithCurrentStatusTimestamp(this FieldSelector<Person> me) { return me.Add("current-status-timestamp"); }
-        
-        /// <summary>
-        /// Includes the field 'current-share'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithCurrentShare(this FieldSelector<Person> me) { return me.Add("current-share"); }
-        
-        /// <summary>
-        /// Includes the field 'num-connections'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithNumConnections(this FieldSelector<Person> me) { return me.Add("num-connections"); }
-        
-        /// <summary>
-        /// Includes the field 'num-connections-capped'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithNumConnectionsCapped(this FieldSelector<Person> me) { return me.Add("num-connections-capped"); }
+        public static FieldSelector<Person> WithIndustryName(this FieldSelector<Person> me) { return me.Add("industryName"); }
         
         /// <summary>
         /// Includes the field 'summary'.
@@ -2639,595 +613,68 @@ namespace Sparkle.LinkedInNET.Profiles
         public static FieldSelector<Person> WithSpecialties(this FieldSelector<Person> me) { return me.Add("specialties"); }
         
         /// <summary>
-        /// Includes the field 'positions:(id,title,start-date,end-date,is-current,company)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositions(this FieldSelector<Person> me) { return me.Add("positions:(id,title,start-date,end-date,is-current,company)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(id)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsId(this FieldSelector<Person> me) { return me.Add("positions:(id)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(title)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsTitle(this FieldSelector<Person> me) { return me.Add("positions:(title)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(summary)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsSummary(this FieldSelector<Person> me) { return me.Add("positions:(summary)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(start-date)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsStartDate(this FieldSelector<Person> me) { return me.Add("positions:(start-date)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(end-date)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsEndDate(this FieldSelector<Person> me) { return me.Add("positions:(end-date)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(is-current)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsIsCurrent(this FieldSelector<Person> me) { return me.Add("positions:(is-current)"); }
-        
-        /// <summary>
-        /// Includes the field 'positions:(company)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPositionsCompany(this FieldSelector<Person> me) { return me.Add("positions:(company)"); }
-        
-        /// <summary>
-        /// Includes the field 'picture-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPictureUrl(this FieldSelector<Person> me) { return me.Add("picture-url"); }
-        
-        /// <summary>
-        /// Includes the field 'site-standard-profile-request'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithSiteStandardProfileRequest(this FieldSelector<Person> me) { return me.Add("site-standard-profile-request"); }
-        
-        /// <summary>
-        /// Includes the field 'api-standard-profile-request:(url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithApiStandardProfileRequestUrl(this FieldSelector<Person> me) { return me.Add("api-standard-profile-request:(url)"); }
-        
-        /// <summary>
-        /// Includes the field 'api-standard-profile-request:(headers)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithApiStandardProfileRequestHeaders(this FieldSelector<Person> me) { return me.Add("api-standard-profile-request:(headers)"); }
-        
-        /// <summary>
-        /// Includes the field 'public-profile-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPublicProfileUrl(this FieldSelector<Person> me) { return me.Add("public-profile-url"); }
-        
-        /// <summary>
-        /// Includes the field 'email-address'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithEmailAddress(this FieldSelector<Person> me) { return me.Add("email-address"); }
-        
-        /// <summary>
-        /// Includes the field 'last-modified-timestamp'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLastModifiedTimestamp(this FieldSelector<Person> me) { return me.Add("last-modified-timestamp"); }
-        
-        /// <summary>
-        /// Includes the field 'proposal-comments'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithProposalComments(this FieldSelector<Person> me) { return me.Add("proposal-comments"); }
-        
-        /// <summary>
-        /// Includes the field 'associations'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithAssociations(this FieldSelector<Person> me) { return me.Add("associations"); }
-        
-        /// <summary>
-        /// Includes the field 'interests'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithInterests(this FieldSelector<Person> me) { return me.Add("interests"); }
-        
-        /// <summary>
-        /// Includes the field 'publications'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPublications(this FieldSelector<Person> me) { return me.Add("publications"); }
-        
-        /// <summary>
-        /// Includes the field 'patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPatents(this FieldSelector<Person> me) { return me.Add("patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)"); }
-        
-        /// <summary>
-        /// Includes the field 'languages:(id)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLanguageId(this FieldSelector<Person> me) { return me.Add("languages:(id)"); }
-        
-        /// <summary>
-        /// Includes the field 'languages:(language)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLanguageName(this FieldSelector<Person> me) { return me.Add("languages:(language)"); }
-        
-        /// <summary>
-        /// Includes the field 'languages:(proficiency)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithLanguageProficiency(this FieldSelector<Person> me) { return me.Add("languages:(proficiency)"); }
-        
-        /// <summary>
-        /// Includes the field 'skills'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithSkills(this FieldSelector<Person> me) { return me.Add("skills"); }
-        
-        /// <summary>
-        /// Includes the field 'certifications:(id,name,authority:(name),number,start-date,end-date)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithCertifications(this FieldSelector<Person> me) { return me.Add("certifications:(id,name,authority:(name),number,start-date,end-date)"); }
-        
-        /// <summary>
-        /// Includes the field 'educations'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithEducations(this FieldSelector<Person> me) { return me.Add("educations"); }
-        
-        /// <summary>
-        /// Includes the field 'courses'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithCourses(this FieldSelector<Person> me) { return me.Add("courses"); }
-        
-        /// <summary>
-        /// Includes the field 'volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithFullVolunteer(this FieldSelector<Person> me) { return me.Add("volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))"); }
-        
-        /// <summary>
-        /// Includes the field 'three-current-positions'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithThreeCurrentPositions(this FieldSelector<Person> me) { return me.Add("three-current-positions"); }
-        
-        /// <summary>
-        /// Includes the field 'three-past-positions'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithThreePastPositions(this FieldSelector<Person> me) { return me.Add("three-past-positions"); }
-        
-        /// <summary>
-        /// Includes the field 'num-recommenders'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithNumRecommenders(this FieldSelector<Person> me) { return me.Add("num-recommenders"); }
-        
-        /// <summary>
-        /// Includes the field 'recommendations-received'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithRecommendationsReceived(this FieldSelector<Person> me) { return me.Add("recommendations-received"); }
-        
-        /// <summary>
-        /// Includes the field 'recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline))'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithRecommendationsReceivedWithAdditionalRecommenderInfo(this FieldSelector<Person> me) { return me.Add("recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline))"); }
-        
-        /// <summary>
-        /// Includes the field 'following'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithFollowing(this FieldSelector<Person> me) { return me.Add("following"); }
-        
-        /// <summary>
-        /// Includes the field 'job-bookmarks'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithJobBookmarks(this FieldSelector<Person> me) { return me.Add("job-bookmarks"); }
-        
-        /// <summary>
-        /// Includes the field 'suggestions'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithSuggestions(this FieldSelector<Person> me) { return me.Add("suggestions"); }
-        
-        /// <summary>
-        /// Includes the field 'date-of-birth'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithDateOfBirth(this FieldSelector<Person> me) { return me.Add("date-of-birth"); }
-        
-        /// <summary>
-        /// Includes the field 'member-url-resources'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithMemberUrlResources(this FieldSelector<Person> me) { return me.Add("member-url-resources"); }
-        
-        /// <summary>
-        /// Includes the field 'related-profile-views'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithRelatedProfileViews(this FieldSelector<Person> me) { return me.Add("related-profile-views"); }
-        
-        /// <summary>
-        /// Includes the field 'honors-awards'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithHonorsAwards(this FieldSelector<Person> me) { return me.Add("honors-awards"); }
-        
-        /// <summary>
-        /// Includes the field 'phone-numbers'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPhoneNumbers(this FieldSelector<Person> me) { return me.Add("phone-numbers"); }
-        
-        /// <summary>
-        /// Includes the field 'bound-account-types'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithBoundAccountTypes(this FieldSelector<Person> me) { return me.Add("bound-account-types"); }
-        
-        /// <summary>
-        /// Includes the field 'im-accounts'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithImAccounts(this FieldSelector<Person> me) { return me.Add("im-accounts"); }
-        
-        /// <summary>
-        /// Includes the field 'main-address'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithMainAddress(this FieldSelector<Person> me) { return me.Add("main-address"); }
-        
-        /// <summary>
-        /// Includes the field 'twitter-accounts'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithTwitterAccounts(this FieldSelector<Person> me) { return me.Add("twitter-accounts"); }
-        
-        /// <summary>
-        /// Includes the field 'primary-twitter-account'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithPrimaryTwitterAccount(this FieldSelector<Person> me) { return me.Add("primary-twitter-account"); }
-        
-        /// <summary>
-        /// Includes the field 'connections'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithConnections(this FieldSelector<Person> me) { return me.Add("connections"); }
-        
-        /// <summary>
-        /// Includes the field 'group-memberships'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithGroupMemberships(this FieldSelector<Person> me) { return me.Add("group-memberships"); }
-        
-        /// <summary>
-        /// Includes the field 'network'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithNetwork(this FieldSelector<Person> me) { return me.Add("network"); }
-        
-        /// <summary>
-        /// Includes all the fields.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Person> WithAllFields(this FieldSelector<Person> me) { return me.AddRange("first-name", "last-name", "headline", "site-standard-profile-request", "id", "maiden-name", "formatted-name", "phonetic-first-name", "phonetic-last-name", "formatted-phonetic-name", "location:(name)", "location:(country:(code))", "industry", "distance", "relation-to-viewer", "current-status-timestamp", "current-share", "num-connections", "num-connections-capped", "summary", "specialties", "positions:(id,title,start-date,end-date,is-current,company)", "positions:(id)", "positions:(title)", "positions:(summary)", "positions:(start-date)", "positions:(end-date)", "positions:(is-current)", "positions:(company)", "picture-url", "site-standard-profile-request", "api-standard-profile-request:(url)", "api-standard-profile-request:(headers)", "public-profile-url", "email-address", "last-modified-timestamp", "proposal-comments", "associations", "interests", "publications", "patents:(id,title,summary,number,status:(id,name),office:(name),inventors:(id,name,person),date,url)", "languages:(id)", "languages:(language)", "languages:(proficiency)", "skills", "certifications:(id,name,authority:(name),number,start-date,end-date)", "educations", "courses", "volunteer:(volunteer-experiences:(id,role,organization:(name),cause:(name)))", "three-current-positions", "three-past-positions", "num-recommenders", "recommendations-received", "recommendations-received:(id,recommendation-type:(code),recommendation-text,recommender:(id,first-name,last-name,num-connections,headline))", "following", "job-bookmarks", "suggestions", "date-of-birth", "member-url-resources", "related-profile-views", "honors-awards", "phone-numbers", "bound-account-types", "im-accounts", "main-address", "twitter-accounts", "primary-twitter-account", "connections", "group-memberships", "network"); }
-        
-        /// <summary>
-        /// Includes the field 'id'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithId(this FieldSelector<Connections> me) { return me.Add("id"); }
-        
-        /// <summary>
-        /// Includes the field 'first-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithFirstName(this FieldSelector<Connections> me) { return me.Add("first-name"); }
-        
-        /// <summary>
-        /// Includes the field 'last-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithLastName(this FieldSelector<Connections> me) { return me.Add("last-name"); }
-        
-        /// <summary>
-        /// Includes the field 'maiden-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithMaidenName(this FieldSelector<Connections> me) { return me.Add("maiden-name"); }
-        
-        /// <summary>
-        /// Includes the field 'formatted-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithFormattedName(this FieldSelector<Connections> me) { return me.Add("formatted-name"); }
-        
-        /// <summary>
-        /// Includes the field 'phonetic-first-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithPhoneticFirstName(this FieldSelector<Connections> me) { return me.Add("phonetic-first-name"); }
-        
-        /// <summary>
-        /// Includes the field 'phonetic-last-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithPhoneticLastName(this FieldSelector<Connections> me) { return me.Add("phonetic-last-name"); }
-        
-        /// <summary>
-        /// Includes the field 'formatted-phonetic-name'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithFormattedPhoneticName(this FieldSelector<Connections> me) { return me.Add("formatted-phonetic-name"); }
-        
-        /// <summary>
-        /// Includes the field 'headline'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithHeadline(this FieldSelector<Connections> me) { return me.Add("headline"); }
-        
-        /// <summary>
-        /// Includes the field 'location:(name)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithLocationName(this FieldSelector<Connections> me) { return me.Add("location:(name)"); }
-        
-        /// <summary>
-        /// Includes the field 'location:(country:(code))'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithLocationCountryCode(this FieldSelector<Connections> me) { return me.Add("location:(country:(code))"); }
-        
-        /// <summary>
-        /// Includes the field 'industry'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithIndustry(this FieldSelector<Connections> me) { return me.Add("industry"); }
-        
-        /// <summary>
-        /// Includes the field 'distance'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithDistance(this FieldSelector<Connections> me) { return me.Add("distance"); }
-        
-        /// <summary>
-        /// Includes the field 'relation-to-viewer:(distance)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithRelationToViewerDistance(this FieldSelector<Connections> me) { return me.Add("relation-to-viewer:(distance)"); }
-        
-        /// <summary>
-        /// Includes the field 'relation-to-viewer:(related-connections)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithRelationToViewerRelatedConnections(this FieldSelector<Connections> me) { return me.Add("relation-to-viewer:(related-connections)"); }
-        
-        /// <summary>
-        /// Includes the field 'relation-to-viewer:(connections)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithRelationToViewerConnections(this FieldSelector<Connections> me) { return me.Add("relation-to-viewer:(connections)"); }
-        
-        /// <summary>
-        /// Includes the field 'num-connections'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithNumConnections(this FieldSelector<Connections> me) { return me.Add("num-connections"); }
-        
-        /// <summary>
-        /// Includes the field 'num-connections-capped'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithNumConnectionsCapped(this FieldSelector<Connections> me) { return me.Add("num-connections-capped"); }
-        
-        /// <summary>
-        /// Includes the field 'summary'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithSummary(this FieldSelector<Connections> me) { return me.Add("summary"); }
-        
-        /// <summary>
-        /// Includes the field 'specialties'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithSpecialties(this FieldSelector<Connections> me) { return me.Add("specialties"); }
-        
-        /// <summary>
         /// Includes the field 'positions'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithPositions(this FieldSelector<Connections> me) { return me.Add("positions"); }
+        public static FieldSelector<Person> WithPositions(this FieldSelector<Person> me) { return me.Add("positions"); }
         
         /// <summary>
-        /// Includes the field 'picture-url'.
+        /// Includes the field 'profilePicture(displayImage~~~playableStreams)'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithPictureUrl(this FieldSelector<Connections> me) { return me.Add("picture-url"); }
+        public static FieldSelector<Person> WithDisplayImageLoaded(this FieldSelector<Person> me) { return me.Add("profilePicture(displayImage~~~playableStreams)"); }
         
         /// <summary>
-        /// Includes the field 'site-standard-profile-request'.
+        /// Includes the field 'vanityName'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithSiteStandardProfileRequest(this FieldSelector<Connections> me) { return me.Add("site-standard-profile-request"); }
+        public static FieldSelector<Person> WithVanityName(this FieldSelector<Person> me) { return me.Add("vanityName"); }
         
         /// <summary>
-        /// Includes the field 'api-standard-profile-request:(url)'.
+        /// Includes the field 'lastModified'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithApiStandardProfileRequestUrl(this FieldSelector<Connections> me) { return me.Add("api-standard-profile-request:(url)"); }
+        public static FieldSelector<Person> WithLastModified(this FieldSelector<Person> me) { return me.Add("lastModified"); }
         
         /// <summary>
-        /// Includes the field 'api-standard-profile-request:(headers)'.
+        /// Includes the field 'organizations'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithApiStandardProfileRequestHeaders(this FieldSelector<Connections> me) { return me.Add("api-standard-profile-request:(headers)"); }
-        
-        /// <summary>
-        /// Includes the field 'public-profile-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithPublicProfileUrl(this FieldSelector<Connections> me) { return me.Add("public-profile-url"); }
+        public static FieldSelector<Person> WithOrganizations(this FieldSelector<Person> me) { return me.Add("organizations"); }
         
         /// <summary>
         /// Includes all the fields.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Connections> WithAllFields(this FieldSelector<Connections> me) { return me.AddRange("id", "first-name", "last-name", "maiden-name", "formatted-name", "phonetic-first-name", "phonetic-last-name", "formatted-phonetic-name", "headline", "location:(name)", "location:(country:(code))", "industry", "distance", "relation-to-viewer:(distance)", "relation-to-viewer:(related-connections)", "relation-to-viewer:(connections)", "num-connections", "num-connections-capped", "summary", "specialties", "positions", "picture-url", "site-standard-profile-request", "api-standard-profile-request:(url)", "api-standard-profile-request:(headers)", "public-profile-url"); }
+        public static FieldSelector<Person> WithAllFields(this FieldSelector<Person> me) { return me.AddRange("id", "firstName", "lastName", "maidenName", "phoneticFirstName", "phoneticLastName", "headline", "location", "industryName", "summary", "specialties", "positions", "profilePicture(displayImage~~~playableStreams)", "vanityName", "lastModified", "organizations"); }
         
     }
 }
 
 #endregion
 
-#region ReturnTypes for Companies
+#region ReturnTypes for Organizations
 
-// WriteReturnTypes(Companies, basiccompany)
-namespace Sparkle.LinkedInNET.Companies
+// WriteReturnTypes(Organizations, organization)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'basiccompany'
+    /// Name: 'organization'
     /// </summary>
-    [Serializable, XmlRoot("basiccompany")]
-    public class BasicCompanyList
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Company> Items { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, company)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'company'
-    /// </summary>
-    [Serializable, XmlRoot("company")]
-    public class Company
+    [Serializable, XmlRoot("organization")]
+    public class Organization
     {
         /// <summary>
         /// Field: 'id' (default)
@@ -3241,257 +688,129 @@ namespace Sparkle.LinkedInNET.Companies
         /// </summary>
         [XmlElement(ElementName = "name")]
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public Common.MultiLocaleString Name { get; set; }
 
         /// <summary>
-        /// Field: 'universal-name' (on-demand)
+        /// Field: 'logo' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "universal-name")]
-        [JsonProperty(PropertyName = "universalName")]
-        public string UniversalName { get; set; }
+        [XmlElement(ElementName = "logo")]
+        [JsonProperty(PropertyName = "logo")]
+        public CroppedImage Logo { get; set; }
 
         /// <summary>
-        /// Field: 'email-domains' (on-demand)
+        /// Field: 'vanityName' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "email-domains")]
-        [JsonProperty(PropertyName = "emailDomains")]
-        public CompanyEmailDomains EmailDomains { get; set; }
-
-        /// <summary>
-        /// Field: 'company-type' (on-demand)
-        /// Field: 'company-type:(code,name)'
-        /// </summary>
-        [XmlElement(ElementName = "company-type")]
-        [JsonProperty(PropertyName = "companyType")]
-        public CompanyKeyValue CompanyType { get; set; }
-
-        /// <summary>
-        /// Field: 'ticker' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "ticker")]
-        [JsonProperty(PropertyName = "ticker")]
-        public string Ticker { get; set; }
-
-        /// <summary>
-        /// Field: 'website-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "website-url")]
-        [JsonProperty(PropertyName = "websiteUrl")]
-        public string WebsiteUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'industries' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "industries")]
-        [JsonProperty(PropertyName = "industries")]
-        public CompanyIndustries Industries { get; set; }
-
-        /// <summary>
-        /// Field: 'status' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "status")]
-        [JsonProperty(PropertyName = "status")]
-        public CompanyKeyValue Status { get; set; }
-
-        /// <summary>
-        /// Field: 'logo-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "logo-url")]
-        [JsonProperty(PropertyName = "logoUrl")]
-        public string LogoUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'square-logo-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "square-logo-url")]
-        [JsonProperty(PropertyName = "squareLogoUrl")]
-        public string SquareLogoUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'blog-rss-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "blog-rss-url")]
-        [JsonProperty(PropertyName = "blogRssUrl")]
-        public string BlogRssUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'twitter-id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "twitter-id")]
-        [JsonProperty(PropertyName = "twitterId")]
-        public string TwitterId { get; set; }
-
-        /// <summary>
-        /// Field: 'employee-count-range' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "employee-count-range")]
-        [JsonProperty(PropertyName = "employeeCountRange")]
-        public CompanyKeyValue EmployeeCountRange { get; set; }
-
-        /// <summary>
-        /// Field: 'specialties' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "specialties")]
-        [JsonProperty(PropertyName = "specialties")]
-        public Specialties Specialties { get; set; }
-
-        /// <summary>
-        /// Field: 'locations' (on-demand)
-        /// Field: 'locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))'
-        /// </summary>
-        [XmlElement(ElementName = "locations")]
-        [JsonProperty(PropertyName = "locations")]
-        public CompanyLocations Locations { get; set; }
-
-        /// <summary>
-        /// Field: 'description' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "description")]
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Field: 'stock-exchange' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "stock-exchange")]
-        [JsonProperty(PropertyName = "stockExchange")]
-        public string StockExchange { get; set; }
-
-        /// <summary>
-        /// Field: 'founded-year' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "founded-year")]
-        [JsonProperty(PropertyName = "foundedYear")]
-        public string FoundedYear { get; set; }
-
-        /// <summary>
-        /// Field: 'end-year' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "end-year")]
-        [JsonProperty(PropertyName = "endYear")]
-        public string EndYear { get; set; }
-
-        /// <summary>
-        /// Field: 'num-followers' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-followers")]
-        [JsonProperty(PropertyName = "numFollowers")]
-        public int NumFollowers { get; set; }
+        [XmlElement(ElementName = "vanityName")]
+        [JsonProperty(PropertyName = "vanityName")]
+        public string VanityName { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Companies, locations)
-namespace Sparkle.LinkedInNET.Companies
+// WriteReturnTypes(Organizations, croppedImage)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'locations'
+    /// Name: 'croppedImage'
     /// </summary>
-    [Serializable, XmlRoot("locations")]
-    public class CompanyLocations
+    [Serializable, XmlRoot("croppedImage")]
+    public class CroppedImage
     {
         /// <summary>
-        /// Field: 'location' (on-demand)
+        /// Field: 'height' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "location")]
-        [JsonProperty(PropertyName = "values")]
-        public List<CompanyLocation> Location { get; set; }
+        [XmlElement(ElementName = "height")]
+        [JsonProperty(PropertyName = "height")]
+        public int Height { get; set; }
+
+        /// <summary>
+        /// Field: 'width' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "width")]
+        [JsonProperty(PropertyName = "width")]
+        public int Width { get; set; }
+
+        /// <summary>
+        /// Field: 'x' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "x")]
+        [JsonProperty(PropertyName = "x")]
+        public int X { get; set; }
+
+        /// <summary>
+        /// Field: 'y' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "y")]
+        [JsonProperty(PropertyName = "y")]
+        public int Y { get; set; }
+
+        /// <summary>
+        /// Field: 'cropped' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "cropped")]
+        [JsonProperty(PropertyName = "cropped")]
+        public string Cropped { get; set; }
+
+        /// <summary>
+        /// Field: 'original' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "original")]
+        [JsonProperty(PropertyName = "original")]
+        public string Original { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Companies, location)
-namespace Sparkle.LinkedInNET.Companies
+// WriteReturnTypes(Organizations, OrganizationalEntityAcls)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'location'
+    /// Name: 'OrganizationalEntityAcls'
     /// </summary>
-    [Serializable, XmlRoot("location")]
-    public class CompanyLocation
+    [Serializable, XmlRoot("OrganizationalEntityAcls")]
+    public class OrganizationalEntityAcls
     {
         /// <summary>
-        /// Field: 'description' (on-demand)
+        /// Field: 'elements' (on-demand)
+        /// Field: 'elements*(*,organizationalTarget~(id))'
+        /// Field: 'elements*(*,organizationalTarget~(logo))'
+        /// Field: 'elements*(*,organizationalTarget~(name))'
+        /// Field: 'elements*(*,organizationalTarget~(id,logo,name))'
         /// </summary>
-        [XmlElement(ElementName = "description")]
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Field: 'is-headquarters' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-headquarters")]
-        [JsonProperty(PropertyName = "isHeadquarters")]
-        public bool IsHeadquarters { get; set; }
-
-        /// <summary>
-        /// Field: 'is-active' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-active")]
-        [JsonProperty(PropertyName = "isActive")]
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Field: 'address' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "address")]
-        [JsonProperty(PropertyName = "address")]
-        public CompanyAddress Address { get; set; }
-
-        /// <summary>
-        /// Field: 'contact-info' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "contact-info")]
-        [JsonProperty(PropertyName = "contactInfo")]
-        public CompanyContact ContactInfo { get; set; }
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<OrgEntElements> Elements { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Companies, address)
-namespace Sparkle.LinkedInNET.Companies
+// WriteReturnTypes(Organizations, OrgEntElements)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'address'
+    /// Name: 'OrgEntElements'
     /// </summary>
-    [Serializable, XmlRoot("address")]
-    public class CompanyAddress
+    [Serializable, XmlRoot("OrgEntElements")]
+    public class OrgEntElements
     {
-        /// <summary>
-        /// Field: 'street1' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "street1")]
-        [JsonProperty(PropertyName = "street1")]
-        public string Street1 { get; set; }
-
-        /// <summary>
-        /// Field: 'street2' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "street2")]
-        [JsonProperty(PropertyName = "street2")]
-        public string Street2 { get; set; }
-
-        /// <summary>
-        /// Field: 'city' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "city")]
-        [JsonProperty(PropertyName = "city")]
-        public string City { get; set; }
-
         /// <summary>
         /// Field: 'state' (on-demand)
         /// </summary>
@@ -3500,1418 +819,169 @@ namespace Sparkle.LinkedInNET.Companies
         public string State { get; set; }
 
         /// <summary>
-        /// Field: 'postal-code' (on-demand)
+        /// Field: 'role' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "postal-code")]
-        [JsonProperty(PropertyName = "postalCode")]
-        public string PostalCode { get; set; }
+        [XmlElement(ElementName = "role")]
+        [JsonProperty(PropertyName = "role")]
+        public string Role { get; set; }
 
         /// <summary>
-        /// Field: 'country-code' (on-demand)
+        /// Field: 'roleAssignee' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "country-code")]
-        [JsonProperty(PropertyName = "countryCode")]
-        public string CountryCode { get; set; }
+        [XmlElement(ElementName = "roleAssignee")]
+        [JsonProperty(PropertyName = "roleAssignee")]
+        public string RoleAssignee { get; set; }
 
         /// <summary>
-        /// Field: 'region-code' (on-demand)
+        /// Field: 'organizationalTarget' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "region-code")]
-        [JsonProperty(PropertyName = "regionCode")]
-        public string RegionCode { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, contact-info)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'contact-info'
-    /// </summary>
-    [Serializable, XmlRoot("contact-info")]
-    public class CompanyContact
-    {
-        /// <summary>
-        /// Field: 'phone1' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "phone1")]
-        [JsonProperty(PropertyName = "phone1")]
-        public string Phone1 { get; set; }
+        [XmlElement(ElementName = "organizationalTarget")]
+        [JsonProperty(PropertyName = "organizationalTarget")]
+        public string OrganizationalTarget { get; set; }
 
         /// <summary>
-        /// Field: 'phone2' (on-demand)
+        /// Field: 'organizationalTarget~' (on-demand)
+        /// Field: 'organizationalTarget~(id)'
         /// </summary>
-        [XmlElement(ElementName = "phone2")]
-        [JsonProperty(PropertyName = "phone2")]
-        public string Phone2 { get; set; }
-
-        /// <summary>
-        /// Field: 'fax' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "fax")]
-        [JsonProperty(PropertyName = "fax")]
-        public string Fax { get; set; }
+        [XmlElement(ElementName = "organizationalTarget~")]
+        [JsonProperty(PropertyName = "organizationalTarget~")]
+        public Organization Organization { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Companies, email-domains)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'email-domains'
-    /// </summary>
-    [Serializable, XmlRoot("email-domains")]
-    public class CompanyEmailDomains
-    {
-        /// <summary>
-        /// Field: 'email-domain' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "email-domain")]
-        [JsonProperty(PropertyName = "values")]
-        public List<string> EmailDomain { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, company-key-value)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'company-key-value'
-    /// </summary>
-    [Serializable, XmlRoot("company-key-value")]
-    public class CompanyKeyValue
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, industries)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'industries'
-    /// </summary>
-    [Serializable, XmlRoot("industries")]
-    public class CompanyIndustries
-    {
-        /// <summary>
-        /// Field: 'industry' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "industry")]
-        [JsonProperty(PropertyName = "values")]
-        public List<CompanyIndustry> Industry { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, industry)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'industry'
-    /// </summary>
-    [Serializable, XmlRoot("industry")]
-    public class CompanyIndustry
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public int Code { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, updates)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'updates'
-    /// </summary>
-    [Serializable, XmlRoot("updates")]
-    public class CompanyUpdates
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'count' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "count")]
-        [JsonProperty(PropertyName = "_count")]
-        public int Count { get; set; }
-
-        /// <summary>
-        /// Field: 'update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update")]
-        [JsonProperty(PropertyName = "values")]
-        public List<CompanyUpdate> Update { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdate)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdate'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdate")]
-    public class CompanyUpdate
-    {
-        /// <summary>
-        /// Field: 'timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "timestamp")]
-        [JsonProperty(PropertyName = "timestamp")]
-        public long Timestamp { get; set; }
-
-        /// <summary>
-        /// Field: 'update-key' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-key")]
-        [JsonProperty(PropertyName = "updateKey")]
-        public string UpdateKey { get; set; }
-
-        /// <summary>
-        /// Field: 'update-type' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-type")]
-        [JsonProperty(PropertyName = "updateType")]
-        public string UpdateType { get; set; }
-
-        /// <summary>
-        /// Field: 'update-content' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-content")]
-        [JsonProperty(PropertyName = "updateContent")]
-        public CompanyUpdateContent UpdateContent { get; set; }
-
-        /// <summary>
-        /// Field: 'updateComments' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "updateComments")]
-        [JsonProperty(PropertyName = "updateComments")]
-        public CompanyUpdateComments UpdateComments { get; set; }
-
-        /// <summary>
-        /// Field: 'likes' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "likes")]
-        [JsonProperty(PropertyName = "likes")]
-        public CompanyUpdateLike Likes { get; set; }
-
-        /// <summary>
-        /// Field: 'is-commentable' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-commentable")]
-        [JsonProperty(PropertyName = "isCommentable")]
-        public bool? IsCommentable { get; set; }
-
-        /// <summary>
-        /// Field: 'is-likable' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-likable")]
-        [JsonProperty(PropertyName = "isLikable")]
-        public bool? IsLikable { get; set; }
-
-        /// <summary>
-        /// Field: 'is-liked' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-liked")]
-        [JsonProperty(PropertyName = "isLiked")]
-        public bool? IsLiked { get; set; }
-
-        /// <summary>
-        /// Field: 'num-likes' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-likes")]
-        [JsonProperty(PropertyName = "numLikes")]
-        public int? NumLikes { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdateContent)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdateContent'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdateContent")]
-    public class CompanyUpdateContent
-    {
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "company")]
-        public CompanyIdentifier Company { get; set; }
-
-        /// <summary>
-        /// Field: 'company-job-update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company-job-update")]
-        [JsonProperty(PropertyName = "companyJobUpdate")]
-        public CompanyJobUpdate CompanyJobUpdate { get; set; }
-
-        /// <summary>
-        /// Field: 'company-product-update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company-product-update")]
-        [JsonProperty(PropertyName = "companyProductUpdate")]
-        public CompanyProductUpdate CompanyProductUpdate { get; set; }
-
-        /// <summary>
-        /// Field: 'company-status-update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company-status-update")]
-        [JsonProperty(PropertyName = "companyStatusUpdate")]
-        public CompanyStatusUpdate CompanyStatusUpdate { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdateComments)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdateComments'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdateComments")]
-    public class CompanyUpdateComments
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'comment' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "comment")]
-        [JsonProperty(PropertyName = "values")]
-        public List<CompanyUpdateComment> Comment { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdateLikes)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdateLikes'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdateLikes")]
-    public class CompanyUpdateLikes
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'like' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "like")]
-        [JsonProperty(PropertyName = "values")]
-        public List<CompanyUpdateLike> Like { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdateComment)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdateComment'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdateComment")]
-    public class CompanyUpdateComment
-    {
-        /// <summary>
-        /// Field: 'comment' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "comment")]
-        [JsonProperty(PropertyName = "comment")]
-        public string Comment { get; set; }
-
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// Field: 'person' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "person")]
-        public Sparkle.LinkedInNET.Profiles.Person Person { get; set; }
-
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "company")]
-        public Sparkle.LinkedInNET.Companies.Company Company { get; set; }
-
-        /// <summary>
-        /// Field: 'sequenceNumber' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "sequenceNumber")]
-        [JsonProperty(PropertyName = "sequenceNumber")]
-        public int? SequenceNumber { get; set; }
-
-        /// <summary>
-        /// Field: 'timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "timestamp")]
-        [JsonProperty(PropertyName = "timestamp")]
-        public long? Timestamp { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyUpdateLike)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyUpdateLike'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyUpdateLike")]
-    public class CompanyUpdateLike
-    {
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "company")]
-        public Sparkle.LinkedInNET.Companies.Company Company { get; set; }
-
-        /// <summary>
-        /// Field: 'person' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "person")]
-        public Sparkle.LinkedInNET.Profiles.Person Person { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyIdentifier)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyIdentifier'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyIdentifier")]
-    public class CompanyIdentifier
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyJobUpdate)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyJobUpdate'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyJobUpdate")]
-    public class CompanyJobUpdate
-    {
-        /// <summary>
-        /// Field: 'job' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "job")]
-        [JsonProperty(PropertyName = "job")]
-        public CompanyJobUpdateJob Job { get; set; }
-
-        /// <summary>
-        /// Field: 'action/code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "action")]
-        [JsonProperty(PropertyName = "action")]
-        public Action Action { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyJobUpdateJob)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyJobUpdateJob'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyJobUpdateJob")]
-    public class CompanyJobUpdateJob
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public int Id { get; set; }
-
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "company")]
-        public CompanyIdentifier Company { get; set; }
-
-        /// <summary>
-        /// Field: 'position' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "position")]
-        [JsonProperty(PropertyName = "position")]
-        public PositionIdentifier Position { get; set; }
-
-        /// <summary>
-        /// Field: 'site­‐job­‐request' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "site­‐job­‐request")]
-        [JsonProperty(PropertyName = "site­‐job­‐request")]
-        public UrlIdentifier Url { get; set; }
-
-        /// <summary>
-        /// Field: 'description' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "description")]
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Field: 'location-­description' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "location-­description")]
-        [JsonProperty(PropertyName = "location­description")]
-        public string Location { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, PositionIdentifier)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'PositionIdentifier'
-    /// </summary>
-    [Serializable, XmlRoot("PositionIdentifier")]
-    public class PositionIdentifier
-    {
-        /// <summary>
-        /// Field: 'title' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "title")]
-        [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, UrlIdentifier)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'UrlIdentifier'
-    /// </summary>
-    [Serializable, XmlRoot("UrlIdentifier")]
-    public class UrlIdentifier
-    {
-        /// <summary>
-        /// Field: 'url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "url")]
-        [JsonProperty(PropertyName = "url")]
-        public string Url { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyProductUpdate)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyProductUpdate'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyProductUpdate")]
-    public class CompanyProductUpdate
-    {
-        /// <summary>
-        /// Field: 'action/code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "action")]
-        [JsonProperty(PropertyName = "action")]
-        public Action Action { get; set; }
-
-        /// <summary>
-        /// Field: 'event-type/code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "event-type")]
-        [JsonProperty(PropertyName = "eventType")]
-        public EventType EventType { get; set; }
-
-        /// <summary>
-        /// Field: 'product' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "product")]
-        [JsonProperty(PropertyName = "product")]
-        public CompanyProduct Product { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, CompanyProduct)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'CompanyProduct'
-    /// </summary>
-    [Serializable, XmlRoot("CompanyProduct")]
-    public class CompanyProduct
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, company‐status­‐update)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'company‐status­‐update'
-    /// </summary>
-    [Serializable, XmlRoot("company‐status­‐update")]
-    public class CompanyStatusUpdate
-    {
-        /// <summary>
-        /// Field: 'share' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "share")]
-        [JsonProperty(PropertyName = "share")]
-        public Sparkle.LinkedInNET.Common.Share Share { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, specialties)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'specialties'
-    /// </summary>
-    [Serializable, XmlRoot("specialties")]
-    public class Specialties
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'specialty' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "specialty")]
-        [JsonProperty(PropertyName = "values")]
-        public List<string> Specialty { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, company-search)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'company-search'
-    /// </summary>
-    [Serializable, XmlRoot("company-search")]
-    public class CompanySearch
-    {
-        /// <summary>
-        /// Field: 'companies' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "companies")]
-        [JsonProperty(PropertyName = "companies")]
-        public SearchCompanyList Companies { get; set; }
-
-        /// <summary>
-        /// Field: 'num-results' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "num-results")]
-        [JsonProperty(PropertyName = "numResults")]
-        public int NumResults { get; set; }
-
-        /// <summary>
-        /// Field: 'facets' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "facets")]
-        [JsonProperty(PropertyName = "facets")]
-        public SearchFacetList Facets { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, SearchCompanyList)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'SearchCompanyList'
-    /// </summary>
-    [Serializable, XmlRoot("SearchCompanyList")]
-    public class SearchCompanyList
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'count' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "count")]
-        [JsonProperty(PropertyName = "_count")]
-        public int Count { get; set; }
-
-        /// <summary>
-        /// Field: 'start' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "start")]
-        [JsonProperty(PropertyName = "_start")]
-        public int Start { get; set; }
-
-        /// <summary>
-        /// Field: 'company' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "company")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Company> Items { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, SearchFacetList)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'SearchFacetList'
-    /// </summary>
-    [Serializable, XmlRoot("SearchFacetList")]
-    public class SearchFacetList
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'facet' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "facet")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Facet> Items { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, facet)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'facet'
-    /// </summary>
-    [Serializable, XmlRoot("facet")]
-    public class Facet
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'buckets' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "buckets")]
-        [JsonProperty(PropertyName = "buckets")]
-        public Buckets Buckets { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, buckets)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'buckets'
-    /// </summary>
-    [Serializable, XmlRoot("buckets")]
-    public class Buckets
-    {
-        /// <summary>
-        /// Field: 'total' (on-demand)
-        /// </summary>
-        [XmlAttribute(AttributeName = "total")]
-        [JsonProperty(PropertyName = "_total")]
-        public int Total { get; set; }
-
-        /// <summary>
-        /// Field: 'bucket' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "bucket")]
-        [JsonProperty(PropertyName = "values")]
-        public List<Bucket> Items { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, bucket)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'bucket'
-    /// </summary>
-    [Serializable, XmlRoot("bucket")]
-    public class Bucket
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// Field: 'count' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "count")]
-        [JsonProperty(PropertyName = "count")]
-        public int Count { get; set; }
-
-        /// <summary>
-        /// Field: 'selected' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "selected")]
-        [JsonProperty(PropertyName = "selected")]
-        public bool Selected { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, action)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'action'
-    /// </summary>
-    [Serializable, XmlRoot("action")]
-    public class Action
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Companies, event-type)
-namespace Sparkle.LinkedInNET.Companies
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'event-type'
-    /// </summary>
-    [Serializable, XmlRoot("event-type")]
-    public class EventType
-    {
-        /// <summary>
-        /// Field: 'code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
-
-    }
-}
-
-// WriteReturnTypeFields(Companies)
-namespace Sparkle.LinkedInNET.Companies
+// WriteReturnTypeFields(Organizations)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'basiccompany', 'company', 'locations', 'location', 'address', 'contact-info', 'email-domains', 'company-key-value', 'industries', 'industry', 'updates', 'CompanyUpdate', 'CompanyUpdateContent', 'CompanyUpdateComments', 'CompanyUpdateLikes', 'CompanyUpdateComment', 'CompanyUpdateLike', 'CompanyIdentifier', 'CompanyJobUpdate', 'CompanyJobUpdateJob', 'PositionIdentifier', 'UrlIdentifier', 'CompanyProductUpdate', 'CompanyProduct', 'company‐status­‐update', 'specialties', 'company-search', 'SearchCompanyList', 'SearchFacetList', 'facet', 'buckets', 'bucket', 'action', 'event-type' return types.
+    /// Field selectors for the 'organization', 'croppedImage', 'OrganizationalEntityAcls', 'OrgEntElements' return types.
     /// </summary>
-    public static class CompaniesFields {
-        /// <summary>
-        /// Includes the field 'company'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<BasicCompanyList> WithCompany(this FieldSelector<BasicCompanyList> me) { return me.Add("company"); }
-        
-        /// <summary>
-        /// Includes all the fields.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<BasicCompanyList> WithAllFields(this FieldSelector<BasicCompanyList> me) { return me.AddRange("company"); }
-        
+    public static class OrganizationsFields {
         /// <summary>
         /// Includes the field 'id'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithId(this FieldSelector<Company> me) { return me.Add("id"); }
+        public static FieldSelector<Organization> WithId(this FieldSelector<Organization> me) { return me.Add("id"); }
         
         /// <summary>
         /// Includes the field 'name'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithName(this FieldSelector<Company> me) { return me.Add("name"); }
+        public static FieldSelector<Organization> WithName(this FieldSelector<Organization> me) { return me.Add("name"); }
         
         /// <summary>
-        /// Includes the field 'universal-name'.
+        /// Includes the field 'logo'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithUniversalName(this FieldSelector<Company> me) { return me.Add("universal-name"); }
+        public static FieldSelector<Organization> WithLogo(this FieldSelector<Organization> me) { return me.Add("logo"); }
         
         /// <summary>
-        /// Includes the field 'email-domains'.
+        /// Includes the field 'vanityName'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithEmailDomains(this FieldSelector<Company> me) { return me.Add("email-domains"); }
-        
-        /// <summary>
-        /// Includes the field 'company-type:(code,name)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithType(this FieldSelector<Company> me) { return me.Add("company-type:(code,name)"); }
-        
-        /// <summary>
-        /// Includes the field 'ticker'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithTicker(this FieldSelector<Company> me) { return me.Add("ticker"); }
-        
-        /// <summary>
-        /// Includes the field 'website-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithWebsiteUrl(this FieldSelector<Company> me) { return me.Add("website-url"); }
-        
-        /// <summary>
-        /// Includes the field 'industries'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithIndustries(this FieldSelector<Company> me) { return me.Add("industries"); }
-        
-        /// <summary>
-        /// Includes the field 'status'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithStatus(this FieldSelector<Company> me) { return me.Add("status"); }
-        
-        /// <summary>
-        /// Includes the field 'logo-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithLogoUrl(this FieldSelector<Company> me) { return me.Add("logo-url"); }
-        
-        /// <summary>
-        /// Includes the field 'square-logo-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithSquareLogoUrl(this FieldSelector<Company> me) { return me.Add("square-logo-url"); }
-        
-        /// <summary>
-        /// Includes the field 'blog-rss-url'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithBlogRssUrl(this FieldSelector<Company> me) { return me.Add("blog-rss-url"); }
-        
-        /// <summary>
-        /// Includes the field 'twitter-id'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithTwitterId(this FieldSelector<Company> me) { return me.Add("twitter-id"); }
-        
-        /// <summary>
-        /// Includes the field 'employee-count-range'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithEmployeeCountRange(this FieldSelector<Company> me) { return me.Add("employee-count-range"); }
-        
-        /// <summary>
-        /// Includes the field 'specialties'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithSpecialties(this FieldSelector<Company> me) { return me.Add("specialties"); }
-        
-        /// <summary>
-        /// Includes the field 'locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithLocations(this FieldSelector<Company> me) { return me.Add("locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))"); }
-        
-        /// <summary>
-        /// Includes the field 'description'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithDescription(this FieldSelector<Company> me) { return me.Add("description"); }
-        
-        /// <summary>
-        /// Includes the field 'stock-exchange'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithStockExchange(this FieldSelector<Company> me) { return me.Add("stock-exchange"); }
-        
-        /// <summary>
-        /// Includes the field 'founded-year'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithFoundedYear(this FieldSelector<Company> me) { return me.Add("founded-year"); }
-        
-        /// <summary>
-        /// Includes the field 'end-year'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithEndYear(this FieldSelector<Company> me) { return me.Add("end-year"); }
-        
-        /// <summary>
-        /// Includes the field 'num-followers'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithNumFollowers(this FieldSelector<Company> me) { return me.Add("num-followers"); }
+        public static FieldSelector<Organization> WithVanityName(this FieldSelector<Organization> me) { return me.Add("vanityName"); }
         
         /// <summary>
         /// Includes all the fields.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<Company> WithAllFields(this FieldSelector<Company> me) { return me.AddRange("id", "name", "universal-name", "email-domains", "company-type:(code,name)", "ticker", "website-url", "industries", "status", "logo-url", "square-logo-url", "blog-rss-url", "twitter-id", "employee-count-range", "specialties", "locations:(description,is-headquarters,is-active,address:(street1,street2,city,state,postal-code,country-code,region-code),contact-info:(phone1,phone2,fax))", "description", "stock-exchange", "founded-year", "end-year", "num-followers"); }
+        public static FieldSelector<Organization> WithAllFields(this FieldSelector<Organization> me) { return me.AddRange("id", "name", "logo", "vanityName"); }
         
         /// <summary>
-        /// Includes the field 'facets'.
+        /// Includes the field 'elements*(*,organizationalTarget~(id))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithFacets(this FieldSelector<CompanySearch> me) { return me.Add("facets"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsId(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(id))"); }
         
         /// <summary>
-        /// Includes the field 'companies:(id)'.
+        /// Includes the field 'elements*(*,organizationalTarget~(logo))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesId(this FieldSelector<CompanySearch> me) { return me.Add("companies:(id)"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsLogo(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(logo))"); }
         
         /// <summary>
-        /// Includes the field 'companies:(name)'.
+        /// Includes the field 'elements*(*,organizationalTarget~(name))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesName(this FieldSelector<CompanySearch> me) { return me.Add("companies:(name)"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsName(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(name))"); }
         
         /// <summary>
-        /// Includes the field 'companies:(universal-name)'.
+        /// Includes the field 'elements*(*,organizationalTarget~(id,logo,name))'.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesUniversalName(this FieldSelector<CompanySearch> me) { return me.Add("companies:(universal-name)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(email-domains)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesEmailDomains(this FieldSelector<CompanySearch> me) { return me.Add("companies:(email-domains)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(company-type)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesCompanyType(this FieldSelector<CompanySearch> me) { return me.Add("companies:(company-type)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(ticker)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesTicker(this FieldSelector<CompanySearch> me) { return me.Add("companies:(ticker)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(website-url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesWebsiteUrl(this FieldSelector<CompanySearch> me) { return me.Add("companies:(website-url)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(industries)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesIndustries(this FieldSelector<CompanySearch> me) { return me.Add("companies:(industries)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(status)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesStatus(this FieldSelector<CompanySearch> me) { return me.Add("companies:(status)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(logo-url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesLogoUrl(this FieldSelector<CompanySearch> me) { return me.Add("companies:(logo-url)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(square-logo-url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesSquareLogoUrl(this FieldSelector<CompanySearch> me) { return me.Add("companies:(square-logo-url)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(blog-rss-url)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesBlogRssUrl(this FieldSelector<CompanySearch> me) { return me.Add("companies:(blog-rss-url)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(twitter-id)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesTwitterId(this FieldSelector<CompanySearch> me) { return me.Add("companies:(twitter-id)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(employee-count-range)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesEmployeeCountRange(this FieldSelector<CompanySearch> me) { return me.Add("companies:(employee-count-range)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(specialties)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesSpecialties(this FieldSelector<CompanySearch> me) { return me.Add("companies:(specialties)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(locations)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesLocations(this FieldSelector<CompanySearch> me) { return me.Add("companies:(locations)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(description)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesDescription(this FieldSelector<CompanySearch> me) { return me.Add("companies:(description)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(stock-exchange)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesStockExchange(this FieldSelector<CompanySearch> me) { return me.Add("companies:(stock-exchange)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(founded-year)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesFoundedYear(this FieldSelector<CompanySearch> me) { return me.Add("companies:(founded-year)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(end-year)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesEndYear(this FieldSelector<CompanySearch> me) { return me.Add("companies:(end-year)"); }
-        
-        /// <summary>
-        /// Includes the field 'companies:(num-followers)'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithCompaniesNumFollowers(this FieldSelector<CompanySearch> me) { return me.Add("companies:(num-followers)"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithOrgEntElementsAll(this FieldSelector<OrganizationalEntityAcls> me) { return me.Add("elements*(*,organizationalTarget~(id,logo,name))"); }
         
         /// <summary>
         /// Includes all the fields.
         /// </summary>
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
-        public static FieldSelector<CompanySearch> WithAllFields(this FieldSelector<CompanySearch> me) { return me.AddRange("facets", "companies:(id)", "companies:(name)", "companies:(universal-name)", "companies:(email-domains)", "companies:(company-type)", "companies:(ticker)", "companies:(website-url)", "companies:(industries)", "companies:(status)", "companies:(logo-url)", "companies:(square-logo-url)", "companies:(blog-rss-url)", "companies:(twitter-id)", "companies:(employee-count-range)", "companies:(specialties)", "companies:(locations)", "companies:(description)", "companies:(stock-exchange)", "companies:(founded-year)", "companies:(end-year)", "companies:(num-followers)"); }
+        public static FieldSelector<OrganizationalEntityAcls> WithAllFields(this FieldSelector<OrganizationalEntityAcls> me) { return me.AddRange("elements*(*,organizationalTarget~(id))", "elements*(*,organizationalTarget~(logo))", "elements*(*,organizationalTarget~(name))", "elements*(*,organizationalTarget~(id,logo,name))"); }
+        
+        /// <summary>
+        /// Includes the field 'state'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithState(this FieldSelector<OrgEntElements> me) { return me.Add("state"); }
+        
+        /// <summary>
+        /// Includes the field 'role'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithRole(this FieldSelector<OrgEntElements> me) { return me.Add("role"); }
+        
+        /// <summary>
+        /// Includes the field 'roleAssignee'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithRoleAssignee(this FieldSelector<OrgEntElements> me) { return me.Add("roleAssignee"); }
+        
+        /// <summary>
+        /// Includes the field 'organizationalTarget'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithOrganizationalTarget(this FieldSelector<OrgEntElements> me) { return me.Add("organizationalTarget"); }
+        
+        /// <summary>
+        /// Includes the field 'organizationalTarget~(id)'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithOrganization(this FieldSelector<OrgEntElements> me) { return me.Add("organizationalTarget~(id)"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgEntElements> WithAllFields(this FieldSelector<OrgEntElements> me) { return me.AddRange("state", "role", "roleAssignee", "organizationalTarget", "organizationalTarget~(id)"); }
         
     }
 }
 
 #endregion
 
-#region ReturnTypes for Groups
+#region ReturnTypes for Shares
 
-// WriteReturnTypeFields(Groups)
-namespace Sparkle.LinkedInNET.Groups
+// WriteReturnTypeFields(Shares)
+namespace Sparkle.LinkedInNET.Shares
 {
     using System;
     using System.Collections.Generic;
@@ -4920,406 +990,13 @@ namespace Sparkle.LinkedInNET.Groups
     /// <summary>
     /// Field selectors for the '' return types.
     /// </summary>
-    public static class GroupsFields {
-    }
-}
-
-#endregion
-
-#region ReturnTypes for Jobs
-
-// WriteReturnTypeFields(Jobs)
-namespace Sparkle.LinkedInNET.Jobs
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-
-    /// <summary>
-    /// Field selectors for the '' return types.
-    /// </summary>
-    public static class JobsFields {
-    }
-}
-
-#endregion
-
-#region ReturnTypes for Social
-
-// WriteReturnTypes(Social, updates)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'updates'
-    /// </summary>
-    [Serializable, XmlRoot("updates")]
-    public class UserUpdates
-    {
-        /// <summary>
-        /// Field: 'update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update")]
-        [JsonProperty(PropertyName = "values")]
-        public List<UserUpdate> Update { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Social, UserUpdate)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'UserUpdate'
-    /// </summary>
-    [Serializable, XmlRoot("UserUpdate")]
-    public class UserUpdate
-    {
-        /// <summary>
-        /// Field: 'timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "timestamp")]
-        [JsonProperty(PropertyName = "timestamp")]
-        public long Timestamp { get; set; }
-
-        /// <summary>
-        /// Field: 'update-key' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-key")]
-        [JsonProperty(PropertyName = "updateKey")]
-        public string UpdateKey { get; set; }
-
-        /// <summary>
-        /// Field: 'update-type' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-type")]
-        [JsonProperty(PropertyName = "updateType")]
-        public string UpdateType { get; set; }
-
-        /// <summary>
-        /// Field: 'update-content' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "update-content")]
-        [JsonProperty(PropertyName = "updateContent")]
-        public UserUpdateContent UpdateContent { get; set; }
-
-        /// <summary>
-        /// Field: 'is-commentable' (on-demand)
-        /// Field: 'is-commentable' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "is-commentable")]
-        [JsonProperty(PropertyName = "isCommentable")]
-        public bool? IsCommentable { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Social, UserUpdateContent)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'UserUpdateContent'
-    /// </summary>
-    [Serializable, XmlRoot("UserUpdateContent")]
-    public class UserUpdateContent
-    {
-        /// <summary>
-        /// Field: 'person' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "person")]
-        [JsonProperty(PropertyName = "person")]
-        public Sparkle.LinkedInNET.Profiles.Person Person { get; set; }
-
-        /// <summary>
-        /// Field: 'person-status-update' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "person-status-update")]
-        [JsonProperty(PropertyName = "personStatusUpdate")]
-        public UserStatusUpdate PersonStatusUpdate { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Social, user-status-update)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'user-status-update'
-    /// </summary>
-    [Serializable, XmlRoot("user-status-update")]
-    public class UserStatusUpdate
-    {
-        /// <summary>
-        /// Field: 'share' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "share")]
-        [JsonProperty(PropertyName = "share")]
-        public Sparkle.LinkedInNET.Common.Share Share { get; set; }
-
-    }
-}
-
-// WriteReturnTypeFields(Social)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-
-    /// <summary>
-    /// Field selectors for the 'updates', 'UserUpdate', 'UserUpdateContent', 'user-status-update' return types.
-    /// </summary>
-    public static class SocialFields {
+    public static class SharesFields {
     }
 }
 
 #endregion
 
 #region ReturnTypes for Common
-
-// WriteReturnTypes(Common, share)
-namespace Sparkle.LinkedInNET.Common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'share'
-    /// </summary>
-    [Serializable, XmlRoot("share")]
-    public class Share
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'timestamp' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "timestamp")]
-        [JsonProperty(PropertyName = "timestamp")]
-        public long Timestamp { get; set; }
-
-        /// <summary>
-        /// Field: 'comment' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "comment")]
-        [JsonProperty(PropertyName = "comment")]
-        public string Comment { get; set; }
-
-        /// <summary>
-        /// Field: 'content' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "content")]
-        [JsonProperty(PropertyName = "content")]
-        public ShareContent Content { get; set; }
-
-        /// <summary>
-        /// Field: 'visibility/code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "visibility")]
-        [JsonProperty(PropertyName = "visibility")]
-        public Visibility Visibility { get; set; }
-
-        /// <summary>
-        /// Field: 'source' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "source")]
-        [JsonProperty(PropertyName = "source")]
-        public ShareSource Source { get; set; }
-
-        /// <summary>
-        /// Field: 'author' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "author")]
-        [JsonProperty(PropertyName = "author")]
-        public ShareAuthor Author { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Common, ShareSource)
-namespace Sparkle.LinkedInNET.Common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'ShareSource'
-    /// </summary>
-    [Serializable, XmlRoot("ShareSource")]
-    public class ShareSource
-    {
-        /// <summary>
-        /// Field: 'service-provider' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "service-provider")]
-        [JsonProperty(PropertyName = "serviceProvider")]
-        public ShareSourceProvider ServiceProvider { get; set; }
-
-        /// <summary>
-        /// Field: 'service-provider-share-id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "service-provider-share-id")]
-        [JsonProperty(PropertyName = "serviceProviderShareId")]
-        public string ServiceProviderShareId { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Common, ShareSourceProvider)
-namespace Sparkle.LinkedInNET.Common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'ShareSourceProvider'
-    /// </summary>
-    [Serializable, XmlRoot("ShareSourceProvider")]
-    public class ShareSourceProvider
-    {
-        /// <summary>
-        /// Field: 'name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "name")]
-        [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Common, ShareContent)
-namespace Sparkle.LinkedInNET.Common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'ShareContent'
-    /// </summary>
-    [Serializable, XmlRoot("ShareContent")]
-    public class ShareContent
-    {
-        /// <summary>
-        /// Field: 'title' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "title")]
-        [JsonProperty(PropertyName = "title")]
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Field: 'description' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "description")]
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Field: 'submitted-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "submitted-url")]
-        [JsonProperty(PropertyName = "submittedUrl")]
-        public string SubmittedUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'shortened-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "shortened-url")]
-        [JsonProperty(PropertyName = "shortenedUrl")]
-        public string ShortenedUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'submitted-image-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "submitted-image-url")]
-        [JsonProperty(PropertyName = "submittedImageUrl")]
-        public string SubmittedImageUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'thumbnail-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "thumbnail-url")]
-        [JsonProperty(PropertyName = "thumbnailUrl")]
-        public string ThumbnailUrl { get; set; }
-
-        /// <summary>
-        /// Field: 'eyebrow-url' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "eyebrow-url")]
-        [JsonProperty(PropertyName = "eyebrowUrl")]
-        public string EyebrowUrl { get; set; }
-
-    }
-}
-
-// WriteReturnTypes(Common, ShareAuthor)
-namespace Sparkle.LinkedInNET.Common
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Xml.Serialization;
-    using Newtonsoft.Json;
-
-    /// <summary>
-    /// Name: 'ShareAuthor'
-    /// </summary>
-    [Serializable, XmlRoot("ShareAuthor")]
-    public class ShareAuthor
-    {
-        /// <summary>
-        /// Field: 'id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "id")]
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-
-        /// <summary>
-        /// Field: 'first-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "first-name")]
-        [JsonProperty(PropertyName = "firstName")]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// Field: 'last-name' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "last-name")]
-        [JsonProperty(PropertyName = "lastName")]
-        public string LastName { get; set; }
-
-    }
-}
 
 // WriteReturnTypes(Common, PostShare)
 namespace Sparkle.LinkedInNET.Common
@@ -5328,6 +1005,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Name: 'PostShare'
@@ -5336,11 +1014,32 @@ namespace Sparkle.LinkedInNET.Common
     public class PostShare
     {
         /// <summary>
-        /// Field: 'comment' (on-demand)
+        /// Field: 'owner' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "comment")]
-        [JsonProperty(PropertyName = "comment")]
-        public string Comment { get; set; }
+        [XmlElement(ElementName = "owner")]
+        [JsonProperty(PropertyName = "owner")]
+        public string Owner { get; set; }
+
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public PostShareText Text { get; set; }
+
+        /// <summary>
+        /// Field: 'subject' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "subject")]
+        [JsonProperty(PropertyName = "subject")]
+        public string Subject { get; set; }
+
+        /// <summary>
+        /// Field: 'distribution' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "distribution")]
+        [JsonProperty(PropertyName = "distribution")]
+        public Distribution Distribution { get; set; }
 
         /// <summary>
         /// Field: 'content' (on-demand)
@@ -5349,37 +1048,56 @@ namespace Sparkle.LinkedInNET.Common
         [JsonProperty(PropertyName = "content")]
         public PostShareContent Content { get; set; }
 
-        /// <summary>
-        /// Field: 'attribution/share/id' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "attribution")]
-        [JsonProperty(PropertyName = "attribution")]
-        public Attribution Attribution { get; set; }
-
-        /// <summary>
-        /// Field: 'visibility/code' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "visibility")]
-        [JsonProperty(PropertyName = "visibility")]
-        public Visibility Visibility { get; set; }
-
     }
 }
 
-// WriteReturnTypes(Common, PostShareContent)
+// WriteReturnTypes(Common, text)
 namespace Sparkle.LinkedInNET.Common
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'PostShareContent'
+    /// Name: 'text'
     /// </summary>
-    [Serializable, XmlRoot("PostShareContent")]
+    [Serializable, XmlRoot("text")]
+    public class PostShareText
+    {
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, postShareContent)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'postShareContent'
+    /// </summary>
+    [Serializable, XmlRoot("postShareContent")]
     public class PostShareContent
     {
+        /// <summary>
+        /// Field: 'contentEntities' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "contentEntities")]
+        [JsonProperty(PropertyName = "contentEntities")]
+        public List<PostShareContentEntities> ContentEntities { get; set; }
+
         /// <summary>
         /// Field: 'title' (on-demand)
         /// </summary>
@@ -5387,26 +1105,83 @@ namespace Sparkle.LinkedInNET.Common
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
+    }
+}
+
+// WriteReturnTypes(Common, postShareContentEntities)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'postShareContentEntities'
+    /// </summary>
+    [Serializable, XmlRoot("postShareContentEntities")]
+    public class PostShareContentEntities
+    {
         /// <summary>
-        /// Field: 'description' (on-demand)
+        /// Field: 'entityLocation' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "description")]
-        [JsonProperty(PropertyName = "description")]
-        public string Description { get; set; }
+        [XmlElement(ElementName = "entityLocation")]
+        [JsonProperty(PropertyName = "entityLocation")]
+        public string EntityLocation { get; set; }
 
         /// <summary>
-        /// Field: 'submitted-url' (on-demand)
+        /// Field: 'thumbnails' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "submitted-url")]
-        [JsonProperty(PropertyName = "submittedUrl")]
-        public string SubmittedUrl { get; set; }
+        [XmlElement(ElementName = "thumbnails")]
+        [JsonProperty(PropertyName = "thumbnails")]
+        public List<PostShareContentThumbnails> Thumbnails { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, PostShareContentThumbnails)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PostShareContentThumbnails'
+    /// </summary>
+    [Serializable, XmlRoot("PostShareContentThumbnails")]
+    public class PostShareContentThumbnails
+    {
+        /// <summary>
+        /// Field: 'imageSpecificContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "imageSpecificContent")]
+        [JsonProperty(PropertyName = "imageSpecificContent")]
+        public JObject ImageSpecificContent { get; set; }
 
         /// <summary>
-        /// Field: 'submitted-image-url' (on-demand)
+        /// Field: 'publishers' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "submitted-image-url")]
-        [JsonProperty(PropertyName = "submittedImageUrl")]
-        public string SubmittedImageUrl { get; set; }
+        [XmlElement(ElementName = "publishers")]
+        [JsonProperty(PropertyName = "publishers")]
+        public JObject Publishers { get; set; }
+
+        /// <summary>
+        /// Field: 'resolvedUrl' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "resolvedUrl")]
+        [JsonProperty(PropertyName = "resolvedUrl")]
+        public string ResolvedUrl { get; set; }
+
+        /// <summary>
+        /// Field: 'authors' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "authors")]
+        [JsonProperty(PropertyName = "authors")]
+        public JObject Authors { get; set; }
 
     }
 }
@@ -5418,6 +1193,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Name: 'PostShareResult'
@@ -5426,72 +1202,220 @@ namespace Sparkle.LinkedInNET.Common
     public class PostShareResult
     {
         /// <summary>
-        /// Field: 'update-key' (on-demand)
+        /// Field: 'owner' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "update-key")]
-        [JsonProperty(PropertyName = "updateKey")]
-        public string UpdateKey { get; set; }
+        [XmlElement(ElementName = "owner")]
+        [JsonProperty(PropertyName = "owner")]
+        public string Owner { get; set; }
 
         /// <summary>
-        /// Field: 'update-url' (on-demand)
+        /// Field: 'activity' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "update-url")]
-        [JsonProperty(PropertyName = "updateUrl")]
-        public string UpdateUrl { get; set; }
+        [XmlElement(ElementName = "activity")]
+        [JsonProperty(PropertyName = "activity")]
+        public string Activity { get; set; }
 
         /// <summary>
-        /// HTTP header 'Location'
+        /// Field: 'edited' (on-demand)
         /// </summary>
-        public string Location { get; set; }
+        [XmlElement(ElementName = "edited")]
+        [JsonProperty(PropertyName = "edited")]
+        public bool Edited { get; set; }
+
+        /// <summary>
+        /// Field: 'created' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "created")]
+        [JsonProperty(PropertyName = "created")]
+        public ShareTime Created { get; set; }
+
+        /// <summary>
+        /// Field: 'subject' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "subject")]
+        [JsonProperty(PropertyName = "subject")]
+        public string Subject { get; set; }
+
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'lastModified' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public ShareTime LastModified { get; set; }
+
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public PostShareText Text { get; set; }
+
+        /// <summary>
+        /// Field: 'distribution' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "distribution")]
+        [JsonProperty(PropertyName = "distribution")]
+        public Distribution Distribution { get; set; }
+
+        /// <summary>
+        /// Field: 'content' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "content")]
+        [JsonProperty(PropertyName = "content")]
+        public PostShareContent Content { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Common, visibility)
+// WriteReturnTypes(Common, multiLocaleString)
 namespace Sparkle.LinkedInNET.Common
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'visibility'
+    /// Name: 'multiLocaleString'
     /// </summary>
-    [Serializable, XmlRoot("visibility")]
-    public class Visibility
+    [Serializable, XmlRoot("multiLocaleString")]
+    public class MultiLocaleString
     {
         /// <summary>
-        /// Field: 'code' (on-demand)
-        /// Field: 'code' (on-demand)
+        /// Field: 'localized' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "code")]
-        [JsonProperty(PropertyName = "code")]
-        public string Code { get; set; }
+        [XmlElement(ElementName = "localized")]
+        [JsonProperty(PropertyName = "localized")]
+        public JObject Localized { get; set; }
+
+        /// <summary>
+        /// Field: 'preferredLocale' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "preferredLocale")]
+        [JsonProperty(PropertyName = "preferredLocale")]
+        public JObject PreferredLocale { get; set; }
 
     }
 }
 
-// WriteReturnTypes(Common, attribution)
+// WriteReturnTypes(Common, multiLocaleRichText)
 namespace Sparkle.LinkedInNET.Common
 {
     using System;
     using System.Collections.Generic;
     using System.Xml.Serialization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'attribution'
+    /// Name: 'multiLocaleRichText'
     /// </summary>
-    [Serializable, XmlRoot("attribution")]
-    public class Attribution
+    [Serializable, XmlRoot("multiLocaleRichText")]
+    public class MultiLocaleRichText
     {
         /// <summary>
-        /// Field: 'share' (on-demand)
+        /// Field: 'localized' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "share")]
-        [JsonProperty(PropertyName = "share")]
-        public string Share { get; set; }
+        [XmlElement(ElementName = "localized")]
+        [JsonProperty(PropertyName = "localized")]
+        public JObject Localized { get; set; }
+
+        /// <summary>
+        /// Field: 'preferredLocale' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "preferredLocale")]
+        [JsonProperty(PropertyName = "preferredLocale")]
+        public JObject PreferredLocale { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, shareCreated)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'shareCreated'
+    /// </summary>
+    [Serializable, XmlRoot("shareCreated")]
+    public class ShareTime
+    {
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'time' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "time")]
+        [JsonProperty(PropertyName = "time")]
+        public long Time { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, distribution)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'distribution'
+    /// </summary>
+    [Serializable, XmlRoot("distribution")]
+    public class Distribution
+    {
+        /// <summary>
+        /// Field: 'linkedInDistributionTarget' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "linkedInDistributionTarget")]
+        [JsonProperty(PropertyName = "linkedInDistributionTarget")]
+        public LinkedInDistributionTarget LinkedInDistributionTarget { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, LlinkedInDistributionTarget)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'LlinkedInDistributionTarget'
+    /// </summary>
+    [Serializable, XmlRoot("LlinkedInDistributionTarget")]
+    public class LinkedInDistributionTarget
+    {
+        /// <summary>
+        /// Field: 'visibleToGuest' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "visibleToGuest")]
+        [JsonProperty(PropertyName = "visibleToGuest")]
+        public bool VisibleToGuest { get; set; }
 
     }
 }
@@ -5504,65 +1428,9 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'share', 'ShareSource', 'ShareSourceProvider', 'ShareContent', 'ShareAuthor', 'PostShare', 'PostShareContent', 'PostShareResult', 'visibility', 'attribution' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'shareCreated', 'distribution', 'LlinkedInDistributionTarget' return types.
     /// </summary>
     public static class CommonFields {
-        /// <summary>
-        /// Includes the field 'id'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithId(this FieldSelector<Share> me) { return me.Add("id"); }
-        
-        /// <summary>
-        /// Includes the field 'timestamp'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithTimestamp(this FieldSelector<Share> me) { return me.Add("timestamp"); }
-        
-        /// <summary>
-        /// Includes the field 'comment'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithComment(this FieldSelector<Share> me) { return me.Add("comment"); }
-        
-        /// <summary>
-        /// Includes the field 'content'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithContent(this FieldSelector<Share> me) { return me.Add("content"); }
-        
-        /// <summary>
-        /// Includes the field 'visibility'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithVisibilityCode(this FieldSelector<Share> me) { return me.Add("visibility"); }
-        
-        /// <summary>
-        /// Includes the field 'source'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithSource(this FieldSelector<Share> me) { return me.Add("source"); }
-        
-        /// <summary>
-        /// Includes the field 'author'.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithAuthor(this FieldSelector<Share> me) { return me.Add("author"); }
-        
-        /// <summary>
-        /// Includes all the fields.
-        /// </summary>
-        /// <param name="me">The field selector.</param>
-        /// <returns>The field selector.</returns>
-        public static FieldSelector<Share> WithAllFields(this FieldSelector<Share> me) { return me.AddRange("id", "timestamp", "comment", "content", "visibility", "source", "author"); }
-        
     }
 }
 
@@ -5595,7 +1463,7 @@ namespace Sparkle.LinkedInNET.Profiles
         /// the profile of the current user
         /// </summary>
         /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
+        /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
         /// </remarks>
         public Profiles.Person GetMyProfile(
               UserAuthorization user 
@@ -5603,7 +1471,7 @@ namespace Sparkle.LinkedInNET.Profiles
             , FieldSelector<Profiles.Person> fields = null
         )
         {
-            const string urlFormat = "/v1/people/~{FieldSelector}";
+            const string urlFormat = "/v2/me?{FieldSelector}";
             var url = FormatUrl(urlFormat, fields);
 
             var context = new RequestContext();
@@ -5624,7 +1492,7 @@ namespace Sparkle.LinkedInNET.Profiles
         /// the profile of the current user
         /// </summary>
         /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
+        /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
         /// </remarks>
         public async Task<Profiles.Person> GetMyProfileAsync(
               UserAuthorization user 
@@ -5632,7 +1500,7 @@ namespace Sparkle.LinkedInNET.Profiles
             , FieldSelector<Profiles.Person> fields = null
         )
         {
-            const string urlFormat = "/v1/people/~{FieldSelector}";
+            const string urlFormat = "/v2/me?{FieldSelector}";
             var url = FormatUrl(urlFormat, fields);
 
             var context = new RequestContext();
@@ -5650,722 +1518,11 @@ namespace Sparkle.LinkedInNET.Profiles
         }
     #endif
         
-        /// <summary>
-        /// the profile of a user in the network
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
-        /// </remarks>
-        public Profiles.Person GetProfileById(
-              UserAuthorization user 
-            , string memberToken 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// the profile of a user in the network
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
-        /// </remarks>
-        public async Task<Profiles.Person> GetProfileByIdAsync(
-              UserAuthorization user 
-            , string memberToken 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// the public profile of a user
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
-        /// </remarks>
-        public Profiles.Person GetPublicProfile(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// the public profile of a user
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/documents/profile-api
-        /// </remarks>
-        public async Task<Profiles.Person> GetPublicProfileAsync(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetMyConnections(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/~/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetMyConnectionsAsync(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/~/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetConnectionsByProfileId(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetConnectionsByProfileIdAsync(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetConnectionsByPublicProfile(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetConnectionsByPublicProfileAsync(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetNewConnectionsByProfileId(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}&modified=new&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetNewConnectionsByProfileIdAsync(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}&modified=new&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetNewConnectionsByPublicProfile(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}&modified=new&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetNewConnectionsByPublicProfileAsync(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}&modified=new&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetUpdatedConnectionsByProfileId(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}&modified=updated&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetUpdatedConnectionsByProfileIdAsync(
-              UserAuthorization user 
-            , string memberToken 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/connections{FieldSelector}?start={int start}&count={int count}&modified=updated&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "MemberToken", memberToken, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public Profiles.Connections GetUpdatedConnectionsByPublicProfile(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}&modified=updated&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns a list of 1st degree connections for a user 
-        /// </summary>
-        public async Task<Profiles.Connections> GetUpdatedConnectionsByPublicProfileAsync(
-              UserAuthorization user 
-            , string publicProfileUrl 
-            , int start 
-            , int count 
-            , long modifiedSince 
-            , FieldSelector<Profiles.Connections> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/url={PublicProfileUrl}/connections{FieldSelector}?start={int start}&count={int count}&modified=updated&modified-since={long modifiedSince}";
-            var url = FormatUrl(urlFormat, fields, "PublicProfileUrl", publicProfileUrl, "int start", start, "int count", count, "long modifiedSince", modifiedSince);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Connections>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public Profiles.PictureUrls GetOriginalProfilePicture(
-              UserAuthorization user 
-        )
-        {
-            var url = "/v1/people/~/picture-urls::(original)";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public async Task<Profiles.PictureUrls> GetOriginalProfilePictureAsync(
-              UserAuthorization user 
-        )
-        {
-            var url = "/v1/people/~/picture-urls::(original)";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public Profiles.PictureUrls GetProfilePicture(
-              UserAuthorization user 
-            , short width 
-            , short height 
-        )
-        {
-            const string urlFormat = "/v1/people/~/picture-urls::({short width}x{short height})";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "short width", width, "short height", height);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public async Task<Profiles.PictureUrls> GetProfilePictureAsync(
-              UserAuthorization user 
-            , short width 
-            , short height 
-        )
-        {
-            const string urlFormat = "/v1/people/~/picture-urls::({short width}x{short height})";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "short width", width, "short height", height);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public Profiles.PictureUrls GetOriginalProfilePicture(
-              UserAuthorization user 
-            , string memberToken 
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/picture-urls::(original)";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "MemberToken", memberToken);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public async Task<Profiles.PictureUrls> GetOriginalProfilePictureAsync(
-              UserAuthorization user 
-            , string memberToken 
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/picture-urls::(original)";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "MemberToken", memberToken);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public Profiles.PictureUrls GetProfilePicture(
-              UserAuthorization user 
-            , string memberToken 
-            , short width 
-            , short height 
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/picture-urls::({short width}x{short height})";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "MemberToken", memberToken, "short width", width, "short height", height);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// returns the original picture posted by the user, fields selector are ignored
-        /// </summary>
-        public async Task<Profiles.PictureUrls> GetProfilePictureAsync(
-              UserAuthorization user 
-            , string memberToken 
-            , short width 
-            , short height 
-        )
-        {
-            const string urlFormat = "/v1/people/id={MemberToken}/picture-urls::({short width}x{short height})";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "MemberToken", memberToken, "short width", width, "short height", height);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.PictureUrls>(context);
-            return result;
-        }
-    #endif
-        
     }
 }
 
-// WriteApiGroup(Companies)
-namespace Sparkle.LinkedInNET.Companies
+// WriteApiGroup(Organizations)
+namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Xml.Serialization;
@@ -6375,124 +1532,29 @@ namespace Sparkle.LinkedInNET.Companies
     using Sparkle.LinkedInNET.Internals;
 
     /// <summary>
-    /// Name: 'Companies'
+    /// Name: 'Organizations'
     /// </summary>
-    public class CompaniesApi : BaseApi
+    public class OrganizationsApi : BaseApi
     {
         [System.Diagnostics.DebuggerStepThrough]
-        internal CompaniesApi(LinkedInApi linkedInApi)
+        internal OrganizationsApi(LinkedInApi linkedInApi)
             : base(linkedInApi)
         {
         }
         
         /// <summary>
-        /// Hacker Summary
-        /// </summary>
-        public Companies.Company GetList(
-              UserAuthorization user 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Hacker Summary
-        /// </summary>
-        public async Task<Companies.Company> GetListAsync(
-              UserAuthorization user 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Gets a list of all companies the authenticated user is an administrator of
-        /// </summary>
-        public Companies.BasicCompanyList GetAdminList(
-              UserAuthorization user 
-            , FieldSelector<Companies.BasicCompanyList> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies?format=json&is-company-admin=true{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.BasicCompanyList>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Gets a list of all companies the authenticated user is an administrator of
-        /// </summary>
-        public async Task<Companies.BasicCompanyList> GetAdminListAsync(
-              UserAuthorization user 
-            , FieldSelector<Companies.BasicCompanyList> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies?format=json&is-company-admin=true{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.BasicCompanyList>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
         /// retrieve a company by using the company ID
         /// </summary>
-        public Companies.Company GetById(
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+        /// </remarks>
+        public Organizations.Organization GetById(
               UserAuthorization user 
             , string companyId 
-            , FieldSelector<Companies.Company> fields = null
+            , FieldSelector<Organizations.Organization> fields = null
         )
         {
-            const string urlFormat = "/v1/companies/{CompanyId}{FieldSelector}";
+            const string urlFormat = "/v2/organizations/{CompanyId}";
             var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
 
             var context = new RequestContext();
@@ -6503,7 +1565,7 @@ namespace Sparkle.LinkedInNET.Companies
             if (!this.ExecuteQuery(context))
                 this.HandleJsonErrorResponse(context);
             
-            var result = this.HandleJsonResponse<Companies.Company>(context);
+            var result = this.HandleJsonResponse<Organizations.Organization>(context);
             return result;
         }
 
@@ -6511,13 +1573,16 @@ namespace Sparkle.LinkedInNET.Companies
         /// <summary>
         /// retrieve a company by using the company ID
         /// </summary>
-        public async Task<Companies.Company> GetByIdAsync(
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+        /// </remarks>
+        public async Task<Organizations.Organization> GetByIdAsync(
               UserAuthorization user 
             , string companyId 
-            , FieldSelector<Companies.Company> fields = null
+            , FieldSelector<Organizations.Organization> fields = null
         )
         {
-            const string urlFormat = "/v1/companies/{CompanyId}{FieldSelector}";
+            const string urlFormat = "/v2/organizations/{CompanyId}";
             var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
 
             var context = new RequestContext();
@@ -6529,185 +1594,24 @@ namespace Sparkle.LinkedInNET.Companies
             if (!exec)
                 this.HandleJsonErrorResponse(context);
             
-            var result = this.HandleJsonResponse<Companies.Company>(context);
+            var result = this.HandleJsonResponse<Organizations.Organization>(context);
             return result;
         }
     #endif
         
         /// <summary>
-        /// Retrieve a company by universal-name.
-        /// </summary>
-        public Companies.Company GetByName(
-              UserAuthorization user 
-            , string universalName 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/universal-name={UniversalName}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "UniversalName", universalName);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Retrieve a company by universal-name.
-        /// </summary>
-        public async Task<Companies.Company> GetByNameAsync(
-              UserAuthorization user 
-            , string universalName 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/universal-name={UniversalName}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "UniversalName", universalName);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// This returns an array of companies that match to the specified email domain.
-        /// </summary>
-        public Companies.Company GetListByEmailDomain(
-              UserAuthorization user 
-            , string universalName 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/universal-name={UniversalName}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "UniversalName", universalName);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// This returns an array of companies that match to the specified email domain.
-        /// </summary>
-        public async Task<Companies.Company> GetListByEmailDomainAsync(
-              UserAuthorization user 
-            , string universalName 
-            , FieldSelector<Companies.Company> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/universal-name={UniversalName}{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields, "UniversalName", universalName);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.Company>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Retrieve the company's updates
-        /// </summary>
-        public Companies.CompanyUpdates GetShares(
-              UserAuthorization user 
-            , int id 
-            , int start 
-            , int count 
-            , FieldSelector<Companies.CompanyUpdates> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/{int id}/updates?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "int id", id, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanyUpdates>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Retrieve the company's updates
-        /// </summary>
-        public async Task<Companies.CompanyUpdates> GetSharesAsync(
-              UserAuthorization user 
-            , int id 
-            , int start 
-            , int count 
-            , FieldSelector<Companies.CompanyUpdates> fields = null
-        )
-        {
-            const string urlFormat = "/v1/companies/{int id}/updates?start={int start}&count={int count}";
-            var url = FormatUrl(urlFormat, fields, "int id", id, "int start", start, "int count", count);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanyUpdates>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Retrieve the company's updates
+        /// retrieve list of companies where current user is administrator and is approved
         /// </summary>
         /// <remarks>
-        /// event-type: job-posting, new-product, status-update
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
         /// </remarks>
-        public Companies.CompanyUpdates GetShares(
+        public Organizations.OrganizationalEntityAcls GetUserAdminApprOrganizations(
               UserAuthorization user 
-            , int id 
-            , int start 
-            , int count 
-            , string type 
-            , FieldSelector<Companies.CompanyUpdates> fields = null
+            , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
         )
         {
-            const string urlFormat = "/v1/companies/{int id}/updates?start={int start}&count={int count}&event-type={type}";
-            var url = FormatUrl(urlFormat, fields, "int id", id, "int start", start, "int count", count, "type", type);
+            const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
+            var url = FormatUrl(urlFormat, fields);
 
             var context = new RequestContext();
             context.UserAuthorization = user;
@@ -6717,28 +1621,24 @@ namespace Sparkle.LinkedInNET.Companies
             if (!this.ExecuteQuery(context))
                 this.HandleJsonErrorResponse(context);
             
-            var result = this.HandleJsonResponse<Companies.CompanyUpdates>(context);
+            var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
             return result;
         }
 
     #if ASYNCTASKS
         /// <summary>
-        /// Retrieve the company's updates
+        /// retrieve list of companies where current user is administrator and is approved
         /// </summary>
         /// <remarks>
-        /// event-type: job-posting, new-product, status-update
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
         /// </remarks>
-        public async Task<Companies.CompanyUpdates> GetSharesAsync(
+        public async Task<Organizations.OrganizationalEntityAcls> GetUserAdminApprOrganizationsAsync(
               UserAuthorization user 
-            , int id 
-            , int start 
-            , int count 
-            , string type 
-            , FieldSelector<Companies.CompanyUpdates> fields = null
+            , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
         )
         {
-            const string urlFormat = "/v1/companies/{int id}/updates?start={int start}&count={int count}&event-type={type}";
-            var url = FormatUrl(urlFormat, fields, "int id", id, "int start", start, "int count", count, "type", type);
+            const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
+            var url = FormatUrl(urlFormat, fields);
 
             var context = new RequestContext();
             context.UserAuthorization = user;
@@ -6749,180 +1649,7 @@ namespace Sparkle.LinkedInNET.Companies
             if (!exec)
                 this.HandleJsonErrorResponse(context);
             
-            var result = this.HandleJsonResponse<Companies.CompanyUpdates>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public Companies.CompanySearch Search(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , string keywords 
-            , FieldSelector<Companies.CompanySearch> fields = null
-        )
-        {
-            const string urlFormat = "/v1/company-search{FieldSelector}?start={int start}&count={int count}&keywords={keywords}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count, "keywords", keywords);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanySearch>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Companies.CompanySearch> SearchAsync(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , string keywords 
-            , FieldSelector<Companies.CompanySearch> fields = null
-        )
-        {
-            const string urlFormat = "/v1/company-search{FieldSelector}?start={int start}&count={int count}&keywords={keywords}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count, "keywords", keywords);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanySearch>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public Companies.CompanySearch FacetSearch(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , string keywords 
-            , string facet 
-            , FieldSelector<Companies.CompanySearch> fields = null
-        )
-        {
-            const string urlFormat = "/v1/company-search{FieldSelector}?start={int start}&count={int count}&keywords={keywords}&facet={facet}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count, "keywords", keywords, "facet", facet);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanySearch>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        public async Task<Companies.CompanySearch> FacetSearchAsync(
-              UserAuthorization user 
-            , int start 
-            , int count 
-            , string keywords 
-            , string facet 
-            , FieldSelector<Companies.CompanySearch> fields = null
-        )
-        {
-            const string urlFormat = "/v1/company-search{FieldSelector}?start={int start}&count={int count}&keywords={keywords}&facet={facet}";
-            var url = FormatUrl(urlFormat, fields, "int start", start, "int count", count, "keywords", keywords, "facet", facet);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Companies.CompanySearch>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Share a new company update.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/creating-company-shares
-        /// </remarks>
-        public Common.PostShareResult Share(
-              UserAuthorization user 
-            , int companyId 
-            , Common.PostShare postData
-        )
-        {
-            const string urlFormat = "/v1/companies/{int companyId}/shares";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "int companyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            result.Location = this.ReadHeader<string>(context, "Location");
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Share a new company update.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/creating-company-shares
-        /// </remarks>
-        public async Task<Common.PostShareResult> ShareAsync(
-              UserAuthorization user 
-            , int companyId 
-            , Common.PostShare postData
-        )
-        {
-            const string urlFormat = "/v1/companies/{int companyId}/shares";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "int companyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            result.Location = this.ReadHeader<string>(context, "Location");
+            var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
             return result;
         }
     #endif
@@ -6930,8 +1657,8 @@ namespace Sparkle.LinkedInNET.Companies
     }
 }
 
-// WriteApiGroup(Groups)
-namespace Sparkle.LinkedInNET.Groups
+// WriteApiGroup(Shares)
+namespace Sparkle.LinkedInNET.Shares
 {
     using System;
     using System.Xml.Serialization;
@@ -6941,73 +1668,28 @@ namespace Sparkle.LinkedInNET.Groups
     using Sparkle.LinkedInNET.Internals;
 
     /// <summary>
-    /// Name: 'Groups'
+    /// Name: 'Shares'
     /// </summary>
-    public class GroupsApi : BaseApi
+    public class SharesApi : BaseApi
     {
         [System.Diagnostics.DebuggerStepThrough]
-        internal GroupsApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
-        }
-        
-    }
-}
-
-// WriteApiGroup(Jobs)
-namespace Sparkle.LinkedInNET.Jobs
-{
-    using System;
-    using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-
-    /// <summary>
-    /// Name: 'Jobs'
-    /// </summary>
-    public class JobsApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal JobsApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
-        }
-        
-    }
-}
-
-// WriteApiGroup(Social)
-namespace Sparkle.LinkedInNET.Social
-{
-    using System;
-    using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-
-    /// <summary>
-    /// Name: 'Social'
-    /// </summary>
-    public class SocialApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal SocialApi(LinkedInApi linkedInApi)
+        internal SharesApi(LinkedInApi linkedInApi)
             : base(linkedInApi)
         {
         }
         
         /// <summary>
-        /// 
+        /// Share a profile/ company update based on an existing update.
         /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
+        /// </remarks>
         public Common.PostShareResult Post(
               UserAuthorization user 
             , Common.PostShare postData
         )
         {
-            var url = "/v1/people/~/shares";
+            var url = "/v2/shares";
 
             var context = new RequestContext();
             context.UserAuthorization = user;
@@ -7019,20 +1701,22 @@ namespace Sparkle.LinkedInNET.Social
                 this.HandleJsonErrorResponse(context);
             
             var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            result.Location = this.ReadHeader<string>(context, "Location");
             return result;
         }
 
     #if ASYNCTASKS
         /// <summary>
-        /// 
+        /// Share a profile/ company update based on an existing update.
         /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
+        /// </remarks>
         public async Task<Common.PostShareResult> PostAsync(
               UserAuthorization user 
             , Common.PostShare postData
         )
         {
-            var url = "/v1/people/~/shares";
+            var url = "/v2/shares";
 
             var context = new RequestContext();
             context.UserAuthorization = user;
@@ -7045,66 +1729,6 @@ namespace Sparkle.LinkedInNET.Social
                 this.HandleJsonErrorResponse(context);
             
             var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            result.Location = this.ReadHeader<string>(context, "Location");
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// retrieve the member's updates
-        /// </summary>
-        public Social.UserUpdates GetMyUpdates(
-              UserAuthorization user 
-            , int start = 0
-            , int count = 50
-            , DateTime? before = null
-            , DateTime? after = null
-            , bool showHiddenMembers = false
-            , FieldSelector<Social.UserUpdates> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/~/network/updates?scope=self&start={int start = 0}&count={int count = 50}&before={DateTime? before = null}&after={DateTime? after = null}&show-hidden-members={bool showHiddenMembers = false}";
-            var url = FormatUrl(urlFormat, fields, "int start = 0", start, "int count = 50", count, "DateTime? before = null", before, "DateTime? after = null", after, "bool showHiddenMembers = false", showHiddenMembers);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Social.UserUpdates>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// retrieve the member's updates
-        /// </summary>
-        public async Task<Social.UserUpdates> GetMyUpdatesAsync(
-              UserAuthorization user 
-            , int start = 0
-            , int count = 50
-            , DateTime? before = null
-            , DateTime? after = null
-            , bool showHiddenMembers = false
-            , FieldSelector<Social.UserUpdates> fields = null
-        )
-        {
-            const string urlFormat = "/v1/people/~/network/updates?scope=self&start={int start = 0}&count={int count = 50}&before={DateTime? before = null}&after={DateTime? after = null}&show-hidden-members={bool showHiddenMembers = false}";
-            var url = FormatUrl(urlFormat, fields, "int start = 0", start, "int count = 50", count, "DateTime? before = null", before, "DateTime? after = null", after, "bool showHiddenMembers = false", showHiddenMembers);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Social.UserUpdates>(context);
             return result;
         }
     #endif
@@ -7143,10 +1767,8 @@ namespace Sparkle.LinkedInNET
     using System.Xml.Serialization;
     using Sparkle.LinkedInNET.Internals;
     using Sparkle.LinkedInNET.Profiles;
-    using Sparkle.LinkedInNET.Companies;
-    using Sparkle.LinkedInNET.Groups;
-    using Sparkle.LinkedInNET.Jobs;
-    using Sparkle.LinkedInNET.Social;
+    using Sparkle.LinkedInNET.Organizations;
+    using Sparkle.LinkedInNET.Shares;
     using Sparkle.LinkedInNET.Common;
 
     /// <summary>
@@ -7163,35 +1785,19 @@ namespace Sparkle.LinkedInNET
         }
 
         /// <summary>
-        /// The Companies API.
+        /// The Organizations API.
         /// </summary>
-        public CompaniesApi Companies {
+        public OrganizationsApi Organizations {
             [System.Diagnostics.DebuggerStepThrough]
-            get { return new CompaniesApi(this); }
+            get { return new OrganizationsApi(this); }
         }
 
         /// <summary>
-        /// The Groups API.
+        /// The Shares API.
         /// </summary>
-        public GroupsApi Groups {
+        public SharesApi Shares {
             [System.Diagnostics.DebuggerStepThrough]
-            get { return new GroupsApi(this); }
-        }
-
-        /// <summary>
-        /// The Jobs API.
-        /// </summary>
-        public JobsApi Jobs {
-            [System.Diagnostics.DebuggerStepThrough]
-            get { return new JobsApi(this); }
-        }
-
-        /// <summary>
-        /// The Social API.
-        /// </summary>
-        public SocialApi Social {
-            [System.Diagnostics.DebuggerStepThrough]
-            get { return new SocialApi(this); }
+            get { return new SharesApi(this); }
         }
 
         /// <summary>

@@ -2,7 +2,6 @@
 namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 {
     using Sparkle.LinkedInNET.DemoMvc5.Domain;
-    using Sparkle.LinkedInNET.Companies;
     using Sparkle.LinkedInNET.Profiles;
     using System;
     using System.Collections.Generic;
@@ -41,25 +40,24 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 
             {
                 var fields = FieldSelector.For<Person>()
-                    .WithPositions().WithId().WithPictureUrl()
-                    .WithFirstName().WithLastName().WithHeadline();
+                    .WithAllFields();
                 ////.WithConnections();
                 this.ViewData["MyProfile"] = this.api.Profiles.GetMyProfile(user, acceptLanguages, fields);
                 this.ViewBag.Profile = this.ViewData["MyProfile"];
 
                 {
-                    var pictures = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
-                    pictures = pictures ?? new PictureUrls() { PictureUrl = new List<string>(), };
+                    //var pictures = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
+                    //pictures = pictures ?? new PictureUrls() { PictureUrl = new List<string>(), };
 
-                    {
-                        var more = await this.api.Profiles.GetProfilePictureAsync(user, 120, 120);
-                        if (more != null && more.PictureUrl != null)
-                        {
-                            pictures.PictureUrl.AddRange(more.PictureUrl);
-                        }
-                    }
+                    //{
+                    //    var more = await this.api.Profiles.GetProfilePictureAsync(user, 120, 120);
+                    //    if (more != null && more.PictureUrl != null)
+                    //    {
+                    //        pictures.PictureUrl.AddRange(more.PictureUrl);
+                    //    }
+                    //}
 
-                    this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
+                    //this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
                 }
             }
 
@@ -70,295 +68,295 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 
             return this.View();
         }
+        
+        //public async Task<ActionResult> Company(int id, string culture = "en-US", int start = 0, int count = 10, string eventType = null)
+        //{
+        //    this.ViewBag.Id = id;
+        //    this.ViewBag.EventType = eventType;
 
-        public async Task<ActionResult> Company(int id, string culture = "en-US", int start = 0, int count = 10, string eventType = null)
-        {
-            this.ViewBag.Id = id;
-            this.ViewBag.EventType = eventType;
+        //    var token = this.data.GetAccessToken();
+        //    this.ViewBag.Token = token;
+        //    var user = new UserAuthorization(token);
+        //    var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
 
-            var token = this.data.GetAccessToken();
-            this.ViewBag.Token = token;
-            var user = new UserAuthorization(token);
-            var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
+        //    Exception error = null;
+        //    Company company;
+        //    {
+        //        var fields = FieldSelector.For<Company>()
+        //            .WithAllFields();
+        //        try
+        //        {
+        //            company = await this.api.Companies.GetByIdAsync(user, id.ToString(), fields);
+        //        }
+        //        catch (LinkedInApiException ex)
+        //        {
+        //            if (ex.StatusCode == 403)
+        //            {
+        //                company = new Company();
+        //                company.Id = id;
+        //                company.Name = "Company " + id + " - Permission error";
+        //                error = ex;
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //    }
 
-            Exception error = null;
-            Company company;
-            {
-                var fields = FieldSelector.For<Company>()
-                    .WithAllFields();
-                try
-                {
-                    company = await this.api.Companies.GetByIdAsync(user, id.ToString(), fields);
-                }
-                catch (LinkedInApiException ex)
-                {
-                    if (ex.StatusCode == 403)
-                    {
-                        company = new Company();
-                        company.Id = id;
-                        company.Name = "Company " + id + " - Permission error";
-                        error = ex;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
+        //    this.ViewBag.SharesStart = start;
+        //    this.ViewBag.SharesCount = count;
+        //    this.ViewBag.SharesTotal = 0;
+        //    if (error != null)
+        //    {
+        //        var fields = FieldSelector.For<CompanyUpdates>();
+        //        Companies.CompanyUpdates shares;
+        //        try
+        //        {
+        //            if (string.IsNullOrEmpty(eventType))
+        //            {
+        //                shares = await this.api.Companies.GetSharesAsync(user, id, start, count);
+        //            }
+        //            else
+        //            {
+        //                shares = await this.api.Companies.GetSharesAsync(user, id, start, count, eventType);
+        //            }
 
-            this.ViewBag.SharesStart = start;
-            this.ViewBag.SharesCount = count;
-            this.ViewBag.SharesTotal = 0;
-            if (error != null)
-            {
-                var fields = FieldSelector.For<CompanyUpdates>();
-                Companies.CompanyUpdates shares;
-                try
-                {
-                    if (string.IsNullOrEmpty(eventType))
-                    {
-                        shares = await this.api.Companies.GetSharesAsync(user, id, start, count);
-                    }
-                    else
-                    {
-                        shares = await this.api.Companies.GetSharesAsync(user, id, start, count, eventType);
-                    }
+        //            this.ViewBag.SharesTotal = shares.Total;
+        //            this.ViewBag.Shares = shares;
+        //        }
+        //        catch (LinkedInApiException ex)
+        //        {
+        //            if (ex.StatusCode == 403)
+        //            {
+        //                error = ex;
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //    }
 
-                    this.ViewBag.SharesTotal = shares.Total;
-                    this.ViewBag.Shares = shares;
-                }
-                catch (LinkedInApiException ex)
-                {
-                    if (ex.StatusCode == 403)
-                    {
-                        error = ex;
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-            }
-
-            this.ViewBag.Error = error;
+        //    this.ViewBag.Error = error;
             
-            return this.View(company);
-        }
+        //    return this.View(company);
+        //}
 
-        public ActionResult Person(string id, string culture = "en-US")
-        {
-            var token = this.data.GetAccessToken();
-            this.ViewBag.Token = token;
-            var user = new UserAuthorization(token);
-            var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
+        //public ActionResult Person(string id, string culture = "en-US")
+        //{
+        //    var token = this.data.GetAccessToken();
+        //    this.ViewBag.Token = token;
+        //    var user = new UserAuthorization(token);
+        //    var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
 
-            var fields = FieldSelector.For<Person>()
-                .WithId()
-                .WithPositions().WithPictureUrl()
-                .WithFirstName().WithLastName().WithHeadline()
-                .WithLanguageId().WithLanguageName().WithLanguageProficiency()
-                .WithConnections();
-            var profile = this.api.Profiles.GetProfileById(user, id, acceptLanguages, fields);
+        //    var fields = FieldSelector.For<Person>()
+        //        .WithId()
+        //        .WithPositions().WithPictureUrl()
+        //        .WithFirstName().WithLastName().WithHeadline()
+        //        .WithLanguageId().WithLanguageName().WithLanguageProficiency()
+        //        .WithConnections();
+        //    var profile = this.api.Profiles.GetProfileById(user, id, acceptLanguages, fields);
 
-            {
-                var pictures = this.api.Profiles.GetOriginalProfilePicture(user, profile.Id)
-                     ?? new PictureUrls() { PictureUrl = new List<string>() };
-                var more = this.api.Profiles.GetProfilePicture(user, profile.Id, 120, 120);
-                if (more != null && more.PictureUrl != null)
-                {
-                    pictures.PictureUrl.AddRange(more.PictureUrl);
-                }
+        //    {
+        //        var pictures = this.api.Profiles.GetOriginalProfilePicture(user, profile.Id)
+        //             ?? new PictureUrls() { PictureUrl = new List<string>() };
+        //        var more = this.api.Profiles.GetProfilePicture(user, profile.Id, 120, 120);
+        //        if (more != null && more.PictureUrl != null)
+        //        {
+        //            pictures.PictureUrl.AddRange(more.PictureUrl);
+        //        }
 
-                this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
-            }
+        //        this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
+        //    }
 
-            return this.View(profile);
-        }
+        //    return this.View(profile);
+        //}
 
-        public ActionResult Connections(string id, string culture = "en-US", int start = 0, int count = 10, int? days = null)
-        {
-            var token = this.data.GetAccessToken();
-            this.ViewBag.Token = token;
-            var user = new UserAuthorization(token);
-            var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
+        //public ActionResult Connections(string id, string culture = "en-US", int start = 0, int count = 10, int? days = null)
+        //{
+        //    var token = this.data.GetAccessToken();
+        //    this.ViewBag.Token = token;
+        //    var user = new UserAuthorization(token);
+        //    var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
 
-            {
-                var fields = FieldSelector.For<Person>()
-                    .WithFirstName().WithLastName().WithHeadline()
-                    .WithPictureUrl();
-                this.ViewBag.Profile = this.api.Profiles.GetMyProfile(user, acceptLanguages, fields);
-            }
+        //    {
+        //        var fields = FieldSelector.For<Person>()
+        //            .WithFirstName().WithLastName().WithHeadline()
+        //            .WithPictureUrl();
+        //        this.ViewBag.Profile = this.api.Profiles.GetMyProfile(user, acceptLanguages, fields);
+        //    }
 
-            Connections model;
-            {
-                var fields = FieldSelector.For<Connections>()
-                    .WithDistance().WithPictureUrl()
-                    .WithSummary().WithLocationName().WithLocationCountryCode()
-                    .WithIndustry().WithId()
-                    .WithPublicProfileUrl()
-                    .WithFirstName().WithLastName().WithHeadline();
+        //    Connections model;
+        //    {
+        //        var fields = FieldSelector.For<Connections>()
+        //            .WithDistance().WithPictureUrl()
+        //            .WithSummary().WithLocationName().WithLocationCountryCode()
+        //            .WithIndustry().WithId()
+        //            .WithPublicProfileUrl()
+        //            .WithFirstName().WithLastName().WithHeadline();
 
-                if (days == null)
-                {
-                    model = this.api.Profiles.GetConnectionsByProfileId(user, id, start, count, fields);
-                }
-                else
-                {
-                    var date = DateTime.UtcNow.AddDays(-days.Value);
-                    var modifiedSince = date.ToUnixTime();
-                    model = this.api.Profiles.GetNewConnectionsByProfileId(user, id, start, count, modifiedSince, fields);
-                }
-            }
+        //        if (days == null)
+        //        {
+        //            model = this.api.Profiles.GetConnectionsByProfileId(user, id, start, count, fields);
+        //        }
+        //        else
+        //        {
+        //            var date = DateTime.UtcNow.AddDays(-days.Value);
+        //            var modifiedSince = date.ToUnixTime();
+        //            model = this.api.Profiles.GetNewConnectionsByProfileId(user, id, start, count, modifiedSince, fields);
+        //        }
+        //    }
 
-            this.ViewBag.id = id;
-            this.ViewBag.start = start;
-            this.ViewBag.days = days;
-            this.ViewBag.count = count;
-            this.ViewBag.days = days;
+        //    this.ViewBag.id = id;
+        //    this.ViewBag.start = start;
+        //    this.ViewBag.days = days;
+        //    this.ViewBag.count = count;
+        //    this.ViewBag.days = days;
 
-            return this.View(model);
-        }
+        //    return this.View(model);
+        //}
 
-        public ActionResult SearchCompany(string keywords, int start = 0, int count = 20, string facet = null)
-        {
-            var token = this.data.GetAccessToken();
-            var user = new UserAuthorization(token);
-            var fields = FieldSelector.For<CompanySearch>()
-                .WithFacets()
-                .WithCompaniesDescription().WithCompaniesId()
-                .WithCompaniesLogoUrl().WithCompaniesName()
-                .WithCompaniesSquareLogoUrl().WithCompaniesStatus()
-                .WithCompaniesWebsiteUrl()
-                .WithCompaniesUniversalName();
+        //public ActionResult SearchCompany(string keywords, int start = 0, int count = 20, string facet = null)
+        //{
+        //    var token = this.data.GetAccessToken();
+        //    var user = new UserAuthorization(token);
+        //    var fields = FieldSelector.For<CompanySearch>()
+        //        .WithFacets()
+        //        .WithCompaniesDescription().WithCompaniesId()
+        //        .WithCompaniesLogoUrl().WithCompaniesName()
+        //        .WithCompaniesSquareLogoUrl().WithCompaniesStatus()
+        //        .WithCompaniesWebsiteUrl()
+        //        .WithCompaniesUniversalName();
 
-            CompanySearch result;
-            if (!string.IsNullOrEmpty(facet))
-                result = this.api.Companies.FacetSearch(user, start, count, keywords, facet, fields);
-            else
-                result = this.api.Companies.Search(user, start, count, keywords, fields);
+        //    CompanySearch result;
+        //    if (!string.IsNullOrEmpty(facet))
+        //        result = this.api.Companies.FacetSearch(user, start, count, keywords, facet, fields);
+        //    else
+        //        result = this.api.Companies.Search(user, start, count, keywords, fields);
 
-            this.ViewBag.keywords = keywords;
-            this.ViewBag.start = start;
-            this.ViewBag.count = count;
-            this.ViewBag.facet = facet;
+        //    this.ViewBag.keywords = keywords;
+        //    this.ViewBag.start = start;
+        //    this.ViewBag.count = count;
+        //    this.ViewBag.facet = facet;
 
-            return this.View(result);
-        }
+        //    return this.View(result);
+        //}
 
-        public ActionResult CompanyShare(string ShareId, string CompanyId)
-        {
-            var item = new Sparkle.LinkedInNET.Common.PostShare
-            {
-                Visibility = new Visibility
-                {
-                    Code = "anyone",
-                },
-                Comment = "Testing a full company share with Sparkle.LinkedInNET in C#.NET!",
-            };
+        //public ActionResult CompanyShare(string ShareId, string CompanyId)
+        //{
+        //    var item = new Sparkle.LinkedInNET.Common.PostShare
+        //    {
+        //        Visibility = new Visibility
+        //        {
+        //            Code = "anyone",
+        //        },
+        //        Comment = "Testing a full company share with Sparkle.LinkedInNET in C#.NET!",
+        //    };
 
-            if (ShareId != null)
-            {
-                item.Attribution = new Attribution
-                {
-                    Share = ShareId,
-                };
-            }
-            else
-            {
-                item.Content = new PostShareContent
-                {
-                    SubmittedUrl = "https://github.com/SparkleNetworks/LinkedInNET",
-                    Title = "SparkleNetworks/LinkedInNET",
-                    Description = "Sparkle.LinkedInNET will help you query the LinkedIn API with C# :)",
-                    SubmittedImageUrl = "https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png",
-                };
-            }
+        //    if (ShareId != null)
+        //    {
+        //        item.Attribution = new Attribution
+        //        {
+        //            Share = ShareId,
+        //        };
+        //    }
+        //    else
+        //    {
+        //        item.Content = new PostShareContent
+        //        {
+        //            SubmittedUrl = "https://github.com/SparkleNetworks/LinkedInNET",
+        //            Title = "SparkleNetworks/LinkedInNET",
+        //            Description = "Sparkle.LinkedInNET will help you query the LinkedIn API with C# :)",
+        //            SubmittedImageUrl = "https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png",
+        //        };
+        //    }
 
-            this.ViewBag.Share = item;
+        //    this.ViewBag.Share = item;
 
-            var model = new CompanyShareModel
-            {
-                CompanyId = 2414183,
-                Json = JsonConvert.SerializeObject(item, Formatting.Indented, shareSettings),
-            };
+        //    var model = new CompanyShareModel
+        //    {
+        //        CompanyId = 2414183,
+        //        Json = JsonConvert.SerializeObject(item, Formatting.Indented, shareSettings),
+        //    };
 
-            int id;
-            if (!string.IsNullOrEmpty(CompanyId) && int.TryParse(CompanyId, out id))
-            {
-                model.CompanyId = id;
-            }
+        //    int id;
+        //    if (!string.IsNullOrEmpty(CompanyId) && int.TryParse(CompanyId, out id))
+        //    {
+        //        model.CompanyId = id;
+        //    }
 
-            return this.View(model);
-        }
+        //    return this.View(model);
+        //}
 
-        [HttpPost]
-        public ActionResult CompanyShare(CompanyShareModel model)
-        {
-            var item = JsonConvert.DeserializeObject<Sparkle.LinkedInNET.Common.PostShare>(model.Json);
-            this.ViewBag.Share = item;
+        //[HttpPost]
+        //public ActionResult CompanyShare(CompanyShareModel model)
+        //{
+        //    var item = JsonConvert.DeserializeObject<Sparkle.LinkedInNET.Common.PostShare>(model.Json);
+        //    this.ViewBag.Share = item;
 
-            var token = this.data.GetAccessToken();
-            var user = new UserAuthorization(token);
-            var result = this.api.Companies.Share(user, model.CompanyId, item);
+        //    var token = this.data.GetAccessToken();
+        //    var user = new UserAuthorization(token);
+        //    var result = this.api.Companies.Share(user, model.CompanyId, item);
 
-            this.ViewBag.Result = result;
+        //    this.ViewBag.Result = result;
 
-            return this.View(model);
-        }
+        //    return this.View(model);
+        //}
 
-        public ActionResult UserShare(string ShareId)
-        {
-            // PERMISSION REQUIRED: rw_nus
-            var item = new Sparkle.LinkedInNET.Common.PostShare
-            {
-                Visibility = new Visibility
-                {
-                    Code = "anyone",
-                },
-                Comment = "Testing a user share with Sparkle.LinkedInNET in C#.NET!",
-            };
+        //public ActionResult UserShare(string ShareId)
+        //{
+        //    // PERMISSION REQUIRED: rw_nus
+        //    var item = new Sparkle.LinkedInNET.Common.PostShare
+        //    {
+        //        Visibility = new Visibility
+        //        {
+        //            Code = "anyone",
+        //        },
+        //        Comment = "Testing a user share with Sparkle.LinkedInNET in C#.NET!",
+        //    };
 
-            if (ShareId != null)
-            {
-                item.Attribution = new Attribution
-                {
-                    Share = ShareId,
-                };
-            }
-            else
-            {
-                item.Content = new PostShareContent
-                {
-                    SubmittedUrl = "https://github.com/SparkleNetworks/LinkedInNET",
-                    Title = "SparkleNetworks/LinkedInNET",
-                    Description = "Sparkle.LinkedInNET will help you query the LinkedIn API with C# :)",
-                    SubmittedImageUrl = "https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png",
-                };
-            }
+        //    if (ShareId != null)
+        //    {
+        //        item.Attribution = new Attribution
+        //        {
+        //            Share = ShareId,
+        //        };
+        //    }
+        //    else
+        //    {
+        //        item.Content = new PostShareContent
+        //        {
+        //            SubmittedUrl = "https://github.com/SparkleNetworks/LinkedInNET",
+        //            Title = "SparkleNetworks/LinkedInNET",
+        //            Description = "Sparkle.LinkedInNET will help you query the LinkedIn API with C# :)",
+        //            SubmittedImageUrl = "https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png",
+        //        };
+        //    }
 
-            this.ViewBag.Share = item;
+        //    this.ViewBag.Share = item;
 
-            var model = new CompanyShareModel
-            {
-                Json = JsonConvert.SerializeObject(item, Formatting.Indented, shareSettings),
-            };
-            return this.View(model);
-        }
+        //    var model = new CompanyShareModel
+        //    {
+        //        Json = JsonConvert.SerializeObject(item, Formatting.Indented, shareSettings),
+        //    };
+        //    return this.View(model);
+        //}
 
-        [HttpPost]
-        public ActionResult UserShare(CompanyShareModel model)
-        {
-            var item = JsonConvert.DeserializeObject<Sparkle.LinkedInNET.Common.PostShare>(model.Json);
-            this.ViewBag.Share = item;
+        //[HttpPost]
+        //public ActionResult UserShare(CompanyShareModel model)
+        //{
+        //    var item = JsonConvert.DeserializeObject<Sparkle.LinkedInNET.Common.PostShare>(model.Json);
+        //    this.ViewBag.Share = item;
 
-            var token = this.data.GetAccessToken();
-            var user = new UserAuthorization(token);
-            var result = this.api.Social.Post(user, item);
+        //    var token = this.data.GetAccessToken();
+        //    var user = new UserAuthorization(token);
+        //    var result = this.api.Social.Post(user, item);
 
-            this.ViewBag.Result = result;
+        //    this.ViewBag.Result = result;
 
-            return this.View(model);
-        }
+        //    return this.View(model);
+        //}
 
         public ActionResult CompanyShareDetails(int CompanyId, string ShareId)
         {
@@ -386,47 +384,47 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             return this.View();
         }
 
-        public ActionResult PublicProfile(string url, string culture = "en-US")
-        {
-            if (string.IsNullOrEmpty(url))
-            {
-                return this.HttpNotFound();
-            }
+        //public ActionResult PublicProfile(string url, string culture = "en-US")
+        //{
+        //    if (string.IsNullOrEmpty(url))
+        //    {
+        //        return this.HttpNotFound();
+        //    }
 
-            var token = this.data.GetAccessToken();
-            this.ViewBag.Token = token;
-            var user = new UserAuthorization(token);
-            var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
+        //    var token = this.data.GetAccessToken();
+        //    this.ViewBag.Token = token;
+        //    var user = new UserAuthorization(token);
+        //    var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
 
-            var fields = FieldSelector.For<Person>()
-                .WithId()
-                .WithPositions().WithPictureUrl()
-                .WithFirstName().WithLastName().WithHeadline()
-                .WithLanguageId().WithLanguageName().WithLanguageProficiency()
-                .WithConnections();
-            var profile = this.api.Profiles.GetPublicProfile(user, url, acceptLanguages, fields);
+        //    var fields = FieldSelector.For<Person>()
+        //        .WithId()
+        //        .WithPositions().WithPictureUrl()
+        //        .WithFirstName().WithLastName().WithHeadline()
+        //        .WithLanguageId().WithLanguageName().WithLanguageProficiency()
+        //        .WithConnections();
+        //    var profile = this.api.Profiles.GetPublicProfile(user, url, acceptLanguages, fields);
 
-            {
-                var pictures = this.api.Profiles.GetOriginalProfilePicture(user, profile.Id)
-                     ?? new PictureUrls() { PictureUrl = new List<string>() };
-                var more = this.api.Profiles.GetProfilePicture(user, profile.Id, 120, 120);
-                if (more != null && more.PictureUrl != null)
-                {
-                    pictures.PictureUrl.AddRange(more.PictureUrl);
-                }
+        //    {
+        //        var pictures = this.api.Profiles.GetOriginalProfilePicture(user, profile.Id)
+        //             ?? new PictureUrls() { PictureUrl = new List<string>() };
+        //        var more = this.api.Profiles.GetProfilePicture(user, profile.Id, 120, 120);
+        //        if (more != null && more.PictureUrl != null)
+        //        {
+        //            pictures.PictureUrl.AddRange(more.PictureUrl);
+        //        }
 
-                this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
-            }
+        //        this.ViewBag.Pictures = this.ViewData["ProfilePictures"] = pictures;
+        //    }
 
-            return this.View("Person", profile);
-        }
+        //    return this.View("Person", profile);
+        //}
 
-        public async Task<ActionResult> CompaniesAdminList()
-        {
-            var token = this.data.GetAccessToken();
-            var user = new UserAuthorization(token);
-            var result = await this.api.Companies.GetAdminListAsync(user);
-            return this.View(result);
-        }
+        //public async Task<ActionResult> CompaniesAdminList()
+        //{
+        //    var token = this.data.GetAccessToken();
+        //    var user = new UserAuthorization(token);
+        //    var result = await this.api.Companies.GetAdminListAsync(user);
+        //    return this.View(result);
+        //}
     }
 }

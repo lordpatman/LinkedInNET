@@ -64,9 +64,9 @@
 {
 <dl>
     <dt>Firstname</dt>
-    <dd>@profile.Firstname</dd>
+    <dd>@profile.FirstName</dd>
     <dt>Lastname</dt>
-    <dd>@profile.Lastname</dd>
+    <dd>@profile.LastName</dd>
     <dt>Headline</dt>
     <dd>@profile.Headline</dd>
 </dl>
@@ -76,7 +76,7 @@
 {
 <pre>@this.ViewBag.ProfileError</pre>
 }
-<p>Here is the original profile picture.</p>
+@*<p>Here is the original profile picture.</p>
 @{
     var pictureUrls = (Sparkle.LinkedInNET.Profiles.PictureUrls)this.ViewBag.Picture;
 }
@@ -102,7 +102,7 @@
         <h5>@company.Name</h5>
         <pre>@Newtonsoft.Json.JsonConvert.SerializeObject(company, Newtonsoft.Json.Formatting.Indented)</pre>
     }
-}
+}*@
 @if (this.ViewBag.CompaniesError != null)
 {
 <pre>@this.ViewBag.CompaniesError</pre>

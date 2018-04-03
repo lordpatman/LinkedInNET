@@ -619,6 +619,7 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
             this.WriteNamespace(indent, "System.Collections.Generic");
             this.WriteNamespace(indent, "System.Xml.Serialization");
             this.WriteNamespace(indent, "Newtonsoft.Json");
+            this.WriteNamespace(indent, "Newtonsoft.Json.Linq");
             this.text.WriteLine();
             this.text.WriteLine(indent, "/// <summary>");
             this.text.WriteLine(indent, "/// Name: '" + returnType.Name + "'");
@@ -672,8 +673,8 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 var xmlAttribute = item.IsAttribute ? "XmlAttribute" : "XmlElement";
                 var xmlAttributeNameProp = item.IsAttribute ? "AttributeName" : "ElementName";
                 var jsonName = (item.IsAttribute ? "_" : "") + Namify(item.FieldName.ApiName, NameTransformation.PascalCase);
-                if (item.IsCollection)
-                    jsonName = "values";
+                //if (item.IsCollection)
+                //    jsonName = "values";
 
                 this.text.WriteLine(indent, "/// </summary>");
                 this.text.WriteLine(indent, (item.Ignore ? "////" : "") + "[" + xmlAttribute + "(" + xmlAttributeNameProp + " = \"" + item.FieldName.ApiName + "\")]");

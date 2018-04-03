@@ -98,7 +98,9 @@ namespace Sparkle.LinkedInNET.Internals
 
             if (fieldSelector != null)
             {
-                result = result.Replace("{FieldSelector}", fieldSelector.ToString());
+                var selector = fieldSelector.ToString();
+                selector = selector.Replace("~~~", "~:");
+                result = result.Replace("{FieldSelector}", selector);
             }
             else
             {

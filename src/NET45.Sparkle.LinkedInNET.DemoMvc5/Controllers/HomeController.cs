@@ -12,8 +12,9 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
     using Sparkle.LinkedInNET.DemoMvc5.Domain;
     using Sparkle.LinkedInNET.OAuth2;
     using Sparkle.LinkedInNET.Profiles;
-    using Sparkle.LinkedInNET.Companies;
     using System.Threading.Tasks;
+    using Sparkle.LinkedInNET.Organizations;
+
     ////using Sparkle.LinkedInNET.ServiceDefinition;
 
     public class HomeController : Controller
@@ -48,7 +49,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             {
                 this.ViewBag.Url = null;
             }
-
+                        
             // step 3
             if (this.data.HasAccessToken)
             {
@@ -63,49 +64,53 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
                     ////var profile = this.api.Profiles.GetMyProfile(user);
                     var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
                     var fields = FieldSelector.For<Person>()
-                        .WithId()
-                        .WithFirstName()
-                        .WithLastName()
-                        .WithFormattedName()
-                        .WithEmailAddress()
-                        .WithHeadline()
-
-                        .WithLocationName()
-                        .WithLocationCountryCode()
-
-                        .WithPictureUrl()
-                        .WithPublicProfileUrl()
-                        .WithSummary()
-                        .WithIndustry()
-
-                        .WithPositions()
-                        .WithPositionsSummary()
-                        .WithThreeCurrentPositions()
-                        .WithThreePastPositions()
-
-                        .WithProposalComments()
-                        .WithAssociations()
-                        .WithInterests()
-                        .WithLanguageId()
-                        .WithLanguageName()
-                        .WithLanguageProficiency()
-                        .WithCertifications()
-                        .WithEducations()
-                        .WithFullVolunteer()
-                        .WithPatents()
-                        ////.WithRecommendationsReceived() // may not use that
-                        .WithRecommendationsReceivedWithAdditionalRecommenderInfo()
-
-                        .WithDateOfBirth()
-                        .WithPhoneNumbers()
-                        .WithImAccounts()
-                        .WithPrimaryTwitterAccount()
-                        .WithTwitterAccounts()
-                        .WithSkills();
+                        .WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
-                    var originalPicture = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
-                    this.ViewBag.Picture = originalPicture;
+                    // var profile1 =  this.api.Profiles.GetMyProfile(user, acceptLanguages, fields);
+
+
+                    var firstName = profile.FirstName.Localized.First.ToObject<string>();
+                    var firstName1 = profile.FirstName.Localized.First.Last.ToString();
+                    var firstName2 = profile.FirstName.Localized.First.ToObject<string>();
+
+                    var fieldsOrg = FieldSelector.For<OrganizationalEntityAcls>()
+                        .WithAllFields();
+                    var userCompanies = this.api.Organizations.GetUserAdminApprOrganizations(user, fieldsOrg);
+                    
+
+                    //var postResult = this.api.Shares.Post(user, new Common.PostShare()
+                    //{
+                    //    Content = new Common.PostShareContent()
+                    //    {
+                    //        Title = "tttt",
+                    //        ContentEntities = new List<Common.PostShareContentEntities>() { new Common.PostShareContentEntities() {
+                    //                  EntityLocation = "https://www.example.com/",
+                    //                  Thumbnails = new List<Common.PostShareContentThumbnails>(){new Common.PostShareContentThumbnails()
+                    //                  {
+                    //                      ResolvedUrl = "http://wac.2f9ad.chicdn.net/802F9AD/u/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=30"
+                    //                  } }
+                    //              }
+                    //          }
+                    //    },
+                    //    Distribution = new Common.Distribution()
+                    //    {
+                    //        LinkedInDistributionTarget = new Common.LinkedInDistributionTarget()
+                    //        {
+                    //            VisibleToGuest = true
+                    //        }
+                    //    },
+                    //    Subject = "sub",
+                    //    Text = new Common.PostShareText()
+                    //    {
+                    //        Text = "text"
+                    //    },
+                    //    Owner = "urn:li:person:" + "123456789"
+                    //}
+                    //);
+                    
+                    // var originalPicture = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
+                    // this.ViewBag.Picture = originalPicture;
 
                     this.ViewBag.Profile = profile;
                 }
@@ -153,8 +158,8 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
         {
             var token = this.data.GetAccessToken();
             var user = new UserAuthorization(token);
-            var connection = this.api.Profiles.GetMyConnections(user, 0, 500);
-            return this.View(connection);
+            // var connection = this.api.Profiles.GetMyConnections(user, 0, 500);
+            return this.View(string.Empty);
         }
 
         public ActionResult FullProfile(string id, string culture = "en-US")
@@ -170,45 +175,9 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             {
                 ////var profile = this.api.Profiles.GetMyProfile(user);
                 var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
-                var fields = FieldSelector.For<Person>()
-                    .WithFirstName().WithFormattedName().WithLastName()
-                    .WithHeadline()
-                    .WithId()
-                    .WithEmailAddress()
-
-                    //.WithLocation()
-                    .WithLocationName()        // subfields issue
-                    //.WithLocationCountryCode() // subfields issue
-
-                    .WithPictureUrl()
-                    .WithPublicProfileUrl()
-                    .WithSummary()
-                    .WithIndustry()
-
-                    .WithPositions()
-                    .WithThreeCurrentPositions()
-                    .WithThreePastPositions()
-
-                    .WithProposalComments()
-                    .WithAssociations()
-                    .WithInterests()
-                    .WithLanguageId()
-                    .WithLanguageName()
-                    .WithLanguageProficiency()
-                    .WithCertifications()
-                    .WithEducations()
-                    .WithFullVolunteer()
-                    //.WithRecommendationsReceived() // may not use that
-                    .WithRecommendationsReceivedWithAdditionalRecommenderInfo()
-
-                    .WithDateOfBirth()
-                    .WithPhoneNumbers()
-                    .WithImAccounts()
-                    .WithPrimaryTwitterAccount()
-                    .WithTwitterAccounts()
-                    .WithAllFields()
-                    ;
-                profile = this.api.Profiles.GetProfileById(user, id, acceptLanguages, fields);
+                var fields = FieldSelector.For<Person>()                   
+                    .WithAllFields();
+                profile = this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields).Result;
 
                 this.ViewBag.Profile = profile;
             }
@@ -242,7 +211,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 
         public ActionResult Definition()
         {
-            var filePath = Path.Combine(this.Server.MapPath("~"), "..", "LinkedInApi.xml");
+            var filePath = Path.Combine(this.Server.MapPath("~"), "..", "LinkedInApiV2.xml");
             var builder = new Sparkle.LinkedInNET.ServiceDefinition.ServiceDefinitionBuilder();
             using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -250,6 +219,15 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             }
 
             var result = new ApiResponse<Sparkle.LinkedInNET.ServiceDefinition.ApisRoot>(builder.Root);
+
+            
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new System.IO.StreamWriter(stream);
+            var generator = new ServiceDefinition.CSharpGenerator(writer);
+            generator.Run(builder.Definition);
+            stream.Seek(0L, SeekOrigin.Begin);            
+            var serviceResult = new StreamReader(stream).ReadToEnd();
+
 
             return this.Json(result, JsonRequestBehavior.AllowGet);
         }

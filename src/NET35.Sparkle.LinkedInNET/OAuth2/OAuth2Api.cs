@@ -55,7 +55,7 @@ namespace Sparkle.LinkedInNET.OAuth2
             var scopeAsString = string.Join(" ", flags);
 
             var url = string.Format(
-                "{0}/uas/oauth2/authorization?response_type=code&client_id={1}&scope={2}&state={3}&redirect_uri={4}",
+                "{0}/oauth/v2/authorization?response_type=code&client_id={1}&scope={2}&state={3}&redirect_uri={4}",
                 this.LinkedInApi.Configuration.BaseOAuthUrl,
                 Uri.EscapeDataString(this.LinkedInApi.Configuration.ApiKey),
                 Uri.EscapeDataString(scopeAsString),
@@ -94,7 +94,7 @@ namespace Sparkle.LinkedInNET.OAuth2
             this.CheckConfiguration(apiSecretKey: true);
 
             var url = string.Format(
-                "{0}/uas/oauth2/accessToken?grant_type=authorization_code&code={1}&redirect_uri={2}&client_id={3}&client_secret={4}",
+                "{0}/oauth/v2/accessToken?grant_type=authorization_code&code={1}&redirect_uri={2}&client_id={3}&client_secret={4}",
                 this.LinkedInApi.Configuration.BaseOAuthUrl,
                 Uri.EscapeDataString(authorizationCode),
                 Uri.EscapeDataString(redirectUri),

@@ -42,7 +42,7 @@ namespace Sparkle.LinkedInNET.OAuth2
             this.CheckConfiguration(apiSecretKey: true);
 
             var url = string.Format(
-                "{0}/uas/oauth2/accessToken?grant_type=authorization_code&code={1}&redirect_uri={2}&client_id={3}&client_secret={4}",
+                "{0}/oauth/v2/accessToken?grant_type=authorization_code&code={1}&redirect_uri={2}&client_id={3}&client_secret={4}",
                 this.LinkedInApi.Configuration.BaseOAuthUrl,
                 Uri.EscapeDataString(authorizationCode),
                 Uri.EscapeDataString(redirectUri),
@@ -54,6 +54,20 @@ namespace Sparkle.LinkedInNET.OAuth2
                 Method = "POST",
                 UrlPath = url,
             };
+
+            #region require post date
+            var settings = new Newtonsoft.Json.JsonSerializerSettings
+            {
+                NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+            };
+            var json = Newtonsoft.Json.JsonConvert.SerializeObject("", settings);
+            var bytes = Encoding.UTF8.GetBytes(json);
+
+            context.RequestHeaders.Add("x-li-format", "json");
+            context.PostDataType = "application/json";
+            context.PostData = bytes;
+            #endregion
+
             await this.ExecuteQueryAsync(context);
 
             AuthorizationAccessToken result = null;

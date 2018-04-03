@@ -35,7 +35,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>SparklePublicCode.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -84,7 +85,6 @@
     </Compile>
     <Compile Include="UserAuthorization.cs" />
     <None Include="packages.config" />
-    <None Include="SparklePublicCode.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Services.tt">
