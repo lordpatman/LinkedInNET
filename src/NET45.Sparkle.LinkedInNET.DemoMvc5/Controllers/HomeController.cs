@@ -49,7 +49,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             {
                 this.ViewBag.Url = null;
             }
-                        
+
             // step 3
             if (this.data.HasAccessToken)
             {
@@ -77,7 +77,13 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
                     var fieldsOrg = FieldSelector.For<OrganizationalEntityAcls>()
                         .WithAllFields();
                     var userCompanies = this.api.Organizations.GetUserAdminApprOrganizations(user, fieldsOrg);
-                    
+
+
+                    var statistic = this.api.Shares.GetShareStatistics(user, "18568129", "6386953337324994560");
+
+                    var orgFollorerStatistic = this.api.Organizations.GetOrgFollowerStatistics(user, "18568129");
+
+                    var getShares = this.api.Shares.GetShares(user, "urn:li:organization:18568129", 1000, 5, 0);
 
                     //var postResult = this.api.Shares.Post(user, new Common.PostShare()
                     //{
@@ -108,7 +114,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
                     //    Owner = "urn:li:person:" + "123456789"
                     //}
                     //);
-                    
+
                     // var originalPicture = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
                     // this.ViewBag.Picture = originalPicture;
 

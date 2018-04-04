@@ -136,10 +136,18 @@
       Title="retrieve a company by using the company ID"
       RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
 
-    <ApiMethod MethodName="GetUserAdminApprOrganizations" HttpMethod="GET" 
+    <ApiMethod MethodName="GetUserAdminApprOrganizations" HttpMethod="GET"
               Path="/v2/organizationalEntityAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;state=APPROVED&amp;{FieldSelector}" ReturnType="OrganizationalEntityAcls"
               Title="retrieve list of companies where current user is administrator and is approved"
               RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
+
+    <ApiMethod MethodName="GetOrgFollowerStatistics" HttpMethod="GET"
+                    Path="/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&amp;organizationalEntity=urn:li:organization:{CompanyId}"
+                    ReturnType="OrgFollowerStatistic"
+                    RequiresUserAuthentication="1"
+                    UseFieldSelectors="0"
+                    Title="Retrieve Follower Statistics"
+                    Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics" />
 
     <ReturnType Name="organization" ClassName="Organization" AutoGenerateFieldSelectors="1">
       <Field Name="id" Type="long" IsDefault="1" />
@@ -156,16 +164,16 @@
       <Field Name="cropped" />
       <Field Name="original" />
     </ReturnType>
-  
+
     <ReturnType Name="OrganizationalEntityAcls" ClassName="OrganizationalEntityAcls" AutoGenerateFieldSelectors="1">
       <Field Name="elements" Type="OrgEntElements" IsCollection="1">
-        <FieldSelector Name="elements*(*,organizationalTarget~(id))" PropertyName="OrgEntElementsId" />    
-        <FieldSelector Name="elements*(*,organizationalTarget~(logo))" PropertyName="OrgEntElementsLogo" />    
-        <FieldSelector Name="elements*(*,organizationalTarget~(name))" PropertyName="OrgEntElementsName" />    
+        <FieldSelector Name="elements*(*,organizationalTarget~(id))" PropertyName="OrgEntElementsId" />
+        <FieldSelector Name="elements*(*,organizationalTarget~(logo))" PropertyName="OrgEntElementsLogo" />
+        <FieldSelector Name="elements*(*,organizationalTarget~(name))" PropertyName="OrgEntElementsName" />
         <FieldSelector Name="elements*(*,organizationalTarget~(id,logo,name))" PropertyName="OrgEntElementsAll" />
       </Field>
     </ReturnType>
-    
+
     <ReturnType Name="OrgEntElements" ClassName="OrgEntElements" AutoGenerateFieldSelectors="1">
       <Field Name="state" />
       <Field Name="role" />
@@ -175,7 +183,22 @@
         <FieldSelector Name="organizationalTarget~(id)" PropertyName="Organization" />
       </Field>
     </ReturnType>
-               
+
+
+    <ReturnType Name="OrgFollowerStatistic" ClassName="OrgFollowerStatistic" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="OrgFollowerStatisticsElement" Type="OrgFollowerStatisticsElement" IsCollection="1"/>
+      <Field Name="organizationalEntity" />
+    </ReturnType>
+
+    <ReturnType Name="OrgFollowerStatisticsElement" ClassName="OrgFollowerStatisticsElement" AutoGenerateFieldSelectors="1">
+      <Field Name="totalFollowerCounts" ClassName="TotalFollowerCounts" Type="TotalFollowerCounts"/>
+    </ReturnType>
+
+    <ReturnType Name="totalFollowerCounts" ClassName="TotalFollowerCounts" AutoGenerateFieldSelectors="1" >
+      <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="paidFollowerCount" Type="int"/>
+    </ReturnType>
+
   </ApiGroup>
 
   <ApiGroup Name="Shares">
@@ -187,6 +210,49 @@
                    UseFieldSelectors="0"
                    Title="Share a profile/ company update based on an existing update."
                    Remark="See https://developer.linkedin.com/docs/guide/v2/shares/share-api" />
+
+
+    <ApiMethod MethodName="GetShareStatistics" HttpMethod="GET"
+                     Path="/v2/organizationalEntityShareStatistics?q=organizationalEntity&amp;organizationalEntity=urn:li:organization:{CompanyId}&amp;shares[0]=urn:li:share:{ShareId}"
+                     ReturnType="StareStatistic"
+                     RequiresUserAuthentication="1"
+                     UseFieldSelectors="0"
+                     Title="Fetch lifetime share statistics for two specific organization shares."
+                     Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics" />
+
+    <ApiMethod MethodName="GetShares" HttpMethod="GET"
+                 Path="/v2/shares?q=owners&amp;owners={urn}&amp;sharesPerOwner={int SharesPerOwner = 1000}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+                 ReturnType="PostShares"
+                 RequiresUserAuthentication="1"
+                 UseFieldSelectors="0"
+                 Title="Shares will be ordered by created time with the latest one being the first. 
+                 We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter."
+                 Remark="See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types" />
+
+    <ReturnType Name="StareStatistic" ClassName="StareStatistic" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="ShareStatisticsElement" Type="ShareStatisticsElement" IsCollection="1"/>
+    </ReturnType>
+
+    <ReturnType Name="ShareStatisticsElement" ClassName="ShareStatisticsElement" AutoGenerateFieldSelectors="1">
+      <Field Name="totalShareStatistics" ClassName="TotalShareStatistics" Type="TotalShareStatistics"/>
+      <Field Name="share" />
+      <Field Name="organizationalEntity" />
+    </ReturnType>
+
+    <ReturnType Name="totalShareStatistics" ClassName="TotalShareStatistics" AutoGenerateFieldSelectors="1" >
+      <Field Name="shareCount" Type="int"/>
+      <Field Name="clickCount" Type="int"/>
+      <Field Name="engagement" Type="double"/>
+      <Field Name="likeCount" Type="int"/>
+      <Field Name="impressionCount" Type="int"/>
+      <Field Name="commentCount" Type="int"/>
+    </ReturnType>
+
+    <ReturnType Name="PostShares" ClassName="PostShares" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="PostShareResult" Type="Common.PostShareResult" IsCollection="1"/>
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
   </ApiGroup>
 
 
@@ -255,5 +321,12 @@
     <ReturnType Name="LlinkedInDistributionTarget" ClassName="LinkedInDistributionTarget">
       <Field Name="visibleToGuest" PropertyName="VisibleToGuest" Type="bool" />
     </ReturnType>
+
+    <ReturnType Name="paging" ClassName="Paging">
+      <Field Name="total" PropertyName="Total" Type="int" />
+      <Field Name="count" PropertyName="Count" Type="int" />
+      <Field Name="start" PropertyName="Start" Type="int" />      
+    </ReturnType>
+
   </ApiGroup>
 </Root>

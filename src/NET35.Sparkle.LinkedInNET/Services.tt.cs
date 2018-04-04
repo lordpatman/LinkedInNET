@@ -850,6 +850,95 @@ namespace Sparkle.LinkedInNET.Organizations
     }
 }
 
+// WriteReturnTypes(Organizations, OrgFollowerStatistic)
+namespace Sparkle.LinkedInNET.Organizations
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'OrgFollowerStatistic'
+    /// </summary>
+    [Serializable, XmlRoot("OrgFollowerStatistic")]
+    public class OrgFollowerStatistic
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<OrgFollowerStatisticsElement> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'organizationalEntity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "organizationalEntity")]
+        [JsonProperty(PropertyName = "organizationalEntity")]
+        public string OrganizationalEntity { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Organizations, OrgFollowerStatisticsElement)
+namespace Sparkle.LinkedInNET.Organizations
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'OrgFollowerStatisticsElement'
+    /// </summary>
+    [Serializable, XmlRoot("OrgFollowerStatisticsElement")]
+    public class OrgFollowerStatisticsElement
+    {
+        /// <summary>
+        /// Field: 'totalFollowerCounts' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "totalFollowerCounts")]
+        [JsonProperty(PropertyName = "totalFollowerCounts")]
+        public TotalFollowerCounts TotalFollowerCounts { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Organizations, totalFollowerCounts)
+namespace Sparkle.LinkedInNET.Organizations
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'totalFollowerCounts'
+    /// </summary>
+    [Serializable, XmlRoot("totalFollowerCounts")]
+    public class TotalFollowerCounts
+    {
+        /// <summary>
+        /// Field: 'organicFollowerCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "organicFollowerCount")]
+        [JsonProperty(PropertyName = "organicFollowerCount")]
+        public int OrganicFollowerCount { get; set; }
+
+        /// <summary>
+        /// Field: 'paidFollowerCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paidFollowerCount")]
+        [JsonProperty(PropertyName = "paidFollowerCount")]
+        public int PaidFollowerCount { get; set; }
+
+    }
+}
+
 // WriteReturnTypeFields(Organizations)
 namespace Sparkle.LinkedInNET.Organizations
 {
@@ -858,7 +947,7 @@ namespace Sparkle.LinkedInNET.Organizations
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'organization', 'croppedImage', 'OrganizationalEntityAcls', 'OrgEntElements' return types.
+    /// Field selectors for the 'organization', 'croppedImage', 'OrganizationalEntityAcls', 'OrgEntElements', 'OrgFollowerStatistic', 'OrgFollowerStatisticsElement', 'totalFollowerCounts' return types.
     /// </summary>
     public static class OrganizationsFields {
         /// <summary>
@@ -973,12 +1062,224 @@ namespace Sparkle.LinkedInNET.Organizations
         /// <returns>The field selector.</returns>
         public static FieldSelector<OrgEntElements> WithAllFields(this FieldSelector<OrgEntElements> me) { return me.AddRange("state", "role", "roleAssignee", "organizationalTarget", "organizationalTarget~(id)"); }
         
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgFollowerStatistic> WithElements(this FieldSelector<OrgFollowerStatistic> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'organizationalEntity'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgFollowerStatistic> WithOrganizationalEntity(this FieldSelector<OrgFollowerStatistic> me) { return me.Add("organizationalEntity"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgFollowerStatistic> WithAllFields(this FieldSelector<OrgFollowerStatistic> me) { return me.AddRange("elements", "organizationalEntity"); }
+        
+        /// <summary>
+        /// Includes the field 'totalFollowerCounts'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgFollowerStatisticsElement> WithTotalFollowerCounts(this FieldSelector<OrgFollowerStatisticsElement> me) { return me.Add("totalFollowerCounts"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<OrgFollowerStatisticsElement> WithAllFields(this FieldSelector<OrgFollowerStatisticsElement> me) { return me.AddRange("totalFollowerCounts"); }
+        
+        /// <summary>
+        /// Includes the field 'organicFollowerCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalFollowerCounts> WithOrganicFollowerCount(this FieldSelector<TotalFollowerCounts> me) { return me.Add("organicFollowerCount"); }
+        
+        /// <summary>
+        /// Includes the field 'paidFollowerCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalFollowerCounts> WithPaidFollowerCount(this FieldSelector<TotalFollowerCounts> me) { return me.Add("paidFollowerCount"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalFollowerCounts> WithAllFields(this FieldSelector<TotalFollowerCounts> me) { return me.AddRange("organicFollowerCount", "paidFollowerCount"); }
+        
     }
 }
 
 #endregion
 
 #region ReturnTypes for Shares
+
+// WriteReturnTypes(Shares, StareStatistic)
+namespace Sparkle.LinkedInNET.Shares
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'StareStatistic'
+    /// </summary>
+    [Serializable, XmlRoot("StareStatistic")]
+    public class StareStatistic
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<ShareStatisticsElement> Elements { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Shares, ShareStatisticsElement)
+namespace Sparkle.LinkedInNET.Shares
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ShareStatisticsElement'
+    /// </summary>
+    [Serializable, XmlRoot("ShareStatisticsElement")]
+    public class ShareStatisticsElement
+    {
+        /// <summary>
+        /// Field: 'totalShareStatistics' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "totalShareStatistics")]
+        [JsonProperty(PropertyName = "totalShareStatistics")]
+        public TotalShareStatistics TotalShareStatistics { get; set; }
+
+        /// <summary>
+        /// Field: 'share' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "share")]
+        [JsonProperty(PropertyName = "share")]
+        public string Share { get; set; }
+
+        /// <summary>
+        /// Field: 'organizationalEntity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "organizationalEntity")]
+        [JsonProperty(PropertyName = "organizationalEntity")]
+        public string OrganizationalEntity { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Shares, totalShareStatistics)
+namespace Sparkle.LinkedInNET.Shares
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'totalShareStatistics'
+    /// </summary>
+    [Serializable, XmlRoot("totalShareStatistics")]
+    public class TotalShareStatistics
+    {
+        /// <summary>
+        /// Field: 'shareCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareCount")]
+        [JsonProperty(PropertyName = "shareCount")]
+        public int ShareCount { get; set; }
+
+        /// <summary>
+        /// Field: 'clickCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "clickCount")]
+        [JsonProperty(PropertyName = "clickCount")]
+        public int ClickCount { get; set; }
+
+        /// <summary>
+        /// Field: 'engagement' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "engagement")]
+        [JsonProperty(PropertyName = "engagement")]
+        public double Engagement { get; set; }
+
+        /// <summary>
+        /// Field: 'likeCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "likeCount")]
+        [JsonProperty(PropertyName = "likeCount")]
+        public int LikeCount { get; set; }
+
+        /// <summary>
+        /// Field: 'impressionCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "impressionCount")]
+        [JsonProperty(PropertyName = "impressionCount")]
+        public int ImpressionCount { get; set; }
+
+        /// <summary>
+        /// Field: 'commentCount' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "commentCount")]
+        [JsonProperty(PropertyName = "commentCount")]
+        public int CommentCount { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Shares, PostShares)
+namespace Sparkle.LinkedInNET.Shares
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PostShares'
+    /// </summary>
+    [Serializable, XmlRoot("PostShares")]
+    public class PostShares
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<Common.PostShareResult> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
 
 // WriteReturnTypeFields(Shares)
 namespace Sparkle.LinkedInNET.Shares
@@ -988,9 +1289,121 @@ namespace Sparkle.LinkedInNET.Shares
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the '' return types.
+    /// Field selectors for the 'StareStatistic', 'ShareStatisticsElement', 'totalShareStatistics', 'PostShares' return types.
     /// </summary>
     public static class SharesFields {
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<StareStatistic> WithElements(this FieldSelector<StareStatistic> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<StareStatistic> WithAllFields(this FieldSelector<StareStatistic> me) { return me.AddRange("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'totalShareStatistics'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<ShareStatisticsElement> WithTotalShareStatistics(this FieldSelector<ShareStatisticsElement> me) { return me.Add("totalShareStatistics"); }
+        
+        /// <summary>
+        /// Includes the field 'share'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<ShareStatisticsElement> WithShare(this FieldSelector<ShareStatisticsElement> me) { return me.Add("share"); }
+        
+        /// <summary>
+        /// Includes the field 'organizationalEntity'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<ShareStatisticsElement> WithOrganizationalEntity(this FieldSelector<ShareStatisticsElement> me) { return me.Add("organizationalEntity"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<ShareStatisticsElement> WithAllFields(this FieldSelector<ShareStatisticsElement> me) { return me.AddRange("totalShareStatistics", "share", "organizationalEntity"); }
+        
+        /// <summary>
+        /// Includes the field 'shareCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithShareCount(this FieldSelector<TotalShareStatistics> me) { return me.Add("shareCount"); }
+        
+        /// <summary>
+        /// Includes the field 'clickCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithClickCount(this FieldSelector<TotalShareStatistics> me) { return me.Add("clickCount"); }
+        
+        /// <summary>
+        /// Includes the field 'engagement'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithEngagement(this FieldSelector<TotalShareStatistics> me) { return me.Add("engagement"); }
+        
+        /// <summary>
+        /// Includes the field 'likeCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithLikeCount(this FieldSelector<TotalShareStatistics> me) { return me.Add("likeCount"); }
+        
+        /// <summary>
+        /// Includes the field 'impressionCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithImpressionCount(this FieldSelector<TotalShareStatistics> me) { return me.Add("impressionCount"); }
+        
+        /// <summary>
+        /// Includes the field 'commentCount'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithCommentCount(this FieldSelector<TotalShareStatistics> me) { return me.Add("commentCount"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TotalShareStatistics> WithAllFields(this FieldSelector<TotalShareStatistics> me) { return me.AddRange("shareCount", "clickCount", "engagement", "likeCount", "impressionCount", "commentCount"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PostShares> WithElements(this FieldSelector<PostShares> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PostShares> WithPaging(this FieldSelector<PostShares> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PostShares> WithAllFields(this FieldSelector<PostShares> me) { return me.AddRange("elements", "paging"); }
+        
     }
 }
 
@@ -1420,6 +1833,45 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteReturnTypes(Common, paging)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'paging'
+    /// </summary>
+    [Serializable, XmlRoot("paging")]
+    public class Paging
+    {
+        /// <summary>
+        /// Field: 'total' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "total")]
+        [JsonProperty(PropertyName = "total")]
+        public int Total { get; set; }
+
+        /// <summary>
+        /// Field: 'count' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "count")]
+        [JsonProperty(PropertyName = "count")]
+        public int Count { get; set; }
+
+        /// <summary>
+        /// Field: 'start' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "start")]
+        [JsonProperty(PropertyName = "start")]
+        public int Start { get; set; }
+
+    }
+}
+
 // WriteReturnTypeFields(Common)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -1428,7 +1880,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'shareCreated', 'distribution', 'LlinkedInDistributionTarget' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'shareCreated', 'distribution', 'LlinkedInDistributionTarget', 'paging' return types.
     /// </summary>
     public static class CommonFields {
     }
@@ -1654,6 +2106,61 @@ namespace Sparkle.LinkedInNET.Organizations
         }
     #endif
         
+        /// <summary>
+        /// Retrieve Follower Statistics
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
+        /// </remarks>
+        public Organizations.OrgFollowerStatistic GetOrgFollowerStatistics(
+              UserAuthorization user 
+            , string companyId 
+        )
+        {
+            const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Retrieve Follower Statistics
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
+        /// </remarks>
+        public async Task<Organizations.OrgFollowerStatistic> GetOrgFollowerStatisticsAsync(
+              UserAuthorization user 
+            , string companyId 
+        )
+        {
+            const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
+            return result;
+        }
+    #endif
+        
     }
 }
 
@@ -1729,6 +2236,124 @@ namespace Sparkle.LinkedInNET.Shares
                 this.HandleJsonErrorResponse(context);
             
             var result = this.HandleJsonResponse<Common.PostShareResult>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// Fetch lifetime share statistics for two specific organization shares.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
+        /// </remarks>
+        public Shares.StareStatistic GetShareStatistics(
+              UserAuthorization user 
+            , string companyId 
+            , string shareId 
+        )
+        {
+            const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Fetch lifetime share statistics for two specific organization shares.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
+        /// </remarks>
+        public async Task<Shares.StareStatistic> GetShareStatisticsAsync(
+              UserAuthorization user 
+            , string companyId 
+            , string shareId 
+        )
+        {
+            const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
+        /// </remarks>
+        public Shares.PostShares GetShares(
+              UserAuthorization user 
+            , string urn 
+            , int sharesPerOwner = 1000
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Shares.PostShares>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
+        /// </remarks>
+        public async Task<Shares.PostShares> GetSharesAsync(
+              UserAuthorization user 
+            , string urn 
+            , int sharesPerOwner = 1000
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Shares.PostShares>(context);
             return result;
         }
     #endif
