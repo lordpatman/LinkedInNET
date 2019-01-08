@@ -1409,6 +1409,49 @@ namespace Sparkle.LinkedInNET.Shares
 
 #endregion
 
+#region ReturnTypes for Media
+
+// WriteReturnTypes(Media, MediaPostResult)
+namespace Sparkle.LinkedInNET.Media
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'MediaPostResult'
+    /// </summary>
+    [Serializable, XmlRoot("MediaPostResult")]
+    public class MediaPostResult
+    {
+        /// <summary>
+        /// Field: 'location' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "location")]
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
+
+    }
+}
+
+// WriteReturnTypeFields(Media)
+namespace Sparkle.LinkedInNET.Media
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Field selectors for the 'MediaPostResult' return types.
+    /// </summary>
+    public static class MediaFields {
+    }
+}
+
+#endregion
+
 #region ReturnTypes for Common
 
 // WriteReturnTypes(Common, PostShare)
@@ -1536,6 +1579,13 @@ namespace Sparkle.LinkedInNET.Common
     [Serializable, XmlRoot("postShareContentEntities")]
     public class PostShareContentEntities
     {
+        /// <summary>
+        /// Field: 'entity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "entity")]
+        [JsonProperty(PropertyName = "entity")]
+        public string Entity { get; set; }
+
         /// <summary>
         /// Field: 'entityLocation' (on-demand)
         /// </summary>
@@ -1751,6 +1801,38 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteReturnTypes(Common, localeString)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'localeString'
+    /// </summary>
+    [Serializable, XmlRoot("localeString")]
+    public class LocaleString
+    {
+        /// <summary>
+        /// Field: 'locale' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "locale")]
+        [JsonProperty(PropertyName = "locale")]
+        public Locale locale { get; set; }
+
+        /// <summary>
+        /// Field: 'value' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "value")]
+        [JsonProperty(PropertyName = "value")]
+        public string Value { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Common, shareCreated)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -1808,7 +1890,7 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
-// WriteReturnTypes(Common, LlinkedInDistributionTarget)
+// WriteReturnTypes(Common, LinkedInDistributionTarget)
 namespace Sparkle.LinkedInNET.Common
 {
     using System;
@@ -1818,17 +1900,98 @@ namespace Sparkle.LinkedInNET.Common
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'LlinkedInDistributionTarget'
+    /// Name: 'LinkedInDistributionTarget'
     /// </summary>
-    [Serializable, XmlRoot("LlinkedInDistributionTarget")]
+    [Serializable, XmlRoot("LinkedInDistributionTarget")]
     public class LinkedInDistributionTarget
     {
+        /// <summary>
+        /// Field: 'connectionsOnly' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "connectionsOnly")]
+        [JsonProperty(PropertyName = "connectionsOnly")]
+        public bool ConnectionsOnly { get; set; }
+
+        /// <summary>
+        /// Field: 'industries' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "industries")]
+        [JsonProperty(PropertyName = "industries")]
+        public List<string> Industries { get; set; }
+
+        /// <summary>
+        /// Field: 'interfaceLocales' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "interfaceLocales")]
+        [JsonProperty(PropertyName = "interfaceLocales")]
+        public List<Locale> InterfaceLocales { get; set; }
+
+        /// <summary>
+        /// Field: 'jobFunctions' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "jobFunctions")]
+        [JsonProperty(PropertyName = "jobFunctions")]
+        public List<string> JobFunctions { get; set; }
+
+        /// <summary>
+        /// Field: 'locations' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "locations")]
+        [JsonProperty(PropertyName = "locations")]
+        public List<string> Locations { get; set; }
+
+        /// <summary>
+        /// Field: 'seniorities' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "seniorities")]
+        [JsonProperty(PropertyName = "seniorities")]
+        public List<string> Seniorities { get; set; }
+
+        /// <summary>
+        /// Field: 'staffCountRanges' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "staffCountRanges")]
+        [JsonProperty(PropertyName = "staffCountRanges")]
+        public List<string> StaffCountRanges { get; set; }
+
         /// <summary>
         /// Field: 'visibleToGuest' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "visibleToGuest")]
         [JsonProperty(PropertyName = "visibleToGuest")]
         public bool VisibleToGuest { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, Locale)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Locale'
+    /// </summary>
+    [Serializable, XmlRoot("Locale")]
+    public class Locale
+    {
+        /// <summary>
+        /// Field: 'country' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "country")]
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Field: 'language' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "language")]
+        [JsonProperty(PropertyName = "language")]
+        public string Language { get; set; }
 
     }
 }
@@ -1869,6 +2032,77 @@ namespace Sparkle.LinkedInNET.Common
         [JsonProperty(PropertyName = "start")]
         public int Start { get; set; }
 
+        /// <summary>
+        /// Field: 'links' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "links")]
+        [JsonProperty(PropertyName = "links")]
+        public List<LinkPaging> Links { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, LinkPaging)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'LinkPaging'
+    /// </summary>
+    [Serializable, XmlRoot("LinkPaging")]
+    public class LinkPaging
+    {
+        /// <summary>
+        /// Field: 'rel' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "rel")]
+        [JsonProperty(PropertyName = "rel")]
+        public string Rel { get; set; }
+
+        /// <summary>
+        /// Field: 'href' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "href")]
+        [JsonProperty(PropertyName = "href")]
+        public string Href { get; set; }
+
+        /// <summary>
+        /// Field: 'type' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "type")]
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, mediaUploadData)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'mediaUploadData'
+    /// </summary>
+    [Serializable, XmlRoot("mediaUploadData")]
+    public class MediaUploadData
+    {
+        /// <summary>
+        /// Field: 'data' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "data")]
+        [JsonProperty(PropertyName = "data")]
+        public byte[] Data { get; set; }
+
     }
 }
 
@@ -1880,9 +2114,621 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'shareCreated', 'distribution', 'LlinkedInDistributionTarget', 'paging' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'distribution', 'LinkedInDistributionTarget', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
     /// </summary>
     public static class CommonFields {
+    }
+}
+
+#endregion
+
+#region ReturnTypes for Targeting
+
+// WriteReturnTypes(Targeting, Industries)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Industries'
+    /// </summary>
+    [Serializable, XmlRoot("Industries")]
+    public class Industries
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingBase> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, JobFunctions)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'JobFunctions'
+    /// </summary>
+    [Serializable, XmlRoot("JobFunctions")]
+    public class JobFunctions
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingBase> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, CountryGroups)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CountryGroups'
+    /// </summary>
+    [Serializable, XmlRoot("CountryGroups")]
+    public class CountryGroups
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingCountryGroup> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, Countries)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Countries'
+    /// </summary>
+    [Serializable, XmlRoot("Countries")]
+    public class Countries
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingCountry> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, States)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'States'
+    /// </summary>
+    [Serializable, XmlRoot("States")]
+    public class States
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingState> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, Regions)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Regions'
+    /// </summary>
+    [Serializable, XmlRoot("Regions")]
+    public class Regions
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingRegion> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, Seniorities)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Seniorities'
+    /// </summary>
+    [Serializable, XmlRoot("Seniorities")]
+    public class Seniorities
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<TargetingBase> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, TargetingBase)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingBase'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingBase")]
+    public class TargetingBase
+    {
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'name' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "name")]
+        [JsonProperty(PropertyName = "name")]
+        public Common.MultiLocaleString Name { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, TargetingCountryGroup)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingCountryGroup'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingCountryGroup")]
+    public class TargetingCountryGroup
+    {
+        /// <summary>
+        /// Field: 'countryGroupCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "countryGroupCode")]
+        [JsonProperty(PropertyName = "countryGroupCode")]
+        public string CountryGroupCode { get; set; }
+
+        /// <summary>
+        /// Field: 'name' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "name")]
+        [JsonProperty(PropertyName = "name")]
+        public Common.LocaleString Name { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, TargetingCountry)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingCountry'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingCountry")]
+    public class TargetingCountry
+    {
+        /// <summary>
+        /// Field: 'countryGroup' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "countryGroup")]
+        [JsonProperty(PropertyName = "countryGroup")]
+        public string CountryGroup { get; set; }
+
+        /// <summary>
+        /// Field: 'countryCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "countryCode")]
+        [JsonProperty(PropertyName = "countryCode")]
+        public string CountryCode { get; set; }
+
+        /// <summary>
+        /// Field: 'name' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "name")]
+        [JsonProperty(PropertyName = "name")]
+        public Common.LocaleString Name { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, TargetingState)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingState'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingState")]
+    public class TargetingState
+    {
+        /// <summary>
+        /// Field: 'country' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "country")]
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Field: 'stateCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "stateCode")]
+        [JsonProperty(PropertyName = "stateCode")]
+        public string StateCode { get; set; }
+
+        /// <summary>
+        /// Field: 'name' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "name")]
+        [JsonProperty(PropertyName = "name")]
+        public Common.LocaleString Name { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, TargetingRegion)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingRegion'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingRegion")]
+    public class TargetingRegion
+    {
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'country' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "country")]
+        [JsonProperty(PropertyName = "country")]
+        public string Country { get; set; }
+
+        /// <summary>
+        /// Field: 'name' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "name")]
+        [JsonProperty(PropertyName = "name")]
+        public Common.LocaleString Name { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+        /// <summary>
+        /// Field: 'states' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "states")]
+        [JsonProperty(PropertyName = "states")]
+        public List<string> States { get; set; }
+
+    }
+}
+
+// WriteReturnTypeFields(Targeting)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Field selectors for the 'Industries', 'JobFunctions', 'CountryGroups', 'Countries', 'States', 'Regions', 'Seniorities', 'TargetingBase', 'TargetingCountryGroup', 'TargetingCountry', 'TargetingState', 'TargetingRegion' return types.
+    /// </summary>
+    public static class TargetingFields {
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Industries> WithElements(this FieldSelector<Industries> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Industries> WithPaging(this FieldSelector<Industries> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Industries> WithAllFields(this FieldSelector<Industries> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<JobFunctions> WithElements(this FieldSelector<JobFunctions> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<JobFunctions> WithPaging(this FieldSelector<JobFunctions> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<JobFunctions> WithAllFields(this FieldSelector<JobFunctions> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<CountryGroups> WithElements(this FieldSelector<CountryGroups> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<CountryGroups> WithPaging(this FieldSelector<CountryGroups> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<CountryGroups> WithAllFields(this FieldSelector<CountryGroups> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Countries> WithElements(this FieldSelector<Countries> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Countries> WithPaging(this FieldSelector<Countries> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Countries> WithAllFields(this FieldSelector<Countries> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<States> WithElements(this FieldSelector<States> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<States> WithPaging(this FieldSelector<States> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<States> WithAllFields(this FieldSelector<States> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Regions> WithElements(this FieldSelector<Regions> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Regions> WithPaging(this FieldSelector<Regions> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Regions> WithAllFields(this FieldSelector<Regions> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Seniorities> WithElements(this FieldSelector<Seniorities> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Seniorities> WithPaging(this FieldSelector<Seniorities> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Seniorities> WithAllFields(this FieldSelector<Seniorities> me) { return me.AddRange("elements", "paging"); }
+        
     }
 }
 
@@ -2035,6 +2881,63 @@ namespace Sparkle.LinkedInNET.Organizations
         )
         {
             const string urlFormat = "/v2/organizations/{CompanyId}";
+            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Organizations.Organization>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// retrieve a company brand by using the company ID
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+        /// </remarks>
+        public Organizations.Organization GetOrganizationBrandById(
+              UserAuthorization user 
+            , string companyId 
+            , FieldSelector<Organizations.Organization> fields = null
+        )
+        {
+            const string urlFormat = "/v2/organizationBrands/{CompanyId}";
+            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Organizations.Organization>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// retrieve a company brand by using the company ID
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+        /// </remarks>
+        public async Task<Organizations.Organization> GetOrganizationBrandByIdAsync(
+              UserAuthorization user 
+            , string companyId 
+            , FieldSelector<Organizations.Organization> fields = null
+        )
+        {
+            const string urlFormat = "/v2/organizationBrands/{CompanyId}";
             var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
 
             var context = new RequestContext();
@@ -2361,6 +3264,85 @@ namespace Sparkle.LinkedInNET.Shares
     }
 }
 
+// WriteApiGroup(Media)
+namespace Sparkle.LinkedInNET.Media
+{
+    using System;
+    using System.Xml.Serialization;
+#if ASYNCTASKS
+    using System.Threading.Tasks;
+#endif
+    using Sparkle.LinkedInNET.Internals;
+
+    /// <summary>
+    /// Name: 'Media'
+    /// </summary>
+    public class MediaApi : BaseApi
+    {
+        [System.Diagnostics.DebuggerStepThrough]
+        internal MediaApi(LinkedInApi linkedInApi)
+            : base(linkedInApi)
+        {
+        }
+        
+        /// <summary>
+        /// To upload rich media, attach the media as multipart/form-data.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
+        /// </remarks>
+        public Media.MediaPostResult Post(
+              UserAuthorization user 
+            , Common.MediaUploadData postData
+        )
+        {
+            var url = "/media/upload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateMultiPartStream(context, postData);
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// To upload rich media, attach the media as multipart/form-data.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
+        /// </remarks>
+        public async Task<Media.MediaPostResult> PostAsync(
+              UserAuthorization user 
+            , Common.MediaUploadData postData
+        )
+        {
+            var url = "/media/upload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateMultiPartStream(context, postData);
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
+            return result;
+        }
+    #endif
+        
+    }
+}
+
 // WriteApiGroup(Common)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -2385,6 +3367,467 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteApiGroup(Targeting)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Xml.Serialization;
+#if ASYNCTASKS
+    using System.Threading.Tasks;
+#endif
+    using Sparkle.LinkedInNET.Internals;
+
+    /// <summary>
+    /// Name: 'Targeting'
+    /// </summary>
+    public class TargetingApi : BaseApi
+    {
+        [System.Diagnostics.DebuggerStepThrough]
+        internal TargetingApi(LinkedInApi linkedInApi)
+            : base(linkedInApi)
+        {
+        }
+        
+        /// <summary>
+        /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+        /// </remarks>
+        public Targeting.Industries GetIndustries(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Industries>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+        /// </remarks>
+        public async Task<Targeting.Industries> GetIndustriesAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Industries>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+        /// </remarks>
+        public Targeting.JobFunctions GetJobFunctions(
+              UserAuthorization user 
+            , string dataLocale 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+        /// </remarks>
+        public async Task<Targeting.JobFunctions> GetJobFunctionsAsync(
+              UserAuthorization user 
+            , string dataLocale 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+        /// </remarks>
+        public Targeting.CountryGroups GetCountryGroups(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+        /// </remarks>
+        public async Task<Targeting.CountryGroups> GetCountryGroupsAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+        /// </remarks>
+        public Targeting.Countries GetCountries(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string countryGroup 
+            , string countryGroupURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Countries>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+        /// </remarks>
+        public async Task<Targeting.Countries> GetCountriesAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string countryGroup 
+            , string countryGroupURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Countries>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+        /// </remarks>
+        public Targeting.States GetStates(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string country 
+            , string countryURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.States>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+        /// </remarks>
+        public async Task<Targeting.States> GetStatesAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string country 
+            , string countryURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.States>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+        /// </remarks>
+        public Targeting.Regions GetRegions(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string states 
+            , string statesURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+        /// </remarks>
+        public async Task<Targeting.Regions> GetRegionsAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , string states 
+            , string statesURN 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+        /// </remarks>
+        public Targeting.Seniorities GetSeniorities(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+        /// </remarks>
+        public async Task<Targeting.Seniorities> GetSenioritiesAsync(
+              UserAuthorization user 
+            , string dataLanguage 
+            , string dataCountry 
+            , int count = 50
+            , int start = 0
+        )
+        {
+            const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+            return result;
+        }
+    #endif
+        
+    }
+}
+
 // WriteRootServices()
 namespace Sparkle.LinkedInNET
 {
@@ -2394,7 +3837,9 @@ namespace Sparkle.LinkedInNET
     using Sparkle.LinkedInNET.Profiles;
     using Sparkle.LinkedInNET.Organizations;
     using Sparkle.LinkedInNET.Shares;
+    using Sparkle.LinkedInNET.Media;
     using Sparkle.LinkedInNET.Common;
+    using Sparkle.LinkedInNET.Targeting;
 
     /// <summary>
     /// The factory for LinkedIn APIs.
@@ -2426,11 +3871,27 @@ namespace Sparkle.LinkedInNET
         }
 
         /// <summary>
+        /// The Media API.
+        /// </summary>
+        public MediaApi Media {
+            [System.Diagnostics.DebuggerStepThrough]
+            get { return new MediaApi(this); }
+        }
+
+        /// <summary>
         /// The Common API.
         /// </summary>
         public CommonApi Common {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new CommonApi(this); }
+        }
+
+        /// <summary>
+        /// The Targeting API.
+        /// </summary>
+        public TargetingApi Targeting {
+            [System.Diagnostics.DebuggerStepThrough]
+            get { return new TargetingApi(this); }
         }
 
     }

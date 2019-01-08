@@ -136,6 +136,13 @@
       Title="retrieve a company by using the company ID"
       RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
 
+    <ApiMethod MethodName="GetOrganizationBrandById" 
+               HttpMethod="GET" 
+               Path="/v2/organizationBrands/{CompanyId}" 
+               ReturnType="Organization"
+               Title="retrieve a company brand by using the company ID"
+               RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
+
     <ApiMethod MethodName="GetUserAdminApprOrganizations" HttpMethod="GET"
               Path="/v2/organizationalEntityAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;state=APPROVED&amp;{FieldSelector}" ReturnType="OrganizationalEntityAcls"
               Title="retrieve list of companies where current user is administrator and is approved"
@@ -256,6 +263,89 @@
   </ApiGroup>
 
 
+  <ApiGroup Name="Media">
+    <ApiMethod MethodName="Post" HttpMethod="POST"
+                  Path="/media/upload"
+                  PostReturnType="Common.MediaUploadData"
+                  ReturnType="MediaPostResult"
+                  RequiresUserAuthentication="1"
+                  UseFieldSelectors="0"
+               IsMultiPartStream="1"
+                  Title="To upload rich media, attach the media as multipart/form-data."
+                  Remark="See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares" />
+
+
+    <ReturnType Name="MediaPostResult" ClassName="MediaPostResult" IsMultiPartStream="1">
+      <Field Name="location" />
+    </ReturnType>
+  </ApiGroup>  
+  
+
+
+  <!--<ApiGroup Name="UGCPost">
+    <ApiMethod MethodName="Post" HttpMethod="POST"
+                   Path="/v2/ugcPosts"
+                   PostReturnType="Common.UGCPost"
+                   ReturnType="Common.UGCPostResult"
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Title="Upload a video asset to create a UGC Post."
+                   Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api" />
+
+    <ReturnType Name="UGCPost">
+      <Field Name="author" />
+      <Field Name="lifecycleState" />
+      <Field Name="specificContent" Type="SpecificContent" />
+      <Field Name="targetAudience"  Type="TargetAudience"/>
+      <Field Name="visibility" Type="UGCPostvisibility"/>
+    </ReturnType>
+    
+    <ReturnType Name="UGCPostResult">
+      <Field Name="id" />
+    </ReturnType>
+
+
+    <ReturnType Name="SpecificContent" ClassName="SpecificContent">
+      <Field Name="com.linkedin.ugc.ShareContent" PropertyName="ComLinkedinUgcShareContent" Type="ComLinkedinUgcShareContent" />
+    </ReturnType>
+    
+    <ReturnType Name="comLinkedinUgcShareContent" ClassName="ComLinkedinUgcShareContent">
+      <Field Name="media" PropertyName="UGCMedia" Type="UGCMedia"  IsCollection="1"/>
+      <Field Name="shareCommentary" PropertyName="ShareCommentary" Type="UGCText" />
+      <Field Name="shareMediaCategory" />
+    </ReturnType>
+
+    <ReturnType Name="UGCMedia" ClassName="UGCMedia">
+      <Field Name="description" PropertyName="UGCMediaDescription" Type="UGCText"/>
+      <Field Name="media" />
+      <Field Name="status" />
+      <Field Name="thumbnails" IsCollection="1"/>
+      <Field Name="title" PropertyName="UGCMediaTitle" Type="UGCText" />
+    </ReturnType>
+
+    <ReturnType Name="UGCText" ClassName="UGCText">
+      <Field Name="attributes" IsCollection="1" />
+      <Field Name="text" />
+    </ReturnType>
+
+
+
+    <ReturnType Name="TargetAudience" ClassName="TargetAudience">
+      <Field Name="targetedEntities" PropertyName="TargetedEntities" Type="TargetedEntities" IsCollection="1" />
+    </ReturnType>
+    
+    <ReturnType Name="TargetedEntities" ClassName="TargetedEntities">
+      <Field Name="locations" IsCollection="1" />
+    </ReturnType>
+
+
+    <ReturnType Name="UGCPostvisibility" ClassName="UGCPostvisibility">
+      <Field Name="com.linkedin.ugc.MemberNetworkVisibility" PropertyName="comLinkedinUgcMemberNetworkVisibility" />
+    </ReturnType>
+
+  </ApiGroup>-->
+      
+
   <ApiGroup Name="Common">
     <ReturnType Name="PostShare">
       <Field Name="owner" />
@@ -275,6 +365,7 @@
     </ReturnType>
 
     <ReturnType Name="postShareContentEntities" ClassName="PostShareContentEntities">
+      <Field Name="entity"/>
       <Field Name="entityLocation"/>
       <Field Name="thumbnails" Type="PostShareContentThumbnails" IsCollection="1" />
     </ReturnType>
@@ -309,6 +400,11 @@
       <Field Name="preferredLocale" PropertyName="PreferredLocale" Type="JObject" />
     </ReturnType>
 
+    <ReturnType Name="localeString" ClassName="LocaleString">
+      <Field Name="locale" PropertyName="locale" Type="Locale" />
+      <Field Name="value" />
+    </ReturnType>
+
     <ReturnType Name="shareCreated" ClassName="ShareTime">
       <Field Name="actor"/>
       <Field Name="time" Type="long" />
@@ -318,15 +414,176 @@
       <Field Name="linkedInDistributionTarget" PropertyName="LinkedInDistributionTarget" Type="LinkedInDistributionTarget" />
     </ReturnType>
 
-    <ReturnType Name="LlinkedInDistributionTarget" ClassName="LinkedInDistributionTarget">
-      <Field Name="visibleToGuest" PropertyName="VisibleToGuest" Type="bool" />
+    <ReturnType Name="LinkedInDistributionTarget" ClassName="LinkedInDistributionTarget">
+      <Field Name="connectionsOnly" PropertyName="ConnectionsOnly" Type="bool"/>
+      <Field Name="industries" PropertyName="Industries" IsCollection="1" />
+      <Field Name="interfaceLocales" PropertyName="InterfaceLocales" Type="Locale" IsCollection="1"/>
+      <Field Name="jobFunctions" PropertyName="JobFunctions"  IsCollection="1" />
+      <Field Name="locations" PropertyName="Locations"  IsCollection="1" />
+      <Field Name="seniorities" PropertyName="Seniorities"  IsCollection="1" />
+      <Field Name="staffCountRanges" PropertyName="StaffCountRanges"  IsCollection="1" />
+      <Field Name="visibleToGuest" PropertyName="VisibleToGuest"  Type="bool" />
     </ReturnType>
+
+      <ReturnType Name="Locale" ClassName="Locale">
+        <Field Name="country" PropertyName="Country" />
+        <Field Name="language" PropertyName="Language" />
+      </ReturnType>
 
     <ReturnType Name="paging" ClassName="Paging">
       <Field Name="total" PropertyName="Total" Type="int" />
       <Field Name="count" PropertyName="Count" Type="int" />
-      <Field Name="start" PropertyName="Start" Type="int" />      
+      <Field Name="start" PropertyName="Start" Type="int" />
+      <Field Name="links" PropertyName="Links" Type="LinkPaging" IsCollection="1"/>
     </ReturnType>
 
+    <ReturnType Name="LinkPaging" ClassName="LinkPaging">
+      <Field Name="rel" PropertyName="Rel"  />
+      <Field Name="href" PropertyName="Href" />
+      <Field Name="type" PropertyName="Type"  />
+    </ReturnType>
+
+    <ReturnType Name="mediaUploadData" ClassName="MediaUploadData"
+                IsMultiPartStream="1">
+      <Field Name="data" PropertyName="Data" Type="byte[]"/>
+    </ReturnType>
+    
   </ApiGroup>
+
+
+  <ApiGroup Name="Targeting">
+    <ApiMethod MethodName="GetIndustries" 
+               HttpMethod="GET" 
+               Path="/v2/industries?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;count={int Count = 50}&amp;start={int Start = 0}&amp;" 
+               ReturnType="Industries"
+               Title="Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names."
+               RequiresUserAuthentication="1" 
+               UseFieldSelectors="0"
+               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL"/>
+    
+    <ApiMethod MethodName="GetJobFunctions"
+               HttpMethod="GET"
+               Path="/v2/functions?locale={dataLocale}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+               ReturnType="JobFunctions"
+               Title=""
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US"/>
+
+    <ApiMethod MethodName="GetCountryGroups"
+               HttpMethod="GET"
+               Path="/v2/countryGroups?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+               ReturnType="CountryGroups"
+               Title=""
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups"/>
+
+    <ApiMethod MethodName="GetCountries"
+                   HttpMethod="GET"
+                   Path="/v2/countries?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;q={countryGroup}&amp;countryGroup={countryGroupURN}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+                   ReturnType="Countries"
+                   Title=""
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+
+    <ApiMethod MethodName="GetStates"
+                   HttpMethod="GET"
+                   Path="/v2/states?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;q={country}&amp;country={countryURN}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+                   ReturnType="States"
+                   Title=""
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+
+    <ApiMethod MethodName="GetRegions"
+                       HttpMethod="GET"
+                       Path="/v2/regions?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;q={states}&amp;states={statesURN}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+                       ReturnType="Regions"
+                       Title=""
+                       RequiresUserAuthentication="1"
+                       UseFieldSelectors="0"
+                       Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions"/>
+
+    <ApiMethod MethodName="GetSeniorities"
+                          HttpMethod="GET"
+                          Path="/v2/seniorities?locale.language={dataLanguage}&amp;locale.country={dataCountry}&amp;count={int Count = 50}&amp;start={int Start = 0}"
+                          ReturnType="Seniorities"
+                          Title=""
+                          RequiresUserAuthentication="1"
+                          UseFieldSelectors="0"
+                          Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities"/>
+
+
+    <ReturnType Name="Industries" ClassName="Industries" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingBase" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="JobFunctions" ClassName="JobFunctions" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingBase" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="CountryGroups" ClassName="CountryGroups" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingCountryGroup" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="Countries" ClassName="Countries" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingCountry" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="States" ClassName="States" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingState" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="Regions" ClassName="Regions" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingRegion" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="Seniorities" ClassName="Seniorities" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="TargetingBase" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="TargetingBase" ClassName="TargetingBase">
+      <Field Name="id"  PropertyName="Id" />
+      <Field Name="name"  PropertyName="Name" Type="Common.MultiLocaleString" />
+      <Field Name="$URN"  PropertyName="Urn" />
+    </ReturnType>
+
+    <ReturnType Name="TargetingCountryGroup" ClassName="TargetingCountryGroup">
+      <Field Name="countryGroupCode"  PropertyName="CountryGroupCode" />
+      <Field Name="name"  PropertyName="Name" Type="Common.LocaleString" />
+      <Field Name="$URN"  PropertyName="Urn" />
+    </ReturnType>
+
+    <ReturnType Name="TargetingCountry" ClassName="TargetingCountry">
+      <Field Name="countryGroup"  PropertyName="CountryGroup" />
+      <Field Name="countryCode"  PropertyName="CountryCode" />
+      <Field Name="name"  PropertyName="Name" Type="Common.LocaleString" />
+      <Field Name="$URN"  PropertyName="Urn" />
+    </ReturnType>
+
+    <ReturnType Name="TargetingState" ClassName="TargetingState">
+      <Field Name="country"  PropertyName="Country" />
+      <Field Name="stateCode"  PropertyName="StateCode" />
+      <Field Name="name"  PropertyName="Name" Type="Common.LocaleString" />
+      <Field Name="$URN"  PropertyName="Urn" />
+    </ReturnType>
+
+    <ReturnType Name="TargetingRegion" ClassName="TargetingRegion">
+      <Field Name="id"  PropertyName="Id" />
+      <Field Name="country"  PropertyName="Country" />
+      <Field Name="name"  PropertyName="Name" Type="Common.LocaleString" />
+      <Field Name="$URN"  PropertyName="Urn" />
+      <Field Name="states"  PropertyName="States" IsCollection="1"/>
+    </ReturnType>
+    
+  </ApiGroup>  
 </Root>

@@ -1,5 +1,4 @@
-﻿
-namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
+﻿namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -14,6 +13,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
     using Sparkle.LinkedInNET.Profiles;
     using System.Threading.Tasks;
     using Sparkle.LinkedInNET.Organizations;
+    using System.Net;
 
     ////using Sparkle.LinkedInNET.ServiceDefinition;
 
@@ -32,6 +32,8 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
 
         public async Task<ActionResult> Index(string culture = "en-US")
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
             // step 1: configuration
             this.ViewBag.Configuration = this.apiConfig;
             
@@ -49,7 +51,7 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             {
                 this.ViewBag.Url = null;
             }
-
+                       
             // step 3
             if (this.data.HasAccessToken)
             {
@@ -67,23 +69,107 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
                         .WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
+
+                    // video test
+                    //var ugcPost = new Common.UGCPost()
+                    //{
+                    //    Author = "urn:li:person:" + "qhwvZ0K4cr",
+                    //    LifecycleState = "PUBLISHED",
+                    //    SpecificContent = new Common.SpecificContent()
+                    //    {
+                    //        ComLinkedinUgcShareContent = new Common.ComLinkedinUgcShareContent()
+                    //        {
+                    //            UGCMedia = new List<Common.UGCMedia>()
+                    //            {
+                    //                new Common.UGCMedia()
+                    //                {
+                    //                    UGCMediaDescription = new Common.UGCText()
+                    //                    {
+                    //                        Text = "test description"
+                    //                    },
+                    //                    Media = "urn:li:digitalmediaAsset:C5500AQG7r2u00ByWjw",
+                    //                    Status = "READY",
+                    //                    Thumbnails = new List<string>(),
+                    //                    UGCMediaTitle = new Common.UGCText()
+                    //                    {
+                    //                        Text = "Test Title"
+                    //                    }
+                    //                }
+                    //            },
+                    //            ShareCommentary = new Common.UGCText()
+                    //            {
+                    //                Text = "Test Commentary"
+                    //            },
+                    //            ShareMediaCategory = "VIDEO"
+                    //        }
+                    //    },
+                    //    //TargetAudience = new Common.TargetAudience()
+                    //    //{
+
+                    //    //},
+                    //    Visibility = new Common.UGCPostvisibility()
+                    //    {
+                    //        comLinkedinUgcMemberNetworkVisibility = "PUBLIC"
+                    //    }
+                    //};
+
+                    //var ugcPostResult = await this.api.UGCPost.PostAsync(user, ugcPost);
+
+                    //var test = "sdfas";
+
+
+
+
+
+
+
+
+
+                    // image test
+                    // var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/83278b25-b809-4458-912b-55b4d6d8b19d.jpg");
+                    var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/b7b12f6e-4eed-4ca1-b937-006b0c2aa93b.jpg");
+
+                    var postId = this.api.Media.Post(user, new Common.MediaUploadData() {
+                        Data = imageData
+                    });
+
+                    var test = "sdfas";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     // var profile1 =  this.api.Profiles.GetMyProfile(user, acceptLanguages, fields);
 
 
-                    var firstName = profile.FirstName.Localized.First.ToObject<string>();
-                    var firstName1 = profile.FirstName.Localized.First.Last.ToString();
-                    var firstName2 = profile.FirstName.Localized.First.ToObject<string>();
+                    //var firstName = profile.FirstName.Localized.First.ToObject<string>();
+                    //var firstName1 = profile.FirstName.Localized.First.Last.ToString();
+                    //var firstName2 = profile.FirstName.Localized.First.ToObject<string>();
 
-                    var fieldsOrg = FieldSelector.For<OrganizationalEntityAcls>()
-                        .WithAllFields();
-                    var userCompanies = this.api.Organizations.GetUserAdminApprOrganizations(user, fieldsOrg);
+                    //var fieldsOrg = FieldSelector.For<OrganizationalEntityAcls>()
+                    //    .WithAllFields();
+                    //var userCompanies = this.api.Organizations.GetUserAdminApprOrganizations(user, fieldsOrg);
 
 
-                    var statistic = this.api.Shares.GetShareStatistics(user, "18568129", "6386953337324994560");
+                    //var statistic = this.api.Shares.GetShareStatistics(user, "18568129", "6386953337324994560");
 
-                    var orgFollorerStatistic = this.api.Organizations.GetOrgFollowerStatistics(user, "18568129");
+                    //var orgFollorerStatistic = this.api.Organizations.GetOrgFollowerStatistics(user, "18568129");
 
-                    var getShares = this.api.Shares.GetShares(user, "urn:li:organization:18568129", 1000, 5, 0);
+                    //var getShares = this.api.Shares.GetShares(user, "urn:li:organization:18568129", 1000, 5, 0);
 
                     //var postResult = this.api.Shares.Post(user, new Common.PostShare()
                     //{
@@ -134,6 +220,35 @@ namespace Sparkle.LinkedInNET.DemoMvc5.Controllers
             }
 
             return this.View();
+        }
+
+        public static byte[] DownladFromUrlToByte(string url)
+        {
+            HttpWebRequest req;
+            HttpWebResponse res = null;
+
+            try
+            {
+                req = (HttpWebRequest)WebRequest.Create(url);
+                res = (HttpWebResponse)req.GetResponse();
+                Stream stream = res.GetResponseStream();
+
+                var buffer = new byte[4096];
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    var bytesRead = 0;
+                    while ((bytesRead = stream.Read(buffer, 0, buffer.Length)) != 0)
+                    {
+                        ms.Write(buffer, 0, bytesRead);
+                    }
+                    return ms.ToArray();
+                }
+            }
+            finally
+            {
+                if (res != null)
+                    res.Close();
+            }
         }
 
         public async Task<ActionResult> OAuth2(string code, string state, string error, string error_description)

@@ -435,7 +435,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 if (postReturnTypeType != null)
                 {
-                    this.text.WriteLine(indent, "this.CreateJsonPostStream(context, postData);");
+                    if (postReturnTypeType.IsMultiPartStream)
+                    {
+                        this.text.WriteLine(indent, "this.CreateMultiPartStream(context, postData);");
+                    }
+                    else
+                    {
+                        this.text.WriteLine(indent, "this.CreateJsonPostStream(context, postData);");
+                    }
                 }
 
                 // body / execute
@@ -543,7 +550,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 if (postReturnTypeType != null)
                 {
-                    this.text.WriteLine(indent, "this.CreateJsonPostStream(context, postData);");
+                    if (postReturnTypeType.IsMultiPartStream)
+                    {
+                        this.text.WriteLine(indent, "this.CreateMultiPartStream(context, postData);");
+                    }
+                    else
+                    {
+                        this.text.WriteLine(indent, "this.CreateJsonPostStream(context, postData);");
+                    }
                 }
 
                 // body / execute
