@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Sparkle.LinkedInNET.Video
 {
@@ -27,6 +28,18 @@ namespace Sparkle.LinkedInNET.Video
             else
             {
                 var shortVideoUp = await ShortUploadVideoAsync(api, requestVideoUpload, videoData);
+            }
+
+            // check video upload status before upload
+            var assetMatch = Regex.Match(requestVideoUpload.Value.Asset, @"^.+?:([^:]+?)$");
+            var assetId = assetMatch.Groups[1].ToString();
+            while (true)
+            {
+                var video = await api.Asset.GetAssetAsync(user, assetId);
+                // no null error check needed, cuz if it would be null we would thow an exception
+                if (video.Recipes.FirstOrDefault().Status != "PROCESSING")
+                    break;
+                await Task.Delay(1000 * 5);
             }
 
             return requestVideoUpload.Value.Asset;

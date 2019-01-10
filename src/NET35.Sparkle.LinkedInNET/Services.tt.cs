@@ -3824,792 +3824,772 @@ namespace Sparkle.LinkedInNET.Profiles
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Profiles'
-    /// </summary>
-    public class ProfilesApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal ProfilesApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Profiles'
+            /// </summary>
+            public class ProfilesApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal ProfilesApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// the profile of the current user
+                /// </summary>
+                /// <remarks>
+                /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
+                /// </remarks>
+                public Profiles.Person GetMyProfile(
+                      UserAuthorization user 
+                    , string[] acceptLanguages 
+                    , FieldSelector<Profiles.Person> fields = null
+                )
+                {
+                    const string urlFormat = "/v2/me?{FieldSelector}";
+                    var url = FormatUrl(urlFormat, fields);
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.AcceptLanguages = acceptLanguages;
+                    context.Method =  "GET";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Profiles.Person>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// the profile of the current user
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
+                    /// </remarks>
+                    public async Task<Profiles.Person> GetMyProfileAsync(
+                          UserAuthorization user 
+                        , string[] acceptLanguages 
+                        , FieldSelector<Profiles.Person> fields = null
+                    )
+                    {
+                        const string urlFormat = "/v2/me?{FieldSelector}";
+                        var url = FormatUrl(urlFormat, fields);
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.AcceptLanguages = acceptLanguages;
+                        context.Method =  "GET";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<Profiles.Person>(context);
+                        return result;
+                    }
+                        
+            }
         }
-        
-        /// <summary>
-        /// the profile of the current user
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
-        /// </remarks>
-        public Profiles.Person GetMyProfile(
-              UserAuthorization user 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v2/me?{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// the profile of the current user
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/people/profile-api
-        /// </remarks>
-        public async Task<Profiles.Person> GetMyProfileAsync(
-              UserAuthorization user 
-            , string[] acceptLanguages 
-            , FieldSelector<Profiles.Person> fields = null
-        )
-        {
-            const string urlFormat = "/v2/me?{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.AcceptLanguages = acceptLanguages;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Profiles.Person>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(Organizations)
 namespace Sparkle.LinkedInNET.Organizations
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Organizations'
-    /// </summary>
-    public class OrganizationsApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal OrganizationsApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Organizations'
+            /// </summary>
+            public class OrganizationsApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal OrganizationsApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// retrieve a company by using the company ID
+                /// </summary>
+                /// <remarks>
+                /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                /// </remarks>
+                public Organizations.Organization GetById(
+                      UserAuthorization user 
+                    , string companyId 
+                    , FieldSelector<Organizations.Organization> fields = null
+                )
+                {
+                    const string urlFormat = "/v2/organizations/{CompanyId}";
+                    var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "GET";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Organizations.Organization>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// retrieve a company by using the company ID
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                    /// </remarks>
+                    public async Task<Organizations.Organization> GetByIdAsync(
+                          UserAuthorization user 
+                        , string companyId 
+                        , FieldSelector<Organizations.Organization> fields = null
+                    )
+                    {
+                        const string urlFormat = "/v2/organizations/{CompanyId}";
+                        var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "GET";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<Organizations.Organization>(context);
+                        return result;
+                    }
+                        
+                        /// <summary>
+                        /// retrieve a company brand by using the company ID
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                        /// </remarks>
+                        public Organizations.Organization GetOrganizationBrandById(
+                              UserAuthorization user 
+                            , string companyId 
+                            , FieldSelector<Organizations.Organization> fields = null
+                        )
+                        {
+                            const string urlFormat = "/v2/organizationBrands/{CompanyId}";
+                            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+                            var context = new RequestContext();
+                            context.UserAuthorization = user;
+                            context.Method =  "GET";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                            var result = this.HandleJsonResponse<Organizations.Organization>(context);
+                            return result;
+                        }
+
+                            /// <summary>
+                            /// retrieve a company brand by using the company ID
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                            /// </remarks>
+                            public async Task<Organizations.Organization> GetOrganizationBrandByIdAsync(
+                                  UserAuthorization user 
+                                , string companyId 
+                                , FieldSelector<Organizations.Organization> fields = null
+                            )
+                            {
+                                const string urlFormat = "/v2/organizationBrands/{CompanyId}";
+                                var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+
+                                var context = new RequestContext();
+                                context.UserAuthorization = user;
+                                context.Method =  "GET";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                var result = this.HandleJsonResponse<Organizations.Organization>(context);
+                                return result;
+                            }
+                                
+                                /// <summary>
+                                /// retrieve list of companies where current user is administrator and is approved
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                                /// </remarks>
+                                public Organizations.OrganizationalEntityAcls GetUserAdminApprOrganizations(
+                                      UserAuthorization user 
+                                    , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
+                                )
+                                {
+                                    const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
+                                    var url = FormatUrl(urlFormat, fields);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// retrieve list of companies where current user is administrator and is approved
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
+                                    /// </remarks>
+                                    public async Task<Organizations.OrganizationalEntityAcls> GetUserAdminApprOrganizationsAsync(
+                                          UserAuthorization user 
+                                        , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
+                                    )
+                                    {
+                                        const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
+                                        var url = FormatUrl(urlFormat, fields);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
+                                        return result;
+                                    }
+                                        
+                                        /// <summary>
+                                        /// Retrieve Follower Statistics
+                                        /// </summary>
+                                        /// <remarks>
+                                        /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
+                                        /// </remarks>
+                                        public Organizations.OrgFollowerStatistic GetOrgFollowerStatistics(
+                                              UserAuthorization user 
+                                            , string companyId 
+                                        )
+                                        {
+                                            const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "GET";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// Retrieve Follower Statistics
+                                            /// </summary>
+                                            /// <remarks>
+                                            /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
+                                            /// </remarks>
+                                            public async Task<Organizations.OrgFollowerStatistic> GetOrgFollowerStatisticsAsync(
+                                                  UserAuthorization user 
+                                                , string companyId 
+                                            )
+                                            {
+                                                const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "GET";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
+                                                return result;
+                                            }
+                                                
+            }
         }
-        
-        /// <summary>
-        /// retrieve a company by using the company ID
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public Organizations.Organization GetById(
-              UserAuthorization user 
-            , string companyId 
-            , FieldSelector<Organizations.Organization> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizations/{CompanyId}";
-            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.Organization>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// retrieve a company by using the company ID
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public async Task<Organizations.Organization> GetByIdAsync(
-              UserAuthorization user 
-            , string companyId 
-            , FieldSelector<Organizations.Organization> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizations/{CompanyId}";
-            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.Organization>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// retrieve a company brand by using the company ID
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public Organizations.Organization GetOrganizationBrandById(
-              UserAuthorization user 
-            , string companyId 
-            , FieldSelector<Organizations.Organization> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizationBrands/{CompanyId}";
-            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.Organization>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// retrieve a company brand by using the company ID
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public async Task<Organizations.Organization> GetOrganizationBrandByIdAsync(
-              UserAuthorization user 
-            , string companyId 
-            , FieldSelector<Organizations.Organization> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizationBrands/{CompanyId}";
-            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.Organization>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// retrieve list of companies where current user is administrator and is approved
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public Organizations.OrganizationalEntityAcls GetUserAdminApprOrganizations(
-              UserAuthorization user 
-            , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// retrieve list of companies where current user is administrator and is approved
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api
-        /// </remarks>
-        public async Task<Organizations.OrganizationalEntityAcls> GetUserAdminApprOrganizationsAsync(
-              UserAuthorization user 
-            , FieldSelector<Organizations.OrganizationalEntityAcls> fields = null
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED&{FieldSelector}";
-            var url = FormatUrl(urlFormat, fields);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.OrganizationalEntityAcls>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Retrieve Follower Statistics
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
-        /// </remarks>
-        public Organizations.OrgFollowerStatistic GetOrgFollowerStatistics(
-              UserAuthorization user 
-            , string companyId 
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Retrieve Follower Statistics
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics
-        /// </remarks>
-        public async Task<Organizations.OrgFollowerStatistic> GetOrgFollowerStatisticsAsync(
-              UserAuthorization user 
-            , string companyId 
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Organizations.OrgFollowerStatistic>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(Shares)
 namespace Sparkle.LinkedInNET.Shares
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Shares'
-    /// </summary>
-    public class SharesApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal SharesApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Shares'
+            /// </summary>
+            public class SharesApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal SharesApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// Share a profile/ company update based on an existing update.
+                /// </summary>
+                /// <remarks>
+                /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
+                /// </remarks>
+                public Common.PostShareResult Post(
+                      UserAuthorization user 
+                    , Common.PostShare postData
+                )
+                {
+                    var url = "/v2/shares";
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "POST";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    this.CreateJsonPostStream(context, postData);
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Common.PostShareResult>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// Share a profile/ company update based on an existing update.
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
+                    /// </remarks>
+                    public async Task<Common.PostShareResult> PostAsync(
+                          UserAuthorization user 
+                        , Common.PostShare postData
+                    )
+                    {
+                        var url = "/v2/shares";
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "POST";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        this.CreateJsonPostStream(context, postData);
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<Common.PostShareResult>(context);
+                        return result;
+                    }
+                        
+                        /// <summary>
+                        /// Fetch lifetime share statistics for two specific organization shares.
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
+                        /// </remarks>
+                        public Shares.StareStatistic GetShareStatistics(
+                              UserAuthorization user 
+                            , string companyId 
+                            , string shareId 
+                        )
+                        {
+                            const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+
+                            var context = new RequestContext();
+                            context.UserAuthorization = user;
+                            context.Method =  "GET";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                            var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
+                            return result;
+                        }
+
+                            /// <summary>
+                            /// Fetch lifetime share statistics for two specific organization shares.
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
+                            /// </remarks>
+                            public async Task<Shares.StareStatistic> GetShareStatisticsAsync(
+                                  UserAuthorization user 
+                                , string companyId 
+                                , string shareId 
+                            )
+                            {
+                                const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+
+                                var context = new RequestContext();
+                                context.UserAuthorization = user;
+                                context.Method =  "GET";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
+                                return result;
+                            }
+                                
+                                /// <summary>
+                                /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
+                                /// </remarks>
+                                public Shares.PostShares GetShares(
+                                      UserAuthorization user 
+                                    , string urn 
+                                    , int sharesPerOwner = 1000
+                                    , int count = 50
+                                    , int start = 0
+                                )
+                                {
+                                    const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<Shares.PostShares>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
+                                    /// </remarks>
+                                    public async Task<Shares.PostShares> GetSharesAsync(
+                                          UserAuthorization user 
+                                        , string urn 
+                                        , int sharesPerOwner = 1000
+                                        , int count = 50
+                                        , int start = 0
+                                    )
+                                    {
+                                        const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<Shares.PostShares>(context);
+                                        return result;
+                                    }
+                                        
+            }
         }
-        
-        /// <summary>
-        /// Share a profile/ company update based on an existing update.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
-        /// </remarks>
-        public Common.PostShareResult Post(
-              UserAuthorization user 
-            , Common.PostShare postData
-        )
-        {
-            var url = "/v2/shares";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Share a profile/ company update based on an existing update.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api
-        /// </remarks>
-        public async Task<Common.PostShareResult> PostAsync(
-              UserAuthorization user 
-            , Common.PostShare postData
-        )
-        {
-            var url = "/v2/shares";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Common.PostShareResult>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Fetch lifetime share statistics for two specific organization shares.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
-        /// </remarks>
-        public Shares.StareStatistic GetShareStatistics(
-              UserAuthorization user 
-            , string companyId 
-            , string shareId 
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Fetch lifetime share statistics for two specific organization shares.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics
-        /// </remarks>
-        public async Task<Shares.StareStatistic> GetShareStatisticsAsync(
-              UserAuthorization user 
-            , string companyId 
-            , string shareId 
-        )
-        {
-            const string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Shares.StareStatistic>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
-        /// </remarks>
-        public Shares.PostShares GetShares(
-              UserAuthorization user 
-            , string urn 
-            , int sharesPerOwner = 1000
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Shares.PostShares>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Shares will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types
-        /// </remarks>
-        public async Task<Shares.PostShares> GetSharesAsync(
-              UserAuthorization user 
-            , string urn 
-            , int sharesPerOwner = 1000
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Shares.PostShares>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(Media)
 namespace Sparkle.LinkedInNET.Media
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Media'
-    /// </summary>
-    public class MediaApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal MediaApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Media'
+            /// </summary>
+            public class MediaApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal MediaApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// To upload rich media, attach the media as multipart/form-data.
+                /// </summary>
+                /// <remarks>
+                /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
+                /// </remarks>
+                public Media.MediaPostResult Post(
+                      UserAuthorization user 
+                    , Common.MediaUploadData postData
+                )
+                {
+                    var url = "/media/upload";
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "POST";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    this.CreateMultiPartStream(context, postData);
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// To upload rich media, attach the media as multipart/form-data.
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
+                    /// </remarks>
+                    public async Task<Media.MediaPostResult> PostAsync(
+                          UserAuthorization user 
+                        , Common.MediaUploadData postData
+                    )
+                    {
+                        var url = "/media/upload";
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "POST";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        this.CreateMultiPartStream(context, postData);
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
+                        return result;
+                    }
+                        
+            }
         }
-        
-        /// <summary>
-        /// To upload rich media, attach the media as multipart/form-data.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
-        /// </remarks>
-        public Media.MediaPostResult Post(
-              UserAuthorization user 
-            , Common.MediaUploadData postData
-        )
-        {
-            var url = "/media/upload";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateMultiPartStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// To upload rich media, attach the media as multipart/form-data.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
-        /// </remarks>
-        public async Task<Media.MediaPostResult> PostAsync(
-              UserAuthorization user 
-            , Common.MediaUploadData postData
-        )
-        {
-            var url = "/media/upload";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateMultiPartStream(context, postData);
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Media.MediaPostResult>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(UGCPost)
 namespace Sparkle.LinkedInNET.UGCPost
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'UGCPost'
-    /// </summary>
-    public class UGCPostApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal UGCPostApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'UGCPost'
+            /// </summary>
+            public class UGCPostApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal UGCPostApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// Upload a video asset to create a UGC Post.
+                /// </summary>
+                /// <remarks>
+                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
+                /// </remarks>
+                public string Post(
+                      UserAuthorization user 
+                    , UGCPost.UGCPostData postData
+                )
+                {
+                    var url = "/v2/ugcPosts";
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "POST";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    this.CreateJsonPostStream(context, postData);
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                                
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues("X-RestLi-Id");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('"').TrimStart('"');
+                        }
+                    return result;
+                }
+
+                    /// <summary>
+                    /// Upload a video asset to create a UGC Post.
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
+                    /// </remarks>
+                    public async Task<string> PostAsync(
+                          UserAuthorization user 
+                        , UGCPost.UGCPostData postData
+                    )
+                    {
+                        var url = "/v2/ugcPosts";
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "POST";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        this.CreateJsonPostStream(context, postData);
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                                    
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues("X-RestLi-Id");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('"').TrimStart('"');
+                        }
+                        return result;
+                    }
+                        
+            }
         }
-        
-        /// <summary>
-        /// Upload a video asset to create a UGC Post.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
-        /// </remarks>
-        public UGCPost.UGCPostResult Post(
-              UserAuthorization user 
-            , UGCPost.UGCPostData postData
-        )
-        {
-            var url = "/v2/ugcPosts";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<UGCPost.UGCPostResult>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Upload a video asset to create a UGC Post.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
-        /// </remarks>
-        public async Task<UGCPost.UGCPostResult> PostAsync(
-              UserAuthorization user 
-            , UGCPost.UGCPostData postData
-        )
-        {
-            var url = "/v2/ugcPosts";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<UGCPost.UGCPostResult>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(Asset)
 namespace Sparkle.LinkedInNET.Asset
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Asset'
-    /// </summary>
-    public class AssetApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal AssetApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
-        }
-        
-        /// <summary>
-        /// To upload video.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public Asset.RegisterUploadResult RegisterUpload(
-              UserAuthorization user 
-            , Asset.RegisterUploadRequest postData
-        )
-        {
-            var url = "/v2/assets?action=registerUpload";
+            /// <summary>
+            /// Name: 'Asset'
+            /// </summary>
+            public class AssetApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal AssetApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// To upload video.
+                /// </summary>
+                /// <remarks>
+                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                /// </remarks>
+                public Asset.RegisterUploadResult RegisterUpload(
+                      UserAuthorization user 
+                    , Asset.RegisterUploadRequest postData
+                )
+                {
+                    var url = "/v2/assets?action=registerUpload";
 
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "POST";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                    this.CreateJsonPostStream(context, postData);
 
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
-            return result;
-        }
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
+                    return result;
+                }
 
-    #if ASYNCTASKS
-        /// <summary>
-        /// To upload video.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public async Task<Asset.RegisterUploadResult> RegisterUploadAsync(
-              UserAuthorization user 
-            , Asset.RegisterUploadRequest postData
-        )
-        {
-            var url = "/v2/assets?action=registerUpload";
+                    /// <summary>
+                    /// To upload video.
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                    /// </remarks>
+                    public async Task<Asset.RegisterUploadResult> RegisterUploadAsync(
+                          UserAuthorization user 
+                        , Asset.RegisterUploadRequest postData
+                    )
+                    {
+                        var url = "/v2/assets?action=registerUpload";
 
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "POST";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                        this.CreateJsonPostStream(context, postData);
 
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// To upload video. Gets back the status code of the request.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public string UploadAsset(
-              string uploadUrl 
-            , Asset.UploadAssetRequest postData
-        )
-        {
-            const string urlFormat = "{UploadUrl}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
-
-            var context = new RequestContext();
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateOctetStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
                         
+                        var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
+                        return result;
+                    }
+                        
+                        /// <summary>
+                        /// To upload video. Gets back the status code of the request.
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                        /// </remarks>
+                        public string UploadAsset(
+                              string uploadUrl 
+                            , Asset.UploadAssetRequest postData
+                        )
+                        {
+                            const string urlFormat = "{UploadUrl}";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+
+                            var context = new RequestContext();
+                            context.Method =  "POST";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                            this.CreateOctetStream(context, postData);
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                                        
                         var result = string.Empty;
                         var headerETag = context.ResponseHeaders.GetValues("eTag");
                         if (headerETag.Length > 0)
@@ -4617,34 +4597,33 @@ namespace Sparkle.LinkedInNET.Asset
                             result = headerETag.First();
                             result = result.TrimEnd('"').TrimStart('"');
                         }
-            return result;
-        }
+                            return result;
+                        }
 
-    #if ASYNCTASKS
-        /// <summary>
-        /// To upload video. Gets back the status code of the request.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public async Task<string> UploadAssetAsync(
-              string uploadUrl 
-            , Asset.UploadAssetRequest postData
-        )
-        {
-            const string urlFormat = "{UploadUrl}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+                            /// <summary>
+                            /// To upload video. Gets back the status code of the request.
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                            /// </remarks>
+                            public async Task<string> UploadAssetAsync(
+                                  string uploadUrl 
+                                , Asset.UploadAssetRequest postData
+                            )
+                            {
+                                const string urlFormat = "{UploadUrl}";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
 
-            var context = new RequestContext();
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateOctetStream(context, postData);
+                                var context = new RequestContext();
+                                context.Method =  "POST";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                this.CreateOctetStream(context, postData);
 
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-                        
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                            
                         var result = string.Empty;
                         var headerETag = context.ResponseHeaders.GetValues("eTag");
                         if (headerETag.Length > 0)
@@ -4652,609 +4631,586 @@ namespace Sparkle.LinkedInNET.Asset
                             result = headerETag.First();
                             result = result.TrimEnd('"').TrimStart('"');
                         }
-            return result;
+                                return result;
+                            }
+                                
+                                /// <summary>
+                                /// Depending on content size, it might take a few minutes for the upload to complete.
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                /// </remarks>
+                                public Asset.AssetResult GetAsset(
+                                      UserAuthorization user 
+                                    , string assetId 
+                                )
+                                {
+                                    const string urlFormat = "/v2/assets/{AssetId}";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// Depending on content size, it might take a few minutes for the upload to complete.
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                    /// </remarks>
+                                    public async Task<Asset.AssetResult> GetAssetAsync(
+                                          UserAuthorization user 
+                                        , string assetId 
+                                    )
+                                    {
+                                        const string urlFormat = "/v2/assets/{AssetId}";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+                                        return result;
+                                    }
+                                        
+                                        /// <summary>
+                                        /// To upload video.
+                                        /// </summary>
+                                        /// <remarks>
+                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                        /// </remarks>
+                                        public int CompleteMultiPartUpload(
+                                              UserAuthorization user 
+                                            , Asset.CompleteMultipartUploadRequest postData
+                                        )
+                                        {
+                                            var url = "/v2/assets?action=completeMultiPartUpload";
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "POST";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            this.CreateJsonPostStream(context, postData);
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = (int)context.HttpStatusCode;
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// To upload video.
+                                            /// </summary>
+                                            /// <remarks>
+                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                            /// </remarks>
+                                            public async Task<int> CompleteMultiPartUploadAsync(
+                                                  UserAuthorization user 
+                                                , Asset.CompleteMultipartUploadRequest postData
+                                            )
+                                            {
+                                                var url = "/v2/assets?action=completeMultiPartUpload";
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "POST";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                this.CreateJsonPostStream(context, postData);
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = (int)context.HttpStatusCode;
+                                                return result;
+                                            }
+                                                
+            }
         }
-    #endif
-        
-        /// <summary>
-        /// Depending on content size, it might take a few minutes for the upload to complete.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public Asset.AssetResult GetAsset(
-              UserAuthorization user 
-            , string assetId 
-        )
-        {
-            const string urlFormat = "/v2/assets/{AssetId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Asset.AssetResult>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Depending on content size, it might take a few minutes for the upload to complete.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public async Task<Asset.AssetResult> GetAssetAsync(
-              UserAuthorization user 
-            , string assetId 
-        )
-        {
-            const string urlFormat = "/v2/assets/{AssetId}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Asset.AssetResult>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// To upload video.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public int CompleteMultiPartUpload(
-              UserAuthorization user 
-            , Asset.CompleteMultipartUploadRequest postData
-        )
-        {
-            var url = "/v2/assets?action=completeMultiPartUpload";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = (int)context.HttpStatusCode;
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// To upload video.
-        /// </summary>
-        /// <remarks>
-        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
-        /// </remarks>
-        public async Task<int> CompleteMultiPartUploadAsync(
-              UserAuthorization user 
-            , Asset.CompleteMultipartUploadRequest postData
-        )
-        {
-            var url = "/v2/assets?action=completeMultiPartUpload";
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "POST";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-            this.CreateJsonPostStream(context, postData);
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = (int)context.HttpStatusCode;
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteApiGroup(Common)
 namespace Sparkle.LinkedInNET.Common
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Common'
-    /// </summary>
-    public class CommonApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal CommonApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Common'
+            /// </summary>
+            public class CommonApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal CommonApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+            }
         }
-        
-    }
-}
 
 // WriteApiGroup(Targeting)
 namespace Sparkle.LinkedInNET.Targeting
 {
     using System;
     using System.Xml.Serialization;
-#if ASYNCTASKS
-    using System.Threading.Tasks;
-#endif
-    using Sparkle.LinkedInNET.Internals;
-    using System.Linq;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
 
-    /// <summary>
-    /// Name: 'Targeting'
-    /// </summary>
-    public class TargetingApi : BaseApi
-    {
-        [System.Diagnostics.DebuggerStepThrough]
-        internal TargetingApi(LinkedInApi linkedInApi)
-            : base(linkedInApi)
-        {
+            /// <summary>
+            /// Name: 'Targeting'
+            /// </summary>
+            public class TargetingApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal TargetingApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
+                /// </summary>
+                /// <remarks>
+                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+                /// </remarks>
+                public Targeting.Industries GetIndustries(
+                      UserAuthorization user 
+                    , string dataLanguage 
+                    , string dataCountry 
+                    , int count = 50
+                    , int start = 0
+                )
+                {
+                    const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "GET";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<Targeting.Industries>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
+                    /// </remarks>
+                    public async Task<Targeting.Industries> GetIndustriesAsync(
+                          UserAuthorization user 
+                        , string dataLanguage 
+                        , string dataCountry 
+                        , int count = 50
+                        , int start = 0
+                    )
+                    {
+                        const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "GET";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<Targeting.Industries>(context);
+                        return result;
+                    }
+                        
+                        /// <summary>
+                        /// 
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+                        /// </remarks>
+                        public Targeting.JobFunctions GetJobFunctions(
+                              UserAuthorization user 
+                            , string dataLocale 
+                            , int count = 50
+                            , int start = 0
+                        )
+                        {
+                            const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+
+                            var context = new RequestContext();
+                            context.UserAuthorization = user;
+                            context.Method =  "GET";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                            var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
+                            return result;
+                        }
+
+                            /// <summary>
+                            /// 
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
+                            /// </remarks>
+                            public async Task<Targeting.JobFunctions> GetJobFunctionsAsync(
+                                  UserAuthorization user 
+                                , string dataLocale 
+                                , int count = 50
+                                , int start = 0
+                            )
+                            {
+                                const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+
+                                var context = new RequestContext();
+                                context.UserAuthorization = user;
+                                context.Method =  "GET";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
+                                return result;
+                            }
+                                
+                                /// <summary>
+                                /// 
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+                                /// </remarks>
+                                public Targeting.CountryGroups GetCountryGroups(
+                                      UserAuthorization user 
+                                    , string dataLanguage 
+                                    , string dataCountry 
+                                    , int count = 50
+                                    , int start = 0
+                                )
+                                {
+                                    const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// 
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
+                                    /// </remarks>
+                                    public async Task<Targeting.CountryGroups> GetCountryGroupsAsync(
+                                          UserAuthorization user 
+                                        , string dataLanguage 
+                                        , string dataCountry 
+                                        , int count = 50
+                                        , int start = 0
+                                    )
+                                    {
+                                        const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
+                                        return result;
+                                    }
+                                        
+                                        /// <summary>
+                                        /// 
+                                        /// </summary>
+                                        /// <remarks>
+                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                        /// </remarks>
+                                        public Targeting.Countries GetCountries(
+                                              UserAuthorization user 
+                                            , string dataLanguage 
+                                            , string dataCountry 
+                                            , string countryGroup 
+                                            , string countryGroupURN 
+                                            , int count = 50
+                                            , int start = 0
+                                        )
+                                        {
+                                            const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "GET";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// 
+                                            /// </summary>
+                                            /// <remarks>
+                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                            /// </remarks>
+                                            public async Task<Targeting.Countries> GetCountriesAsync(
+                                                  UserAuthorization user 
+                                                , string dataLanguage 
+                                                , string dataCountry 
+                                                , string countryGroup 
+                                                , string countryGroupURN 
+                                                , int count = 50
+                                                , int start = 0
+                                            )
+                                            {
+                                                const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "GET";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                                return result;
+                                            }
+                                                
+                                                /// <summary>
+                                                /// 
+                                                /// </summary>
+                                                /// <remarks>
+                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                /// </remarks>
+                                                public Targeting.States GetStates(
+                                                      UserAuthorization user 
+                                                    , string dataLanguage 
+                                                    , string dataCountry 
+                                                    , string country 
+                                                    , string countryURN 
+                                                    , int count = 50
+                                                    , int start = 0
+                                                )
+                                                {
+                                                    const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+
+                                                    var context = new RequestContext();
+                                                    context.UserAuthorization = user;
+                                                    context.Method =  "GET";
+                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                    if (!this.ExecuteQuery(context))
+                                                        this.HandleJsonErrorResponse(context);
+                                                    
+                                                    var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                    return result;
+                                                }
+
+                                                    /// <summary>
+                                                    /// 
+                                                    /// </summary>
+                                                    /// <remarks>
+                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                    /// </remarks>
+                                                    public async Task<Targeting.States> GetStatesAsync(
+                                                          UserAuthorization user 
+                                                        , string dataLanguage 
+                                                        , string dataCountry 
+                                                        , string country 
+                                                        , string countryURN 
+                                                        , int count = 50
+                                                        , int start = 0
+                                                    )
+                                                    {
+                                                        const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+
+                                                        var context = new RequestContext();
+                                                        context.UserAuthorization = user;
+                                                        context.Method =  "GET";
+                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                        if (!exec)
+                                                            this.HandleJsonErrorResponse(context);
+                                                        
+                                                        var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                        return result;
+                                                    }
+                                                        
+                                                        /// <summary>
+                                                        /// 
+                                                        /// </summary>
+                                                        /// <remarks>
+                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                        /// </remarks>
+                                                        public Targeting.Regions GetRegions(
+                                                              UserAuthorization user 
+                                                            , string dataLanguage 
+                                                            , string dataCountry 
+                                                            , string states 
+                                                            , string statesURN 
+                                                            , int count = 50
+                                                            , int start = 0
+                                                        )
+                                                        {
+                                                            const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+
+                                                            var context = new RequestContext();
+                                                            context.UserAuthorization = user;
+                                                            context.Method =  "GET";
+                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                            if (!this.ExecuteQuery(context))
+                                                                this.HandleJsonErrorResponse(context);
+                                                            
+                                                            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                            return result;
+                                                        }
+
+                                                            /// <summary>
+                                                            /// 
+                                                            /// </summary>
+                                                            /// <remarks>
+                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                            /// </remarks>
+                                                            public async Task<Targeting.Regions> GetRegionsAsync(
+                                                                  UserAuthorization user 
+                                                                , string dataLanguage 
+                                                                , string dataCountry 
+                                                                , string states 
+                                                                , string statesURN 
+                                                                , int count = 50
+                                                                , int start = 0
+                                                            )
+                                                            {
+                                                                const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+
+                                                                var context = new RequestContext();
+                                                                context.UserAuthorization = user;
+                                                                context.Method =  "GET";
+                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                if (!exec)
+                                                                    this.HandleJsonErrorResponse(context);
+                                                                
+                                                                var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                return result;
+                                                            }
+                                                                
+                                                                /// <summary>
+                                                                /// 
+                                                                /// </summary>
+                                                                /// <remarks>
+                                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+                                                                /// </remarks>
+                                                                public Targeting.Seniorities GetSeniorities(
+                                                                      UserAuthorization user 
+                                                                    , string dataLanguage 
+                                                                    , string dataCountry 
+                                                                    , int count = 50
+                                                                    , int start = 0
+                                                                )
+                                                                {
+                                                                    const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                                                                    var context = new RequestContext();
+                                                                    context.UserAuthorization = user;
+                                                                    context.Method =  "GET";
+                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                    if (!this.ExecuteQuery(context))
+                                                                        this.HandleJsonErrorResponse(context);
+                                                                    
+                                                                    var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+                                                                    return result;
+                                                                }
+
+                                                                    /// <summary>
+                                                                    /// 
+                                                                    /// </summary>
+                                                                    /// <remarks>
+                                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
+                                                                    /// </remarks>
+                                                                    public async Task<Targeting.Seniorities> GetSenioritiesAsync(
+                                                                          UserAuthorization user 
+                                                                        , string dataLanguage 
+                                                                        , string dataCountry 
+                                                                        , int count = 50
+                                                                        , int start = 0
+                                                                    )
+                                                                    {
+                                                                        const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+
+                                                                        var context = new RequestContext();
+                                                                        context.UserAuthorization = user;
+                                                                        context.Method =  "GET";
+                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                        if (!exec)
+                                                                            this.HandleJsonErrorResponse(context);
+                                                                        
+                                                                        var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
+                                                                        return result;
+                                                                    }
+                                                                        
+            }
         }
-        
-        /// <summary>
-        /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
-        /// </remarks>
-        public Targeting.Industries GetIndustries(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Industries>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// Industry taxonomy is used to standardize data across the LinkedIn platform. Use this API to retrieve standardized URNs and their names.
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/industries#GET_ALL
-        /// </remarks>
-        public async Task<Targeting.Industries> GetIndustriesAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Industries>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
-        /// </remarks>
-        public Targeting.JobFunctions GetJobFunctions(
-              UserAuthorization user 
-            , string dataLocale 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/functions   locale e.g.: en_US
-        /// </remarks>
-        public async Task<Targeting.JobFunctions> GetJobFunctionsAsync(
-              UserAuthorization user 
-            , string dataLocale 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.JobFunctions>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
-        /// </remarks>
-        public Targeting.CountryGroups GetCountryGroups(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/country-groups
-        /// </remarks>
-        public async Task<Targeting.CountryGroups> GetCountryGroupsAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.CountryGroups>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
-        /// </remarks>
-        public Targeting.Countries GetCountries(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string countryGroup 
-            , string countryGroupURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Countries>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
-        /// </remarks>
-        public async Task<Targeting.Countries> GetCountriesAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string countryGroup 
-            , string countryGroupURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Countries>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
-        /// </remarks>
-        public Targeting.States GetStates(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string country 
-            , string countryURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.States>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
-        /// </remarks>
-        public async Task<Targeting.States> GetStatesAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string country 
-            , string countryURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.States>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
-        /// </remarks>
-        public Targeting.Regions GetRegions(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string states 
-            , string statesURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Regions>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
-        /// </remarks>
-        public async Task<Targeting.Regions> GetRegionsAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , string states 
-            , string statesURN 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Regions>(context);
-            return result;
-        }
-    #endif
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
-        /// </remarks>
-        public Targeting.Seniorities GetSeniorities(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            if (!this.ExecuteQuery(context))
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
-            return result;
-        }
-
-    #if ASYNCTASKS
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities
-        /// </remarks>
-        public async Task<Targeting.Seniorities> GetSenioritiesAsync(
-              UserAuthorization user 
-            , string dataLanguage 
-            , string dataCountry 
-            , int count = 50
-            , int start = 0
-        )
-        {
-            const string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
-
-            var context = new RequestContext();
-            context.UserAuthorization = user;
-            context.Method =  "GET";
-            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-
-            var exec = await this.ExecuteQueryAsync(context);
-            if (!exec)
-                this.HandleJsonErrorResponse(context);
-            
-            var result = this.HandleJsonResponse<Targeting.Seniorities>(context);
-            return result;
-        }
-    #endif
-        
-    }
-}
 
 // WriteRootServices()
 namespace Sparkle.LinkedInNET

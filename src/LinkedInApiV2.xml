@@ -285,8 +285,10 @@
     <ApiMethod MethodName="Post" HttpMethod="POST"
                    Path="/v2/ugcPosts"
                    PostReturnType="UGCPostData"
-                   ReturnType="UGCPostResult"
+                   ReturnType="string"
                    RequiresUserAuthentication="1"
+                   IsValueType="1"
+                   IsUGCPostHandeling="1"
                    UseFieldSelectors="0"
                    Title="Upload a video asset to create a UGC Post."
                    Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api" />

@@ -286,10 +286,10 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
             this.text.WriteLine(indent++, "{");
             this.WriteNamespace(indent, "System");
             this.WriteNamespace(indent, "System.Xml.Serialization");
-            this.text.WriteLine(--indent, "#if ASYNCTASKS");
+            //this.text.WriteLine(--indent, "#if ASYNCTASKS");
             indent++;
             this.WriteNamespace(indent, "System.Threading.Tasks");
-            this.text.WriteLine(--indent, "#endif");
+            //this.text.WriteLine(--indent, "#endif");
             indent++;
             this.WriteNamespace(indent, this.RootNamespace + ".Internals");
             this.WriteNamespace(indent, "System.Linq");
@@ -477,6 +477,18 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                         }"
                     );
                 }
+                else if (method.IsUGCPostHandeling)
+                {
+                    text.WriteLine(indent, @"            
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues(""X-RestLi-Id"");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('""').TrimStart('""');
+                        }"
+                    );
+                }
                 else if(method.IsIntResultHandeling)
                 {
                     text.WriteLine(indent, "var result = (int)context.HttpStatusCode;");
@@ -507,7 +519,7 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
 
                 this.text.WriteLine();
-                this.text.WriteLine(--indent, "#if ASYNCTASKS");
+                //this.text.WriteLine(--indent, "#if ASYNCTASKS");
                 indent++;
                 // doc
                 this.text.WriteLine(indent, "/// <summary>");
@@ -616,6 +628,18 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                         }"
                     );
                 }
+                else if (method.IsUGCPostHandeling)
+                {
+                    text.WriteLine(indent, @"            
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues(""X-RestLi-Id"");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('""').TrimStart('""');
+                        }"
+                    );
+                }
                 else if (method.IsIntResultHandeling)
                 {
                     text.WriteLine(indent, "var result = (int)context.HttpStatusCode;");
@@ -642,7 +666,7 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 ////this.text.WriteLine(indent, "throw new NotImplementedException(url);");
                 this.text.WriteLine(--indent, "}");
-                this.text.WriteLine(--indent, "#endif");
+                //this.text.WriteLine(--indent, "#endif");
                 indent++;
                 
                 
