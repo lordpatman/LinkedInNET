@@ -270,29 +270,28 @@
                   ReturnType="MediaPostResult"
                   RequiresUserAuthentication="1"
                   UseFieldSelectors="0"
-               IsMultiPartStream="1"
                   Title="To upload rich media, attach the media as multipart/form-data."
                   Remark="See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares" />
 
 
-    <ReturnType Name="MediaPostResult" ClassName="MediaPostResult" IsMultiPartStream="1">
+    <ReturnType Name="MediaPostResult" ClassName="MediaPostResult" >
       <Field Name="location" />
     </ReturnType>
   </ApiGroup>  
   
 
 
-  <!--<ApiGroup Name="UGCPost">
+  <ApiGroup Name="UGCPost">
     <ApiMethod MethodName="Post" HttpMethod="POST"
                    Path="/v2/ugcPosts"
-                   PostReturnType="Common.UGCPost"
-                   ReturnType="Common.UGCPostResult"
+                   PostReturnType="UGCPostData"
+                   ReturnType="UGCPostResult"
                    RequiresUserAuthentication="1"
                    UseFieldSelectors="0"
                    Title="Upload a video asset to create a UGC Post."
                    Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api" />
 
-    <ReturnType Name="UGCPost">
+    <ReturnType Name="UGCPostData" ClassName="UGCPostData">
       <Field Name="author" />
       <Field Name="lifecycleState" />
       <Field Name="specificContent" Type="SpecificContent" />
@@ -300,7 +299,7 @@
       <Field Name="visibility" Type="UGCPostvisibility"/>
     </ReturnType>
     
-    <ReturnType Name="UGCPostResult">
+    <ReturnType Name="UGCPostResult" ClassName="UGCPostResult">
       <Field Name="id" />
     </ReturnType>
 
@@ -331,20 +330,163 @@
 
 
     <ReturnType Name="TargetAudience" ClassName="TargetAudience">
-      <Field Name="targetedEntities" PropertyName="TargetedEntities" Type="TargetedEntities" IsCollection="1" />
+      <Field Name="targetedEntities" PropertyName="TargetedEntities" Type="Common.LinkedInTargetedEntity" IsCollection="1" />
     </ReturnType>
     
-    <ReturnType Name="TargetedEntities" ClassName="TargetedEntities">
-      <Field Name="locations" IsCollection="1" />
-    </ReturnType>
-
-
+    
     <ReturnType Name="UGCPostvisibility" ClassName="UGCPostvisibility">
       <Field Name="com.linkedin.ugc.MemberNetworkVisibility" PropertyName="comLinkedinUgcMemberNetworkVisibility" />
     </ReturnType>
 
-  </ApiGroup>-->
-      
+  </ApiGroup>
+
+
+  <ApiGroup Name="Asset">
+    <ApiMethod MethodName="RegisterUpload" 
+               HttpMethod="POST"
+               Path="/v2/assets?action=registerUpload"
+               PostReturnType="RegisterUploadRequest"
+               ReturnType="RegisterUploadResult"
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Title="To upload video."
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset" />
+
+    <ApiMethod MethodName="UploadAsset" 
+               HttpMethod="POST"
+               Path="{UploadUrl}"
+               PostReturnType="UploadAssetRequest"
+               ReturnType="string"
+               IsValueType="1"
+               IsStreamOctetResultHandeling="1"
+               UseFieldSelectors="0"
+               Title="To upload video. Gets back the status code of the request."
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset" />
+    
+    <ApiMethod MethodName="GetAsset" 
+               HttpMethod="GET"
+               Path="/v2/assets/{AssetId}"
+               ReturnType="AssetResult"
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Title="Depending on content size, it might take a few minutes for the upload to complete."
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset" />
+
+    <ApiMethod MethodName="CompleteMultiPartUpload"
+               HttpMethod="POST"
+               Path="/v2/assets?action=completeMultiPartUpload"
+               PostReturnType="CompleteMultipartUploadRequest"
+               ReturnType="int"
+               IsValueType="1"
+               IsIntResultHandeling="1"
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Title="To upload video."
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset" />
+
+
+
+    <ReturnType Name="RegisterUploadRequest" ClassName="RegisterUploadRequest">
+      <Field Name="registerUploadRequest" PropertyName="RegisterUploadRequestData" Type="RegisterUploadRequestData"/>
+    </ReturnType>
+    <ReturnType Name="RegisterUploadRequestData" ClassName="RegisterUploadRequestData" >
+      <Field Name="supportedUploadMechanism" PropertyName="SupportedUploadMechanism" IsCollection="1"/>
+      <Field Name="fileSize" PropertyName="FileSize" Type="long?"/>
+      <Field Name="owner" PropertyName="Owner" />
+      <Field Name="recipes" PropertyName="Recipes" IsCollection="1"/>
+      <Field Name="serviceRelationships" PropertyName="ServiceRelationships" Type="ServiceRelationship" IsCollection="1"/>
+    </ReturnType>
+    <ReturnType Name="ServiceRelationship" ClassName="ServiceRelationship">
+      <Field Name="identifier" PropertyName="Identifier" />
+      <Field Name="relationshipType" PropertyName="RelationshipType" />
+    </ReturnType>
+    
+          
+    <ReturnType Name="RegisterUploadResult" ClassName="RegisterUploadResult" >
+      <Field Name="value" PropertyName="Value" Type="RegisterUploadResultValue"/>
+    </ReturnType>
+    <ReturnType Name="RegisterUploadResultValue" ClassName="RegisterUploadResultValue" >
+      <Field Name="asset" PropertyName="Asset" />
+      <Field Name="mediaArtifact" PropertyName="MediaArtifact" />
+      <Field Name="uploadMechanism" PropertyName="UploadMechanism" Type="UploadMechanism" />
+    </ReturnType>
+    <ReturnType Name="UploadMechanism" ClassName="UploadMechanism" >
+      <Field Name="com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest" PropertyName="ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest" Type="ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest"/>
+      <Field Name="com.linkedin.digitalmedia.uploading.MultipartUpload" PropertyName="ComLinkedinDigitalmediaUploadingMultipartUpload" Type="ComLinkedinDigitalmediaUploadingMultipartUpload"/>
+    </ReturnType>
+    <ReturnType Name="ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest" ClassName="ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest" >
+      <Field Name="headers" PropertyName="Headers" Type="Headers"/>
+      <Field Name="uploadUrl" PropertyName="UploadUrl"/>
+    </ReturnType>
+    <ReturnType Name="ComLinkedinDigitalmediaUploadingMultipartUpload" ClassName="ComLinkedinDigitalmediaUploadingMultipartUpload" >
+      <Field Name="metadata" PropertyName="Metadata"/>
+      <Field Name="partUploadRequests" PropertyName="PartUploadRequests" Type="PartUploadRequest" IsCollection="1"/>
+    </ReturnType>
+    <ReturnType Name="PartUploadRequest" ClassName="PartUploadRequest" >
+      <Field Name="headers" PropertyName="Headers" Type="Headers"/>
+      <Field Name="urlExpiresAt" PropertyName="UrlExpiresAt" Type="long"/>
+      <Field Name="byteRange" PropertyName="ByteRange" Type="ByteRange"/>
+      <Field Name="url" PropertyName="Url" />
+    </ReturnType>
+    <ReturnType Name="Headers" ClassName="Headers" >
+      <Field Name="Content-Type" PropertyName="ContentType"/>
+      <Field Name="Content-Length" PropertyName="ContentLength"/>
+      <Field Name="x-amz-server-side-encryption" PropertyName="xAmzServerSideEncryption" />
+      <Field Name="x-amz-server-side-encryption-aws-kms-key-id" PropertyName="xAmzServerSideEncryptionAwsKmsKeyId" />
+    </ReturnType>
+    <ReturnType Name="ByteRange" ClassName="ByteRange" >
+      <Field Name="lastByte" PropertyName="LastByte" Type="long"/>
+      <Field Name="firstByte" PropertyName="FirstByte" Type="long"/>
+    </ReturnType>
+
+    <ReturnType Name="CompleteMultipartUploadRequest" ClassName="CompleteMultipartUploadRequest">
+      <Field Name="completeMultipartUploadRequest" PropertyName="CompleteMultipartUploadRequestData" Type="CompleteMultipartUploadRequestData"/>
+    </ReturnType>
+    <ReturnType Name="CompleteMultipartUploadRequestData" ClassName="CompleteMultipartUploadRequestData">
+      <Field Name="mediaArtifact" PropertyName="MediaArtifact" />
+      <Field Name="metadata" PropertyName="Metadata" />
+      <Field Name="partUploadResponses" PropertyName="PartUploadResponses" Type="PartUploadResponse" IsCollection="1"/>
+    </ReturnType>
+    <ReturnType Name="PartUploadResponse" ClassName="PartUploadResponse">
+      <Field Name="headers" PropertyName="Headers" Type="PartUploadResponseHeaders"/>
+      <Field Name="httpStatusCode" PropertyName="HttpStatusCode" Type="int"/>      
+    </ReturnType>
+    <ReturnType Name="PartUploadResponseHeaders" ClassName="PartUploadResponseHeaders">
+      <Field Name="ETag" PropertyName="ETag" />
+    </ReturnType>
+
+    <ReturnType Name="CompleteMultipartUploadResult" ClassName="CompleteMultipartUploadResult" >
+      <Field Name="data" Type="object"/>
+    </ReturnType>
+  
+  
+    <ReturnType Name="UploadAssetRequest" ClassName="UploadAssetRequest" IsOctetStream="1">
+      <Field Name="requestHeaders" PropertyName="RequestHeaders" Type="ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest"/>
+      <Field Name="data" PropertyName="Data" Type="byte[]"/>
+    </ReturnType>   
+    <ReturnType Name="UploadAssetResult" ClassName="UploadAssetResponse">
+      <Field Name="data" PropertyName="Data" Type="object"/>
+    </ReturnType>
+  
+  
+    <ReturnType Name="AssetResult" ClassName="AssetResult">
+      <Field Name="created" PropertyName="Created" Type="long"/>
+      <Field Name="lastModified" PropertyName="LastModified" Type="long"/>
+      <Field Name="id" PropertyName="Id" />
+      <Field Name="mediaTypeFamily" PropertyName="MediaTypeFamily" />
+      <Field Name="recipes" PropertyName="Recipes" Type="Recipe" IsCollection="1"/>
+      <Field Name="serviceRelationships" PropertyName="ServiceRelationship" Type="ServiceRelationship" IsCollection="1"/>
+      <Field Name="status" PropertyName="Status" />
+    </ReturnType>
+  
+    <ReturnType Name="Recipe" ClassName="Recipe">
+      <Field Name="recipe" PropertyName="RecipeURN" />
+      <Field Name="status" PropertyName="Status" />
+    </ReturnType>
+  
+  </ApiGroup>
+
+
 
   <ApiGroup Name="Common">
     <ReturnType Name="PostShare">
@@ -424,6 +566,18 @@
       <Field Name="staffCountRanges" PropertyName="StaffCountRanges"  IsCollection="1" />
       <Field Name="visibleToGuest" PropertyName="VisibleToGuest"  Type="bool" />
     </ReturnType>
+    
+     <ReturnType Name="LinkedInTargetedEntity" ClassName="LinkedInTargetedEntity">      
+      <Field Name="industries" PropertyName="Industries" IsCollection="1" />
+      <Field Name="interfaceLocales" PropertyName="InterfaceLocales" Type="Locale" IsCollection="1"/>
+      <Field Name="jobFunctions" PropertyName="JobFunctions"  IsCollection="1" />
+      <Field Name="locations" PropertyName="Locations"  IsCollection="1" />
+      <Field Name="seniorities" PropertyName="Seniorities"  IsCollection="1" />
+      <Field Name="staffCountRanges" PropertyName="StaffCountRanges"  IsCollection="1" />
+       
+      <Field Name="connectionsOnly" PropertyName="ConnectionsOnly" Type="bool"/>
+      <Field Name="visibleToGuest" PropertyName="VisibleToGuest"  Type="bool" />
+    </ReturnType>
 
       <ReturnType Name="Locale" ClassName="Locale">
         <Field Name="country" PropertyName="Country" />
@@ -443,8 +597,7 @@
       <Field Name="type" PropertyName="Type"  />
     </ReturnType>
 
-    <ReturnType Name="mediaUploadData" ClassName="MediaUploadData"
-                IsMultiPartStream="1">
+    <ReturnType Name="mediaUploadData" ClassName="MediaUploadData" IsMultiPartStream="1">
       <Field Name="data" PropertyName="Data" Type="byte[]"/>
     </ReturnType>
     

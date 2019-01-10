@@ -14,6 +14,7 @@
     using System.Threading.Tasks;
     using Sparkle.LinkedInNET.Organizations;
     using System.Net;
+    using System.Text.RegularExpressions;
 
     ////using Sparkle.LinkedInNET.ServiceDefinition;
 
@@ -70,72 +71,6 @@
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
 
-                    // video test
-                    //var ugcPost = new Common.UGCPost()
-                    //{
-                    //    Author = "urn:li:person:" + "qhwvZ0K4cr",
-                    //    LifecycleState = "PUBLISHED",
-                    //    SpecificContent = new Common.SpecificContent()
-                    //    {
-                    //        ComLinkedinUgcShareContent = new Common.ComLinkedinUgcShareContent()
-                    //        {
-                    //            UGCMedia = new List<Common.UGCMedia>()
-                    //            {
-                    //                new Common.UGCMedia()
-                    //                {
-                    //                    UGCMediaDescription = new Common.UGCText()
-                    //                    {
-                    //                        Text = "test description"
-                    //                    },
-                    //                    Media = "urn:li:digitalmediaAsset:C5500AQG7r2u00ByWjw",
-                    //                    Status = "READY",
-                    //                    Thumbnails = new List<string>(),
-                    //                    UGCMediaTitle = new Common.UGCText()
-                    //                    {
-                    //                        Text = "Test Title"
-                    //                    }
-                    //                }
-                    //            },
-                    //            ShareCommentary = new Common.UGCText()
-                    //            {
-                    //                Text = "Test Commentary"
-                    //            },
-                    //            ShareMediaCategory = "VIDEO"
-                    //        }
-                    //    },
-                    //    //TargetAudience = new Common.TargetAudience()
-                    //    //{
-
-                    //    //},
-                    //    Visibility = new Common.UGCPostvisibility()
-                    //    {
-                    //        comLinkedinUgcMemberNetworkVisibility = "PUBLIC"
-                    //    }
-                    //};
-
-                    //var ugcPostResult = await this.api.UGCPost.PostAsync(user, ugcPost);
-
-                    //var test = "sdfas";
-
-
-
-
-
-
-
-
-
-                    // image test
-                    // var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/83278b25-b809-4458-912b-55b4d6d8b19d.jpg");
-                    var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/b7b12f6e-4eed-4ca1-b937-006b0c2aa93b.jpg");
-
-                    var postId = this.api.Media.Post(user, new Common.MediaUploadData() {
-                        Data = imageData
-                    });
-
-                    var test = "sdfas";
-
-
 
 
 
@@ -177,11 +112,12 @@
                     //    {
                     //        Title = "tttt",
                     //        ContentEntities = new List<Common.PostShareContentEntities>() { new Common.PostShareContentEntities() {
-                    //                  EntityLocation = "https://www.example.com/",
-                    //                  Thumbnails = new List<Common.PostShareContentThumbnails>(){new Common.PostShareContentThumbnails()
-                    //                  {
-                    //                      ResolvedUrl = "http://wac.2f9ad.chicdn.net/802F9AD/u/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=30"
-                    //                  } }
+                    //                  //EntityLocation = "https://www.example.com/",
+                    //                  //Thumbnails = new List<Common.PostShareContentThumbnails>(){new Common.PostShareContentThumbnails()
+                    //                  //{
+                    //                  //    ResolvedUrl = "http://wac.2f9ad.chicdn.net/802F9AD/u/joyent.wme/public/wme/assets/ec050984-7b81-11e6-96e0-8905cd656caf.jpg?v=30"
+                    //                  //} }
+                    //                  Entity = postId.Location
                     //              }
                     //          }
                     //    },
@@ -197,7 +133,8 @@
                     //    {
                     //        Text = "text"
                     //    },
-                    //    Owner = "urn:li:person:" + "123456789"
+                    //    // Owner = "urn:li:person:" + "123456789"
+                    //    Owner = "urn:li:organization:18568129",
                     //}
                     //);
 

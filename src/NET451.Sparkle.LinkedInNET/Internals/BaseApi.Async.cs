@@ -28,10 +28,21 @@ namespace Sparkle.LinkedInNET.Internals
             if (string.IsNullOrEmpty(context.UrlPath))
                 throw new ArgumentException("The value cannot be empty", "context.UrlPath");
 
-            var request = (HttpWebRequest)HttpWebRequest.Create(context.UrlPath);
+            bool isOctet = false;
+            if (context.PostDataType == "application/octet-stream")
+                isOctet = true;
+
+            var request = (HttpWebRequest)HttpWebRequest.Create(isOctet ? context.UploadUrl : context.UrlPath);
             request.Method = context.Method;
             request.UserAgent = LibraryInfo.UserAgent;
-            if (context.PostDataType != "multipart/form-data")
+            if (context.PostDataType == "multipart/form-data" || context.PostDataType == "application/octet-stream")
+            {
+            }
+            else if (!isOctet && context.UrlPath.Contains("ugcPosts"))
+            {             
+                request.Headers.Add("X-Restli-Protocol-Version", "2.0.0");
+            }
+            else
             {
                 request.Headers.Add("x-li-format", "json");
             }
@@ -79,6 +90,21 @@ namespace Sparkle.LinkedInNET.Internals
                             requestStream.Close();
                         }
                     }
+                    else if (context.PostDataType == "application/octet-stream")
+                    {
+                        request.ContentType = "application/octet-stream";
+                        request.ContentLength = context.PostData.Length;
+                        request.Method = "PUT";
+                        request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                        request.Timeout = 10000;
+                        
+                        // Send the data to the request.
+                        using (Stream requestStream = request.GetRequestStream())
+                        {
+                            requestStream.Write(context.PostData, 0, context.PostData.Length);
+                            requestStream.Close();
+                        }
+                    }
                     else
                     {
                         if (context.PostDataType != null)
@@ -117,7 +143,7 @@ namespace Sparkle.LinkedInNET.Internals
                 {
                     throw new InvalidOperationException("Error from API (HTTP " + (int)(response.StatusCode) + ")");
                 }
-
+                               
                 return true;
             }
             catch (WebException ex)
@@ -133,7 +159,7 @@ namespace Sparkle.LinkedInNET.Internals
                 {
                     context.HttpStatusCode = (int)response.StatusCode;
                     context.ResponseHeaders = response.Headers;
-
+                    
                     var stream = response.GetResponseStream();
                     if (stream != null)
                     {

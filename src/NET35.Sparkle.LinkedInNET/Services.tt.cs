@@ -1452,6 +1452,1015 @@ namespace Sparkle.LinkedInNET.Media
 
 #endregion
 
+#region ReturnTypes for UGCPost
+
+// WriteReturnTypes(UGCPost, UGCPostData)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPostData'
+    /// </summary>
+    [Serializable, XmlRoot("UGCPostData")]
+    public class UGCPostData
+    {
+        /// <summary>
+        /// Field: 'author' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "author")]
+        [JsonProperty(PropertyName = "author")]
+        public string Author { get; set; }
+
+        /// <summary>
+        /// Field: 'lifecycleState' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lifecycleState")]
+        [JsonProperty(PropertyName = "lifecycleState")]
+        public string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Field: 'specificContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "specificContent")]
+        [JsonProperty(PropertyName = "specificContent")]
+        public SpecificContent SpecificContent { get; set; }
+
+        /// <summary>
+        /// Field: 'targetAudience' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "targetAudience")]
+        [JsonProperty(PropertyName = "targetAudience")]
+        public TargetAudience TargetAudience { get; set; }
+
+        /// <summary>
+        /// Field: 'visibility' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "visibility")]
+        [JsonProperty(PropertyName = "visibility")]
+        public UGCPostvisibility Visibility { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCPostResult)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPostResult'
+    /// </summary>
+    [Serializable, XmlRoot("UGCPostResult")]
+    public class UGCPostResult
+    {
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, SpecificContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'SpecificContent'
+    /// </summary>
+    [Serializable, XmlRoot("SpecificContent")]
+    public class SpecificContent
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.ugc.ShareContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.ugc.ShareContent")]
+        [JsonProperty(PropertyName = "com.linkedin.ugc.ShareContent")]
+        public ComLinkedinUgcShareContent ComLinkedinUgcShareContent { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, comLinkedinUgcShareContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'comLinkedinUgcShareContent'
+    /// </summary>
+    [Serializable, XmlRoot("comLinkedinUgcShareContent")]
+    public class ComLinkedinUgcShareContent
+    {
+        /// <summary>
+        /// Field: 'media' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media")]
+        [JsonProperty(PropertyName = "media")]
+        public List<UGCMedia> UGCMedia { get; set; }
+
+        /// <summary>
+        /// Field: 'shareCommentary' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareCommentary")]
+        [JsonProperty(PropertyName = "shareCommentary")]
+        public UGCText ShareCommentary { get; set; }
+
+        /// <summary>
+        /// Field: 'shareMediaCategory' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareMediaCategory")]
+        [JsonProperty(PropertyName = "shareMediaCategory")]
+        public string ShareMediaCategory { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMedia)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMedia'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMedia")]
+    public class UGCMedia
+    {
+        /// <summary>
+        /// Field: 'description' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "description")]
+        [JsonProperty(PropertyName = "description")]
+        public UGCText UGCMediaDescription { get; set; }
+
+        /// <summary>
+        /// Field: 'media' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media")]
+        [JsonProperty(PropertyName = "media")]
+        public string Media { get; set; }
+
+        /// <summary>
+        /// Field: 'status' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "status")]
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// Field: 'thumbnails' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "thumbnails")]
+        [JsonProperty(PropertyName = "thumbnails")]
+        public List<string> Thumbnails { get; set; }
+
+        /// <summary>
+        /// Field: 'title' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "title")]
+        [JsonProperty(PropertyName = "title")]
+        public UGCText UGCMediaTitle { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCText)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCText'
+    /// </summary>
+    [Serializable, XmlRoot("UGCText")]
+    public class UGCText
+    {
+        /// <summary>
+        /// Field: 'attributes' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "attributes")]
+        [JsonProperty(PropertyName = "attributes")]
+        public List<string> Attributes { get; set; }
+
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, TargetAudience)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetAudience'
+    /// </summary>
+    [Serializable, XmlRoot("TargetAudience")]
+    public class TargetAudience
+    {
+        /// <summary>
+        /// Field: 'targetedEntities' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "targetedEntities")]
+        [JsonProperty(PropertyName = "targetedEntities")]
+        public List<Common.LinkedInTargetedEntity> TargetedEntities { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCPostvisibility)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPostvisibility'
+    /// </summary>
+    [Serializable, XmlRoot("UGCPostvisibility")]
+    public class UGCPostvisibility
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.ugc.MemberNetworkVisibility' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.ugc.MemberNetworkVisibility")]
+        [JsonProperty(PropertyName = "com.linkedin.ugc.MemberNetworkVisibility")]
+        public string comLinkedinUgcMemberNetworkVisibility { get; set; }
+
+    }
+}
+
+// WriteReturnTypeFields(UGCPost)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Field selectors for the 'UGCPostData', 'UGCPostResult', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCMedia', 'UGCText', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// </summary>
+    public static class UGCPostFields {
+    }
+}
+
+#endregion
+
+#region ReturnTypes for Asset
+
+// WriteReturnTypes(Asset, RegisterUploadRequest)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'RegisterUploadRequest'
+    /// </summary>
+    [Serializable, XmlRoot("RegisterUploadRequest")]
+    public class RegisterUploadRequest
+    {
+        /// <summary>
+        /// Field: 'registerUploadRequest' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "registerUploadRequest")]
+        [JsonProperty(PropertyName = "registerUploadRequest")]
+        public RegisterUploadRequestData RegisterUploadRequestData { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, RegisterUploadRequestData)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'RegisterUploadRequestData'
+    /// </summary>
+    [Serializable, XmlRoot("RegisterUploadRequestData")]
+    public class RegisterUploadRequestData
+    {
+        /// <summary>
+        /// Field: 'supportedUploadMechanism' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "supportedUploadMechanism")]
+        [JsonProperty(PropertyName = "supportedUploadMechanism")]
+        public List<string> SupportedUploadMechanism { get; set; }
+
+        /// <summary>
+        /// Field: 'fileSize' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "fileSize")]
+        [JsonProperty(PropertyName = "fileSize")]
+        public long? FileSize { get; set; }
+
+        /// <summary>
+        /// Field: 'owner' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "owner")]
+        [JsonProperty(PropertyName = "owner")]
+        public string Owner { get; set; }
+
+        /// <summary>
+        /// Field: 'recipes' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "recipes")]
+        [JsonProperty(PropertyName = "recipes")]
+        public List<string> Recipes { get; set; }
+
+        /// <summary>
+        /// Field: 'serviceRelationships' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "serviceRelationships")]
+        [JsonProperty(PropertyName = "serviceRelationships")]
+        public List<ServiceRelationship> ServiceRelationships { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, ServiceRelationship)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ServiceRelationship'
+    /// </summary>
+    [Serializable, XmlRoot("ServiceRelationship")]
+    public class ServiceRelationship
+    {
+        /// <summary>
+        /// Field: 'identifier' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "identifier")]
+        [JsonProperty(PropertyName = "identifier")]
+        public string Identifier { get; set; }
+
+        /// <summary>
+        /// Field: 'relationshipType' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "relationshipType")]
+        [JsonProperty(PropertyName = "relationshipType")]
+        public string RelationshipType { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, RegisterUploadResult)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'RegisterUploadResult'
+    /// </summary>
+    [Serializable, XmlRoot("RegisterUploadResult")]
+    public class RegisterUploadResult
+    {
+        /// <summary>
+        /// Field: 'value' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "value")]
+        [JsonProperty(PropertyName = "value")]
+        public RegisterUploadResultValue Value { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, RegisterUploadResultValue)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'RegisterUploadResultValue'
+    /// </summary>
+    [Serializable, XmlRoot("RegisterUploadResultValue")]
+    public class RegisterUploadResultValue
+    {
+        /// <summary>
+        /// Field: 'asset' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "asset")]
+        [JsonProperty(PropertyName = "asset")]
+        public string Asset { get; set; }
+
+        /// <summary>
+        /// Field: 'mediaArtifact' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "mediaArtifact")]
+        [JsonProperty(PropertyName = "mediaArtifact")]
+        public string MediaArtifact { get; set; }
+
+        /// <summary>
+        /// Field: 'uploadMechanism' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "uploadMechanism")]
+        [JsonProperty(PropertyName = "uploadMechanism")]
+        public UploadMechanism UploadMechanism { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, UploadMechanism)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UploadMechanism'
+    /// </summary>
+    [Serializable, XmlRoot("UploadMechanism")]
+    public class UploadMechanism
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest")]
+        [JsonProperty(PropertyName = "com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest")]
+        public ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest { get; set; }
+
+        /// <summary>
+        /// Field: 'com.linkedin.digitalmedia.uploading.MultipartUpload' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.digitalmedia.uploading.MultipartUpload")]
+        [JsonProperty(PropertyName = "com.linkedin.digitalmedia.uploading.MultipartUpload")]
+        public ComLinkedinDigitalmediaUploadingMultipartUpload ComLinkedinDigitalmediaUploadingMultipartUpload { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest'
+    /// </summary>
+    [Serializable, XmlRoot("ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest")]
+    public class ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest
+    {
+        /// <summary>
+        /// Field: 'headers' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "headers")]
+        [JsonProperty(PropertyName = "headers")]
+        public Headers Headers { get; set; }
+
+        /// <summary>
+        /// Field: 'uploadUrl' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "uploadUrl")]
+        [JsonProperty(PropertyName = "uploadUrl")]
+        public string UploadUrl { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, ComLinkedinDigitalmediaUploadingMultipartUpload)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ComLinkedinDigitalmediaUploadingMultipartUpload'
+    /// </summary>
+    [Serializable, XmlRoot("ComLinkedinDigitalmediaUploadingMultipartUpload")]
+    public class ComLinkedinDigitalmediaUploadingMultipartUpload
+    {
+        /// <summary>
+        /// Field: 'metadata' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "metadata")]
+        [JsonProperty(PropertyName = "metadata")]
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// Field: 'partUploadRequests' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "partUploadRequests")]
+        [JsonProperty(PropertyName = "partUploadRequests")]
+        public List<PartUploadRequest> PartUploadRequests { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, PartUploadRequest)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PartUploadRequest'
+    /// </summary>
+    [Serializable, XmlRoot("PartUploadRequest")]
+    public class PartUploadRequest
+    {
+        /// <summary>
+        /// Field: 'headers' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "headers")]
+        [JsonProperty(PropertyName = "headers")]
+        public Headers Headers { get; set; }
+
+        /// <summary>
+        /// Field: 'urlExpiresAt' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "urlExpiresAt")]
+        [JsonProperty(PropertyName = "urlExpiresAt")]
+        public long UrlExpiresAt { get; set; }
+
+        /// <summary>
+        /// Field: 'byteRange' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "byteRange")]
+        [JsonProperty(PropertyName = "byteRange")]
+        public ByteRange ByteRange { get; set; }
+
+        /// <summary>
+        /// Field: 'url' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "url")]
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, Headers)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Headers'
+    /// </summary>
+    [Serializable, XmlRoot("Headers")]
+    public class Headers
+    {
+        /// <summary>
+        /// Field: 'Content-Type' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "Content-Type")]
+        [JsonProperty(PropertyName = "Content-Type")]
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Field: 'Content-Length' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "Content-Length")]
+        [JsonProperty(PropertyName = "Content-Length")]
+        public string ContentLength { get; set; }
+
+        /// <summary>
+        /// Field: 'x-amz-server-side-encryption' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "x-amz-server-side-encryption")]
+        [JsonProperty(PropertyName = "x-amz-server-side-encryption")]
+        public string xAmzServerSideEncryption { get; set; }
+
+        /// <summary>
+        /// Field: 'x-amz-server-side-encryption-aws-kms-key-id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "x-amz-server-side-encryption-aws-kms-key-id")]
+        [JsonProperty(PropertyName = "x-amz-server-side-encryption-aws-kms-key-id")]
+        public string xAmzServerSideEncryptionAwsKmsKeyId { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, ByteRange)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ByteRange'
+    /// </summary>
+    [Serializable, XmlRoot("ByteRange")]
+    public class ByteRange
+    {
+        /// <summary>
+        /// Field: 'lastByte' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastByte")]
+        [JsonProperty(PropertyName = "lastByte")]
+        public long LastByte { get; set; }
+
+        /// <summary>
+        /// Field: 'firstByte' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "firstByte")]
+        [JsonProperty(PropertyName = "firstByte")]
+        public long FirstByte { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, CompleteMultipartUploadRequest)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CompleteMultipartUploadRequest'
+    /// </summary>
+    [Serializable, XmlRoot("CompleteMultipartUploadRequest")]
+    public class CompleteMultipartUploadRequest
+    {
+        /// <summary>
+        /// Field: 'completeMultipartUploadRequest' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "completeMultipartUploadRequest")]
+        [JsonProperty(PropertyName = "completeMultipartUploadRequest")]
+        public CompleteMultipartUploadRequestData CompleteMultipartUploadRequestData { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, CompleteMultipartUploadRequestData)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CompleteMultipartUploadRequestData'
+    /// </summary>
+    [Serializable, XmlRoot("CompleteMultipartUploadRequestData")]
+    public class CompleteMultipartUploadRequestData
+    {
+        /// <summary>
+        /// Field: 'mediaArtifact' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "mediaArtifact")]
+        [JsonProperty(PropertyName = "mediaArtifact")]
+        public string MediaArtifact { get; set; }
+
+        /// <summary>
+        /// Field: 'metadata' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "metadata")]
+        [JsonProperty(PropertyName = "metadata")]
+        public string Metadata { get; set; }
+
+        /// <summary>
+        /// Field: 'partUploadResponses' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "partUploadResponses")]
+        [JsonProperty(PropertyName = "partUploadResponses")]
+        public List<PartUploadResponse> PartUploadResponses { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, PartUploadResponse)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PartUploadResponse'
+    /// </summary>
+    [Serializable, XmlRoot("PartUploadResponse")]
+    public class PartUploadResponse
+    {
+        /// <summary>
+        /// Field: 'headers' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "headers")]
+        [JsonProperty(PropertyName = "headers")]
+        public PartUploadResponseHeaders Headers { get; set; }
+
+        /// <summary>
+        /// Field: 'httpStatusCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "httpStatusCode")]
+        [JsonProperty(PropertyName = "httpStatusCode")]
+        public int HttpStatusCode { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, PartUploadResponseHeaders)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PartUploadResponseHeaders'
+    /// </summary>
+    [Serializable, XmlRoot("PartUploadResponseHeaders")]
+    public class PartUploadResponseHeaders
+    {
+        /// <summary>
+        /// Field: 'ETag' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "ETag")]
+        [JsonProperty(PropertyName = "ETag")]
+        public string ETag { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, CompleteMultipartUploadResult)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CompleteMultipartUploadResult'
+    /// </summary>
+    [Serializable, XmlRoot("CompleteMultipartUploadResult")]
+    public class CompleteMultipartUploadResult
+    {
+        /// <summary>
+        /// Field: 'data' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "data")]
+        [JsonProperty(PropertyName = "data")]
+        public object Data { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, UploadAssetRequest)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UploadAssetRequest'
+    /// </summary>
+    [Serializable, XmlRoot("UploadAssetRequest")]
+    public class UploadAssetRequest
+    {
+        /// <summary>
+        /// Field: 'requestHeaders' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "requestHeaders")]
+        [JsonProperty(PropertyName = "requestHeaders")]
+        public ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest RequestHeaders { get; set; }
+
+        /// <summary>
+        /// Field: 'data' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "data")]
+        [JsonProperty(PropertyName = "data")]
+        public byte[] Data { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, UploadAssetResult)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UploadAssetResult'
+    /// </summary>
+    [Serializable, XmlRoot("UploadAssetResult")]
+    public class UploadAssetResponse
+    {
+        /// <summary>
+        /// Field: 'data' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "data")]
+        [JsonProperty(PropertyName = "data")]
+        public object Data { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, AssetResult)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'AssetResult'
+    /// </summary>
+    [Serializable, XmlRoot("AssetResult")]
+    public class AssetResult
+    {
+        /// <summary>
+        /// Field: 'created' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "created")]
+        [JsonProperty(PropertyName = "created")]
+        public long Created { get; set; }
+
+        /// <summary>
+        /// Field: 'lastModified' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public long LastModified { get; set; }
+
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'mediaTypeFamily' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "mediaTypeFamily")]
+        [JsonProperty(PropertyName = "mediaTypeFamily")]
+        public string MediaTypeFamily { get; set; }
+
+        /// <summary>
+        /// Field: 'recipes' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "recipes")]
+        [JsonProperty(PropertyName = "recipes")]
+        public List<Recipe> Recipes { get; set; }
+
+        /// <summary>
+        /// Field: 'serviceRelationships' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "serviceRelationships")]
+        [JsonProperty(PropertyName = "serviceRelationships")]
+        public List<ServiceRelationship> ServiceRelationship { get; set; }
+
+        /// <summary>
+        /// Field: 'status' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "status")]
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Asset, Recipe)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Recipe'
+    /// </summary>
+    [Serializable, XmlRoot("Recipe")]
+    public class Recipe
+    {
+        /// <summary>
+        /// Field: 'recipe' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "recipe")]
+        [JsonProperty(PropertyName = "recipe")]
+        public string RecipeURN { get; set; }
+
+        /// <summary>
+        /// Field: 'status' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "status")]
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
+
+    }
+}
+
+// WriteReturnTypeFields(Asset)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Field selectors for the 'RegisterUploadRequest', 'RegisterUploadRequestData', 'ServiceRelationship', 'RegisterUploadResult', 'RegisterUploadResultValue', 'UploadMechanism', 'ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest', 'ComLinkedinDigitalmediaUploadingMultipartUpload', 'PartUploadRequest', 'Headers', 'ByteRange', 'CompleteMultipartUploadRequest', 'CompleteMultipartUploadRequestData', 'PartUploadResponse', 'PartUploadResponseHeaders', 'CompleteMultipartUploadResult', 'UploadAssetRequest', 'UploadAssetResult', 'AssetResult', 'Recipe' return types.
+    /// </summary>
+    public static class AssetFields {
+    }
+}
+
+#endregion
+
 #region ReturnTypes for Common
 
 // WriteReturnTypes(Common, PostShare)
@@ -1964,6 +2973,80 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteReturnTypes(Common, LinkedInTargetedEntity)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'LinkedInTargetedEntity'
+    /// </summary>
+    [Serializable, XmlRoot("LinkedInTargetedEntity")]
+    public class LinkedInTargetedEntity
+    {
+        /// <summary>
+        /// Field: 'industries' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "industries")]
+        [JsonProperty(PropertyName = "industries")]
+        public List<string> Industries { get; set; }
+
+        /// <summary>
+        /// Field: 'interfaceLocales' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "interfaceLocales")]
+        [JsonProperty(PropertyName = "interfaceLocales")]
+        public List<Locale> InterfaceLocales { get; set; }
+
+        /// <summary>
+        /// Field: 'jobFunctions' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "jobFunctions")]
+        [JsonProperty(PropertyName = "jobFunctions")]
+        public List<string> JobFunctions { get; set; }
+
+        /// <summary>
+        /// Field: 'locations' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "locations")]
+        [JsonProperty(PropertyName = "locations")]
+        public List<string> Locations { get; set; }
+
+        /// <summary>
+        /// Field: 'seniorities' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "seniorities")]
+        [JsonProperty(PropertyName = "seniorities")]
+        public List<string> Seniorities { get; set; }
+
+        /// <summary>
+        /// Field: 'staffCountRanges' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "staffCountRanges")]
+        [JsonProperty(PropertyName = "staffCountRanges")]
+        public List<string> StaffCountRanges { get; set; }
+
+        /// <summary>
+        /// Field: 'connectionsOnly' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "connectionsOnly")]
+        [JsonProperty(PropertyName = "connectionsOnly")]
+        public bool ConnectionsOnly { get; set; }
+
+        /// <summary>
+        /// Field: 'visibleToGuest' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "visibleToGuest")]
+        [JsonProperty(PropertyName = "visibleToGuest")]
+        public bool VisibleToGuest { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Common, Locale)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -2114,7 +3197,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'distribution', 'LinkedInDistributionTarget', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
     /// </summary>
     public static class CommonFields {
     }
@@ -2745,6 +3828,7 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Profiles'
@@ -2828,6 +3912,7 @@ namespace Sparkle.LinkedInNET.Organizations
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Organizations'
@@ -3076,6 +4161,7 @@ namespace Sparkle.LinkedInNET.Shares
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Shares'
@@ -3273,6 +4359,7 @@ namespace Sparkle.LinkedInNET.Media
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Media'
@@ -3343,6 +4430,345 @@ namespace Sparkle.LinkedInNET.Media
     }
 }
 
+// WriteApiGroup(UGCPost)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Xml.Serialization;
+#if ASYNCTASKS
+    using System.Threading.Tasks;
+#endif
+    using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPost'
+    /// </summary>
+    public class UGCPostApi : BaseApi
+    {
+        [System.Diagnostics.DebuggerStepThrough]
+        internal UGCPostApi(LinkedInApi linkedInApi)
+            : base(linkedInApi)
+        {
+        }
+        
+        /// <summary>
+        /// Upload a video asset to create a UGC Post.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
+        /// </remarks>
+        public UGCPost.UGCPostResult Post(
+              UserAuthorization user 
+            , UGCPost.UGCPostData postData
+        )
+        {
+            var url = "/v2/ugcPosts";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<UGCPost.UGCPostResult>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Upload a video asset to create a UGC Post.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api
+        /// </remarks>
+        public async Task<UGCPost.UGCPostResult> PostAsync(
+              UserAuthorization user 
+            , UGCPost.UGCPostData postData
+        )
+        {
+            var url = "/v2/ugcPosts";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<UGCPost.UGCPostResult>(context);
+            return result;
+        }
+    #endif
+        
+    }
+}
+
+// WriteApiGroup(Asset)
+namespace Sparkle.LinkedInNET.Asset
+{
+    using System;
+    using System.Xml.Serialization;
+#if ASYNCTASKS
+    using System.Threading.Tasks;
+#endif
+    using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
+
+    /// <summary>
+    /// Name: 'Asset'
+    /// </summary>
+    public class AssetApi : BaseApi
+    {
+        [System.Diagnostics.DebuggerStepThrough]
+        internal AssetApi(LinkedInApi linkedInApi)
+            : base(linkedInApi)
+        {
+        }
+        
+        /// <summary>
+        /// To upload video.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public Asset.RegisterUploadResult RegisterUpload(
+              UserAuthorization user 
+            , Asset.RegisterUploadRequest postData
+        )
+        {
+            var url = "/v2/assets?action=registerUpload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// To upload video.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public async Task<Asset.RegisterUploadResult> RegisterUploadAsync(
+              UserAuthorization user 
+            , Asset.RegisterUploadRequest postData
+        )
+        {
+            var url = "/v2/assets?action=registerUpload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Asset.RegisterUploadResult>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// To upload video. Gets back the status code of the request.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public string UploadAsset(
+              string uploadUrl 
+            , Asset.UploadAssetRequest postData
+        )
+        {
+            const string urlFormat = "{UploadUrl}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+
+            var context = new RequestContext();
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateOctetStream(context, postData);
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+                        
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues("eTag");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('"').TrimStart('"');
+                        }
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// To upload video. Gets back the status code of the request.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public async Task<string> UploadAssetAsync(
+              string uploadUrl 
+            , Asset.UploadAssetRequest postData
+        )
+        {
+            const string urlFormat = "{UploadUrl}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+
+            var context = new RequestContext();
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateOctetStream(context, postData);
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+                        
+                        var result = string.Empty;
+                        var headerETag = context.ResponseHeaders.GetValues("eTag");
+                        if (headerETag.Length > 0)
+                        {
+                            result = headerETag.First();
+                            result = result.TrimEnd('"').TrimStart('"');
+                        }
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// Depending on content size, it might take a few minutes for the upload to complete.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public Asset.AssetResult GetAsset(
+              UserAuthorization user 
+            , string assetId 
+        )
+        {
+            const string urlFormat = "/v2/assets/{AssetId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// Depending on content size, it might take a few minutes for the upload to complete.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public async Task<Asset.AssetResult> GetAssetAsync(
+              UserAuthorization user 
+            , string assetId 
+        )
+        {
+            const string urlFormat = "/v2/assets/{AssetId}";
+            var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "GET";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+            return result;
+        }
+    #endif
+        
+        /// <summary>
+        /// To upload video.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public int CompleteMultiPartUpload(
+              UserAuthorization user 
+            , Asset.CompleteMultipartUploadRequest postData
+        )
+        {
+            var url = "/v2/assets?action=completeMultiPartUpload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            if (!this.ExecuteQuery(context))
+                this.HandleJsonErrorResponse(context);
+            
+            var result = (int)context.HttpStatusCode;
+            return result;
+        }
+
+    #if ASYNCTASKS
+        /// <summary>
+        /// To upload video.
+        /// </summary>
+        /// <remarks>
+        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+        /// </remarks>
+        public async Task<int> CompleteMultiPartUploadAsync(
+              UserAuthorization user 
+            , Asset.CompleteMultipartUploadRequest postData
+        )
+        {
+            var url = "/v2/assets?action=completeMultiPartUpload";
+
+            var context = new RequestContext();
+            context.UserAuthorization = user;
+            context.Method =  "POST";
+            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+            this.CreateJsonPostStream(context, postData);
+
+            var exec = await this.ExecuteQueryAsync(context);
+            if (!exec)
+                this.HandleJsonErrorResponse(context);
+            
+            var result = (int)context.HttpStatusCode;
+            return result;
+        }
+    #endif
+        
+    }
+}
+
 // WriteApiGroup(Common)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -3352,6 +4778,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Common'
@@ -3376,6 +4803,7 @@ namespace Sparkle.LinkedInNET.Targeting
     using System.Threading.Tasks;
 #endif
     using Sparkle.LinkedInNET.Internals;
+    using System.Linq;
 
     /// <summary>
     /// Name: 'Targeting'
@@ -3833,11 +5261,14 @@ namespace Sparkle.LinkedInNET
 {
     using System;
     using System.Xml.Serialization;
+    using System.Linq;
     using Sparkle.LinkedInNET.Internals;
     using Sparkle.LinkedInNET.Profiles;
     using Sparkle.LinkedInNET.Organizations;
     using Sparkle.LinkedInNET.Shares;
     using Sparkle.LinkedInNET.Media;
+    using Sparkle.LinkedInNET.UGCPost;
+    using Sparkle.LinkedInNET.Asset;
     using Sparkle.LinkedInNET.Common;
     using Sparkle.LinkedInNET.Targeting;
 
@@ -3876,6 +5307,22 @@ namespace Sparkle.LinkedInNET
         public MediaApi Media {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new MediaApi(this); }
+        }
+
+        /// <summary>
+        /// The UGCPost API.
+        /// </summary>
+        public UGCPostApi UGCPost {
+            [System.Diagnostics.DebuggerStepThrough]
+            get { return new UGCPostApi(this); }
+        }
+
+        /// <summary>
+        /// The Asset API.
+        /// </summary>
+        public AssetApi Asset {
+            [System.Diagnostics.DebuggerStepThrough]
+            get { return new AssetApi(this); }
         }
 
         /// <summary>

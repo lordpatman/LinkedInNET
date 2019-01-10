@@ -150,10 +150,21 @@ namespace Sparkle.LinkedInNET.Internals
             if (string.IsNullOrEmpty(context.UrlPath))
                 throw new ArgumentException("The value cannot be empty", "context.UrlPath");
 
-            var request = (HttpWebRequest)HttpWebRequest.Create(context.UrlPath);
+            bool isOctet = false;
+            if (context.PostDataType == "application/octet-stream")
+                isOctet = true;
+
+            var request = (HttpWebRequest)HttpWebRequest.Create(isOctet ? context.UploadUrl : context.UrlPath);
             request.Method = context.Method;
             request.UserAgent = LibraryInfo.UserAgent;
-            if (context.PostDataType != "multipart/form-data")
+            if (context.PostDataType == "multipart/form-data" || context.PostDataType == "application/octet-stream")
+            {
+            }
+            else if (!isOctet && context.UrlPath.Contains("ugcPosts"))
+            {
+                request.Headers.Add("X-Restli-Protocol-Version", "2.0.0");
+            }
+            else
             {
                 request.Headers.Add("x-li-format", "json");
             }
@@ -198,6 +209,21 @@ namespace Sparkle.LinkedInNET.Internals
                         using (Stream requestStream = request.GetRequestStream())
                         {
                             requestStream.Write(formData, 0, formData.Length);
+                            requestStream.Close();
+                        }
+                    }
+                    else if (context.PostDataType == "application/octet-stream")
+                    {
+                        request.ContentType = "application/octet-stream";
+                        request.ContentLength = context.PostData.Length;
+                        request.Method = "PUT";
+                        request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
+                        request.Timeout = 10000;
+
+                        // Send the data to the request.
+                        using (Stream requestStream = request.GetRequestStream())
+                        {
+                            requestStream.Write(context.PostData, 0, context.PostData.Length);
                             requestStream.Close();
                         }
                     }
@@ -359,6 +385,38 @@ namespace Sparkle.LinkedInNET.Internals
 
             context.PostData = iamgeData;
             context.PostDataType = "multipart/form-data";
+        }
+                    
+        internal void CreateOctetStream(RequestContext context, object postData)
+        {
+            dynamic postDataDyn = postData;
+
+            var iamgeData = postDataDyn;
+            context.PostData = iamgeData.Data;
+
+            try
+            {
+                Asset.ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest requestHeaders = postDataDyn.RequestHeaders;
+
+                // if Headers data is null that means the request is long video upload (using parts)
+                if (requestHeaders.Headers.xAmzServerSideEncryption != null)
+                {
+                    context.RequestHeaders.Add("x-amz-server-side-encryption", requestHeaders.Headers.xAmzServerSideEncryption);
+                }
+                if (requestHeaders.Headers.xAmzServerSideEncryptionAwsKmsKeyId != null)
+                {
+                    context.RequestHeaders.Add("x-amz-server-side-encryption-aws-kms-key-id", requestHeaders.Headers.xAmzServerSideEncryptionAwsKmsKeyId);
+                }
+                // context.RequestHeaders.Add("Content-Type", "application/octet-stream");
+                context.UploadUrl = requestHeaders.UploadUrl;
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+
+            context.PostDataType = "application/octet-stream";
         }
 
         internal void CreateJsonPostStream(RequestContext context, object postData)
