@@ -321,6 +321,7 @@
       <Field Name="media" />
       <Field Name="status" />
       <Field Name="thumbnails" IsCollection="1"/>
+      <Field Name="landingPage" PropertyName="LandingPages" Type="LandingPage" />
       <Field Name="title" PropertyName="UGCMediaTitle" Type="UGCText" />
     </ReturnType>
 
@@ -329,7 +330,11 @@
       <Field Name="text" />
     </ReturnType>
 
-
+    <ReturnType Name="LandingPage" ClassName="LandingPage">
+      <Field Name="landingPageTitle" />
+      <Field Name="landingPageUrl" />
+    </ReturnType>
+    
 
     <ReturnType Name="TargetAudience" ClassName="TargetAudience">
       <Field Name="targetedEntities" PropertyName="TargetedEntities" Type="Common.LinkedInTargetedEntity" IsCollection="1" />
@@ -506,6 +511,7 @@
     <ReturnType Name="postShareContent" ClassName="PostShareContent">
       <Field Name="contentEntities" Type="PostShareContentEntities" IsCollection="1"/>
       <Field Name="title"/>
+      <Field Name="shareMediaCategory" PropertyName="MediaCategory"/>
     </ReturnType>
 
     <ReturnType Name="postShareContentEntities" ClassName="PostShareContentEntities">

@@ -1640,6 +1640,13 @@ namespace Sparkle.LinkedInNET.UGCPost
         public List<string> Thumbnails { get; set; }
 
         /// <summary>
+        /// Field: 'landingPage' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "landingPage")]
+        [JsonProperty(PropertyName = "landingPage")]
+        public LandingPage LandingPages { get; set; }
+
+        /// <summary>
         /// Field: 'title' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "title")]
@@ -1677,6 +1684,38 @@ namespace Sparkle.LinkedInNET.UGCPost
         [XmlElement(ElementName = "text")]
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, LandingPage)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'LandingPage'
+    /// </summary>
+    [Serializable, XmlRoot("LandingPage")]
+    public class LandingPage
+    {
+        /// <summary>
+        /// Field: 'landingPageTitle' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "landingPageTitle")]
+        [JsonProperty(PropertyName = "landingPageTitle")]
+        public string LandingPageTitle { get; set; }
+
+        /// <summary>
+        /// Field: 'landingPageUrl' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "landingPageUrl")]
+        [JsonProperty(PropertyName = "landingPageUrl")]
+        public string LandingPageUrl { get; set; }
 
     }
 }
@@ -1739,7 +1778,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCPostData', 'UGCPostResult', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCMedia', 'UGCText', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCPostData', 'UGCPostResult', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCMedia', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
     }
@@ -2569,6 +2608,13 @@ namespace Sparkle.LinkedInNET.Common
         [XmlElement(ElementName = "title")]
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
+
+        /// <summary>
+        /// Field: 'shareMediaCategory' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareMediaCategory")]
+        [JsonProperty(PropertyName = "shareMediaCategory")]
+        public string MediaCategory { get; set; }
 
     }
 }
