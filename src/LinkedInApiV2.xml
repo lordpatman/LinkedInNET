@@ -20,19 +20,22 @@
         <Field Name="localized" PropertyName="Localized"/>
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
       </Field>
-      <Field Name="phoneticFirstName" Type="Common.MultiLocaleString">
+      
+      <!--<Field Name="phoneticFirstName" Type="Common.MultiLocaleString">
         <Field Name="localized" PropertyName="Localized"/>
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
       </Field>
       <Field Name="phoneticLastName" Type="Common.MultiLocaleString" >
         <Field Name="localized" PropertyName="Localized"/>
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
-      </Field>
+      </Field>-->
+      
       <Field Name="headline" Type="Common.MultiLocaleString">
         <Field Name="localized" PropertyName="Localized"/>
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
       </Field>
-      <Field Name="location" Type="Location" Title="a unique identifier token for this member"/>
+      
+      <!--<Field Name="location" Type="Location" Title="a unique identifier token for this member"/>
       <Field Name="industryName" Type="Common.MultiLocaleRichText" >
         <Field Name="localized" PropertyName="Localized"/>
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
@@ -42,13 +45,15 @@
         <Field Name="preferredLocale" PropertyName="PreferredLocale"/>
       </Field>
       <Field Name="specialties" Type="Common.MultiLocaleRichText" />
-      <Field Name="positions" Type="Position" />
+      <Field Name="positions" Type="Position" />-->
+      
       <Field Name="profilePicture" Type="ProfilePicture">
         <FieldSelector Name="profilePicture(displayImage~~~playableStreams)" PropertyName="DisplayImageLoaded" />
       </Field>
       <Field Name="vanityName" Title="a unique identifier token for this member" />
-      <Field Name="lastModified" Type="long?" Title="a unique identifier token for this member" />
-      <Field Name="organizations" Type="JObject" Title="a unique identifier token for this member" />
+      
+      <!--<Field Name="lastModified" Type="long?" Title="a unique identifier token for this member" />
+      <Field Name="organizations" Type="JObject" Title="a unique identifier token for this member" />-->
     </ReturnType>
 
     <ReturnType Name="location" ClassName="Location">
