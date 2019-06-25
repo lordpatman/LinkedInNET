@@ -52,7 +52,14 @@
             {
                 this.ViewBag.Url = null;
             }
-                       
+
+            // Dev's horvath janos zrt
+            this.data.SaveAccessToken("AQXAp2DVMg37ryGhgUuZaSeI9geVaoQAzgUaMgFRwsh1z6NMjLT-tmSRa46hDsYUCs4HzaM6oHSNY6Jt3WDCi1Ia9RqIqwlL5dyidNNHDtVW5-Dj5cNNSdEhhpNlLXpETH1CnuYlPiCvccM3_BQhNT2B11DNL3j2jwAtdWwDeAYJT22AprWYKwMTbg-TB-4eOBQZGoXcYQQxlueJlT7rPvWWtNISQ23XJi2LUZTzEk7V0Nrru0mMabl6H1E64Bb_ukKqppsMl4rSIsTBuvxNKFrkzKkjd51Yrzzkm5TsDrW0vxtnc58YBsvpRZZWnASmFPwdr1mcP01gczWbWsSDwhBGsCCBew");
+
+            // this.data.SaveAccessToken("AQXAp2DVMg37ryGhgUuZaSeI9geVaoQAzgUaMgFRwsh1z6NMjLT-tmSRa46hDsYUCs4HzaM6oHSNY6Jt3WDCi1Ia9RqIqwlL5dyidNNHDtVW5-Dj5cNNSdEhhpNlLXpETH1CnuYlPiCvccM3_BQhNT2B11DNL3j2jwAtdWwDeAYJT22AprWYKwMTbg-TB-4eOBQZGoXcYQQxlueJlT7rPvWWtNISQ23XJi2LUZTzEk7V0Nrru0mMabl6H1E64Bb_ukKqppsMl4rSIsTBuvxNKFrkzKkjd51Yrzzkm5TsDrW0vxtnc58YBsvpRZZWnASmFPwdr1mcP01gczWbWsSDwhBGsCCBew");
+
+
+
             // step 3
             if (this.data.HasAccessToken)
             {
@@ -69,6 +76,142 @@
                     var fields = FieldSelector.For<Person>()
                         .WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
+
+
+                    // var getVideo = await this.api.Asset.GetAssetAsync(user, "C4D05AQH5Hen4KpIFqA");
+
+
+                    // var videoData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/videos/48c2071e-e9b0-43f7-8b8a-01da4d8c04a1.mp4");
+                    var videoData1 = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/videos/f57f8bc8-4fc8-44e4-9c5f-40f528f1a295.mp4");
+
+                    // var bigVideo = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/edf54915-d374-4074-a8ee-196897a7badd/07569e4a-134f-48ec-96cf-c89dd1234e9b/videos/152d90cb-3501-4673-a5b2-1ff61ecc9d33.mpeg");
+
+
+                    var aaa = await Video.VideoUpload.UploadVideoAsync(api, user, "urn:li:organization:18568129", videoData1);
+                    var bb = "";
+
+
+
+
+                    //// Asset test
+                    //var asset = new Asset.RegisterUploadRequest()
+                    //{
+                    //    RegisterUploadRequestData = new Asset.RegisterUploadRequestData()
+                    //    {
+
+                    //        // fileSizeIn bytes
+                    //        FileSize = 52429800,
+                    //        SupportedUploadMechanism = new List<string>() { "MULTIPART_UPLOAD" },
+                    //        // SupportedUploadMechanism = new List<string>() { "SINGLE_REQUEST_UPLOAD" },
+                    //        // Owner = "urn:li:person:" + "qhwvZ0K4cr",
+                    //        Owner = "urn:li:organization:18568129",
+                    //        Recipes = new List<string>() { "urn:li:digitalmediaRecipe:feedshare-video" },
+                    //        ServiceRelationships = new List<Asset.ServiceRelationship>()
+                    //        {
+                    //            new Asset.ServiceRelationship()
+                    //            {
+                    //                Identifier = "urn:li:userGeneratedContent",
+                    //                RelationshipType = "OWNER"
+                    //            }
+                    //        }
+                    //    }
+                    //};
+                    //var requestAsset = await this.api.Asset.RegisterUploadAsync(user, asset);
+
+
+                    //var multiPartSend = await Internals.LongVideoUpload.UploadLongVideoPartsAsync(this.api, requestAsset, bigVideo);
+
+                    ////var postAsset = await this.api.Asset.UploadAssetAsync(requestAsset.Value.UploadMechanism.ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest.UploadUrl, new Asset.UploadAssetRequest()
+                    ////{
+                    ////    RequestHeaders = new Asset.ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest()
+                    ////    {
+                    ////        Headers = requestAsset.Value.UploadMechanism.ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest.Headers,
+                    ////        UploadUrl = requestAsset.Value.UploadMechanism.ComLinkedinDigitalmediaUploadingMediaUploadHttpRequest.UploadUrl,
+                    ////    },
+                    ////    Data = videoData1
+                    ////});
+
+                    //var test = "sss";
+
+
+
+
+
+                    // video test
+                    var ugcPost = new UGCPost.UGCPostData()
+                    {
+                        // Author = "urn:li:person:" + "qhwvZ0K4cr",
+                        // Author = "urn:li:organization:" + "18568129",
+                        Author = "urn:li:organization:18568129",
+                        LifecycleState = "PUBLISHED",
+                        SpecificContent = new UGCPost.SpecificContent()
+                        {
+                            ComLinkedinUgcShareContent = new UGCPost.ComLinkedinUgcShareContent()
+                            {
+                                UGCMedia = new List<UGCPost.UGCMedia>()
+                                {
+                                    new UGCPost.UGCMedia()
+                                    {
+                                        UGCMediaDescription = new UGCPost.UGCText()
+                                        {
+                                            Text = "test description"
+                                        },
+                                        Media = "urn:li:digitalmediaAsset:C4D05AQGYz5sONvv20g",// requestAsset.Value.Asset, // "urn:li:digitalmediaAsset:C4D05AQHwsp8DLpxHiA", // "urn:li:digitalmediaAsset:C5500AQG7r2u00ByWjw",
+                                        Status = "READY",
+                                        Thumbnails = new List<string>(),
+                                        UGCMediaTitle = new UGCPost.UGCText()
+                                        {
+                                            Text = "Test Title"
+                                        }
+                                    }
+                                },
+                                ShareCommentary = new UGCPost.UGCText()
+                                {
+                                    Text = "Test Commentary"
+                                },
+                                ShareMediaCategory = "VIDEO"
+                            }
+                        },
+                        //TargetAudience = new Common.TargetAudience()
+                        //{
+
+                        //},
+                        Visibility = new UGCPost.UGCPostvisibility()
+                        {
+                            comLinkedinUgcMemberNetworkVisibility = "PUBLIC"
+                        }
+                    };
+
+                    var ugcPostResult = await this.api.UGCPost.PostAsync(user, ugcPost);
+
+                    var test2 = "sdfas";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    //// image test
+                    //// var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/83278b25-b809-4458-912b-55b4d6d8b19d.jpg");
+                    //var imageData = DownladFromUrlToByte("https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/b7b12f6e-4eed-4ca1-b937-006b0c2aa93b.jpg");
+
+                    //var postId = this.api.Media.Post(user, new Common.MediaUploadData()
+                    //{
+                    //    Data = imageData
+                    //});
+
+                    //var test = "sdfas";
 
 
 

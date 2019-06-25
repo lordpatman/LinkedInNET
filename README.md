@@ -11,7 +11,7 @@ Have any question? You may reach the authors on the dedicated chat room: [![Join
 Motivation
 ------------
 
-Bring the .NET world a nice LinkedIn client library.
+Bring the .NET world a nice LinkedIn client library. + support both V1 and V2 APIs.
 
 
 Before you start - About LinkedIn API recent changes
@@ -185,7 +185,7 @@ References
 https://docs.microsoft.com/en-us/linkedin/compliance/  
 
 
-.NET version
+.NET versions
 ------------
 
 Supported .NET Framework versions:
