@@ -202,4 +202,4 @@ Status
 
 Because of the API policy changes, most API calls are now reserved to the partners LinkedIn chose. The core team will try to keep up using basic API key.
 
-Check our [internal to-do list](src/ToDo.md) to track missing/done things.
+Check our [internal to-do list](src/ToDoV2.md) to track missing/done things.
