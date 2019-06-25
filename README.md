@@ -4,7 +4,7 @@
 LinkedInNET
 ===========
 
-[Sparkle.LinkedInNET](https://github.com/SparkleNetworks/LinkedInNET/) ([NuGet](https://www.nuget.org/packages/Sparkle.LinkedInNET/))will help you query the LinkedIn API :)
+[Sparkle.LinkedInNET](https://github.com/SparkleNetworks/LinkedInNET/) will help you query the LinkedIn API V2:)
 
 Have any question? You may reach the authors on the dedicated chat room: [![Join the chat at https://gitter.im/SparkleNetworks/LinkedInNET](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SparkleNetworks/LinkedInNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -17,24 +17,6 @@ Bring the .NET world a nice LinkedIn client library.
 Before you start - About LinkedIn API recent changes
 ----------------------------------------------------------------
 
-**[LinkedIn recently changed a lot of things in its developer program](https://developer.linkedin.com/blog/posts/2015/developer-program-changes). When using this API, your applications might break on May 12, 2015**. 
-
-Many documented URLs in this project are broken because LinkedIn changed the documentation pages. Here is the [old documentation via the WaybackMachine](https://web.archive.org/web/20140719025807/http://developer.linkedin.com/documents/people).
-
-> Starting on May 12, 2015, we will be limiting the open APIs to only support the following uses:
->
-> - Allowing members to represent their professional identity via their LinkedIn profile using our Profile API.
-> - Enabling members to post certifications directly to their LinkedIn profile with our Add to Profile tools.
-> - Enabling members to share professional content to their LinkedIn network from across the Web leveraging our Share API.
-> - Enabling companies to share professional content to LinkedIn with our Company API.
->
-> All other APIs will require developers to become a member of one of our partnership programs.
->
-> For many developers, we understand that today’s changes may be disappointing and disruptive, but we believe these changes will provide further clarity and focus on which types of integrations will be supported by LinkedIn.
->
-> -- [Changes to our Developer Program](https://developer.linkedin.com/blog/posts/2015/developer-program-changes), February 12, 2015
-
-See also [Transition FAQ](https://developer.linkedin.com/blog/posts/2015/transition-faq), [D-Day's changes](https://developer.linkedin.com/blog/posts/2015/todays-changes).
 
 By using the LinkedIn APIs you agree to the [LinkedIn APIs Terms of Use](https://developer.linkedin.com/documents/linkedin-apis-terms-use).  
 This project is released under the LGPL v3 license.  
@@ -45,13 +27,8 @@ Usage
 
 ### 1. Installation
 
-[Via NuGet](https://www.nuget.org/packages/Sparkle.LinkedInNET/)
 
-````powershell
-PM> Install-Package Sparkle.LinkedInNET
-````
-
-Or build the sources... You have to create your own .snk file.
+Build the sources... You have to create your own .snk file.
 
 Supported frameworks: 3.5 (sync), 4.0 (sync), 4.5 (sync and task async).
 
@@ -121,13 +98,12 @@ Yes, you have to pass the token for each call. This might seem redundant for som
 
 ### 6. Field selectors
 
-The API uses [field lists](https://developer.linkedin.com/documents/field-selectors) to fetch the desired data. Simple extension methods will allow you to make strongly-typed field selection.
+The API uses [field lists] to fetch the desired data. Simple extension methods will allow you to make strongly-typed field selection.
 
 ````csharp
 var profile = api.Profiles.GetMyProfile(
     user,
     FieldSelector.For<Person>().WithFirstname().WithLastname().WithLocationName());
-// https://api.linkedin.com/v1/people/~:(first-name,last-name,location:(name))
 ````
 
 The `.WithAllFields()` method will generate the list of all available fields. It is not recommended to do that.
@@ -136,7 +112,7 @@ The `.WithAllFields()` method will generate the list of all available fields. It
 var profile = api.Profiles.GetMyProfile(
     user,
     FieldSelector.For<Person>().WithAllFields());
-// https://api.linkedin.com/v1/people/~:(all available fields here)
+// https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api available fields here)
 // however it is not recommended to specify all fields
 ````
 
@@ -206,8 +182,7 @@ To add/alter API methods and return types, search for `LinkedInApi.xml`. This fi
 References
 ------------
 
-https://developer.linkedin.com/apis  
-https://developer.linkedin.com/documents/authentication  
+https://docs.microsoft.com/en-us/linkedin/compliance/  
 
 
 .NET version
