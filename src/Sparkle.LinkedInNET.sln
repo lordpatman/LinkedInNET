@@ -3,33 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET35.Sparkle.LinkedInNET", "NET35.Sparkle.LinkedInNET\NET35.Sparkle.LinkedInNET.csproj", "{452CAE7A-152B-40EF-8DD7-965854B1931C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12E6CB6C-908C-49B6-9654-9035D9CFD182}"
 	ProjectSection(SolutionItems) = preProject
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
 		LinkedInApi.xml = LinkedInApi.xml
 		LinkedInApiV2.xml = LinkedInApiV2.xml
 		ToDo.md = ToDo.md
+		ToDoV2.md = ToDoV2.md
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET35.Sparkle.LinkedInNET.ServiceDefinition", "NET35.Sparkle.LinkedInNET.ServiceDefinition\NET35.Sparkle.LinkedInNET.ServiceDefinition.csproj", "{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET35.Sparkle.LinkedInNET.Tests", "NET35.Sparkle.LinkedInNET.Tests\NET35.Sparkle.LinkedInNET.Tests.csproj", "{4E3C5D54-ED8F-435A-A54F-1AEDD6069346}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.DemoMvc5", "NET45.Sparkle.LinkedInNET.DemoMvc5\NET45.Sparkle.LinkedInNET.DemoMvc5.csproj", "{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET40.Sparkle.LinkedInNET", "NET40.Sparkle.LinkedInNET\NET40.Sparkle.LinkedInNET.csproj", "{8680529C-5040-4799-AC12-6ABE541AB1A5}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Lib", "00 Lib", "{D6564F95-4467-467E-8C00-932C46CE8954}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "40 Code generation", "40 Code generation", "{30B446E9-DAF4-4CF3-9B02-FF27A668B146}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Code generation", "02 Code generation", "{30B446E9-DAF4-4CF3-9B02-FF27A668B146}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 Demo and tests", "20 Demo and tests", "{8D0D8676-86DB-4BFF-AB3D-96754919BBD8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET451.Sparkle.LinkedInNET", "NET451.Sparkle.LinkedInNET\NET451.Sparkle.LinkedInNET.csproj", "{080DE9CE-B826-49CA-855D-25AED27D488A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Demo and tests", "01 Demo and tests", "{8D0D8676-86DB-4BFF-AB3D-96754919BBD8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.Tests", "NET45.Sparkle.LinkedInNET.Tests\NET45.Sparkle.LinkedInNET.Tests.csproj", "{05A8FD90-27BC-4EEF-970F-20914AD9B987}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.ServiceDefinition", "NET45.Sparkle.LinkedInNET.ServiceDefinition\NET45.Sparkle.LinkedInNET.ServiceDefinition.csproj", "{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET", "NET45.Sparkle.LinkedInNET\NET45.Sparkle.LinkedInNET.csproj", "{080DE9CE-B826-49CA-855D-25AED27D488A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,46 +32,31 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{452CAE7A-152B-40EF-8DD7-965854B1931C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{452CAE7A-152B-40EF-8DD7-965854B1931C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{452CAE7A-152B-40EF-8DD7-965854B1931C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{452CAE7A-152B-40EF-8DD7-965854B1931C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4E3C5D54-ED8F-435A-A54F-1AEDD6069346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E3C5D54-ED8F-435A-A54F-1AEDD6069346}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E3C5D54-ED8F-435A-A54F-1AEDD6069346}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E3C5D54-ED8F-435A-A54F-1AEDD6069346}.Release|Any CPU.Build.0 = Release|Any CPU
 		{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8680529C-5040-4799-AC12-6ABE541AB1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8680529C-5040-4799-AC12-6ABE541AB1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8680529C-5040-4799-AC12-6ABE541AB1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8680529C-5040-4799-AC12-6ABE541AB1A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{080DE9CE-B826-49CA-855D-25AED27D488A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{080DE9CE-B826-49CA-855D-25AED27D488A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{080DE9CE-B826-49CA-855D-25AED27D488A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{080DE9CE-B826-49CA-855D-25AED27D488A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987}.Release|Any CPU.Build.0 = Release|Any CPU
+		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080DE9CE-B826-49CA-855D-25AED27D488A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080DE9CE-B826-49CA-855D-25AED27D488A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080DE9CE-B826-49CA-855D-25AED27D488A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080DE9CE-B826-49CA-855D-25AED27D488A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{452CAE7A-152B-40EF-8DD7-965854B1931C} = {D6564F95-4467-467E-8C00-932C46CE8954}
-		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D} = {30B446E9-DAF4-4CF3-9B02-FF27A668B146}
-		{4E3C5D54-ED8F-435A-A54F-1AEDD6069346} = {8D0D8676-86DB-4BFF-AB3D-96754919BBD8}
 		{716EF2B0-5139-4ABC-9530-8152D8A0C8D8} = {8D0D8676-86DB-4BFF-AB3D-96754919BBD8}
-		{8680529C-5040-4799-AC12-6ABE541AB1A5} = {D6564F95-4467-467E-8C00-932C46CE8954}
-		{080DE9CE-B826-49CA-855D-25AED27D488A} = {D6564F95-4467-467E-8C00-932C46CE8954}
 		{05A8FD90-27BC-4EEF-970F-20914AD9B987} = {8D0D8676-86DB-4BFF-AB3D-96754919BBD8}
+		{589B7BAE-E19E-43A0-B063-2E017B5E0C1D} = {30B446E9-DAF4-4CF3-9B02-FF27A668B146}
+		{080DE9CE-B826-49CA-855D-25AED27D488A} = {D6564F95-4467-467E-8C00-932C46CE8954}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F63A77D8-5558-4368-90FD-A9404ED3E432}

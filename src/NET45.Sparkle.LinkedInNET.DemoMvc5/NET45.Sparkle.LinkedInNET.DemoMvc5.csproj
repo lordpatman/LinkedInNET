@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -181,13 +183,13 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NET35.Sparkle.LinkedInNET.ServiceDefinition\NET35.Sparkle.LinkedInNET.ServiceDefinition.csproj">
+    <ProjectReference Include="..\NET45.Sparkle.LinkedInNET.ServiceDefinition\NET45.Sparkle.LinkedInNET.ServiceDefinition.csproj">
       <Project>{589b7bae-e19e-43a0-b063-2e017b5e0c1d}</Project>
-      <Name>NET35.Sparkle.LinkedInNET.ServiceDefinition</Name>
+      <Name>NET45.Sparkle.LinkedInNET.ServiceDefinition</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NET451.Sparkle.LinkedInNET\NET451.Sparkle.LinkedInNET.csproj">
+    <ProjectReference Include="..\NET45.Sparkle.LinkedInNET\NET45.Sparkle.LinkedInNET.csproj">
       <Project>{080de9ce-b826-49ca-855d-25aed27d488a}</Project>
-      <Name>NET451.Sparkle.LinkedInNET</Name>
+      <Name>NET45.Sparkle.LinkedInNET</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

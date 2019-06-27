@@ -53,11 +53,9 @@
                 this.ViewBag.Url = null;
             }
 
-            // Dev's horvath janos zrt
-            this.data.SaveAccessToken("AQXAp2DVMg37ryGhgUuZaSeI9geVaoQAzgUaMgFRwsh1z6NMjLT-tmSRa46hDsYUCs4HzaM6oHSNY6Jt3WDCi1Ia9RqIqwlL5dyidNNHDtVW5-Dj5cNNSdEhhpNlLXpETH1CnuYlPiCvccM3_BQhNT2B11DNL3j2jwAtdWwDeAYJT22AprWYKwMTbg-TB-4eOBQZGoXcYQQxlueJlT7rPvWWtNISQ23XJi2LUZTzEk7V0Nrru0mMabl6H1E64Bb_ukKqppsMl4rSIsTBuvxNKFrkzKkjd51Yrzzkm5TsDrW0vxtnc58YBsvpRZZWnASmFPwdr1mcP01gczWbWsSDwhBGsCCBew");
-
-            // this.data.SaveAccessToken("AQXAp2DVMg37ryGhgUuZaSeI9geVaoQAzgUaMgFRwsh1z6NMjLT-tmSRa46hDsYUCs4HzaM6oHSNY6Jt3WDCi1Ia9RqIqwlL5dyidNNHDtVW5-Dj5cNNSdEhhpNlLXpETH1CnuYlPiCvccM3_BQhNT2B11DNL3j2jwAtdWwDeAYJT22AprWYKwMTbg-TB-4eOBQZGoXcYQQxlueJlT7rPvWWtNISQ23XJi2LUZTzEk7V0Nrru0mMabl6H1E64Bb_ukKqppsMl4rSIsTBuvxNKFrkzKkjd51Yrzzkm5TsDrW0vxtnc58YBsvpRZZWnASmFPwdr1mcP01gczWbWsSDwhBGsCCBew");
-
+            var accessToken = "";
+            
+            this.data.SaveAccessToken(accessToken);
 
 
             // step 3

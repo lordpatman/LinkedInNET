@@ -30,7 +30,7 @@ Usage
 
 Build the sources... You have to create your own .snk file.
 
-Supported frameworks: 3.5 (sync), 4.0 (sync), 4.5 (sync and task async).
+Supported frameworks: 4.5 (sync and task async).
 
 ### 2. Create API client with configuration
 
@@ -188,11 +188,9 @@ https://docs.microsoft.com/en-us/linkedin/compliance/
 .NET versions
 ------------
 
-Supported .NET Framework versions:
+Supported .NET Framework version:
 
 * .NET 4.5 (dependencies: Newtonsoft.Json ≥ 6.0.8, Microsoft.Net.Http ≥ 2.2.29)
-* .NET 4.0 (dependencies: Newtonsoft.Json ≥ 6.0.8)
-* .NET 3.5 (dependencies: Newtonsoft.Json ≥ 6.0.8)
 
 We are using a lot of code generation so it won't be difficult to target any other framework. 
 

@@ -66,49 +66,21 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\BaseApiTests.cs">
-      <Link>BaseApiTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\CSharpGeneratorTests.cs">
-      <Link>CSharpGeneratorTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\FieldSelectorTests.cs">
-      <Link>FieldSelectorTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\FieldTests.cs">
-      <Link>FieldTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\LinkedInApiConfigurationTests.cs">
-      <Link>LinkedInApiConfigurationTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\OAuth2ApiTests.cs">
-      <Link>OAuth2ApiTests.cs</Link>
-    </Compile>
-    <Compile Include="..\NET35.Sparkle.LinkedInNET.Tests\XmlTests.cs">
-      <Link>XmlTests.cs</Link>
-    </Compile>
+    <Compile Include="BaseApiTests.cs" />
+    <Compile Include="CSharpGeneratorTests.cs" />
+    <Compile Include="FieldSelectorTests.cs" />
+    <Compile Include="FieldTests.cs" />
+    <Compile Include="LinkedInApiConfigurationTests.cs" />
+    <Compile Include="OAuth2ApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="..\NET35.Sparkle.LinkedInNET.Tests\Files\company-updates.xml">
-      <Link>Files\company-updates.xml</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\NET35.Sparkle.LinkedInNET.Tests\Files\FullProfile.xml">
-      <Link>Files\FullProfile.xml</Link>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NET35.Sparkle.LinkedInNET.ServiceDefinition\NET35.Sparkle.LinkedInNET.ServiceDefinition.csproj">
-      <Project>{589b7bae-e19e-43a0-b063-2e017b5e0c1d}</Project>
-      <Name>NET35.Sparkle.LinkedInNET.ServiceDefinition</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NET451.Sparkle.LinkedInNET\NET451.Sparkle.LinkedInNET.csproj">
-      <Project>{080de9ce-b826-49ca-855d-25aed27d488a}</Project>
-      <Name>NET451.Sparkle.LinkedInNET</Name>
-    </ProjectReference>
+    <Compile Include="XmlTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Files\company-updates.xml" />
+    <Content Include="Files\FullProfile.xml" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

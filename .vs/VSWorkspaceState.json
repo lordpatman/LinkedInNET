@@ -1,10 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\NET45.Sparkle.LinkedInNET.DemoMvc5",
-    "\\src\\NET45.Sparkle.LinkedInNET.DemoMvc5\\Controllers"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\ToDoV2.md",
+  "SelectedNode": "\\README.md",
   "PreviewInSolutionExplorer": false
 }
