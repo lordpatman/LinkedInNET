@@ -150,9 +150,7 @@ namespace Sparkle.LinkedInNET.Internals
             if (string.IsNullOrEmpty(context.UrlPath))
                 throw new ArgumentException("The value cannot be empty", "context.UrlPath");
 
-            bool isOctet = false;
-            if (context.PostDataType == "application/octet-stream")
-                isOctet = true;
+            bool isOctet = context.PostDataType == "application/octet-stream";
 
             var request = (HttpWebRequest)HttpWebRequest.Create(isOctet ? context.UploadUrl : context.UrlPath);
             request.Method = context.Method;
@@ -218,7 +216,7 @@ namespace Sparkle.LinkedInNET.Internals
                         request.ContentLength = context.PostData.Length;
                         request.Method = "PUT";
                         request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
-                        request.Timeout = 10000;
+                        // request.Timeout = 10000;
 
                         // Send the data to the request.
                         using (Stream requestStream = request.GetRequestStream())
@@ -379,7 +377,7 @@ namespace Sparkle.LinkedInNET.Internals
 
         internal void CreateMultiPartStream(RequestContext context, object postData)
         {
-            dynamic postDataDyn = postData;
+            var postDataDyn = postData;
 
             var iamgeData = postDataDyn.Data;
 

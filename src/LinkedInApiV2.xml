@@ -5,6 +5,14 @@
       Title="the profile of the current user" Remark="See https://developer.linkedin.com/docs/guide/v2/people/profile-api"
       RequiresUserAuthentication="1" UsesAcceptLanguage="1" />
 
+    <ApiMethod MethodName="GetFirstDegreeConnections" 
+               HttpMethod="GET" 
+               ReturnType="DegreeSize" 
+               Path="/v2/connections/urn:li:person:{profileId}"          
+               RequiresUserAuthentication="1" 
+               UsesAcceptLanguage="0" 
+               UseFieldSelectors="0" />
+
     <ReturnType Name="person" ClassName="Person" AutoGenerateFieldSelectors="1">
       <!-- Basic profile fields -->
       <Field Name="id" Title="a unique identifier token for this member" />
@@ -114,6 +122,9 @@
       <Field Name="identifierExpiresInSeconds" Type="long?" />
     </ReturnType>
 
+    <ReturnType Name="DegreeSize" ClassName="DegreeSize" AutoGenerateFieldSelectors="1">
+      <Field Name="firstDegreeSize" Type="int"/>
+    </ReturnType>
 
     <FieldGroup Name="BasicFields">
       <Name Name="id" />
@@ -147,9 +158,17 @@
                ReturnType="Organization"
                Title="retrieve a company brand by using the company ID"
                RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
-
+        
+     <ApiMethod MethodName="GetOrganizationPerformanceData" 
+               HttpMethod="GET" 
+               Path="/v2/organizationPageStatistics?q=organization&amp;organization=urn:li:organization:{CompanyId}" 
+               ReturnType="OrganizationPageStatistics"
+               Title="retrieve an organization pagestatistics by using the company ID"
+               RequiresUserAuthentication="1" 
+               UseFieldSelectors="0" />
+    
     <ApiMethod MethodName="GetUserAdminApprOrganizations" HttpMethod="GET"
-              Path="/v2/organizationalEntityAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;state=APPROVED&amp;{FieldSelector}" ReturnType="OrganizationalEntityAcls"
+              Path="/v2/organizationalEntityAcls?q=roleAssignee&amp;role=ADMINISTRATOR&amp;projection=(elements*(*,organizationalTarget~(id, name, vanityName, logoV2(original~:playableStreams))))" ReturnType="OrganizationalEntityAcls"
               Title="retrieve list of companies where current user is administrator and is approved"
               RequiresUserAuthentication="1" Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/organization-lookup-api"/>
 
@@ -164,7 +183,7 @@
     <ReturnType Name="organization" ClassName="Organization" AutoGenerateFieldSelectors="1">
       <Field Name="id" Type="long" IsDefault="1" />
       <Field Name="name" Type="Common.MultiLocaleString" IsDefault="1" />
-      <Field Name="logo" Type="CroppedImage" />
+      <Field Name="logoV2" PropertyName="Logo" Type="CroppedImage" />
       <Field Name="vanityName" />
     </ReturnType>
 
@@ -174,6 +193,7 @@
       <Field Name="x" Type="int"  />
       <Field Name="y" Type="int" />
       <Field Name="cropped" />
+      <Field Name="original~" PropertyName="OriginalObj" Type="dynamic"/>
       <Field Name="original" />
     </ReturnType>
 
@@ -201,16 +221,139 @@
       <Field Name="elements" ClassName="OrgFollowerStatisticsElement" Type="OrgFollowerStatisticsElement" IsCollection="1"/>
       <Field Name="organizationalEntity" />
     </ReturnType>
-
-    <ReturnType Name="OrgFollowerStatisticsElement" ClassName="OrgFollowerStatisticsElement" AutoGenerateFieldSelectors="1">
-      <Field Name="totalFollowerCounts" ClassName="TotalFollowerCounts" Type="TotalFollowerCounts"/>
+    
+    <ReturnType Name="OrganizationPageStatistics" ClassName="OrganizationPageStatistics" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="OrganizationPageStatisticsElement" Type="OrganizationPageStatisticsElement" IsCollection="1"/>
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
     </ReturnType>
 
-    <ReturnType Name="totalFollowerCounts" ClassName="TotalFollowerCounts" AutoGenerateFieldSelectors="1" >
+    <ReturnType Name="OrganizationPageStatisticsElement" ClassName="OrganizationPageStatisticsElement" AutoGenerateFieldSelectors="1">
+      <Field Name="organization" />
+      <Field Name="pageStatisticsByCountry" ClassName="PageStatisticsByCountry"  Type="PageStatisticsByCountry" IsCollection="1"/>
+      <Field Name="pageStatisticsByFunction" ClassName="PageStatisticsByFunction"  Type="PageStatisticsByFunction" IsCollection="1"/>
+      <Field Name="pageStatisticsByIndustry" ClassName="PageStatisticsByIndustry"  Type="PageStatisticsByIndustry" IsCollection="1"/>
+      <Field Name="pageStatisticsByRegion" ClassName="PageStatisticsByRegion"  Type="PageStatisticsByRegion" IsCollection="1"/>
+      <Field Name="pageStatisticsBySeniority" ClassName="PageStatisticsBySeniority"  Type="PageStatisticsBySeniority" IsCollection="1"/>
+      <Field Name="pageStatisticsByStaffCountRange" ClassName="PageStatisticsByStaffCountRange"  Type="PageStatisticsByStaffCountRange" IsCollection="1"/>
+      <Field Name="totalPageStatistics" ClassName="TotalPageStatistics"  Type="TotalPageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsByCountry" ClassName="PageStatisticsByCountry" AutoGenerateFieldSelectors="1">
+      <Field Name="country"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsByFunction" ClassName="PageStatisticsByFunction" AutoGenerateFieldSelectors="1">
+      <Field Name="function"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsByIndustry" ClassName="PageStatisticsByIndustry" AutoGenerateFieldSelectors="1">
+      <Field Name="industry"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsByRegion" ClassName="PageStatisticsByRegion" AutoGenerateFieldSelectors="1">
+      <Field Name="region"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsBySeniority" ClassName="PageStatisticsBySeniority" AutoGenerateFieldSelectors="1">
+      <Field Name="seniority"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatisticsByStaffCountRange" ClassName="PageStatisticsByStaffCountRange" AutoGenerateFieldSelectors="1">
+      <Field Name="staffCountRange"/>
+      <Field Name="pageStatistics" ClassName="PageStatistics" Type="PageStatistics" />
+    </ReturnType>
+    
+    <ReturnType Name="TotalPageStatistics" ClassName="TotalPageStatistics" AutoGenerateFieldSelectors="1">
+      <Field Name="clicks" ClassName="Clicks" Type="Clicks" />
+      <Field Name="views" ClassName="Views" Type="Views" />
+    </ReturnType>
+
+    <ReturnType Name="Clicks" ClassName="Clicks" AutoGenerateFieldSelectors="1">
+      <Field Name="careersPageClicks" ClassName="CareersPageClicks" Type="CareersPageClicks" />
+      <Field Name="mobileCareersPageClicks" ClassName="MobileCareersPageClicks" Type="MobileCareersPageClicks" />
+    </ReturnType>
+
+    <ReturnType Name="CareersPageClicks" ClassName="CareersPageClicks" AutoGenerateFieldSelectors="1">
+      <Field Name="careersPageBannerPromoClicks" Type="int" />
+      <Field Name="careersPageEmployeesClicks" Type="int" />
+      <Field Name="careersPageJobsClicks" Type="int" />
+      <Field Name="careersPagePromoLinksClicks" Type="int" />
+    </ReturnType>
+
+    <ReturnType Name="MobileCareersPageClicks" ClassName="MobileCareersPageClicks" AutoGenerateFieldSelectors="1">
+      <Field Name="careersPageEmployeesClicks" Type="int" />
+      <Field Name="careersPageJobsClicks" Type="int" />
+      <Field Name="careersPagePromoLinksClicks" Type="int" />
+    </ReturnType>
+
+    <ReturnType Name="PageStatistics" ClassName="PageStatistics" AutoGenerateFieldSelectors="1">
+      <Field Name="views" ClassName="Views" Type="Views" />
+    </ReturnType>
+
+    <ReturnType Name="Views" ClassName="Views" AutoGenerateFieldSelectors="1">
+      <Field Name="allDesktopPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="allMobilePageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="allPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="careersPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="desktopCareersPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="desktopJobsPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="desktopLifeAtPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="desktopOverviewPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="jobsPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="lifeAtPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="mobileCareersPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="mobileJobsPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="mobileLifeAtPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="mobileOverviewPageViews" ClassName="PageViews" Type="PageViews" />
+      <Field Name="overviewPageViews" ClassName="PageViews" Type="PageViews" />
+    </ReturnType>
+
+    <ReturnType Name="PageViews" ClassName="PageViews" AutoGenerateFieldSelectors="1">
+      <Field Name="pageViewsCount" Type="int" />
+    </ReturnType>
+    
+    <ReturnType Name="OrgFollowerStatisticsElement" ClassName="OrgFollowerStatisticsElement" AutoGenerateFieldSelectors="1">
+      <Field Name="followerCountsByStaffCountRange" ClassName="FollowerByStaffCountRange" Type="FollowerByStaffCountRange" IsCollection="1" />
+      <Field Name="followerCountsByFunction" ClassName="FollowerByFunction" Type="FollowerByFunction" IsCollection="1" />
+      <Field Name="followerCountsByIndustry" ClassName="FollowerByIndustry" Type="FollowerByIndustry" IsCollection="1" />
+      <Field Name="followerCountsByAssociationType" ClassName="FollowerCounts" Type="FollowerCounts" IsCollection="1" />
+      <Field Name="followerCountsBySeniority" ClassName="FollowerBySeniority" Type="FollowerBySeniority" IsCollection="1" />
+    </ReturnType>
+    
+    <ReturnType Name="FollowerCounts" ClassName="FollowerCounts" AutoGenerateFieldSelectors="1" >
       <Field Name="organicFollowerCount" Type="int"/>
       <Field Name="paidFollowerCount" Type="int"/>
     </ReturnType>
 
+     <ReturnType Name="FollowerByFunction" ClassName="FollowerByFunction" AutoGenerateFieldSelectors="1" >
+      <Field Name="function" />
+       <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="paidFollowerCount" Type="int"/>
+    </ReturnType>   
+      
+    <ReturnType Name="FollowerByIndustry" ClassName="FollowerByIndustry" AutoGenerateFieldSelectors="1" >
+      <Field Name="industry" />
+       <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="paidFollowerCount" Type="int"/>
+    </ReturnType>    
+
+    <ReturnType Name="FollowerBySeniority" ClassName="FollowerBySeniority" AutoGenerateFieldSelectors="1" >
+      <Field Name="seniority" />
+       <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="paidFollowerCount" Type="int"/>
+    </ReturnType>
+
+   <ReturnType Name="FollowerByStaffCountRange" ClassName="FollowerByStaffCountRange" AutoGenerateFieldSelectors="1" >
+      <Field Name="staffCountRange" />
+       <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="paidFollowerCount" Type="int"/>
+    </ReturnType>
+  
   </ApiGroup>
 
   <ApiGroup Name="Shares">
@@ -268,6 +411,37 @@
   </ApiGroup>
 
 
+  <ApiGroup Name="Videos">
+
+    <ApiMethod MethodName="GetVideoStatistics" HttpMethod="GET"
+                  Path="/v2/videoAnalytics?q=entity&amp;entity={videoPostId}&amp;type={type}&amp;aggregation={aggregation}"
+                  ReturnType="VideoAnalytics"
+                  RequiresUserAuthentication="1"
+                  UseFieldSelectors="0"
+                  Title="Fetch stats for video:
+                    aggregation: DAY, WEEK, ALL
+                    type: VIDEO_VIEW, VIEWER, TIME_WATCHED, TIME_WATCHED_FOR_VIDEO_VIEWS"
+                  Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/video-analytics-api" />
+
+    <ReturnType Name="VideoAnalytics" ClassName="VideoAnalytics" >      
+      <Field Name="elements" ClassName="VideoAnalyticsElement" Type="VideoAnalyticsElement" IsCollection="1"/>
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="VideoAnalyticsElement" ClassName="VideoAnalyticsElement" >
+      <Field Name="entity" />
+      <Field Name="statisticsType" />
+      <Field Name="timeRange" ClassName="TimeRange" Type="TimeRange" />
+      <Field Name="value" Type="int" />
+    </ReturnType>
+
+    <ReturnType Name="TimeRange" ClassName="TimeRange" >
+      <Field Name="end" Type="long"/>
+      <Field Name="start" Type="long"/>
+    </ReturnType>
+  </ApiGroup>
+
+  
   <ApiGroup Name="Media">
     <ApiMethod MethodName="Post" HttpMethod="POST"
                   Path="/media/upload"
@@ -277,14 +451,12 @@
                   UseFieldSelectors="0"
                   Title="To upload rich media, attach the media as multipart/form-data."
                   Remark="See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares" />
-
-
+      
     <ReturnType Name="MediaPostResult" ClassName="MediaPostResult" >
       <Field Name="location" />
     </ReturnType>
   </ApiGroup>  
   
-
 
   <ApiGroup Name="UGCPost">
     <ApiMethod MethodName="Post" HttpMethod="POST"
@@ -325,9 +497,17 @@
       <Field Name="description" PropertyName="UGCMediaDescription" Type="UGCText"/>
       <Field Name="media" />
       <Field Name="status" />
-      <Field Name="thumbnails" IsCollection="1"/>
+      <Field Name="thumbnails" Type="ImageThumbnail" IsCollection="1"/>
       <Field Name="landingPage" PropertyName="LandingPages" Type="LandingPage" />
       <Field Name="title" PropertyName="UGCMediaTitle" Type="UGCText" />
+    </ReturnType>
+
+    <ReturnType Name="ImageThumbnail" ClassName="ImageThumbnail">
+      <Field Name="altText" />
+      <Field Name="height" Type="int"/>
+      <Field Name="size" Type="long"/>
+      <Field Name="url" />
+      <Field Name="width" Type="int"/>      
     </ReturnType>
 
     <ReturnType Name="UGCText" ClassName="UGCText">
@@ -751,5 +931,97 @@
       <Field Name="states"  PropertyName="States" IsCollection="1"/>
     </ReturnType>
     
-  </ApiGroup>  
+  </ApiGroup>
+
+
+  <ApiGroup Name="Region">
+    
+    <ApiMethod MethodName="GetRegion"
+             HttpMethod="GET"
+             Path="/v2/regions/{id}?locale.language=en&amp;locale.country=US"
+             ReturnType="Targeting.TargetingRegion"    
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"/>
+  
+  </ApiGroup>
+
+
+  <ApiGroup Name="Ads">
+    <ApiMethod MethodName="GetAdAnalytics"
+             HttpMethod="GET"
+             Path="/v2/adAnalyticsV2?q=statistics&amp;pivots[0]=SHARE&amp;dateRange.start.day=&#34; + DateTime.Now.Day + &#34;&amp;dateRange.start.month=&#34; + DateTime.Now.Month + &#34;&amp;dateRange.start.year=&#34; + DateTime.Now.Year + &#34;&amp;timeGranularity=DAILY&amp;shares[0]=urn:li:sponsoredShare:{postId}"
+             ReturnType="AdAnalytics"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"/>
+
+    <ReturnType Name="AdAnalytics" ClassName="AdAnalytics" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="AdAnalyticsElement" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="AdAnalyticsElement" ClassName="AdAnalyticsElement" AutoGenerateFieldSelectors="1">
+      <Field Name="actionClicks" Type="int"/>
+      <Field Name="adUnitClicks" Type="int"/>
+      <Field Name="clicks" Type="int"/>
+      <Field Name="comments" Type="int"/>
+      <Field Name="companyPageClicks" Type="int"/>
+      <Field Name="conversionValueInLocalCurrency" />
+      <Field Name="costInLocalCurrency" />
+      <Field Name="costInUsd" />
+      <Field Name="dateRange" ClassName="DateRange" Type="DateRange"/>
+      <Field Name="externalWebsiteConversions" Type="int"/>
+      <Field Name="externalWebsitePostClickConversions" Type="int"/>
+      <Field Name="externalWebsitePostViewConversions" Type="int"/>
+      <Field Name="follows" Type="int"/>
+      <Field Name="impressions" Type="int"/>
+      <Field Name="landingPageClicks" Type="int"/>
+      <Field Name="leadGenerationMailContactInfoShares" Type="int"/>
+      <Field Name="leadGenerationMailInterestedClicks" Type="int"/>
+      <Field Name="likes" Type="int"/>
+      <Field Name="oneClickLeadFormOpens" Type="int"/>
+      <Field Name="oneClickLeads" Type="int"/>
+      <Field Name="opens" Type="int"/>
+      <Field Name="otherEngagements" Type="int"/>
+      <Field Name="pivot" />
+      <Field Name="pivotValue" />
+      <Field Name="pivotValues" Type="string" IsCollection="1"/>
+      <Field Name="shares" Type="int"/>
+      <Field Name="textUrlClicks" Type="int"/>
+      <Field Name="totalEngagements" Type="int"/>
+      <Field Name="viralClicks" Type="int"/>
+      <Field Name="viralComments" Type="int"/>
+      <Field Name="viralCompanyPageClicks" Type="int"/>
+      <Field Name="viralExternalWebsiteConversions" Type="int"/>
+      <Field Name="viralExternalWebsitePostClickConversions" Type="int"/>
+      <Field Name="viralExternalWebsitePostViewConversions" Type="int"/>
+      <Field Name="viralFollows" Type="int"/>
+      <Field Name="viralImpressions" Type="int"/>
+      <Field Name="viralLandingPageClicks" Type="int"/>
+      <Field Name="viralLikes" Type="int"/>
+      <Field Name="viralOneClickLeadFormOpens" Type="int"/>
+      <Field Name="viralOneClickLeads" Type="int"/>
+      <Field Name="viralOtherEngagements" Type="int"/>
+      <Field Name="viralShares" Type="int"/>
+      <Field Name="viralTotalEngagements" Type="int"/>
+    </ReturnType>
+
+    <ReturnType Name="End" ClassName="End" AutoGenerateFieldSelectors="1">
+      <Field Name="day" Type="int"/>
+      <Field Name="month" Type="int"/>
+      <Field Name="year" Type="int"/>
+    </ReturnType>
+
+    <ReturnType Name="Start" ClassName="Start" AutoGenerateFieldSelectors="1">
+      <Field Name="day" Type="int"/>
+      <Field Name="month" Type="int"/>
+      <Field Name="year" Type="int"/>
+    </ReturnType>
+
+    <ReturnType Name="DateRange" ClassName="DateRange" AutoGenerateFieldSelectors="1">
+      <Field Name="end" ClassName="End" Type="End"/>
+      <Field Name="start" ClassName="Start" Type="Start"/>
+    </ReturnType>
+
+  </ApiGroup>
+  
 </Root>

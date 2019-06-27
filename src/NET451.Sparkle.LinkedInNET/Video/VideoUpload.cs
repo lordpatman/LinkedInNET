@@ -11,7 +11,7 @@ namespace Sparkle.LinkedInNET.Video
     public static class VideoUpload
     {
         // 200MB
-        private static readonly long VIDEO_MAX_BYTE_SIZE = 209715200;
+        private static readonly long VIDEO_MAX_BYTE_SIZE = 52428800; // 209715200;
 
         #region Video upload
         public static async Task<string> UploadVideoAsync(LinkedInApi api, UserAuthorization user, string ownerURN, byte[] videoData)

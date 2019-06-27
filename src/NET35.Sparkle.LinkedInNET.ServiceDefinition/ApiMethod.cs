@@ -56,6 +56,9 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
         public bool IsIntResultHandeling { get; set; }
 
         [XmlAttribute]
+        public bool IsStringResultHandeling { get; set; }
+
+        [XmlAttribute]
         public bool IsUGCPostHandeling { get; set; }
 
         ////[XmlAttribute]

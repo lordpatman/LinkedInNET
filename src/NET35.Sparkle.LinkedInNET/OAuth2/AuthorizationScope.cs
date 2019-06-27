@@ -78,5 +78,28 @@ namespace Sparkle.LinkedInNET.OAuth2
         /// Edit company pages for which I am an Admin and post status updates on behalf of those companies.
         /// </summary>
         ReadWriteOrganization = 0x400,
+
+        /// <summary>
+        /// Reade First Connections Size(r_1st_connections_size)
+        /// Read access to the number of 1st-degreeconnections within the authenticated member's network
+        /// </summary>
+        ReadFirstConnectionsSize = 0x800,
+
+        /// <summary>
+        /// Read Lite Profile (r_liteprofile)
+        /// Read access to a member's lite profile. This permission scope permits access to retrieve the member's ID via the Profile API. Alternatively, retrieve the member ID from any of the LinkedIn Profile APIs.
+        /// </summary>
+        ReadLiteProfile = 0x1000,
+
+        /// <summary>
+        /// Read Ads Reporting (r_ads_reporting)
+        /// </summary>
+        ReadAdsReporting = 0x2000,
+
+        /// <summary>
+        /// Retrieve organizations' posts, comments, and likes 
+        /// </summary>
+        ReadOrganizationSocial = 0x4000,
+
     }
 }

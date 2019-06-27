@@ -411,13 +411,13 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 // body / format url
                 if (urlParams.Count > 0)
                 {
-                    this.text.WriteLine(indent, "const string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
 
                     this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
                 }
                 else if (method.Path.Contains("FieldSelector"))
                 {
-                    this.text.WriteLine(indent, "const string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
                     this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, fields);");
                 }
                 else
@@ -493,6 +493,10 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 {
                     text.WriteLine(indent, "var result = (int)context.HttpStatusCode;");
                 }
+                else if (method.IsStringResultHandeling)
+                {
+                    text.WriteLine(indent, "var result = this.HandleRawResponse(context, System.Text.Encoding.UTF8);");
+                }
                 else
                 {
                     text.WriteLine(indent, "var result = this.HandleJsonResponse<" + returnType + ">(context);");
@@ -561,13 +565,13 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 // body / format url
                 if (urlParams.Count > 0)
                 {
-                    this.text.WriteLine(indent, "const string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
 
                     this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
                 }
                 else if (method.Path.Contains("FieldSelector"))
                 {
-                    this.text.WriteLine(indent, "const string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
                     this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, fields);");
                 }
                 else
@@ -643,6 +647,10 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 else if (method.IsIntResultHandeling)
                 {
                     text.WriteLine(indent, "var result = (int)context.HttpStatusCode;");
+                }
+                else if (method.IsStringResultHandeling)
+                {
+                    text.WriteLine(indent, "var result = this.HandleRawResponse(context, System.Text.Encoding.UTF8);");
                 }
                 else
                 {

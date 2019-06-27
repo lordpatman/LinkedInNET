@@ -158,7 +158,7 @@
                                         },
                                         Media = "urn:li:digitalmediaAsset:C4D05AQGYz5sONvv20g",// requestAsset.Value.Asset, // "urn:li:digitalmediaAsset:C4D05AQHwsp8DLpxHiA", // "urn:li:digitalmediaAsset:C5500AQG7r2u00ByWjw",
                                         Status = "READY",
-                                        Thumbnails = new List<string>(),
+                                        // Thumbnails = new List<string>(),
                                         UGCMediaTitle = new UGCPost.UGCText()
                                         {
                                             Text = "Test Title"
