@@ -4,7 +4,7 @@
 LinkedInNET
 ===========
 
-[Sparkle.LinkedInNET](https://github.com/SparkleNetworks/LinkedInNET/) will help you query the LinkedIn API V2:)
+[Sparkle.LinkedInNET](https://github.com/SparkleNetworks/LinkedInNET/) [Nuget](https://www.nuget.org/packages/LinkedInNET.ApiV2/) will help you query the LinkedIn API V2 :)
 
 Have any question? You may reach the authors on the dedicated chat room: [![Join the chat at https://gitter.im/SparkleNetworks/LinkedInNET](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SparkleNetworks/LinkedInNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -27,8 +27,9 @@ Usage
 
 ### 1. Installation
 
+Use it from [Nuget](https://www.nuget.org/packages/LinkedInNET.ApiV2/). 
 
-Build the sources... You have to create your own .snk file.
+Or build the sources... You have to create your own .snk file.
 
 Supported frameworks: 4.5 (sync and task async).
 

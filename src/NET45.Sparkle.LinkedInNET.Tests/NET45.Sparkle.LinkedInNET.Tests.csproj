@@ -82,6 +82,16 @@
     <Content Include="Files\company-updates.xml" />
     <Content Include="Files\FullProfile.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NET45.Sparkle.LinkedInNET.ServiceDefinition\NET45.Sparkle.LinkedInNET.ServiceDefinition.csproj">
+      <Project>{589b7bae-e19e-43a0-b063-2e017b5e0c1d}</Project>
+      <Name>NET45.Sparkle.LinkedInNET.ServiceDefinition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NET45.Sparkle.LinkedInNET\NET45.Sparkle.LinkedInNET.csproj">
+      <Project>{080de9ce-b826-49ca-855d-25aed27d488a}</Project>
+      <Name>NET45.Sparkle.LinkedInNET</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
