@@ -1,0 +1,7 @@
+1. LinkedInNet.ApiV2 nuget was created: https://www.nuget.org/packages/LinkedInNET.ApiV2/
+
+2. Project source: https://github.com/247GradLabs/LinkedInNET
+If some changes are needed, change it then generate and publish a nuget package out of it.
+There is an xml configuration for linkedinapiV2, extend that file, run service.tt (only have to save it) and publish the package to nuget.
+
+
