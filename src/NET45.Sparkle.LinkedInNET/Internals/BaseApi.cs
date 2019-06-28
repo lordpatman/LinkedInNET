@@ -141,6 +141,9 @@ namespace Sparkle.LinkedInNET.Internals
 
         internal bool ExecuteQuery(RequestContext context)
         {
+
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             // https://developer.linkedin.com/documents/request-and-response-headers
 
             if (context == null)
