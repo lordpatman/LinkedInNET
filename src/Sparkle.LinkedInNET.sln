@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{12E6CB6C-908C-49B6-9654-9035D9CFD182}"
 	ProjectSection(SolutionItems) = preProject
 		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+		Create and publish nuget package.txt = Create and publish nuget package.txt
 		LinkedInApi.xml = LinkedInApi.xml
 		LinkedInApiV2.xml = LinkedInApiV2.xml
 		ToDo.md = ToDo.md

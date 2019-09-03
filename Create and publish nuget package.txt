@@ -1,0 +1,44 @@
+Create and Publish Nuget Package:
+
+I. Prerequisites:
+1. Download nuget.exe from nuget.org and add to your PATH environment variable
+2. Register or login to nuget.org to get Api Key
+
+---------------------------------------------------------
+
+II. Configure project properties for the package:
+1. Project > Properties menu command, then select the Application tab
+2. Add Assembly name and Assembly Information
+3. Save and Build project
+
+---------------------------------------------------------
+
+III. Generate the initial manifest:
+1. Open a command prompt and navigate to the project folder containing .csproj file 
+2. Run 'nuget spec YourProjectName.csproj'
+3. nuspec (nuget specs) file is created, open and edit.
+
+---------------------------------------------------------
+
+IV. Run the pack command:
+1. nuget pack -Exclude ***.tt
+2. .nupkg is generated
+
+---------------------------------------------------------
+
+V. Publish the package:
+1. Create or use exiting Api Key from nuget.org
+2. Make sure to use proper Glob Pattern (what will be visible)
+3. Change to the folder containing the .nupkg file
+4. nuget push AppLogger.1.0.0.nupkg nugetApiKey -Source https://api.nuget.org/v3/index.json
+
+---------------------------------------------------------
+
+VI. Add a new version:
+1. Rebuild and Start from III.3. and only edit the version
+
+---------------------------------------------------------
+
+For more infos: 
+https://github.com/NuGet/docs.microsoft.com-nuget/blob/master/docs/quickstart/create-and-publish-a-package-using-visual-studio-net-framework.md
+https://github.com/NuGet/docs.microsoft.com-nuget/blob/master/docs/quickstart/create-and-publish-a-package-using-visual-studio.md
