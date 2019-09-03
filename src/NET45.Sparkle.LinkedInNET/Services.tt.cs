@@ -2901,6 +2901,168 @@ namespace Sparkle.LinkedInNET.Media
 
 #region ReturnTypes for UGCPost
 
+// WriteReturnTypes(UGCPost, UGCPostItems)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPostItems'
+    /// </summary>
+    [Serializable, XmlRoot("UGCPostItems")]
+    public class UGCPostItems
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<UGCPostItemResult> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCPostItemResult)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCPostItemResult'
+    /// </summary>
+    [Serializable, XmlRoot("UGCPostItemResult")]
+    public class UGCPostItemResult
+    {
+        /// <summary>
+        /// Field: 'author' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "author")]
+        [JsonProperty(PropertyName = "author")]
+        public string Author { get; set; }
+
+        /// <summary>
+        /// Field: 'clientApplication' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "clientApplication")]
+        [JsonProperty(PropertyName = "clientApplication")]
+        public string ClientApplication { get; set; }
+
+        /// <summary>
+        /// Field: 'containerEntity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "containerEntity")]
+        [JsonProperty(PropertyName = "containerEntity")]
+        public string ContainerEntity { get; set; }
+
+        /// <summary>
+        /// Field: 'contentCertificationRecord' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "contentCertificationRecord")]
+        [JsonProperty(PropertyName = "contentCertificationRecord")]
+        public string ContentCertificationRecord { get; set; }
+
+        /// <summary>
+        /// Field: 'created' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "created")]
+        [JsonProperty(PropertyName = "created")]
+        public Common.ShareTime Created { get; set; }
+
+        /// <summary>
+        /// Field: 'deleted' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "deleted")]
+        [JsonProperty(PropertyName = "deleted")]
+        public Common.ShareTime Deleted { get; set; }
+
+        /// <summary>
+        /// Field: 'lastModified' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public Common.ShareTime LastModified { get; set; }
+
+        /// <summary>
+        /// Field: 'firstPublishedAt' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "firstPublishedAt")]
+        [JsonProperty(PropertyName = "firstPublishedAt")]
+        public long FirstPublishedAt { get; set; }
+
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'lifecycleState' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lifecycleState")]
+        [JsonProperty(PropertyName = "lifecycleState")]
+        public string LifecycleState { get; set; }
+
+        /// <summary>
+        /// Field: 'origin' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "origin")]
+        [JsonProperty(PropertyName = "origin")]
+        public string Origin { get; set; }
+
+        /// <summary>
+        /// Field: 'distribution' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "distribution")]
+        [JsonProperty(PropertyName = "distribution")]
+        public Common.UGCDistribution Distribution { get; set; }
+
+        /// <summary>
+        /// Field: 'targetAudience' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "targetAudience")]
+        [JsonProperty(PropertyName = "targetAudience")]
+        public TargetAudience TargetAudience { get; set; }
+
+        /// <summary>
+        /// Field: 'visibility' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "visibility")]
+        [JsonProperty(PropertyName = "visibility")]
+        public UGCPostvisibility Visibility { get; set; }
+
+        /// <summary>
+        /// Field: 'responseContext' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "responseContext")]
+        [JsonProperty(PropertyName = "responseContext")]
+        public ResponseContext ResponseContext { get; set; }
+
+        /// <summary>
+        /// Field: 'specificContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "specificContent")]
+        [JsonProperty(PropertyName = "specificContent")]
+        public UGCGetSpecificContent SpecificContent { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(UGCPost, UGCPostData)
 namespace Sparkle.LinkedInNET.UGCPost
 {
@@ -2979,6 +3141,38 @@ namespace Sparkle.LinkedInNET.UGCPost
     }
 }
 
+// WriteReturnTypes(UGCPost, responseContext)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'responseContext'
+    /// </summary>
+    [Serializable, XmlRoot("responseContext")]
+    public class ResponseContext
+    {
+        /// <summary>
+        /// Field: 'parent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "parent")]
+        [JsonProperty(PropertyName = "parent")]
+        public string Parent { get; set; }
+
+        /// <summary>
+        /// Field: 'root' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "root")]
+        [JsonProperty(PropertyName = "root")]
+        public string Root { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(UGCPost, SpecificContent)
 namespace Sparkle.LinkedInNET.UGCPost
 {
@@ -3032,6 +3226,70 @@ namespace Sparkle.LinkedInNET.UGCPost
         [XmlElement(ElementName = "shareCommentary")]
         [JsonProperty(PropertyName = "shareCommentary")]
         public UGCText ShareCommentary { get; set; }
+
+        /// <summary>
+        /// Field: 'shareMediaCategory' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareMediaCategory")]
+        [JsonProperty(PropertyName = "shareMediaCategory")]
+        public string ShareMediaCategory { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCGetSpecificContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCGetSpecificContent'
+    /// </summary>
+    [Serializable, XmlRoot("UGCGetSpecificContent")]
+    public class UGCGetSpecificContent
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.ugc.UGCGetShareContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.ugc.UGCGetShareContent")]
+        [JsonProperty(PropertyName = "com.linkedin.ugc.UGCGetShareContent")]
+        public ComLinkedinUgcGetShareContent ComLinkedinUgcGetShareContent { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, ComLinkedinUgcGetShareContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ComLinkedinUgcGetShareContent'
+    /// </summary>
+    [Serializable, XmlRoot("ComLinkedinUgcGetShareContent")]
+    public class ComLinkedinUgcGetShareContent
+    {
+        /// <summary>
+        /// Field: 'media' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media")]
+        [JsonProperty(PropertyName = "media")]
+        public List<UGCMedia> UGCMedia { get; set; }
+
+        /// <summary>
+        /// Field: 'shareCommentary' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "shareCommentary")]
+        [JsonProperty(PropertyName = "shareCommentary")]
+        public UGCGetText ShareCommentary { get; set; }
 
         /// <summary>
         /// Field: 'shareMediaCategory' (on-demand)
@@ -3188,6 +3446,38 @@ namespace Sparkle.LinkedInNET.UGCPost
     }
 }
 
+// WriteReturnTypes(UGCPost, UGCGetText)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCGetText'
+    /// </summary>
+    [Serializable, XmlRoot("UGCGetText")]
+    public class UGCGetText
+    {
+        /// <summary>
+        /// Field: 'attributes' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "attributes")]
+        [JsonProperty(PropertyName = "attributes")]
+        public List<object> Attributes { get; set; }
+
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(UGCPost, LandingPage)
 namespace Sparkle.LinkedInNET.UGCPost
 {
@@ -3278,9 +3568,30 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCPostData', 'UGCPostResult', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCGetSpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCGetText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<UGCPostItems> WithElements(this FieldSelector<UGCPostItems> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<UGCPostItems> WithPaging(this FieldSelector<UGCPostItems> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<UGCPostItems> WithAllFields(this FieldSelector<UGCPostItems> me) { return me.AddRange("elements", "paging"); }
+        
     }
 }
 
@@ -4420,6 +4731,38 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteReturnTypes(Common, UGCDistribution)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCDistribution'
+    /// </summary>
+    [Serializable, XmlRoot("UGCDistribution")]
+    public class UGCDistribution
+    {
+        /// <summary>
+        /// Field: 'externalDistributionChannels' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "externalDistributionChannels")]
+        [JsonProperty(PropertyName = "externalDistributionChannels")]
+        public List<string> ExternalDistributionChannels { get; set; }
+
+        /// <summary>
+        /// Field: 'distributedViaFollowFeed' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "distributedViaFollowFeed")]
+        [JsonProperty(PropertyName = "distributedViaFollowFeed")]
+        public bool DistributedViaFollowFeed { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Common, distribution)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -4743,7 +5086,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'UGCDistribution', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
     /// </summary>
     public static class CommonFields {
     }
@@ -7112,6 +7455,63 @@ namespace Sparkle.LinkedInNET.UGCPost
                         return result;
                     }
                         
+                        /// <summary>
+                        /// UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts
+                        /// </remarks>
+                        public UGCPost.UGCPostItems GetUGCPosts(
+                              UserAuthorization user 
+                            , string encodedUrn 
+                            , int start = 0
+                            , int count = 50
+                        )
+                        {
+                            string urlFormat = "/v2/ugcPosts?q=authors&authors=List({encodedUrn})&start={int Start = 0}&count={int Count = 50}";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "encodedUrn", encodedUrn, "int Start = 0", start, "int Count = 50", count);
+
+                            var context = new RequestContext();
+                            context.UserAuthorization = user;
+                            context.Method =  "GET";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                            var result = this.HandleJsonResponse<UGCPost.UGCPostItems>(context);
+                            return result;
+                        }
+
+                            /// <summary>
+                            /// UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts
+                            /// </remarks>
+                            public async Task<UGCPost.UGCPostItems> GetUGCPostsAsync(
+                                  UserAuthorization user 
+                                , string encodedUrn 
+                                , int start = 0
+                                , int count = 50
+                            )
+                            {
+                                string urlFormat = "/v2/ugcPosts?q=authors&authors=List({encodedUrn})&start={int Start = 0}&count={int Count = 50}";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "encodedUrn", encodedUrn, "int Start = 0", start, "int Count = 50", count);
+
+                                var context = new RequestContext();
+                                context.UserAuthorization = user;
+                                context.Method =  "GET";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                var result = this.HandleJsonResponse<UGCPost.UGCPostItems>(context);
+                                return result;
+                            }
+                                
             }
         }
 
