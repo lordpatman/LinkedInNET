@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Root>
   <ApiGroup Name="Profiles">
     <ApiMethod MethodName="GetMyProfile" HttpMethod="GET" ReturnType="Person" Path="/v2/me?{FieldSelector}"
@@ -470,6 +470,39 @@
                    Title="Upload a video asset to create a UGC Post."
                    Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api" />
 
+    <ApiMethod MethodName="GetUGCPosts" HttpMethod="GET"
+                 Path="/v2/ugcPosts?q=authors&amp;authors=List({encodedUrn})&amp;start={int Start = 0}&amp;count={int Count = 50}"
+                 ReturnType="UGCPostItems"
+                 RequiresUserAuthentication="1"
+                 UseFieldSelectors="0"
+                 Title="UGCPosts will be ordered by created time with the latest one being the first. 
+                 We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter."               
+                 Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts" />
+    
+    <ReturnType Name="UGCPostItems" ClassName="UGCPostItems" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="UGCPostItemResult" Type="UGCPostItemResult" IsCollection="1"/>
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="UGCPostItemResult">
+      <Field Name="author" />
+      <Field Name="clientApplication" />
+      <Field Name="containerEntity" />
+      <Field Name="contentCertificationRecord" />
+      <Field Name="created" Type="Common.ShareTime"  />
+      <Field Name="deleted" Type="Common.ShareTime"  />
+      <Field Name="lastModified" Type="Common.ShareTime" />
+      <Field Name="firstPublishedAt" Type="long"  />
+      <Field Name="id" />
+      <Field Name="lifecycleState" />
+      <Field Name="origin" />
+      <Field Name="distribution" Type="Common.UGCDistribution" />
+      <Field Name="targetAudience" Type="TargetAudience"/>
+      <Field Name="visibility" Type="UGCPostvisibility" />
+      <Field Name="responseContext" Type="ResponseContext" />
+      <Field Name="specificContent" Type="UGCGetSpecificContent"/>
+    </ReturnType>
+    
     <ReturnType Name="UGCPostData" ClassName="UGCPostData">
       <Field Name="author" />
       <Field Name="lifecycleState" />
@@ -482,6 +515,10 @@
       <Field Name="id" />
     </ReturnType>
 
+    <ReturnType Name="responseContext" ClassName="ResponseContext">
+      <Field Name="parent"/>
+      <Field Name="root"/>
+    </ReturnType>
 
     <ReturnType Name="SpecificContent" ClassName="SpecificContent">
       <Field Name="com.linkedin.ugc.ShareContent" PropertyName="ComLinkedinUgcShareContent" Type="ComLinkedinUgcShareContent" />
@@ -490,6 +527,16 @@
     <ReturnType Name="comLinkedinUgcShareContent" ClassName="ComLinkedinUgcShareContent">
       <Field Name="media" PropertyName="UGCMedia" Type="UGCMedia"  IsCollection="1"/>
       <Field Name="shareCommentary" PropertyName="ShareCommentary" Type="UGCText" />
+      <Field Name="shareMediaCategory" />
+    </ReturnType>
+
+    <ReturnType Name="UGCGetSpecificContent" ClassName="UGCGetSpecificContent">
+      <Field Name="com.linkedin.ugc.UGCGetShareContent" PropertyName="ComLinkedinUgcGetShareContent" Type="ComLinkedinUgcGetShareContent" />
+    </ReturnType>
+
+    <ReturnType Name="ComLinkedinUgcGetShareContent" ClassName="ComLinkedinUgcGetShareContent">
+      <Field Name="media" PropertyName="UGCMedia" Type="UGCMedia"  IsCollection="1"/>
+      <Field Name="shareCommentary" PropertyName="ShareCommentary" Type="UGCGetText" />
       <Field Name="shareMediaCategory" />
     </ReturnType>
 
@@ -512,6 +559,11 @@
 
     <ReturnType Name="UGCText" ClassName="UGCText">
       <Field Name="attributes" IsCollection="1" />
+      <Field Name="text" />
+    </ReturnType>
+
+    <ReturnType Name="UGCGetText" ClassName="UGCGetText">
+      <Field Name="attributes" Type="object" IsCollection="1" />
       <Field Name="text" />
     </ReturnType>
 
@@ -743,6 +795,11 @@
     <ReturnType Name="shareCreated" ClassName="ShareTime">
       <Field Name="actor"/>
       <Field Name="time" Type="long" />
+    </ReturnType>
+
+    <ReturnType Name="UGCDistribution" ClassName="UGCDistribution">
+      <Field Name="externalDistributionChannels" IsCollection="1" />
+      <Field Name="distributedViaFollowFeed" Type="bool" />
     </ReturnType>
 
     <ReturnType Name="distribution" ClassName="Distribution">
