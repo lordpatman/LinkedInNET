@@ -2901,6 +2901,191 @@ namespace Sparkle.LinkedInNET.Media
 
 #region ReturnTypes for UGCPost
 
+// WriteReturnTypes(UGCPost, UGCVideo)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCVideo'
+    /// </summary>
+    [Serializable, XmlRoot("UGCVideo")]
+    public class UGCVideo
+    {
+        /// <summary>
+        /// Field: 'specificContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "specificContent")]
+        [JsonProperty(PropertyName = "specificContent")]
+        public SpecificVideoContent SpecificContent { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, SpecificVideoContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'SpecificVideoContent'
+    /// </summary>
+    [Serializable, XmlRoot("SpecificVideoContent")]
+    public class SpecificVideoContent
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.ugc.ShareContent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.ugc.ShareContent")]
+        [JsonProperty(PropertyName = "com.linkedin.ugc.ShareContent")]
+        public ComLinkedinUgcVideoContent ComLinkedinUgcVideoContent { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, ComLinkedinUgcVideoContent)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'ComLinkedinUgcVideoContent'
+    /// </summary>
+    [Serializable, XmlRoot("ComLinkedinUgcVideoContent")]
+    public class ComLinkedinUgcVideoContent
+    {
+        /// <summary>
+        /// Field: 'media' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media")]
+        [JsonProperty(PropertyName = "media")]
+        public List<UGCVideoMedia> UGCMedia { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCVideoMedia)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCVideoMedia'
+    /// </summary>
+    [Serializable, XmlRoot("UGCVideoMedia")]
+    public class UGCVideoMedia
+    {
+        /// <summary>
+        /// Field: 'media~' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media~")]
+        [JsonProperty(PropertyName = "media~")]
+        public UGCMediaData mediaData { get; set; }
+
+        /// <summary>
+        /// Field: 'media' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media")]
+        [JsonProperty(PropertyName = "media")]
+        public string Media { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMediaData)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMediaData'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMediaData")]
+    public class UGCMediaData
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<UGCMediaElements> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMediaElements)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMediaElements'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMediaElements")]
+    public class UGCMediaElements
+    {
+        /// <summary>
+        /// Field: 'artifact' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "artifact")]
+        [JsonProperty(PropertyName = "artifact")]
+        public string Artifact { get; set; }
+
+        /// <summary>
+        /// Field: 'authorizationMethod' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "authorizationMethod")]
+        [JsonProperty(PropertyName = "authorizationMethod")]
+        public string AuthorizationMethod { get; set; }
+
+        /// <summary>
+        /// Field: 'data' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "data")]
+        [JsonProperty(PropertyName = "data")]
+        public object Data { get; set; }
+
+        /// <summary>
+        /// Field: 'identifiers' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "identifiers")]
+        [JsonProperty(PropertyName = "identifiers")]
+        public List<object> Identifiers { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(UGCPost, UGCPostItems)
 namespace Sparkle.LinkedInNET.UGCPost
 {
@@ -3237,7 +3422,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     }
 }
 
-// WriteReturnTypes(UGCPost, UGCGetSpecificContent)
+// WriteReturnTypes(UGCPost, SpecificContent)
 namespace Sparkle.LinkedInNET.UGCPost
 {
     using System;
@@ -3247,16 +3432,16 @@ namespace Sparkle.LinkedInNET.UGCPost
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'UGCGetSpecificContent'
+    /// Name: 'SpecificContent'
     /// </summary>
-    [Serializable, XmlRoot("UGCGetSpecificContent")]
+    [Serializable, XmlRoot("SpecificContent")]
     public class UGCGetSpecificContent
     {
         /// <summary>
-        /// Field: 'com.linkedin.ugc.UGCGetShareContent' (on-demand)
+        /// Field: 'com.linkedin.ugc.ShareContent' (on-demand)
         /// </summary>
-        [XmlElement(ElementName = "com.linkedin.ugc.UGCGetShareContent")]
-        [JsonProperty(PropertyName = "com.linkedin.ugc.UGCGetShareContent")]
+        [XmlElement(ElementName = "com.linkedin.ugc.ShareContent")]
+        [JsonProperty(PropertyName = "com.linkedin.ugc.ShareContent")]
         public ComLinkedinUgcGetShareContent ComLinkedinUgcGetShareContent { get; set; }
 
     }
@@ -3446,7 +3631,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     }
 }
 
-// WriteReturnTypes(UGCPost, UGCGetText)
+// WriteReturnTypes(UGCPost, UGCText)
 namespace Sparkle.LinkedInNET.UGCPost
 {
     using System;
@@ -3456,9 +3641,9 @@ namespace Sparkle.LinkedInNET.UGCPost
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Name: 'UGCGetText'
+    /// Name: 'UGCText'
     /// </summary>
-    [Serializable, XmlRoot("UGCGetText")]
+    [Serializable, XmlRoot("UGCText")]
     public class UGCGetText
     {
         /// <summary>
@@ -3568,7 +3753,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'UGCGetSpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCGetText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
         /// <summary>
@@ -7456,20 +7641,20 @@ namespace Sparkle.LinkedInNET.UGCPost
                     }
                         
                         /// <summary>
-                        /// UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                        /// Get posts with Video urns. UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
                         /// </summary>
                         /// <remarks>
                         /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts
                         /// </remarks>
                         public UGCPost.UGCPostItems GetUGCPosts(
                               UserAuthorization user 
-                            , string encodedUrn 
+                            , string urn 
                             , int start = 0
                             , int count = 50
                         )
                         {
-                            string urlFormat = "/v2/ugcPosts?q=authors&authors=List({encodedUrn})&start={int Start = 0}&count={int Count = 50}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "encodedUrn", encodedUrn, "int Start = 0", start, "int Count = 50", count);
+                            string urlFormat = "/v2/ugcPosts?q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -7484,20 +7669,20 @@ namespace Sparkle.LinkedInNET.UGCPost
                         }
 
                             /// <summary>
-                            /// UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
+                            /// Get posts with Video urns. UGCPosts will be ordered by created time with the latest one being the first.                   We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter.
                             /// </summary>
                             /// <remarks>
                             /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts
                             /// </remarks>
                             public async Task<UGCPost.UGCPostItems> GetUGCPostsAsync(
                                   UserAuthorization user 
-                                , string encodedUrn 
+                                , string urn 
                                 , int start = 0
                                 , int count = 50
                             )
                             {
-                                string urlFormat = "/v2/ugcPosts?q=authors&authors=List({encodedUrn})&start={int Start = 0}&count={int Count = 50}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "encodedUrn", encodedUrn, "int Start = 0", start, "int Count = 50", count);
+                                string urlFormat = "/v2/ugcPosts?q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -7512,6 +7697,59 @@ namespace Sparkle.LinkedInNET.UGCPost
                                 return result;
                             }
                                 
+                                /// <summary>
+                                /// Get Video by urn
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                /// </remarks>
+                                public UGCPost.UGCVideo GetUGCVideo(
+                                      UserAuthorization user 
+                                    , string urn 
+                                )
+                                {
+                                    string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// Get Video by urn
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                    /// </remarks>
+                                    public async Task<UGCPost.UGCVideo> GetUGCVideoAsync(
+                                          UserAuthorization user 
+                                        , string urn 
+                                    )
+                                    {
+                                        string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                        return result;
+                                    }
+                                        
             }
         }
 
@@ -8400,7 +8638,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Profiles API.
         /// </summary>
-        public ProfilesApi Profiles {
+        public ProfilesApi Profiles
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new ProfilesApi(this); }
         }
@@ -8408,7 +8647,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Organizations API.
         /// </summary>
-        public OrganizationsApi Organizations {
+        public OrganizationsApi Organizations
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new OrganizationsApi(this); }
         }
@@ -8416,7 +8656,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Shares API.
         /// </summary>
-        public SharesApi Shares {
+        public SharesApi Shares
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new SharesApi(this); }
         }
@@ -8424,7 +8665,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Videos API.
         /// </summary>
-        public VideosApi Videos {
+        public VideosApi Videos
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new VideosApi(this); }
         }
@@ -8432,7 +8674,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Media API.
         /// </summary>
-        public MediaApi Media {
+        public MediaApi Media
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new MediaApi(this); }
         }
@@ -8440,7 +8683,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The UGCPost API.
         /// </summary>
-        public UGCPostApi UGCPost {
+        public UGCPostApi UGCPost
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new UGCPostApi(this); }
         }
@@ -8448,7 +8692,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Asset API.
         /// </summary>
-        public AssetApi Asset {
+        public AssetApi Asset
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new AssetApi(this); }
         }
@@ -8456,7 +8701,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Common API.
         /// </summary>
-        public CommonApi Common {
+        public CommonApi Common
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new CommonApi(this); }
         }
@@ -8464,7 +8710,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Targeting API.
         /// </summary>
-        public TargetingApi Targeting {
+        public TargetingApi Targeting
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new TargetingApi(this); }
         }
@@ -8472,7 +8719,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Region API.
         /// </summary>
-        public RegionApi Region {
+        public RegionApi Region
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new RegionApi(this); }
         }
@@ -8480,7 +8728,8 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Ads API.
         /// </summary>
-        public AdsApi Ads {
+        public AdsApi Ads
+        {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new AdsApi(this); }
         }
