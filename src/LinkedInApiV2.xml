@@ -512,8 +512,22 @@
     <ReturnType Name="UGCMediaElements" ClassName="UGCMediaElements">
       <Field Name="artifact"/>
       <Field Name="authorizationMethod"/>
-      <Field Name="data" Type="object" />
-      <Field Name="identifiers" Type="object" IsCollection="1"/>
+      <Field Name="data" Type="UGCMediaType" />
+      <Field Name="identifiers" Type="UGCMediaIdentifiers" IsCollection="1"/>
+    </ReturnType>
+
+    <ReturnType Name="UGCMediaType" ClassName="UGCMediaType">
+      <Field Name="com.linkedin.digitalmedia.mediaartifact.Video" PropertyName="ComLinkedinUGCMediaType" Type="object" />
+    </ReturnType>
+    
+    <ReturnType Name="UGCMediaIdentifiers" ClassName="UGCMediaIdentifiers">
+      <Field Name="identifier" />
+      <Field Name="filename" />
+      <Field Name="file" />
+      <Field Name="size" Type="long" />
+      <Field Name="index" Type="long" />
+      <Field Name="mediaType" />
+      <Field Name="identifierExpiresInSeconds" Type="long"/>
     </ReturnType>
 
     <ReturnType Name="UGCPostItems" ClassName="UGCPostItems" AutoGenerateFieldSelectors="1">
@@ -581,6 +595,7 @@
       <Field Name="description" PropertyName="UGCMediaDescription" Type="UGCText"/>
       <Field Name="media" />
       <Field Name="status" />
+      <Field Name="originalUrl" />
       <Field Name="thumbnails" Type="ImageThumbnail" IsCollection="1"/>
       <Field Name="landingPage" PropertyName="LandingPages" Type="LandingPage" />
       <Field Name="title" PropertyName="UGCMediaTitle" Type="UGCText" />
