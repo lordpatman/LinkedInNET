@@ -1058,7 +1058,7 @@
   <ApiGroup Name="Ads">
     <ApiMethod MethodName="GetAdAnalytics"
              HttpMethod="GET"
-             Path="/v2/adAnalyticsV2?q=analytics&amp;pivot=SHARE&amp;dateRange.start.day=&#34; + DateTime.Now.Day + &#34;&amp;dateRange.start.month=&#34; + DateTime.Now.Month + &#34;&amp;dateRange.start.year=&#34; + DateTime.Now.Year + &#34;&amp;timeGranularity=DAILY&amp;campaigns[0]=urn:li:sponsoredCampaign:{postId}"
+             Path="/v2/adAnalyticsV2?q=statistics&amp;pivots[0]=SHARE&amp;dateRange.start.day=&#34; + DateTime.Now.Day + &#34;&amp;dateRange.start.month=&#34; + DateTime.Now.Month + &#34;&amp;dateRange.start.year=&#34; + DateTime.Now.Year + &#34;&amp;timeGranularity=DAILY&amp;shares[0]=urn:li:share:{postId}"
              ReturnType="AdAnalytics"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"/>
