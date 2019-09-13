@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>LinkedInNET.ApiV2</id>
-    <version>1.0.6</version>
+    <version>1.0.10</version>
     <title>LinkedInNET.ApiV2</title>
     <authors>Sparkle Networks, SandRock, Tazacban, Andrew Clark, Rayyan Tahir, Oláh Levente, Marina Rukavitsyna</authors>
     <owners></owners>
@@ -11,7 +11,7 @@
     <iconUrl>https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Services for LinkedIn api V2</description>
-    <releaseNotes>Further video query and other missing methods</releaseNotes>
+    <releaseNotes>Ad analytics fixies</releaseNotes>
     <copyright></copyright>
     <tags>APIV2, LinkedIn</tags>
   </metadata>

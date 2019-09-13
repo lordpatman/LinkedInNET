@@ -3074,14 +3074,106 @@ namespace Sparkle.LinkedInNET.UGCPost
         /// </summary>
         [XmlElement(ElementName = "data")]
         [JsonProperty(PropertyName = "data")]
-        public object Data { get; set; }
+        public UGCMediaType Data { get; set; }
 
         /// <summary>
         /// Field: 'identifiers' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "identifiers")]
         [JsonProperty(PropertyName = "identifiers")]
-        public List<object> Identifiers { get; set; }
+        public List<UGCMediaIdentifiers> Identifiers { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMediaType)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMediaType'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMediaType")]
+    public class UGCMediaType
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.digitalmedia.mediaartifact.Video' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.digitalmedia.mediaartifact.Video")]
+        [JsonProperty(PropertyName = "com.linkedin.digitalmedia.mediaartifact.Video")]
+        public object ComLinkedinUGCMediaType { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMediaIdentifiers)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMediaIdentifiers'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMediaIdentifiers")]
+    public class UGCMediaIdentifiers
+    {
+        /// <summary>
+        /// Field: 'identifier' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "identifier")]
+        [JsonProperty(PropertyName = "identifier")]
+        public string Identifier { get; set; }
+
+        /// <summary>
+        /// Field: 'filename' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "filename")]
+        [JsonProperty(PropertyName = "filename")]
+        public string Filename { get; set; }
+
+        /// <summary>
+        /// Field: 'file' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "file")]
+        [JsonProperty(PropertyName = "file")]
+        public string File { get; set; }
+
+        /// <summary>
+        /// Field: 'size' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "size")]
+        [JsonProperty(PropertyName = "size")]
+        public long Size { get; set; }
+
+        /// <summary>
+        /// Field: 'index' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "index")]
+        [JsonProperty(PropertyName = "index")]
+        public long Index { get; set; }
+
+        /// <summary>
+        /// Field: 'mediaType' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "mediaType")]
+        [JsonProperty(PropertyName = "mediaType")]
+        public string MediaType { get; set; }
+
+        /// <summary>
+        /// Field: 'identifierExpiresInSeconds' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "identifierExpiresInSeconds")]
+        [JsonProperty(PropertyName = "identifierExpiresInSeconds")]
+        public long IdentifierExpiresInSeconds { get; set; }
 
     }
 }
@@ -3523,6 +3615,13 @@ namespace Sparkle.LinkedInNET.UGCPost
         public string Status { get; set; }
 
         /// <summary>
+        /// Field: 'originalUrl' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "originalUrl")]
+        [JsonProperty(PropertyName = "originalUrl")]
+        public string OriginalUrl { get; set; }
+
+        /// <summary>
         /// Field: 'thumbnails' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "thumbnails")]
@@ -3753,7 +3852,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCMediaType', 'UGCMediaIdentifiers', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
         /// <summary>
@@ -8569,7 +8668,7 @@ namespace Sparkle.LinkedInNET.Ads
                     , string postId 
                 )
                 {
-                    string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:sponsoredShare:{postId}";
+                    string urlFormat = "/v2/adAnalyticsV2?q=analytics&pivot=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&campaigns[0]=urn:li:sponsoredCampaign:{postId}";
                     var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
 
                     var context = new RequestContext();
@@ -8592,7 +8691,7 @@ namespace Sparkle.LinkedInNET.Ads
                         , string postId 
                     )
                     {
-                        string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:sponsoredShare:{postId}";
+                        string urlFormat = "/v2/adAnalyticsV2?q=analytics&pivot=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&campaigns[0]=urn:li:sponsoredCampaign:{postId}";
                         var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
 
                         var context = new RequestContext();
@@ -8638,8 +8737,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Profiles API.
         /// </summary>
-        public ProfilesApi Profiles
-        {
+        public ProfilesApi Profiles {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new ProfilesApi(this); }
         }
@@ -8647,8 +8745,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Organizations API.
         /// </summary>
-        public OrganizationsApi Organizations
-        {
+        public OrganizationsApi Organizations {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new OrganizationsApi(this); }
         }
@@ -8656,8 +8753,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Shares API.
         /// </summary>
-        public SharesApi Shares
-        {
+        public SharesApi Shares {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new SharesApi(this); }
         }
@@ -8665,8 +8761,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Videos API.
         /// </summary>
-        public VideosApi Videos
-        {
+        public VideosApi Videos {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new VideosApi(this); }
         }
@@ -8674,8 +8769,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Media API.
         /// </summary>
-        public MediaApi Media
-        {
+        public MediaApi Media {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new MediaApi(this); }
         }
@@ -8683,8 +8777,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The UGCPost API.
         /// </summary>
-        public UGCPostApi UGCPost
-        {
+        public UGCPostApi UGCPost {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new UGCPostApi(this); }
         }
@@ -8692,8 +8785,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Asset API.
         /// </summary>
-        public AssetApi Asset
-        {
+        public AssetApi Asset {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new AssetApi(this); }
         }
@@ -8701,8 +8793,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Common API.
         /// </summary>
-        public CommonApi Common
-        {
+        public CommonApi Common {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new CommonApi(this); }
         }
@@ -8710,8 +8801,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Targeting API.
         /// </summary>
-        public TargetingApi Targeting
-        {
+        public TargetingApi Targeting {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new TargetingApi(this); }
         }
@@ -8719,8 +8809,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Region API.
         /// </summary>
-        public RegionApi Region
-        {
+        public RegionApi Region {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new RegionApi(this); }
         }
@@ -8728,8 +8817,7 @@ namespace Sparkle.LinkedInNET
         /// <summary>
         /// The Ads API.
         /// </summary>
-        public AdsApi Ads
-        {
+        public AdsApi Ads {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new AdsApi(this); }
         }
