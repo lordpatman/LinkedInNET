@@ -8668,7 +8668,7 @@ namespace Sparkle.LinkedInNET.Ads
                     , string postId 
                 )
                 {
-                    string urlFormat = "/v2/adAnalyticsV2?q=analytics&pivot=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&campaigns[0]=urn:li:sponsoredCampaign:{postId}";
+                    string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
                     var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
 
                     var context = new RequestContext();
@@ -8691,7 +8691,7 @@ namespace Sparkle.LinkedInNET.Ads
                         , string postId 
                     )
                     {
-                        string urlFormat = "/v2/adAnalyticsV2?q=analytics&pivot=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&campaigns[0]=urn:li:sponsoredCampaign:{postId}";
+                        string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
                         var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
 
                         var context = new RequestContext();
