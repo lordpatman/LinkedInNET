@@ -185,3 +185,5 @@ FakesAssemblies/
 src/NET45.Sparkle.LinkedInNET.DemoMvc5/App_Data/data.json
 lib/net40/Sparkle.LinkedInNET.xml
 lib/net40/Sparkle.LinkedInNET.dll
+
+src/.vs/Sparkle.LinkedInNET/v16/Server/sqlite3/*
