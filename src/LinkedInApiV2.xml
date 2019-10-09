@@ -179,6 +179,25 @@
                     UseFieldSelectors="0"
                     Title="Retrieve Follower Statistics"
                     Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/follower-statistics" />
+    
+    <ApiMethod MethodName="GetOrganizationsByKey" 
+               HttpMethod="GET"
+               Path="/v2/search?q=companiesV2&amp;baseSearchParams.keywords={keyword}&amp;projection=(elements*(entity~(id, name, vanityName, logoV2)),paging)"
+               ReturnType="Mentions"
+               RequiresUserAuthentication="1"
+               UseFieldSelectors="0"
+               Title="Retrieve Organizations By Key"
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-search?context=linkedin/compliance/context#search-by-keywords"/>
+
+    <ReturnType Name="mentions" ClassName="Mentions" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" Type="orgElement" IsCollection="1"/>
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="orgElement" ClassName="OrgElement" >
+      <Field Name="entity~" PropertyName="orgData" Type="Organization"/>
+      <Field Name="entity" PropertyName="entityURN" />
+    </ReturnType>
 
     <ReturnType Name="organization" ClassName="Organization" AutoGenerateFieldSelectors="1">
       <Field Name="id" Type="long" IsDefault="1" />
