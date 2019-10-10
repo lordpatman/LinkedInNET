@@ -574,6 +574,70 @@ namespace Sparkle.LinkedInNET.Profiles
 
 #region ReturnTypes for Organizations
 
+// WriteReturnTypes(Organizations, mentions)
+namespace Sparkle.LinkedInNET.Organizations
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'mentions'
+    /// </summary>
+    [Serializable, XmlRoot("mentions")]
+    public class Mentions
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<OrgElement> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Organizations, orgElement)
+namespace Sparkle.LinkedInNET.Organizations
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'orgElement'
+    /// </summary>
+    [Serializable, XmlRoot("orgElement")]
+    public class OrgElement
+    {
+        /// <summary>
+        /// Field: 'entity~' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "entity~")]
+        [JsonProperty(PropertyName = "entity~")]
+        public Organization orgData { get; set; }
+
+        /// <summary>
+        /// Field: 'entity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "entity")]
+        [JsonProperty(PropertyName = "entity")]
+        public string entityURN { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Organizations, organization)
 namespace Sparkle.LinkedInNET.Organizations
 {
@@ -1671,9 +1735,30 @@ namespace Sparkle.LinkedInNET.Organizations
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'organization', 'croppedImage', 'OrganizationalEntityAcls', 'OrgEntElements', 'OrgFollowerStatistic', 'OrganizationPageStatistics', 'OrganizationPageStatisticsElement', 'PageStatisticsByCountry', 'PageStatisticsByFunction', 'PageStatisticsByIndustry', 'PageStatisticsByRegion', 'PageStatisticsBySeniority', 'PageStatisticsByStaffCountRange', 'TotalPageStatistics', 'Clicks', 'CareersPageClicks', 'MobileCareersPageClicks', 'PageStatistics', 'Views', 'PageViews', 'OrgFollowerStatisticsElement', 'FollowerCounts', 'FollowerByFunction', 'FollowerByIndustry', 'FollowerBySeniority', 'FollowerByStaffCountRange' return types.
+    /// Field selectors for the 'mentions', 'orgElement', 'organization', 'croppedImage', 'OrganizationalEntityAcls', 'OrgEntElements', 'OrgFollowerStatistic', 'OrganizationPageStatistics', 'OrganizationPageStatisticsElement', 'PageStatisticsByCountry', 'PageStatisticsByFunction', 'PageStatisticsByIndustry', 'PageStatisticsByRegion', 'PageStatisticsBySeniority', 'PageStatisticsByStaffCountRange', 'TotalPageStatistics', 'Clicks', 'CareersPageClicks', 'MobileCareersPageClicks', 'PageStatistics', 'Views', 'PageViews', 'OrgFollowerStatisticsElement', 'FollowerCounts', 'FollowerByFunction', 'FollowerByIndustry', 'FollowerBySeniority', 'FollowerByStaffCountRange' return types.
     /// </summary>
     public static class OrganizationsFields {
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Mentions> WithElements(this FieldSelector<Mentions> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Mentions> WithPaging(this FieldSelector<Mentions> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<Mentions> WithAllFields(this FieldSelector<Mentions> me) { return me.AddRange("elements", "paging"); }
+        
         /// <summary>
         /// Includes the field 'id'.
         /// </summary>
@@ -7303,6 +7388,63 @@ namespace Sparkle.LinkedInNET.Organizations
                                                         return result;
                                                     }
                                                         
+                                                        /// <summary>
+                                                        /// Retrieve Organizations By Key
+                                                        /// </summary>
+                                                        /// <remarks>
+                                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-search?context=linkedin/compliance/context#search-by-keywords
+                                                        /// </remarks>
+                                                        public Organizations.Mentions GetOrganizationsByKey(
+                                                              UserAuthorization user 
+                                                            , string keyword 
+                                                            , int start = 0
+                                                            , int count = 50
+                                                        )
+                                                        {
+                                                            string urlFormat = "/v2/search?q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
+
+                                                            var context = new RequestContext();
+                                                            context.UserAuthorization = user;
+                                                            context.Method =  "GET";
+                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                            if (!this.ExecuteQuery(context))
+                                                                this.HandleJsonErrorResponse(context);
+                                                            
+                                                            var result = this.HandleJsonResponse<Organizations.Mentions>(context);
+                                                            return result;
+                                                        }
+
+                                                            /// <summary>
+                                                            /// Retrieve Organizations By Key
+                                                            /// </summary>
+                                                            /// <remarks>
+                                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-search?context=linkedin/compliance/context#search-by-keywords
+                                                            /// </remarks>
+                                                            public async Task<Organizations.Mentions> GetOrganizationsByKeyAsync(
+                                                                  UserAuthorization user 
+                                                                , string keyword 
+                                                                , int start = 0
+                                                                , int count = 50
+                                                            )
+                                                            {
+                                                                string urlFormat = "/v2/search?q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
+
+                                                                var context = new RequestContext();
+                                                                context.UserAuthorization = user;
+                                                                context.Method =  "GET";
+                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                if (!exec)
+                                                                    this.HandleJsonErrorResponse(context);
+                                                                
+                                                                var result = this.HandleJsonResponse<Organizations.Mentions>(context);
+                                                                return result;
+                                                            }
+                                                                
             }
         }
 
