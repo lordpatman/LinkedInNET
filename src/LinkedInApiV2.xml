@@ -182,7 +182,7 @@
     
     <ApiMethod MethodName="GetOrganizationsByKey" 
                HttpMethod="GET"
-               Path="/v2/search?q=companiesV2&amp;baseSearchParams.keywords={keyword}&amp;projection=(elements*(entity~(id, name, vanityName, logoV2)),paging)"
+               Path="/v2/search?q=companiesV2&amp;baseSearchParams.keywords={keyword}&amp;start={int Start = 0}&amp;count={int Count = 50}&amp;projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)"
                ReturnType="Mentions"
                RequiresUserAuthentication="1"
                UseFieldSelectors="0"
