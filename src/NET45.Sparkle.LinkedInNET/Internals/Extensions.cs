@@ -43,6 +43,16 @@ namespace Sparkle.LinkedInNET.Internals
                     return "r_ads_reporting";
                 case AuthorizationScope.ReadOrganizationSocial:
                     return "r_organization_social";
+                case AuthorizationScope.ReadMemberSocial:
+                    return "r_member_social";
+                case AuthorizationScope.WriteMemberSocial:
+                    return "w_member_social";
+                case AuthorizationScope.ReadWriteOrganizationAdmin:
+                    return "rw_organization_admin";
+                case AuthorizationScope.WriteOrganizationSocial:
+                    return "w_organization_social";
+                case AuthorizationScope.ReadOrganizationLookup:
+                    return "r_organization_lookup";
                 default:
                     throw new NotSupportedException("Scope of value '" + scope.ToString() + " is not supported");
             }

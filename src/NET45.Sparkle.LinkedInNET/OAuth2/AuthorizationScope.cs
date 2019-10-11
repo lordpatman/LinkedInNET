@@ -101,5 +101,29 @@ namespace Sparkle.LinkedInNET.OAuth2
         /// </summary>
         ReadOrganizationSocial = 0x4000,
 
+        /// <summary>
+        /// Retrieve member’s posts, comments, likes, and other engagement data.
+        /// </summary>
+        ReadMemberSocial = 0x8000,
+
+        /// <summary>
+        /// Post, comment and like posts on member’s behalf
+        /// </summary>
+        WriteMemberSocial = 0x10000,
+
+        /// <summary>
+        /// Manage member’s organizations' pages and retrieve reporting data
+        /// </summary>
+        ReadWriteOrganizationAdmin = 0x20000,
+
+        /// <summary>
+        /// Post, comment and like posts on behalf of member’s organizations
+        /// </summary>
+        WriteOrganizationSocial = 0x40000,
+        
+        /// <summary>
+        /// Read organizations by ids
+        /// </summary>
+        ReadOrganizationLookup = 0x80000
     }
 }
