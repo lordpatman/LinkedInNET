@@ -4757,6 +4757,52 @@ namespace Sparkle.LinkedInNET.Common
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
 
+        /// <summary>
+        /// Field: 'annotations' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "annotations")]
+        [JsonProperty(PropertyName = "annotations")]
+        public List<PostShareAnnotations> Annotations { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Common, postShareAnnotations)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'postShareAnnotations'
+    /// </summary>
+    [Serializable, XmlRoot("postShareAnnotations")]
+    public class PostShareAnnotations
+    {
+        /// <summary>
+        /// Field: 'entity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "entity")]
+        [JsonProperty(PropertyName = "entity")]
+        public string Entity { get; set; }
+
+        /// <summary>
+        /// Field: 'length' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "length")]
+        [JsonProperty(PropertyName = "length")]
+        public int Length { get; set; }
+
+        /// <summary>
+        /// Field: 'start' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "start")]
+        [JsonProperty(PropertyName = "start")]
+        public int Start { get; set; }
+
     }
 }
 
@@ -5455,7 +5501,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'UGCDistribution', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareAnnotations', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'UGCDistribution', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
     /// </summary>
     public static class CommonFields {
     }
