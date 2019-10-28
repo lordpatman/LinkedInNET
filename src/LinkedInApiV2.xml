@@ -814,6 +814,13 @@
 
     <ReturnType Name="text" ClassName="PostShareText">
       <Field Name="text" />
+      <Field Name="annotations" Type="PostShareAnnotations" IsCollection="1"/>
+    </ReturnType>
+    
+     <ReturnType Name="postShareAnnotations" ClassName="PostShareAnnotations">
+      <Field Name="entity"/>
+      <Field Name="length" Type="int" />
+      <Field Name="start" Type="int" />
     </ReturnType>
 
     <ReturnType Name="postShareContent" ClassName="PostShareContent">
