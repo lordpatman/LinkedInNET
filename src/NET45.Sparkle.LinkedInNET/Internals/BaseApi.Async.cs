@@ -77,7 +77,7 @@ namespace Sparkle.LinkedInNET.Internals
                         var formData = await GetMultipartFormDataAsync(boundary, context.PostData);
 
                         request.Method = "POST";
-                        request.Timeout = 10000;
+                        // request.Timeout = 10000;
                         request.Accept = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
                         request.ContentType = "multipart/form-data; boundary=" + boundary;
                         request.ContentLength = formData.Length;
