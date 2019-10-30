@@ -3803,7 +3803,7 @@ namespace Sparkle.LinkedInNET.UGCPost
         /// </summary>
         [XmlElement(ElementName = "attributes")]
         [JsonProperty(PropertyName = "attributes")]
-        public List<string> Attributes { get; set; }
+        public List<UGCAnnotations> Attributes { get; set; }
 
         /// <summary>
         /// Field: 'text' (on-demand)
@@ -3835,7 +3835,7 @@ namespace Sparkle.LinkedInNET.UGCPost
         /// </summary>
         [XmlElement(ElementName = "attributes")]
         [JsonProperty(PropertyName = "attributes")]
-        public List<object> Attributes { get; set; }
+        public List<UGCAnnotations> Attributes { get; set; }
 
         /// <summary>
         /// Field: 'text' (on-demand)
@@ -3843,6 +3843,127 @@ namespace Sparkle.LinkedInNET.UGCPost
         [XmlElement(ElementName = "text")]
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCAnnotations)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCAnnotations'
+    /// </summary>
+    [Serializable, XmlRoot("UGCAnnotations")]
+    public class UGCAnnotations
+    {
+        /// <summary>
+        /// Field: 'value' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "value")]
+        [JsonProperty(PropertyName = "value")]
+        public valueAnnotation Value { get; set; }
+
+        /// <summary>
+        /// Field: 'length' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "length")]
+        [JsonProperty(PropertyName = "length")]
+        public int Length { get; set; }
+
+        /// <summary>
+        /// Field: 'start' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "start")]
+        [JsonProperty(PropertyName = "start")]
+        public int Start { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, valueAnnotation)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'valueAnnotation'
+    /// </summary>
+    [Serializable, XmlRoot("valueAnnotation")]
+    public class valueAnnotation
+    {
+        /// <summary>
+        /// Field: 'com.linkedin.common.CompanyAttributedEntity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.common.CompanyAttributedEntity")]
+        [JsonProperty(PropertyName = "com.linkedin.common.CompanyAttributedEntity")]
+        public CompanyAttributedEntity CompanyAttributedEntity { get; set; }
+
+        /// <summary>
+        /// Field: 'com.linkedin.common.MemberAttributedEntity' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "com.linkedin.common.MemberAttributedEntity")]
+        [JsonProperty(PropertyName = "com.linkedin.common.MemberAttributedEntity")]
+        public MemberAttributedEntity MemberAttributedEntity { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, CompanyAttributedEntity)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CompanyAttributedEntity'
+    /// </summary>
+    [Serializable, XmlRoot("CompanyAttributedEntity")]
+    public class CompanyAttributedEntity
+    {
+        /// <summary>
+        /// Field: 'company' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "company")]
+        [JsonProperty(PropertyName = "company")]
+        public string Company { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, MemberAttributedEntity)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'MemberAttributedEntity'
+    /// </summary>
+    [Serializable, XmlRoot("MemberAttributedEntity")]
+    public class MemberAttributedEntity
+    {
+        /// <summary>
+        /// Field: 'member' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "member")]
+        [JsonProperty(PropertyName = "member")]
+        public string Member { get; set; }
 
     }
 }
@@ -3937,7 +4058,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCMediaType', 'UGCMediaIdentifiers', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCMediaType', 'UGCMediaIdentifiers', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'UGCAnnotations', 'valueAnnotation', 'CompanyAttributedEntity', 'MemberAttributedEntity', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
         /// <summary>
