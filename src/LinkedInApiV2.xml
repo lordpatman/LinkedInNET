@@ -629,13 +629,32 @@
     </ReturnType>
 
     <ReturnType Name="UGCText" ClassName="UGCText">
-      <Field Name="attributes" IsCollection="1" />
+      <Field Name="attributes" Type="UGCAnnotations" IsCollection="1" />
       <Field Name="text" />
     </ReturnType>
 
     <ReturnType Name="UGCText" ClassName="UGCGetText">
-      <Field Name="attributes" Type="object" IsCollection="1" />
+      <Field Name="attributes" Type="UGCAnnotations" IsCollection="1" />
       <Field Name="text" />
+    </ReturnType>
+    
+    <ReturnType Name="UGCAnnotations" ClassName="UGCAnnotations">
+      <Field Name="value" Type="valueAnnotation"/>
+      <Field Name="length" Type="int" />
+      <Field Name="start" Type="int" />
+    </ReturnType>
+
+    <ReturnType Name="valueAnnotation" ClassName="valueAnnotation">
+      <Field Name="com.linkedin.common.CompanyAttributedEntity" PropertyName="CompanyAttributedEntity" Type="CompanyAttributedEntity" />
+      <Field Name="com.linkedin.common.MemberAttributedEntity" PropertyName="MemberAttributedEntity" Type="MemberAttributedEntity" />
+    </ReturnType>
+
+    <ReturnType Name="CompanyAttributedEntity" ClassName="CompanyAttributedEntity">
+      <Field Name="company"/>
+    </ReturnType>
+
+    <ReturnType Name="MemberAttributedEntity" ClassName="MemberAttributedEntity">
+      <Field Name="member"/>
     </ReturnType>
 
     <ReturnType Name="LandingPage" ClassName="LandingPage">
