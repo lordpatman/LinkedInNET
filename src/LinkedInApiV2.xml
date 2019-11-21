@@ -674,6 +674,90 @@
 
   </ApiGroup>
 
+  <ApiGroup Name="SocialActions">
+    <ApiMethod MethodName="GetCommentsOnShare"
+             HttpMethod="GET"
+             Path="/v2/socialActions/urn:li:share:{ShareId}/comments"  
+             ReturnType="Comments"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Retrieve Comments on Shares"
+             Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
+
+    <ApiMethod MethodName="GetCommentsOnUGCPost"
+             HttpMethod="GET"
+             Path="/v2/socialActions/urn:li:ugcPost:{PostId}/comments" 
+             ReturnType="Comments"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Retrieve Comments on UGC Posts"
+             Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
+    
+    <ApiMethod MethodName="GetCommentsOnComment"
+             HttpMethod="GET"
+             Path="/v2/socialActions/urn:li:comment:{CommentId}/comments"
+             ReturnType="Comments"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Retrieve Comments on Comment"
+             Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
+
+    <ApiMethod MethodName="CreateCommentOnShare"
+           HttpMethod="POST"
+           Path="/v2/socialActions/urn:li:share:{ShareId}/comments"
+           PostReturnType="CreateCommentRequest"
+           ReturnType="Comments"
+           RequiresUserAuthentication="1"
+           UseFieldSelectors="0"
+           Title="Create Comment on Share"
+           Remark="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment" />
+
+    <ApiMethod MethodName="CreateCommentOnUGCPost"
+           HttpMethod="POST"
+           Path="/v2/socialActions/urn:li:ugcPost:{PostId}/comments"
+           PostReturnType="CreateCommentRequest"
+           ReturnType="Comments"
+           RequiresUserAuthentication="1"
+           UseFieldSelectors="0"
+           Title="Create Comment on UGC Posts"
+           Remark="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment" />
+
+    <ApiMethod MethodName="CreateCommentOnComment"
+           HttpMethod="POST"
+           Path="/v2/socialActions/urn:li:comment:{CommentId}/comments"
+           PostReturnType="CreateCommentRequest"
+           ReturnType="Comments"
+           RequiresUserAuthentication="1"
+           UseFieldSelectors="0"
+           Title="Create Comment on Comment"
+           Remark="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment" />
+
+    <ReturnType Name="Comments" ClassName="Comments">
+      <Field Name="elements" ClassName="CommentResult" Type="CommentResult" IsCollection="1" />
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="CommentResult" ClassName="CommentResult">
+      <Field Name="actor" />
+      <Field Name="created" Type="Common.ShareTime" />
+      <Field Name="lastModified" Type="Common.ShareTime" />
+      <Field Name="id" PropertyName="Id" />
+      <Field Name="message" Type="CommentMessage" />
+      <Field Name="$URN"  PropertyName="Urn" />
+      <Field Name="object" />
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="CommentMessage" ClassName="CommentMessage">
+      <Field Name="text" />
+    </ReturnType>
+
+    <ReturnType Name="CreateCommentRequest" ClassName="CreateCommentRequest">
+      <Field Name="actor" />
+      <Field Name="message" Type="CommentMessage" />
+    </ReturnType>
+  </ApiGroup>
+
 
   <ApiGroup Name="Asset">
     <ApiMethod MethodName="RegisterUpload" 
