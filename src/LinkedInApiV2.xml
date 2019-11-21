@@ -498,6 +498,14 @@
                  We recommend setting the sharesPerOwner to 1,000 and count to 50, which means our endpoint will return up to 1,000 shares per owner while the total elements returned per response will be 50. If you want the next 50 of 1,000, you will have to paginate with start query parameter."               
                  Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#retrieve-ugc-posts" />
 
+    <ApiMethod MethodName="GetUGCPost" HttpMethod="GET"
+                 Path="/v2/ugcPosts/{urn}"
+                 ReturnType="UGCPostItemResult"
+                 RequiresUserAuthentication="1"
+                 UseFieldSelectors="0"
+                 Title="Get posts by urn."
+                 Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn" />
+
     <ApiMethod MethodName="GetUGCVideo" HttpMethod="GET"
                  Path="/v2/ugcPosts/{urn}?viewContext=AUTHOR&amp;projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))"            
                  ReturnType="UGCVideo"

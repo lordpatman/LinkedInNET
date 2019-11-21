@@ -78,8 +78,9 @@
                     var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
-                                       
-                    await PublishImage(user);
+
+                    await GetPost(user);
+                    // await PublishImage(user);
                     //await PublishTest();                                                 
 
 
@@ -440,10 +441,16 @@
             var imageUrl = "https://c3labsdevstorage.blob.core.windows.net/7e46a98d-a143-4a4d-8e05-b3f95493cce4/e21b6488-8d6e-43e6-8c88-4ac4438ff8cb/images/e0858668-005b-4f6c-a0b5-b0695661be6b.png";
             var imageData = await ImageUtils.PrepareImageFromUrl(imageUrl, 10485760);
 
-            var postId = this.api.Media.Post(user, new Common.MediaUploadData()
+            var postId = await this.api.Media.PostAsync(user, new Common.MediaUploadData()
             {
                 Data = imageData
             });
+        }
+
+        private async Task GetPost(UserAuthorization user)
+        {         
+
+            var postId = await this.api.UGCPost.GetUGCPostAsync(user, "urn:li:share:6603298353402912768");
         }
     }
 }

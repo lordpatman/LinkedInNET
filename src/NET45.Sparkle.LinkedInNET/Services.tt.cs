@@ -4087,6 +4087,187 @@ namespace Sparkle.LinkedInNET.UGCPost
 
 #endregion
 
+#region ReturnTypes for SocialActions
+
+// WriteReturnTypes(SocialActions, Comments)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Comments'
+    /// </summary>
+    [Serializable, XmlRoot("Comments")]
+    public class Comments
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<CommentResult> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CommentResult)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CommentResult'
+    /// </summary>
+    [Serializable, XmlRoot("CommentResult")]
+    public class CommentResult
+    {
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'created' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "created")]
+        [JsonProperty(PropertyName = "created")]
+        public Common.ShareTime Created { get; set; }
+
+        /// <summary>
+        /// Field: 'lastModified' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public Common.ShareTime LastModified { get; set; }
+
+        /// <summary>
+        /// Field: 'id' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "id")]
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Field: 'message' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "message")]
+        [JsonProperty(PropertyName = "message")]
+        public CommentMessage Message { get; set; }
+
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+        /// <summary>
+        /// Field: 'object' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "object")]
+        [JsonProperty(PropertyName = "object")]
+        public string Object { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CommentMessage)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CommentMessage'
+    /// </summary>
+    [Serializable, XmlRoot("CommentMessage")]
+    public class CommentMessage
+    {
+        /// <summary>
+        /// Field: 'text' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "text")]
+        [JsonProperty(PropertyName = "text")]
+        public string Text { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CreateCommentRequest)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CreateCommentRequest'
+    /// </summary>
+    [Serializable, XmlRoot("CreateCommentRequest")]
+    public class CreateCommentRequest
+    {
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'message' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "message")]
+        [JsonProperty(PropertyName = "message")]
+        public CommentMessage Message { get; set; }
+
+    }
+}
+
+// WriteReturnTypeFields(SocialActions)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+
+    /// <summary>
+    /// Field selectors for the 'Comments', 'CommentResult', 'CommentMessage', 'CreateCommentRequest' return types.
+    /// </summary>
+    public static class SocialActionsFields {
+    }
+}
+
+#endregion
+
 #region ReturnTypes for Asset
 
 // WriteReturnTypes(Asset, RegisterUploadRequest)
@@ -8106,17 +8287,17 @@ namespace Sparkle.LinkedInNET.UGCPost
                             }
                                 
                                 /// <summary>
-                                /// Get Video by urn
+                                /// Get posts by urn.
                                 /// </summary>
                                 /// <remarks>
-                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn
                                 /// </remarks>
-                                public UGCPost.UGCVideo GetUGCVideo(
+                                public UGCPost.UGCPostItemResult GetUGCPost(
                                       UserAuthorization user 
                                     , string urn 
                                 )
                                 {
-                                    string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                    string urlFormat = "/v2/ugcPosts/{urn}";
                                     var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                                     var context = new RequestContext();
@@ -8127,22 +8308,22 @@ namespace Sparkle.LinkedInNET.UGCPost
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
                                     
-                                    var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                    var result = this.HandleJsonResponse<UGCPost.UGCPostItemResult>(context);
                                     return result;
                                 }
 
                                     /// <summary>
-                                    /// Get Video by urn
+                                    /// Get posts by urn.
                                     /// </summary>
                                     /// <remarks>
-                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn
                                     /// </remarks>
-                                    public async Task<UGCPost.UGCVideo> GetUGCVideoAsync(
+                                    public async Task<UGCPost.UGCPostItemResult> GetUGCPostAsync(
                                           UserAuthorization user 
                                         , string urn 
                                     )
                                     {
-                                        string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                        string urlFormat = "/v2/ugcPosts/{urn}";
                                         var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                                         var context = new RequestContext();
@@ -8154,10 +8335,416 @@ namespace Sparkle.LinkedInNET.UGCPost
                                         if (!exec)
                                             this.HandleJsonErrorResponse(context);
                                         
-                                        var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                        var result = this.HandleJsonResponse<UGCPost.UGCPostItemResult>(context);
                                         return result;
                                     }
                                         
+                                        /// <summary>
+                                        /// Get Video by urn
+                                        /// </summary>
+                                        /// <remarks>
+                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                        /// </remarks>
+                                        public UGCPost.UGCVideo GetUGCVideo(
+                                              UserAuthorization user 
+                                            , string urn 
+                                        )
+                                        {
+                                            string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "GET";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// Get Video by urn
+                                            /// </summary>
+                                            /// <remarks>
+                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                            /// </remarks>
+                                            public async Task<UGCPost.UGCVideo> GetUGCVideoAsync(
+                                                  UserAuthorization user 
+                                                , string urn 
+                                            )
+                                            {
+                                                string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "GET";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                                return result;
+                                            }
+                                                
+            }
+        }
+
+// WriteApiGroup(SocialActions)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Xml.Serialization;
+        using System.Threading.Tasks;
+            using Sparkle.LinkedInNET.Internals;
+            using System.Linq;
+
+            /// <summary>
+            /// Name: 'SocialActions'
+            /// </summary>
+            public class SocialActionsApi : BaseApi
+            {
+                [System.Diagnostics.DebuggerStepThrough]
+                internal SocialActionsApi(LinkedInApi linkedInApi)
+                    : base(linkedInApi)
+                {
+                }
+                
+                /// <summary>
+                /// Retrieve Comments on Shares
+                /// </summary>
+                /// <remarks>
+                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                /// </remarks>
+                public SocialActions.Comments GetCommentsOnShare(
+                      UserAuthorization user 
+                    , string shareId 
+                )
+                {
+                    string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+
+                    var context = new RequestContext();
+                    context.UserAuthorization = user;
+                    context.Method =  "GET";
+                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                    if (!this.ExecuteQuery(context))
+                        this.HandleJsonErrorResponse(context);
+                    
+                    var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                    return result;
+                }
+
+                    /// <summary>
+                    /// Retrieve Comments on Shares
+                    /// </summary>
+                    /// <remarks>
+                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                    /// </remarks>
+                    public async Task<SocialActions.Comments> GetCommentsOnShareAsync(
+                          UserAuthorization user 
+                        , string shareId 
+                    )
+                    {
+                        string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+
+                        var context = new RequestContext();
+                        context.UserAuthorization = user;
+                        context.Method =  "GET";
+                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                        var exec = await this.ExecuteQueryAsync(context);
+                        if (!exec)
+                            this.HandleJsonErrorResponse(context);
+                        
+                        var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                        return result;
+                    }
+                        
+                        /// <summary>
+                        /// Retrieve Comments on UGC Posts
+                        /// </summary>
+                        /// <remarks>
+                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                        /// </remarks>
+                        public SocialActions.Comments GetCommentsOnUGCPost(
+                              UserAuthorization user 
+                            , string postId 
+                        )
+                        {
+                            string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                            var context = new RequestContext();
+                            context.UserAuthorization = user;
+                            context.Method =  "GET";
+                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                            if (!this.ExecuteQuery(context))
+                                this.HandleJsonErrorResponse(context);
+                            
+                            var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                            return result;
+                        }
+
+                            /// <summary>
+                            /// Retrieve Comments on UGC Posts
+                            /// </summary>
+                            /// <remarks>
+                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                            /// </remarks>
+                            public async Task<SocialActions.Comments> GetCommentsOnUGCPostAsync(
+                                  UserAuthorization user 
+                                , string postId 
+                            )
+                            {
+                                string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                                var context = new RequestContext();
+                                context.UserAuthorization = user;
+                                context.Method =  "GET";
+                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                var exec = await this.ExecuteQueryAsync(context);
+                                if (!exec)
+                                    this.HandleJsonErrorResponse(context);
+                                
+                                var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                return result;
+                            }
+                                
+                                /// <summary>
+                                /// Retrieve Comments on Comment
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                                /// </remarks>
+                                public SocialActions.Comments GetCommentsOnComment(
+                                      UserAuthorization user 
+                                    , string commentId 
+                                )
+                                {
+                                    string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// Retrieve Comments on Comment
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
+                                    /// </remarks>
+                                    public async Task<SocialActions.Comments> GetCommentsOnCommentAsync(
+                                          UserAuthorization user 
+                                        , string commentId 
+                                    )
+                                    {
+                                        string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                        return result;
+                                    }
+                                        
+                                        /// <summary>
+                                        /// Create Comment on Share
+                                        /// </summary>
+                                        /// <remarks>
+                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                        /// </remarks>
+                                        public SocialActions.Comments CreateCommentOnShare(
+                                              UserAuthorization user 
+                                            , string shareId 
+                                            , SocialActions.CreateCommentRequest postData
+                                        )
+                                        {
+                                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "POST";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                            this.CreateJsonPostStream(context, postData);
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// Create Comment on Share
+                                            /// </summary>
+                                            /// <remarks>
+                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                            /// </remarks>
+                                            public async Task<SocialActions.Comments> CreateCommentOnShareAsync(
+                                                  UserAuthorization user 
+                                                , string shareId 
+                                                , SocialActions.CreateCommentRequest postData
+                                            )
+                                            {
+                                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "POST";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                this.CreateJsonPostStream(context, postData);
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                return result;
+                                            }
+                                                
+                                                /// <summary>
+                                                /// Create Comment on UGC Posts
+                                                /// </summary>
+                                                /// <remarks>
+                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                /// </remarks>
+                                                public SocialActions.Comments CreateCommentOnUGCPost(
+                                                      UserAuthorization user 
+                                                    , string postId 
+                                                    , SocialActions.CreateCommentRequest postData
+                                                )
+                                                {
+                                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                                                    var context = new RequestContext();
+                                                    context.UserAuthorization = user;
+                                                    context.Method =  "POST";
+                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    this.CreateJsonPostStream(context, postData);
+
+                                                    if (!this.ExecuteQuery(context))
+                                                        this.HandleJsonErrorResponse(context);
+                                                    
+                                                    var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                    return result;
+                                                }
+
+                                                    /// <summary>
+                                                    /// Create Comment on UGC Posts
+                                                    /// </summary>
+                                                    /// <remarks>
+                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                    /// </remarks>
+                                                    public async Task<SocialActions.Comments> CreateCommentOnUGCPostAsync(
+                                                          UserAuthorization user 
+                                                        , string postId 
+                                                        , SocialActions.CreateCommentRequest postData
+                                                    )
+                                                    {
+                                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                                                        var context = new RequestContext();
+                                                        context.UserAuthorization = user;
+                                                        context.Method =  "POST";
+                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        this.CreateJsonPostStream(context, postData);
+
+                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                        if (!exec)
+                                                            this.HandleJsonErrorResponse(context);
+                                                        
+                                                        var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                        return result;
+                                                    }
+                                                        
+                                                        /// <summary>
+                                                        /// Create Comment on Comment
+                                                        /// </summary>
+                                                        /// <remarks>
+                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                        /// </remarks>
+                                                        public SocialActions.Comments CreateCommentOnComment(
+                                                              UserAuthorization user 
+                                                            , string commentId 
+                                                            , SocialActions.CreateCommentRequest postData
+                                                        )
+                                                        {
+                                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                                            var context = new RequestContext();
+                                                            context.UserAuthorization = user;
+                                                            context.Method =  "POST";
+                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                            this.CreateJsonPostStream(context, postData);
+
+                                                            if (!this.ExecuteQuery(context))
+                                                                this.HandleJsonErrorResponse(context);
+                                                            
+                                                            var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                            return result;
+                                                        }
+
+                                                            /// <summary>
+                                                            /// Create Comment on Comment
+                                                            /// </summary>
+                                                            /// <remarks>
+                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                            /// </remarks>
+                                                            public async Task<SocialActions.Comments> CreateCommentOnCommentAsync(
+                                                                  UserAuthorization user 
+                                                                , string commentId 
+                                                                , SocialActions.CreateCommentRequest postData
+                                                            )
+                                                            {
+                                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                                                var context = new RequestContext();
+                                                                context.UserAuthorization = user;
+                                                                context.Method =  "POST";
+                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                this.CreateJsonPostStream(context, postData);
+
+                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                if (!exec)
+                                                                    this.HandleJsonErrorResponse(context);
+                                                                
+                                                                var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                                return result;
+                                                            }
+                                                                
             }
         }
 
@@ -9032,6 +9619,7 @@ namespace Sparkle.LinkedInNET
     using Sparkle.LinkedInNET.Videos;
     using Sparkle.LinkedInNET.Media;
     using Sparkle.LinkedInNET.UGCPost;
+    using Sparkle.LinkedInNET.SocialActions;
     using Sparkle.LinkedInNET.Asset;
     using Sparkle.LinkedInNET.Common;
     using Sparkle.LinkedInNET.Targeting;
@@ -9089,6 +9677,14 @@ namespace Sparkle.LinkedInNET
         public UGCPostApi UGCPost {
             [System.Diagnostics.DebuggerStepThrough]
             get { return new UGCPostApi(this); }
+        }
+
+        /// <summary>
+        /// The SocialActions API.
+        /// </summary>
+        public SocialActionsApi SocialActions {
+            [System.Diagnostics.DebuggerStepThrough]
+            get { return new SocialActionsApi(this); }
         }
 
         /// <summary>
