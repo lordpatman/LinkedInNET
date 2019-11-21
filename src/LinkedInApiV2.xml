@@ -714,7 +714,7 @@
            HttpMethod="POST"
            Path="/v2/socialActions/urn:li:share:{ShareId}/comments"
            PostReturnType="CreateCommentRequest"
-           ReturnType="Comments"
+           ReturnType="CommentResult"
            RequiresUserAuthentication="1"
            UseFieldSelectors="0"
            Title="Create Comment on Share"
@@ -724,7 +724,7 @@
            HttpMethod="POST"
            Path="/v2/socialActions/urn:li:ugcPost:{PostId}/comments"
            PostReturnType="CreateCommentRequest"
-           ReturnType="Comments"
+           ReturnType="CommentResult"
            RequiresUserAuthentication="1"
            UseFieldSelectors="0"
            Title="Create Comment on UGC Posts"
@@ -734,7 +734,7 @@
            HttpMethod="POST"
            Path="/v2/socialActions/urn:li:comment:{CommentId}/comments"
            PostReturnType="CreateCommentRequest"
-           ReturnType="Comments"
+           ReturnType="CommentResult"
            RequiresUserAuthentication="1"
            UseFieldSelectors="0"
            Title="Create Comment on Comment"
@@ -747,13 +747,13 @@
 
     <ReturnType Name="CommentResult" ClassName="CommentResult">
       <Field Name="actor" />
+      <Field Name="agent" />
       <Field Name="created" Type="Common.ShareTime" />
       <Field Name="lastModified" Type="Common.ShareTime" />
       <Field Name="id" PropertyName="Id" />
       <Field Name="message" Type="CommentMessage" />
       <Field Name="$URN"  PropertyName="Urn" />
       <Field Name="object" />
-      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
     </ReturnType>
 
     <ReturnType Name="CommentMessage" ClassName="CommentMessage">
@@ -764,6 +764,7 @@
       <Field Name="actor" />
       <Field Name="message" Type="CommentMessage" />
     </ReturnType>
+
   </ApiGroup>
 
 
