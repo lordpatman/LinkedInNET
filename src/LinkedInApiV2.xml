@@ -683,6 +683,15 @@
   </ApiGroup>
 
   <ApiGroup Name="SocialActions">
+    <ApiMethod MethodName="GetCommentsByUrn"
+             HttpMethod="GET"
+             Path="/v2/socialActions/{urn}/comments"
+             ReturnType="Comments"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Retrieve Comments by Share/ UGC/ Comment"
+             Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
+    
     <ApiMethod MethodName="GetCommentsOnShare"
              HttpMethod="GET"
              Path="/v2/socialActions/urn:li:share:{ShareId}/comments"  
@@ -709,6 +718,16 @@
              UseFieldSelectors="0"
              Title="Retrieve Comments on Comment"
              Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
+    
+    <ApiMethod MethodName="CreateCommentOnUrn"
+             HttpMethod="POST"
+             Path="/v2/socialActions/{urn}/comments"
+             PostReturnType="CreateCommentRequest"
+             ReturnType="CommentResult"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Create Comment on Share/ UGC/ Comment"
+             Remark="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment" />
 
     <ApiMethod MethodName="CreateCommentOnShare"
            HttpMethod="POST"

@@ -4144,6 +4144,13 @@ namespace Sparkle.LinkedInNET.SocialActions
         public string Actor { get; set; }
 
         /// <summary>
+        /// Field: 'agent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "agent")]
+        [JsonProperty(PropertyName = "agent")]
+        public string Agent { get; set; }
+
+        /// <summary>
         /// Field: 'created' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "created")]
@@ -4184,13 +4191,6 @@ namespace Sparkle.LinkedInNET.SocialActions
         [XmlElement(ElementName = "object")]
         [JsonProperty(PropertyName = "object")]
         public string Object { get; set; }
-
-        /// <summary>
-        /// Field: 'paging' (on-demand)
-        /// </summary>
-        [XmlElement(ElementName = "paging")]
-        [JsonProperty(PropertyName = "paging")]
-        public Common.Paging Paging { get; set; }
 
     }
 }
@@ -8416,18 +8416,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                 }
                 
                 /// <summary>
-                /// Retrieve Comments on Shares
+                /// Retrieve Comments by Share/ UGC/ Comment
                 /// </summary>
                 /// <remarks>
                 /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                 /// </remarks>
-                public SocialActions.Comments GetCommentsOnShare(
+                public SocialActions.Comments GetCommentsByUrn(
                       UserAuthorization user 
-                    , string shareId 
+                    , string urn 
                 )
                 {
-                    string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                    string urlFormat = "/v2/socialActions/{urn}/comments";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -8442,18 +8442,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                 }
 
                     /// <summary>
-                    /// Retrieve Comments on Shares
+                    /// Retrieve Comments by Share/ UGC/ Comment
                     /// </summary>
                     /// <remarks>
                     /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                     /// </remarks>
-                    public async Task<SocialActions.Comments> GetCommentsOnShareAsync(
+                    public async Task<SocialActions.Comments> GetCommentsByUrnAsync(
                           UserAuthorization user 
-                        , string shareId 
+                        , string urn 
                     )
                     {
-                        string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                        string urlFormat = "/v2/socialActions/{urn}/comments";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -8469,18 +8469,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                     }
                         
                         /// <summary>
-                        /// Retrieve Comments on UGC Posts
+                        /// Retrieve Comments on Shares
                         /// </summary>
                         /// <remarks>
                         /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                         /// </remarks>
-                        public SocialActions.Comments GetCommentsOnUGCPost(
+                        public SocialActions.Comments GetCommentsOnShare(
                               UserAuthorization user 
-                            , string postId 
+                            , string shareId 
                         )
                         {
-                            string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -8495,18 +8495,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                         }
 
                             /// <summary>
-                            /// Retrieve Comments on UGC Posts
+                            /// Retrieve Comments on Shares
                             /// </summary>
                             /// <remarks>
                             /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                             /// </remarks>
-                            public async Task<SocialActions.Comments> GetCommentsOnUGCPostAsync(
+                            public async Task<SocialActions.Comments> GetCommentsOnShareAsync(
                                   UserAuthorization user 
-                                , string postId 
+                                , string shareId 
                             )
                             {
-                                string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -8522,18 +8522,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                             }
                                 
                                 /// <summary>
-                                /// Retrieve Comments on Comment
+                                /// Retrieve Comments on UGC Posts
                                 /// </summary>
                                 /// <remarks>
                                 /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                                 /// </remarks>
-                                public SocialActions.Comments GetCommentsOnComment(
+                                public SocialActions.Comments GetCommentsOnUGCPost(
                                       UserAuthorization user 
-                                    , string commentId 
+                                    , string postId 
                                 )
                                 {
-                                    string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -8548,18 +8548,18 @@ namespace Sparkle.LinkedInNET.SocialActions
                                 }
 
                                     /// <summary>
-                                    /// Retrieve Comments on Comment
+                                    /// Retrieve Comments on UGC Posts
                                     /// </summary>
                                     /// <remarks>
                                     /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                                     /// </remarks>
-                                    public async Task<SocialActions.Comments> GetCommentsOnCommentAsync(
+                                    public async Task<SocialActions.Comments> GetCommentsOnUGCPostAsync(
                                           UserAuthorization user 
-                                        , string commentId 
+                                        , string postId 
                                     )
                                     {
-                                        string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -8575,25 +8575,23 @@ namespace Sparkle.LinkedInNET.SocialActions
                                     }
                                         
                                         /// <summary>
-                                        /// Create Comment on Share
+                                        /// Retrieve Comments on Comment
                                         /// </summary>
                                         /// <remarks>
-                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                                         /// </remarks>
-                                        public SocialActions.Comments CreateCommentOnShare(
+                                        public SocialActions.Comments GetCommentsOnComment(
                                               UserAuthorization user 
-                                            , string shareId 
-                                            , SocialActions.CreateCommentRequest postData
+                                            , string commentId 
                                         )
                                         {
-                                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
-                                            context.Method =  "POST";
+                                            context.Method =  "GET";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                            this.CreateJsonPostStream(context, postData);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
@@ -8603,25 +8601,23 @@ namespace Sparkle.LinkedInNET.SocialActions
                                         }
 
                                             /// <summary>
-                                            /// Create Comment on Share
+                                            /// Retrieve Comments on Comment
                                             /// </summary>
                                             /// <remarks>
-                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares
                                             /// </remarks>
-                                            public async Task<SocialActions.Comments> CreateCommentOnShareAsync(
+                                            public async Task<SocialActions.Comments> GetCommentsOnCommentAsync(
                                                   UserAuthorization user 
-                                                , string shareId 
-                                                , SocialActions.CreateCommentRequest postData
+                                                , string commentId 
                                             )
                                             {
-                                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
-                                                context.Method =  "POST";
+                                                context.Method =  "GET";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                                this.CreateJsonPostStream(context, postData);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
@@ -8632,19 +8628,19 @@ namespace Sparkle.LinkedInNET.SocialActions
                                             }
                                                 
                                                 /// <summary>
-                                                /// Create Comment on UGC Posts
+                                                /// Create Comment on Share/ UGC/ Comment
                                                 /// </summary>
                                                 /// <remarks>
                                                 /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                 /// </remarks>
-                                                public SocialActions.Comments CreateCommentOnUGCPost(
+                                                public SocialActions.CommentResult CreateCommentOnUrn(
                                                       UserAuthorization user 
-                                                    , string postId 
+                                                    , string urn 
                                                     , SocialActions.CreateCommentRequest postData
                                                 )
                                                 {
-                                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                                    string urlFormat = "/v2/socialActions/{urn}/comments";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
@@ -8655,24 +8651,24 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                     if (!this.ExecuteQuery(context))
                                                         this.HandleJsonErrorResponse(context);
                                                     
-                                                    var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                    var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                     return result;
                                                 }
 
                                                     /// <summary>
-                                                    /// Create Comment on UGC Posts
+                                                    /// Create Comment on Share/ UGC/ Comment
                                                     /// </summary>
                                                     /// <remarks>
                                                     /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                     /// </remarks>
-                                                    public async Task<SocialActions.Comments> CreateCommentOnUGCPostAsync(
+                                                    public async Task<SocialActions.CommentResult> CreateCommentOnUrnAsync(
                                                           UserAuthorization user 
-                                                        , string postId 
+                                                        , string urn 
                                                         , SocialActions.CreateCommentRequest postData
                                                     )
                                                     {
-                                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                                        string urlFormat = "/v2/socialActions/{urn}/comments";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
@@ -8684,24 +8680,24 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                         if (!exec)
                                                             this.HandleJsonErrorResponse(context);
                                                         
-                                                        var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                        var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                         return result;
                                                     }
                                                         
                                                         /// <summary>
-                                                        /// Create Comment on Comment
+                                                        /// Create Comment on Share
                                                         /// </summary>
                                                         /// <remarks>
                                                         /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                         /// </remarks>
-                                                        public SocialActions.Comments CreateCommentOnComment(
+                                                        public SocialActions.CommentResult CreateCommentOnShare(
                                                               UserAuthorization user 
-                                                            , string commentId 
+                                                            , string shareId 
                                                             , SocialActions.CreateCommentRequest postData
                                                         )
                                                         {
-                                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
@@ -8712,24 +8708,24 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                             if (!this.ExecuteQuery(context))
                                                                 this.HandleJsonErrorResponse(context);
                                                             
-                                                            var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                            var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                             return result;
                                                         }
 
                                                             /// <summary>
-                                                            /// Create Comment on Comment
+                                                            /// Create Comment on Share
                                                             /// </summary>
                                                             /// <remarks>
                                                             /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                             /// </remarks>
-                                                            public async Task<SocialActions.Comments> CreateCommentOnCommentAsync(
+                                                            public async Task<SocialActions.CommentResult> CreateCommentOnShareAsync(
                                                                   UserAuthorization user 
-                                                                , string commentId 
+                                                                , string shareId 
                                                                 , SocialActions.CreateCommentRequest postData
                                                             )
                                                             {
-                                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
@@ -8741,10 +8737,124 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                 if (!exec)
                                                                     this.HandleJsonErrorResponse(context);
                                                                 
-                                                                var result = this.HandleJsonResponse<SocialActions.Comments>(context);
+                                                                var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                                 return result;
                                                             }
                                                                 
+                                                                /// <summary>
+                                                                /// Create Comment on UGC Posts
+                                                                /// </summary>
+                                                                /// <remarks>
+                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                                /// </remarks>
+                                                                public SocialActions.CommentResult CreateCommentOnUGCPost(
+                                                                      UserAuthorization user 
+                                                                    , string postId 
+                                                                    , SocialActions.CreateCommentRequest postData
+                                                                )
+                                                                {
+                                                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                                                                    var context = new RequestContext();
+                                                                    context.UserAuthorization = user;
+                                                                    context.Method =  "POST";
+                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                    this.CreateJsonPostStream(context, postData);
+
+                                                                    if (!this.ExecuteQuery(context))
+                                                                        this.HandleJsonErrorResponse(context);
+                                                                    
+                                                                    var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
+                                                                    return result;
+                                                                }
+
+                                                                    /// <summary>
+                                                                    /// Create Comment on UGC Posts
+                                                                    /// </summary>
+                                                                    /// <remarks>
+                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                                    /// </remarks>
+                                                                    public async Task<SocialActions.CommentResult> CreateCommentOnUGCPostAsync(
+                                                                          UserAuthorization user 
+                                                                        , string postId 
+                                                                        , SocialActions.CreateCommentRequest postData
+                                                                    )
+                                                                    {
+                                                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+
+                                                                        var context = new RequestContext();
+                                                                        context.UserAuthorization = user;
+                                                                        context.Method =  "POST";
+                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                        this.CreateJsonPostStream(context, postData);
+
+                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                        if (!exec)
+                                                                            this.HandleJsonErrorResponse(context);
+                                                                        
+                                                                        var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
+                                                                        return result;
+                                                                    }
+                                                                        
+                                                                        /// <summary>
+                                                                        /// Create Comment on Comment
+                                                                        /// </summary>
+                                                                        /// <remarks>
+                                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                                        /// </remarks>
+                                                                        public SocialActions.CommentResult CreateCommentOnComment(
+                                                                              UserAuthorization user 
+                                                                            , string commentId 
+                                                                            , SocialActions.CreateCommentRequest postData
+                                                                        )
+                                                                        {
+                                                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                                                            var context = new RequestContext();
+                                                                            context.UserAuthorization = user;
+                                                                            context.Method =  "POST";
+                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                            this.CreateJsonPostStream(context, postData);
+
+                                                                            if (!this.ExecuteQuery(context))
+                                                                                this.HandleJsonErrorResponse(context);
+                                                                            
+                                                                            var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
+                                                                            return result;
+                                                                        }
+
+                                                                            /// <summary>
+                                                                            /// Create Comment on Comment
+                                                                            /// </summary>
+                                                                            /// <remarks>
+                                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
+                                                                            /// </remarks>
+                                                                            public async Task<SocialActions.CommentResult> CreateCommentOnCommentAsync(
+                                                                                  UserAuthorization user 
+                                                                                , string commentId 
+                                                                                , SocialActions.CreateCommentRequest postData
+                                                                            )
+                                                                            {
+                                                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+
+                                                                                var context = new RequestContext();
+                                                                                context.UserAuthorization = user;
+                                                                                context.Method =  "POST";
+                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                this.CreateJsonPostStream(context, postData);
+
+                                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                                if (!exec)
+                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                
+                                                                                var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
+                                                                                return result;
+                                                                            }
+                                                                                
             }
         }
 
