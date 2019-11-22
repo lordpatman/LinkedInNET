@@ -685,7 +685,7 @@
   <ApiGroup Name="SocialActions">
     <ApiMethod MethodName="GetCommentsByUrn"
              HttpMethod="GET"
-             Path="/v2/socialActions/{urn}/comments"
+             Path="/v2/socialActions/{urn}/comments?count={int Count = 50}&amp;start={int Start = 0}"
              ReturnType="Comments"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"
@@ -694,7 +694,7 @@
     
     <ApiMethod MethodName="GetCommentsOnShare"
              HttpMethod="GET"
-             Path="/v2/socialActions/urn:li:share:{ShareId}/comments"  
+             Path="/v2/socialActions/urn:li:share:{ShareId}/comments?count={int Count = 50}&amp;start={int Start = 0}"  
              ReturnType="Comments"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"
@@ -703,7 +703,7 @@
 
     <ApiMethod MethodName="GetCommentsOnUGCPost"
              HttpMethod="GET"
-             Path="/v2/socialActions/urn:li:ugcPost:{PostId}/comments" 
+             Path="/v2/socialActions/urn:li:ugcPost:{PostId}/comments?count={int Count = 50}&amp;start={int Start = 0}" 
              ReturnType="Comments"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"
@@ -712,7 +712,7 @@
     
     <ApiMethod MethodName="GetCommentsOnComment"
              HttpMethod="GET"
-             Path="/v2/socialActions/urn:li:comment:{CommentId}/comments"
+             Path="/v2/socialActions/urn:li:comment:{CommentId}/comments?count={int Count = 50}&amp;start={int Start = 0}"
              ReturnType="Comments"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"
