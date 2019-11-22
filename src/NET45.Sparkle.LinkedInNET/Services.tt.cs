@@ -4144,6 +4144,13 @@ namespace Sparkle.LinkedInNET.SocialActions
         public string Actor { get; set; }
 
         /// <summary>
+        /// Field: 'commentsSummary' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "commentsSummary")]
+        [JsonProperty(PropertyName = "commentsSummary")]
+        public CommentsSummary CommentsSummary { get; set; }
+
+        /// <summary>
         /// Field: 'agent' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "agent")]
@@ -4186,11 +4193,57 @@ namespace Sparkle.LinkedInNET.SocialActions
         public string Urn { get; set; }
 
         /// <summary>
+        /// Field: 'content' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "content")]
+        [JsonProperty(PropertyName = "content")]
+        public List<CommentContent> Content { get; set; }
+
+        /// <summary>
         /// Field: 'object' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "object")]
         [JsonProperty(PropertyName = "object")]
         public string Object { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CommentsSummary)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CommentsSummary'
+    /// </summary>
+    [Serializable, XmlRoot("CommentsSummary")]
+    public class CommentsSummary
+    {
+        /// <summary>
+        /// Field: 'totalFirstLevelComments' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "totalFirstLevelComments")]
+        [JsonProperty(PropertyName = "totalFirstLevelComments")]
+        public int TotalFirstLevelComments { get; set; }
+
+        /// <summary>
+        /// Field: 'aggregatedTotalComments' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "aggregatedTotalComments")]
+        [JsonProperty(PropertyName = "aggregatedTotalComments")]
+        public int AggregatedTotalComments { get; set; }
+
+        /// <summary>
+        /// Field: 'selectedComments' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "selectedComments")]
+        [JsonProperty(PropertyName = "selectedComments")]
+        public List<string> SelectedComments { get; set; }
 
     }
 }
@@ -4216,6 +4269,45 @@ namespace Sparkle.LinkedInNET.SocialActions
         [XmlElement(ElementName = "text")]
         [JsonProperty(PropertyName = "text")]
         public string Text { get; set; }
+
+        /// <summary>
+        /// Field: 'attributes' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "attributes")]
+        [JsonProperty(PropertyName = "attributes")]
+        public List<dynamic> Attributes { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CommentContent)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CommentContent'
+    /// </summary>
+    [Serializable, XmlRoot("CommentContent")]
+    public class CommentContent
+    {
+        /// <summary>
+        /// Field: 'type' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "type")]
+        [JsonProperty(PropertyName = "type")]
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Field: 'url' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "url")]
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
 
     }
 }
@@ -4352,7 +4444,7 @@ namespace Sparkle.LinkedInNET.SocialActions
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'Comments', 'CommentResult', 'CommentMessage', 'CreateCommentRequest', 'CreateLikeRequest', 'CreateLikeResult' return types.
+    /// Field selectors for the 'Comments', 'CommentResult', 'CommentsSummary', 'CommentMessage', 'CommentContent', 'CreateCommentRequest', 'CreateLikeRequest', 'CreateLikeResult' return types.
     /// </summary>
     public static class SocialActionsFields {
     }

@@ -800,17 +800,31 @@
 
     <ReturnType Name="CommentResult" ClassName="CommentResult">
       <Field Name="actor" />
+      <Field Name="commentsSummary" Type="CommentsSummary"/>
       <Field Name="agent" />
       <Field Name="created" Type="Common.ShareTime" />
       <Field Name="lastModified" Type="Common.ShareTime" />
       <Field Name="id" PropertyName="Id" />
       <Field Name="message" Type="CommentMessage" />
       <Field Name="$URN"  PropertyName="Urn" />
+      <Field Name="content"  Type="CommentContent" IsCollection="1"/>
       <Field Name="object" />
+    </ReturnType>
+
+    <ReturnType Name="CommentsSummary" ClassName="CommentsSummary">
+      <Field Name="totalFirstLevelComments" Type ="int"/>
+      <Field Name="aggregatedTotalComments" Type ="int"/>
+      <Field Name="selectedComments" Type="string" IsCollection="1"/>
     </ReturnType>
 
     <ReturnType Name="CommentMessage" ClassName="CommentMessage">
       <Field Name="text" />
+      <Field Name="attributes" IsCollection="1" Type="dynamic"/>
+    </ReturnType>
+
+    <ReturnType Name="CommentContent" ClassName="CommentContent">
+      <Field Name="type" PropertyName="ContentType"/>
+      <Field Name="url"/>
     </ReturnType>
 
     <ReturnType Name="CreateCommentRequest" ClassName="CreateCommentRequest">
