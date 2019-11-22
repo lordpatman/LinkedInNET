@@ -21,6 +21,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
         [XmlAttribute]
         public string Path { get; set; }
 
+        /// <summary>
+        /// use this filed to skip escaping path urlparams
+        /// list lit comma separated values
+        /// e.g.: urn,id,postId
+        /// </summary>
+        [XmlAttribute]
+        public string SkipUrlParamsEscape { get; set; }
+
         [XmlAttribute]
         public string ReturnType { get; set; }
 

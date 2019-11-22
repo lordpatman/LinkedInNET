@@ -48,7 +48,7 @@ namespace Sparkle.LinkedInNET.Internals
         /// <returns></returns>
         protected string FormatUrl(string format, params object[] values)
         {
-            return this.FormatUrl(format, null, values);
+            return this.FormatUrl(format, null, null, values);
         }
 
         /// <summary>
@@ -56,9 +56,10 @@ namespace Sparkle.LinkedInNET.Internals
         /// </summary>
         /// <param name="format">The format.</param>
         /// <param name="fieldSelector">The field selectors.</param>
+        /// <param name="skipUrlParamsEscape">list lit comma separated values. e.g.: urn,id,postId</param>
         /// <param name="values">The values.</param>
         /// <returns></returns>
-        protected string FormatUrl(string format, FieldSelector fieldSelector, params object[] values)
+        protected string FormatUrl(string format, FieldSelector fieldSelector, string skipUrlParamsEscape, params object[] values)
         {
             var result = format;
 
@@ -107,12 +108,15 @@ namespace Sparkle.LinkedInNET.Internals
                 result = result.Replace("{FieldSelector}", string.Empty);
             }
 
+            var skipParamsEscape = !string.IsNullOrEmpty(skipUrlParamsEscape) ? skipUrlParamsEscape.Split(',').ToList() : new List<string>();
+
             foreach (var key in dic.Keys)
             {
                 var value = dic[key];
                 if (value != null)
                 {
-                    result = result.Replace("{" + key + "}", Uri.EscapeDataString(value));
+                    var skipEscape = skipParamsEscape.Contains(key);
+                    result = result.Replace("{" + key + "}", skipEscape ? value : Uri.EscapeDataString(value));
                 }
                 else
                 {

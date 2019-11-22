@@ -79,7 +79,8 @@
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
-                    await GetPost(user);
+                    await GetComemnt(user);
+                    // await GetPost(user);
                     // await PublishImage(user);
                     //await PublishTest();                                                 
 
@@ -451,6 +452,20 @@
         {         
 
             var postId = await this.api.UGCPost.GetUGCPostAsync(user, "urn:li:share:6603298353402912768");
+        }
+
+        private async Task GetComemnt(UserAuthorization user)
+        {
+            try
+            {
+                var postId = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:share:6603298353402912768");
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
         }
     }
 }

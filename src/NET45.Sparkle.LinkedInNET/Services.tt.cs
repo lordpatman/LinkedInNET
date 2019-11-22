@@ -7414,7 +7414,8 @@ namespace Sparkle.LinkedInNET.Profiles
                         )
                         {
                             string urlFormat = "/v2/connections/urn:li:person:{profileId}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "profileId", profileId);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -7437,7 +7438,8 @@ namespace Sparkle.LinkedInNET.Profiles
                             )
                             {
                                 string urlFormat = "/v2/connections/urn:li:person:{profileId}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "profileId", profileId);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -7488,7 +7490,8 @@ namespace Sparkle.LinkedInNET.Organizations
                 )
                 {
                     string urlFormat = "/v2/organizations/{CompanyId}";
-                    var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+                    string skipUrlParamsEscape = "";
+                    var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -7515,7 +7518,8 @@ namespace Sparkle.LinkedInNET.Organizations
                     )
                     {
                         string urlFormat = "/v2/organizations/{CompanyId}";
-                        var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+                        string skipUrlParamsEscape = "";
+                        var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -7543,7 +7547,8 @@ namespace Sparkle.LinkedInNET.Organizations
                         )
                         {
                             string urlFormat = "/v2/organizationBrands/{CompanyId}";
-                            var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -7570,7 +7575,8 @@ namespace Sparkle.LinkedInNET.Organizations
                             )
                             {
                                 string urlFormat = "/v2/organizationBrands/{CompanyId}";
-                                var url = FormatUrl(urlFormat, fields, "CompanyId", companyId);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "CompanyId", companyId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -7594,7 +7600,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                 )
                                 {
                                     string urlFormat = "/v2/organizationPageStatistics?q=organization&organization=urn:li:organization:{CompanyId}";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -7617,7 +7624,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                     )
                                     {
                                         string urlFormat = "/v2/organizationPageStatistics?q=organization&organization=urn:li:organization:{CompanyId}";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -7695,7 +7703,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                                 )
                                                 {
                                                     string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
-                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+                                                    string skipUrlParamsEscape = "";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
@@ -7721,7 +7730,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                                     )
                                                     {
                                                         string urlFormat = "/v2/organizationalEntityFollowerStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}";
-                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId);
+                                                        string skipUrlParamsEscape = "";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
@@ -7750,7 +7760,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                                         )
                                                         {
                                                             string urlFormat = "/v2/search?q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
-                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
+                                                            string skipUrlParamsEscape = "";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
@@ -7778,7 +7789,8 @@ namespace Sparkle.LinkedInNET.Organizations
                                                             )
                                                             {
                                                                 string urlFormat = "/v2/search?q=companiesV2&baseSearchParams.keywords={keyword}&start={int Start = 0}&count={int Count = 50}&projection=(elements*(entity~(id, name, vanityName, logoV2(original~:playableStreams))),paging)";
-                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
+                                                                string skipUrlParamsEscape = "";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "keyword", keyword, "int Start = 0", start, "int Count = 50", count);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
@@ -7882,7 +7894,8 @@ namespace Sparkle.LinkedInNET.Shares
                         )
                         {
                             string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -7909,7 +7922,8 @@ namespace Sparkle.LinkedInNET.Shares
                             )
                             {
                                 string urlFormat = "/v2/organizationalEntityShareStatistics?q=organizationalEntity&organizationalEntity=urn:li:organization:{CompanyId}&shares[0]=urn:li:share:{ShareId}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "CompanyId", companyId, "ShareId", shareId);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId, "ShareId", shareId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -7939,7 +7953,8 @@ namespace Sparkle.LinkedInNET.Shares
                                 )
                                 {
                                     string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -7968,7 +7983,8 @@ namespace Sparkle.LinkedInNET.Shares
                                     )
                                     {
                                         string urlFormat = "/v2/shares?q=owners&owners={urn}&sharesPerOwner={int SharesPerOwner = 1000}&count={int Count = 50}&start={int Start = 0}";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int SharesPerOwner = 1000", sharesPerOwner, "int Count = 50", count, "int Start = 0", start);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -8020,7 +8036,8 @@ namespace Sparkle.LinkedInNET.Videos
                 )
                 {
                     string urlFormat = "/v2/videoAnalytics?q=entity&entity={videoPostId}&type={type}&aggregation={aggregation}";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
+                    string skipUrlParamsEscape = "";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -8048,7 +8065,8 @@ namespace Sparkle.LinkedInNET.Videos
                     )
                     {
                         string urlFormat = "/v2/videoAnalytics?q=entity&entity={videoPostId}&type={type}&aggregation={aggregation}";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
+                        string skipUrlParamsEscape = "";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "videoPostId", videoPostId, "type", type, "aggregation", aggregation);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -8243,7 +8261,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                         )
                         {
                             string urlFormat = "/v2/ugcPosts?q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int Start = 0", start, "int Count = 50", count);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -8271,7 +8290,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                             )
                             {
                                 string urlFormat = "/v2/ugcPosts?q=authors&authors=List({urn})&start={int Start = 0}&count={int Count = 50}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn, "int Start = 0", start, "int Count = 50", count);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Start = 0", start, "int Count = 50", count);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -8298,7 +8318,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                 )
                                 {
                                     string urlFormat = "/v2/ugcPosts/{urn}";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -8324,7 +8345,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                     )
                                     {
                                         string urlFormat = "/v2/ugcPosts/{urn}";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -8351,7 +8373,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                         )
                                         {
                                             string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
-                                            var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                            string skipUrlParamsEscape = "";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
@@ -8377,7 +8400,8 @@ namespace Sparkle.LinkedInNET.UGCPost
                                             )
                                             {
                                                 string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
-                                                var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                                string skipUrlParamsEscape = "";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
@@ -8424,10 +8448,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                 public SocialActions.Comments GetCommentsByUrn(
                       UserAuthorization user 
                     , string urn 
+                    , int count = 50
+                    , int start = 0
                 )
                 {
-                    string urlFormat = "/v2/socialActions/{urn}/comments";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                    string urlFormat = "/v2/socialActions/{urn}/comments?count={int Count = 50}&start={int Start = 0}";
+                    string skipUrlParamsEscape = "urn";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Count = 50", count, "int Start = 0", start);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -8450,10 +8477,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                     public async Task<SocialActions.Comments> GetCommentsByUrnAsync(
                           UserAuthorization user 
                         , string urn 
+                        , int count = 50
+                        , int start = 0
                     )
                     {
-                        string urlFormat = "/v2/socialActions/{urn}/comments";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                        string urlFormat = "/v2/socialActions/{urn}/comments?count={int Count = 50}&start={int Start = 0}";
+                        string skipUrlParamsEscape = "urn";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "int Count = 50", count, "int Start = 0", start);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -8477,10 +8507,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                         public SocialActions.Comments GetCommentsOnShare(
                               UserAuthorization user 
                             , string shareId 
+                            , int count = 50
+                            , int start = 0
                         )
                         {
-                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments?count={int Count = 50}&start={int Start = 0}";
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId, "int Count = 50", count, "int Start = 0", start);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -8503,10 +8536,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                             public async Task<SocialActions.Comments> GetCommentsOnShareAsync(
                                   UserAuthorization user 
                                 , string shareId 
+                                , int count = 50
+                                , int start = 0
                             )
                             {
-                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments?count={int Count = 50}&start={int Start = 0}";
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId, "int Count = 50", count, "int Start = 0", start);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -8530,10 +8566,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                                 public SocialActions.Comments GetCommentsOnUGCPost(
                                       UserAuthorization user 
                                     , string postId 
+                                    , int count = 50
+                                    , int start = 0
                                 )
                                 {
-                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments?count={int Count = 50}&start={int Start = 0}";
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId, "int Count = 50", count, "int Start = 0", start);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -8556,10 +8595,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                                     public async Task<SocialActions.Comments> GetCommentsOnUGCPostAsync(
                                           UserAuthorization user 
                                         , string postId 
+                                        , int count = 50
+                                        , int start = 0
                                     )
                                     {
-                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments?count={int Count = 50}&start={int Start = 0}";
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId, "int Count = 50", count, "int Start = 0", start);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -8583,10 +8625,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                                         public SocialActions.Comments GetCommentsOnComment(
                                               UserAuthorization user 
                                             , string commentId 
+                                            , int count = 50
+                                            , int start = 0
                                         )
                                         {
-                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments?count={int Count = 50}&start={int Start = 0}";
+                                            string skipUrlParamsEscape = "";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId, "int Count = 50", count, "int Start = 0", start);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
@@ -8609,10 +8654,13 @@ namespace Sparkle.LinkedInNET.SocialActions
                                             public async Task<SocialActions.Comments> GetCommentsOnCommentAsync(
                                                   UserAuthorization user 
                                                 , string commentId 
+                                                , int count = 50
+                                                , int start = 0
                                             )
                                             {
-                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments?count={int Count = 50}&start={int Start = 0}";
+                                                string skipUrlParamsEscape = "";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId, "int Count = 50", count, "int Start = 0", start);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
@@ -8640,7 +8688,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                 )
                                                 {
                                                     string urlFormat = "/v2/socialActions/{urn}/comments";
-                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                                    string skipUrlParamsEscape = "urn";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
@@ -8668,7 +8717,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                     )
                                                     {
                                                         string urlFormat = "/v2/socialActions/{urn}/comments";
-                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "urn", urn);
+                                                        string skipUrlParamsEscape = "urn";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
@@ -8697,7 +8747,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                         )
                                                         {
                                                             string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                                                            string skipUrlParamsEscape = "";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
@@ -8725,7 +8776,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                             )
                                                             {
                                                                 string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "ShareId", shareId);
+                                                                string skipUrlParamsEscape = "";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
@@ -8754,7 +8806,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                 )
                                                                 {
                                                                     string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                                                    string skipUrlParamsEscape = "";
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                     var context = new RequestContext();
                                                                     context.UserAuthorization = user;
@@ -8782,7 +8835,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                     )
                                                                     {
                                                                         string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
-                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "PostId", postId);
+                                                                        string skipUrlParamsEscape = "";
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                         var context = new RequestContext();
                                                                         context.UserAuthorization = user;
@@ -8811,7 +8865,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                         )
                                                                         {
                                                                             string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                                                            string skipUrlParamsEscape = "";
+                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                             var context = new RequestContext();
                                                                             context.UserAuthorization = user;
@@ -8839,7 +8894,8 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                             )
                                                                             {
                                                                                 string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
-                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "CommentId", commentId);
+                                                                                string skipUrlParamsEscape = "";
+                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                                 var context = new RequestContext();
                                                                                 context.UserAuthorization = user;
@@ -8943,7 +8999,8 @@ namespace Sparkle.LinkedInNET.Asset
                         )
                         {
                             string urlFormat = "{UploadUrl}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                             var context = new RequestContext();
                             context.Method =  "POST";
@@ -8976,7 +9033,8 @@ namespace Sparkle.LinkedInNET.Asset
                             )
                             {
                                 string urlFormat = "{UploadUrl}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "UploadUrl", uploadUrl);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                 var context = new RequestContext();
                                 context.Method =  "POST";
@@ -9010,7 +9068,8 @@ namespace Sparkle.LinkedInNET.Asset
                                 )
                                 {
                                     string urlFormat = "/v2/assets/{AssetId}";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -9036,7 +9095,8 @@ namespace Sparkle.LinkedInNET.Asset
                                     )
                                     {
                                         string urlFormat = "/v2/assets/{AssetId}";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "AssetId", assetId);
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -9165,7 +9225,8 @@ namespace Sparkle.LinkedInNET.Targeting
                 )
                 {
                     string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                    string skipUrlParamsEscape = "";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -9194,7 +9255,8 @@ namespace Sparkle.LinkedInNET.Targeting
                     )
                     {
                         string urlFormat = "/v2/industries?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}&";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                        string skipUrlParamsEscape = "";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -9223,7 +9285,8 @@ namespace Sparkle.LinkedInNET.Targeting
                         )
                         {
                             string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+                            string skipUrlParamsEscape = "";
+                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
@@ -9251,7 +9314,8 @@ namespace Sparkle.LinkedInNET.Targeting
                             )
                             {
                                 string urlFormat = "/v2/functions?locale={dataLocale}&count={int Count = 50}&start={int Start = 0}";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
+                                string skipUrlParamsEscape = "";
+                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLocale", dataLocale, "int Count = 50", count, "int Start = 0", start);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
@@ -9281,7 +9345,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                 )
                                 {
                                     string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                                    string skipUrlParamsEscape = "";
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
@@ -9310,7 +9375,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                     )
                                     {
                                         string urlFormat = "/v2/countryGroups?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                                        string skipUrlParamsEscape = "";
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
@@ -9342,7 +9408,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                         )
                                         {
                                             string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
-                                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+                                            string skipUrlParamsEscape = "";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
@@ -9373,7 +9440,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                             )
                                             {
                                                 string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}&q={countryGroup}&countryGroup={countryGroupURN}&count={int Count = 50}&start={int Start = 0}";
-                                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
+                                                string skipUrlParamsEscape = "";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "countryGroup", countryGroup, "countryGroupURN", countryGroupURN, "int Count = 50", count, "int Start = 0", start);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
@@ -9405,7 +9473,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                 )
                                                 {
                                                     string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
-                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+                                                    string skipUrlParamsEscape = "";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
 
                                                     var context = new RequestContext();
                                                     context.UserAuthorization = user;
@@ -9436,7 +9505,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                     )
                                                     {
                                                         string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}&q={country}&country={countryURN}&count={int Count = 50}&start={int Start = 0}";
-                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
+                                                        string skipUrlParamsEscape = "";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "country", country, "countryURN", countryURN, "int Count = 50", count, "int Start = 0", start);
 
                                                         var context = new RequestContext();
                                                         context.UserAuthorization = user;
@@ -9468,7 +9538,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                         )
                                                         {
                                                             string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
-                                                            var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+                                                            string skipUrlParamsEscape = "";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
@@ -9499,7 +9570,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                             )
                                                             {
                                                                 string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}&q={states}&states={statesURN}&count={int Count = 50}&start={int Start = 0}";
-                                                                var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
+                                                                string skipUrlParamsEscape = "";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "states", states, "statesURN", statesURN, "int Count = 50", count, "int Start = 0", start);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
@@ -9529,7 +9601,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                 )
                                                                 {
                                                                     string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                                                                    string skipUrlParamsEscape = "";
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                                                     var context = new RequestContext();
                                                                     context.UserAuthorization = user;
@@ -9558,7 +9631,8 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                     )
                                                                     {
                                                                         string urlFormat = "/v2/seniorities?locale.language={dataLanguage}&locale.country={dataCountry}&count={int Count = 50}&start={int Start = 0}";
-                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
+                                                                        string skipUrlParamsEscape = "";
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry, "int Count = 50", count, "int Start = 0", start);
 
                                                                         var context = new RequestContext();
                                                                         context.UserAuthorization = user;
@@ -9605,7 +9679,8 @@ namespace Sparkle.LinkedInNET.Region
                 )
                 {
                     string urlFormat = "/v2/regions/{id}?locale.language=en&locale.country=US";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "id", id);
+                    string skipUrlParamsEscape = "";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "id", id);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -9628,7 +9703,8 @@ namespace Sparkle.LinkedInNET.Region
                     )
                     {
                         string urlFormat = "/v2/regions/{id}?locale.language=en&locale.country=US";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "id", id);
+                        string skipUrlParamsEscape = "";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "id", id);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;
@@ -9675,7 +9751,8 @@ namespace Sparkle.LinkedInNET.Ads
                 )
                 {
                     string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
-                    var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
+                    string skipUrlParamsEscape = "";
+                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                     var context = new RequestContext();
                     context.UserAuthorization = user;
@@ -9698,7 +9775,8 @@ namespace Sparkle.LinkedInNET.Ads
                     )
                     {
                         string urlFormat = "/v2/adAnalyticsV2?q=statistics&pivots[0]=SHARE&dateRange.start.day=" + DateTime.Now.Day + "&dateRange.start.month=" + DateTime.Now.Month + "&dateRange.start.year=" + DateTime.Now.Year + "&timeGranularity=DAILY&shares[0]=urn:li:share:{postId}";
-                        var url = FormatUrl(urlFormat, default(FieldSelector), "postId", postId);
+                        string skipUrlParamsEscape = "";
+                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "postId", postId);
 
                         var context = new RequestContext();
                         context.UserAuthorization = user;

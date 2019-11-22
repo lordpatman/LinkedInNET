@@ -407,13 +407,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 this.text.WriteLine(--indent, ")");
                 this.text.WriteLine(indent++, "{");
-
+                
                 // body / format url
                 if (urlParams.Count > 0)
                 {
                     this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string skipUrlParamsEscape = \"" + method.SkipUrlParamsEscape + "\";");                    
 
-                    this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
+                    this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", skipUrlParamsEscape, " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
                 }
                 else if (method.Path.Contains("FieldSelector"))
                 {
@@ -566,8 +567,10 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
                 if (urlParams.Count > 0)
                 {
                     this.text.WriteLine(indent, "string urlFormat = \"" + method.Path + "\";");
+                    this.text.WriteLine(indent, "string skipUrlParamsEscape = \"" + method.SkipUrlParamsEscape + "\";");
+                    // skipEscapeUrlParams, 
 
-                    this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
+                    this.text.WriteLine(indent, "var url = FormatUrl(urlFormat, " + (method.UseFieldSelectors ? "fields" : "default(FieldSelector)") + ", skipUrlParamsEscape, " + string.Join(", ", urlParams.Values.Select(p => "\"" + p.OriginalName + "\", " + p.Name).ToArray()) + ");");
                 }
                 else if (method.Path.Contains("FieldSelector"))
                 {
