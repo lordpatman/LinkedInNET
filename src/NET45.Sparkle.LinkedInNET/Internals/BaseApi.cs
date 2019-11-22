@@ -266,7 +266,8 @@ namespace Sparkle.LinkedInNET.Internals
                 BufferizeResponse(context, readStream);
 
                 // check HTTP code
-                if (!(response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created))
+                if (!(response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created) && 
+                    (request.Method == "DELETE" && !(response.StatusCode == HttpStatusCode.NoContent)))
                 {
                     throw new InvalidOperationException("Error from API (HTTP " + (int)(response.StatusCode) + ")");
                 }
@@ -570,6 +571,10 @@ namespace Sparkle.LinkedInNET.Internals
             {
                 // the HTTP code matches a error response
                 ThrowJsonErrorResult(context, errorResult, json);
+            }
+            else if (context.Method == "DELETE" && context.HttpStatusCode == (int)HttpStatusCode.NoContent)
+            {
+                result = JsonConvert.DeserializeObject<T>("true");
             }
             else
             {

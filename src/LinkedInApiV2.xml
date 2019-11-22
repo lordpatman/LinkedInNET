@@ -773,7 +773,10 @@
     
     <ApiMethod MethodName="DeleteLike"
            HttpMethod="DELETE"
+           ReturnType="dynamic"
+           IsValueType="1"
            Path="/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}"
+           SkipUrlParamsEscape="urn"
            RequiresUserAuthentication="1"
            UseFieldSelectors="0"
            Title="Delete a Like"
@@ -781,7 +784,10 @@
     
     <ApiMethod MethodName="DeleteComment"
            HttpMethod="DELETE"
+           ReturnType="dynamic"
+           IsValueType="1"
            Path="/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}"
+           SkipUrlParamsEscape="urn"
            RequiresUserAuthentication="1"
            UseFieldSelectors="0"
            Title="Delete Comment"

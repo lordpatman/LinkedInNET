@@ -139,7 +139,8 @@ namespace Sparkle.LinkedInNET.Internals
                 await BufferizeResponseAsync(context, readStream);
 
                 // check HTTP code
-                if (!(response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created))
+                if (!(response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Created) &&
+                    (request.Method == "DELETE" && !(response.StatusCode == HttpStatusCode.NoContent)))
                 {
                     throw new InvalidOperationException("Error from API (HTTP " + (int)(response.StatusCode) + ")");
                 }

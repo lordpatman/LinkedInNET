@@ -4252,6 +4252,98 @@ namespace Sparkle.LinkedInNET.SocialActions
     }
 }
 
+// WriteReturnTypes(SocialActions, CreateLikeRequest)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CreateLikeRequest'
+    /// </summary>
+    [Serializable, XmlRoot("CreateLikeRequest")]
+    public class CreateLikeRequest
+    {
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'object' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "object")]
+        [JsonProperty(PropertyName = "object")]
+        public string Object { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CreateLikeResult)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CreateLikeResult'
+    /// </summary>
+    [Serializable, XmlRoot("CreateLikeResult")]
+    public class CreateLikeResult
+    {
+        /// <summary>
+        /// Field: '$URN' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "$URN")]
+        [JsonProperty(PropertyName = "$URN")]
+        public string Urn { get; set; }
+
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'agent' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "agent")]
+        [JsonProperty(PropertyName = "agent")]
+        public string Agent { get; set; }
+
+        /// <summary>
+        /// Field: 'created' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "created")]
+        [JsonProperty(PropertyName = "created")]
+        public Common.ShareTime Created { get; set; }
+
+        /// <summary>
+        /// Field: 'lastModified' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "lastModified")]
+        [JsonProperty(PropertyName = "lastModified")]
+        public Common.ShareTime LastModified { get; set; }
+
+        /// <summary>
+        /// Field: 'object' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "object")]
+        [JsonProperty(PropertyName = "object")]
+        public string Object { get; set; }
+
+    }
+}
+
 // WriteReturnTypeFields(SocialActions)
 namespace Sparkle.LinkedInNET.SocialActions
 {
@@ -4260,7 +4352,7 @@ namespace Sparkle.LinkedInNET.SocialActions
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'Comments', 'CommentResult', 'CommentMessage', 'CreateCommentRequest' return types.
+    /// Field selectors for the 'Comments', 'CommentResult', 'CommentMessage', 'CreateCommentRequest', 'CreateLikeRequest', 'CreateLikeResult' return types.
     /// </summary>
     public static class SocialActionsFields {
     }
@@ -8911,6 +9003,183 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                 return result;
                                                                             }
                                                                                 
+                                                                                /// <summary>
+                                                                                /// Create a Like
+                                                                                /// </summary>
+                                                                                /// <remarks>
+                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
+                                                                                /// </remarks>
+                                                                                public SocialActions.CreateLikeResult CreateLike(
+                                                                                      UserAuthorization user 
+                                                                                    , string urn 
+                                                                                    , SocialActions.CreateLikeRequest postData
+                                                                                )
+                                                                                {
+                                                                                    string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                    string skipUrlParamsEscape = "";
+                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+
+                                                                                    var context = new RequestContext();
+                                                                                    context.UserAuthorization = user;
+                                                                                    context.Method =  "POST";
+                                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                    this.CreateJsonPostStream(context, postData);
+
+                                                                                    if (!this.ExecuteQuery(context))
+                                                                                        this.HandleJsonErrorResponse(context);
+                                                                                    
+                                                                                    var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
+                                                                                    return result;
+                                                                                }
+
+                                                                                    /// <summary>
+                                                                                    /// Create a Like
+                                                                                    /// </summary>
+                                                                                    /// <remarks>
+                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
+                                                                                    /// </remarks>
+                                                                                    public async Task<SocialActions.CreateLikeResult> CreateLikeAsync(
+                                                                                          UserAuthorization user 
+                                                                                        , string urn 
+                                                                                        , SocialActions.CreateLikeRequest postData
+                                                                                    )
+                                                                                    {
+                                                                                        string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                        string skipUrlParamsEscape = "";
+                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+
+                                                                                        var context = new RequestContext();
+                                                                                        context.UserAuthorization = user;
+                                                                                        context.Method =  "POST";
+                                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                        this.CreateJsonPostStream(context, postData);
+
+                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                        if (!exec)
+                                                                                            this.HandleJsonErrorResponse(context);
+                                                                                        
+                                                                                        var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
+                                                                                        return result;
+                                                                                    }
+                                                                                        
+                                                                                        /// <summary>
+                                                                                        /// Delete a Like
+                                                                                        /// </summary>
+                                                                                        /// <remarks>
+                                                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
+                                                                                        /// </remarks>
+                                                                                        public dynamic DeleteLike(
+                                                                                              UserAuthorization user 
+                                                                                            , string urn 
+                                                                                            , string actorUrn 
+                                                                                            , string creatorActorUrn 
+                                                                                        )
+                                                                                        {
+                                                                                            string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
+                                                                                            string skipUrlParamsEscape = "urn";
+                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
+
+                                                                                            var context = new RequestContext();
+                                                                                            context.UserAuthorization = user;
+                                                                                            context.Method =  "DELETE";
+                                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                            if (!this.ExecuteQuery(context))
+                                                                                                this.HandleJsonErrorResponse(context);
+                                                                                            
+                                                                                            var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                            return result;
+                                                                                        }
+
+                                                                                            /// <summary>
+                                                                                            /// Delete a Like
+                                                                                            /// </summary>
+                                                                                            /// <remarks>
+                                                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
+                                                                                            /// </remarks>
+                                                                                            public async Task<dynamic> DeleteLikeAsync(
+                                                                                                  UserAuthorization user 
+                                                                                                , string urn 
+                                                                                                , string actorUrn 
+                                                                                                , string creatorActorUrn 
+                                                                                            )
+                                                                                            {
+                                                                                                string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
+                                                                                                string skipUrlParamsEscape = "urn";
+                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
+
+                                                                                                var context = new RequestContext();
+                                                                                                context.UserAuthorization = user;
+                                                                                                context.Method =  "DELETE";
+                                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                                                if (!exec)
+                                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                                
+                                                                                                var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                return result;
+                                                                                            }
+                                                                                                
+                                                                                                /// <summary>
+                                                                                                /// Delete Comment
+                                                                                                /// </summary>
+                                                                                                /// <remarks>
+                                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                /// </remarks>
+                                                                                                public dynamic DeleteComment(
+                                                                                                      UserAuthorization user 
+                                                                                                    , string urn 
+                                                                                                    , string commentId 
+                                                                                                    , string actorUrn 
+                                                                                                )
+                                                                                                {
+                                                                                                    string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                    string skipUrlParamsEscape = "urn";
+                                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+
+                                                                                                    var context = new RequestContext();
+                                                                                                    context.UserAuthorization = user;
+                                                                                                    context.Method =  "DELETE";
+                                                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                    if (!this.ExecuteQuery(context))
+                                                                                                        this.HandleJsonErrorResponse(context);
+                                                                                                    
+                                                                                                    var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                    return result;
+                                                                                                }
+
+                                                                                                    /// <summary>
+                                                                                                    /// Delete Comment
+                                                                                                    /// </summary>
+                                                                                                    /// <remarks>
+                                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                    /// </remarks>
+                                                                                                    public async Task<dynamic> DeleteCommentAsync(
+                                                                                                          UserAuthorization user 
+                                                                                                        , string urn 
+                                                                                                        , string commentId 
+                                                                                                        , string actorUrn 
+                                                                                                    )
+                                                                                                    {
+                                                                                                        string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                        string skipUrlParamsEscape = "urn";
+                                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+
+                                                                                                        var context = new RequestContext();
+                                                                                                        context.UserAuthorization = user;
+                                                                                                        context.Method =  "DELETE";
+                                                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                                        if (!exec)
+                                                                                                            this.HandleJsonErrorResponse(context);
+                                                                                                        
+                                                                                                        var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                        return result;
+                                                                                                    }
+                                                                                                        
             }
         }
 
