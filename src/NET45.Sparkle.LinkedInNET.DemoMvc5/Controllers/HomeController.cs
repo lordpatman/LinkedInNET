@@ -20,6 +20,8 @@
     using System.Drawing.Imaging;
     using System.Drawing.Drawing2D;
     using Sparkle.LinkedInNET.DemoMvc5.Utils;
+    using Sparkle.LinkedInNET.SocialActions;
+    using Sparkle.LinkedInNET.UGCPost;
 
     ////using Sparkle.LinkedInNET.ServiceDefinition;
 
@@ -79,6 +81,7 @@
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
+                    //await GetPosts(user);
                     await GetComemnt(user);
                     // await GetPost(user);
                     // await PublishImage(user);
@@ -458,14 +461,64 @@
         {
             try
             {
-                var postId = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:share:6603298353402912768");
+                //// postId
+                var comments = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:share:6603298353402912768");
+
+                var comment = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:comment:(urn:li:activity:6603298353843314688,6604756335206645760)");
+                
+                await ReplyComment(user, comment.Elements.First());
+                //var deleteLike = this.api.SocialActions.DeleteComment(user, comment.Elements.First().Urn, comment.Elements.First().Id, comment.Elements.First().Actor);
             }
             catch (Exception ex)
             {
 
             }
+        }
 
+        private async Task ReplyComment(UserAuthorization user, CommentResult comment)
+        {
+            try
+            {
+                var actorUrn = comment.Actor;
 
+                Random r = new Random();
+                var createCommentRequest = new CreateCommentRequest
+                {
+                    Actor = actorUrn,
+                    Message = new CommentMessage
+                    {
+                        Text = "test 1" + r.Next()
+                    },
+                    ParentComment = comment.Urn
+                };
+
+                var response = await this.api.SocialActions.CreateCommentOnUrnAsync(user,
+                    comment.Urn, createCommentRequest);
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private async Task GetPosts(UserAuthorization user)
+        {
+
+            var post = await this.api.UGCPost.GetUGCPostsAsync(user, "urn:li:organization:18568129", 0, 5);
+            await DeletePost(user, post.Elements.Last());
+        }
+
+        private async Task DeletePost(UserAuthorization user, UGCPostItemResult post)
+        {
+            try
+            {                
+
+                var response = await this.api.UGCPost.DeleteUGCPostAsync(user, post.Id);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

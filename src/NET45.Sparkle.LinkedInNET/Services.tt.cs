@@ -4151,6 +4151,13 @@ namespace Sparkle.LinkedInNET.SocialActions
         public CommentsSummary CommentsSummary { get; set; }
 
         /// <summary>
+        /// Field: 'parentComment' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "parentComment")]
+        [JsonProperty(PropertyName = "parentComment")]
+        public string ParentComment { get; set; }
+
+        /// <summary>
         /// Field: 'agent' (on-demand)
         /// </summary>
         [XmlElement(ElementName = "agent")]
@@ -4341,6 +4348,45 @@ namespace Sparkle.LinkedInNET.SocialActions
         [JsonProperty(PropertyName = "message")]
         public CommentMessage Message { get; set; }
 
+        /// <summary>
+        /// Field: 'parentComment' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "parentComment")]
+        [JsonProperty(PropertyName = "parentComment")]
+        public string ParentComment { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(SocialActions, CreateFirstLevelCommentRequest)
+namespace Sparkle.LinkedInNET.SocialActions
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'CreateFirstLevelCommentRequest'
+    /// </summary>
+    [Serializable, XmlRoot("CreateFirstLevelCommentRequest")]
+    public class CreateFirstLevelCommentRequest
+    {
+        /// <summary>
+        /// Field: 'actor' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "actor")]
+        [JsonProperty(PropertyName = "actor")]
+        public string Actor { get; set; }
+
+        /// <summary>
+        /// Field: 'message' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "message")]
+        [JsonProperty(PropertyName = "message")]
+        public CommentMessage Message { get; set; }
+
     }
 }
 
@@ -4444,7 +4490,7 @@ namespace Sparkle.LinkedInNET.SocialActions
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'Comments', 'CommentResult', 'CommentsSummary', 'CommentMessage', 'CommentContent', 'CreateCommentRequest', 'CreateLikeRequest', 'CreateLikeResult' return types.
+    /// Field selectors for the 'Comments', 'CommentResult', 'CommentsSummary', 'CommentMessage', 'CommentContent', 'CreateCommentRequest', 'CreateFirstLevelCommentRequest', 'CreateLikeRequest', 'CreateLikeResult' return types.
     /// </summary>
     public static class SocialActionsFields {
     }
@@ -8546,60 +8592,115 @@ namespace Sparkle.LinkedInNET.UGCPost
                                     }
                                         
                                         /// <summary>
-                                        /// Get Video by urn
+                                        /// Get posts by urn.
                                         /// </summary>
                                         /// <remarks>
-                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn
                                         /// </remarks>
-                                        public UGCPost.UGCVideo GetUGCVideo(
+                                        public dynamic DeleteUGCPost(
                                               UserAuthorization user 
                                             , string urn 
                                         )
                                         {
-                                            string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                            string urlFormat = "/v2/ugcPosts/{urn}";
                                             string skipUrlParamsEscape = "";
                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
-                                            context.Method =  "GET";
+                                            context.Method =  "DELETE";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
                                             
-                                            var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                            var result = this.HandleJsonResponse<dynamic>(context);
                                             return result;
                                         }
 
                                             /// <summary>
-                                            /// Get Video by urn
+                                            /// Get posts by urn.
                                             /// </summary>
                                             /// <remarks>
-                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn
                                             /// </remarks>
-                                            public async Task<UGCPost.UGCVideo> GetUGCVideoAsync(
+                                            public async Task<dynamic> DeleteUGCPostAsync(
                                                   UserAuthorization user 
                                                 , string urn 
                                             )
                                             {
-                                                string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                                string urlFormat = "/v2/ugcPosts/{urn}";
                                                 string skipUrlParamsEscape = "";
                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
-                                                context.Method =  "GET";
+                                                context.Method =  "DELETE";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
                                                     this.HandleJsonErrorResponse(context);
                                                 
-                                                var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                                var result = this.HandleJsonResponse<dynamic>(context);
                                                 return result;
                                             }
                                                 
+                                                /// <summary>
+                                                /// Get Video by urn
+                                                /// </summary>
+                                                /// <remarks>
+                                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                                /// </remarks>
+                                                public UGCPost.UGCVideo GetUGCVideo(
+                                                      UserAuthorization user 
+                                                    , string urn 
+                                                )
+                                                {
+                                                    string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                                    string skipUrlParamsEscape = "";
+                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+
+                                                    var context = new RequestContext();
+                                                    context.UserAuthorization = user;
+                                                    context.Method =  "GET";
+                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                    if (!this.ExecuteQuery(context))
+                                                        this.HandleJsonErrorResponse(context);
+                                                    
+                                                    var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                                    return result;
+                                                }
+
+                                                    /// <summary>
+                                                    /// Get Video by urn
+                                                    /// </summary>
+                                                    /// <remarks>
+                                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#requesting-playable-video-streams
+                                                    /// </remarks>
+                                                    public async Task<UGCPost.UGCVideo> GetUGCVideoAsync(
+                                                          UserAuthorization user 
+                                                        , string urn 
+                                                    )
+                                                    {
+                                                        string urlFormat = "/v2/ugcPosts/{urn}?viewContext=AUTHOR&projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))";
+                                                        string skipUrlParamsEscape = "";
+                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+
+                                                        var context = new RequestContext();
+                                                        context.UserAuthorization = user;
+                                                        context.Method =  "GET";
+                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                        if (!exec)
+                                                            this.HandleJsonErrorResponse(context);
+                                                        
+                                                        var result = this.HandleJsonResponse<UGCPost.UGCVideo>(context);
+                                                        return result;
+                                                    }
+                                                        
             }
         }
 
@@ -8865,10 +8966,10 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                 /// <remarks>
                                                 /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                 /// </remarks>
-                                                public SocialActions.CommentResult CreateCommentOnUrn(
+                                                public SocialActions.CommentResult CreateFirstLevelCommentOnUrn(
                                                       UserAuthorization user 
                                                     , string urn 
-                                                    , SocialActions.CreateCommentRequest postData
+                                                    , SocialActions.CreateFirstLevelCommentRequest postData
                                                 )
                                                 {
                                                     string urlFormat = "/v2/socialActions/{urn}/comments";
@@ -8894,10 +8995,10 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                     /// <remarks>
                                                     /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                     /// </remarks>
-                                                    public async Task<SocialActions.CommentResult> CreateCommentOnUrnAsync(
+                                                    public async Task<SocialActions.CommentResult> CreateFirstLevelCommentOnUrnAsync(
                                                           UserAuthorization user 
                                                         , string urn 
-                                                        , SocialActions.CreateCommentRequest postData
+                                                        , SocialActions.CreateFirstLevelCommentRequest postData
                                                     )
                                                     {
                                                         string urlFormat = "/v2/socialActions/{urn}/comments";
@@ -8919,20 +9020,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                     }
                                                         
                                                         /// <summary>
-                                                        /// Create Comment on Share
+                                                        /// Create Comment on Share/ UGC/ Comment
                                                         /// </summary>
                                                         /// <remarks>
                                                         /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                         /// </remarks>
-                                                        public SocialActions.CommentResult CreateCommentOnShare(
+                                                        public SocialActions.CommentResult CreateCommentOnUrn(
                                                               UserAuthorization user 
-                                                            , string shareId 
+                                                            , string urn 
                                                             , SocialActions.CreateCommentRequest postData
                                                         )
                                                         {
-                                                            string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                                            string skipUrlParamsEscape = "";
-                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
+                                                            string urlFormat = "/v2/socialActions/{urn}/comments";
+                                                            string skipUrlParamsEscape = "urn";
+                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                             var context = new RequestContext();
                                                             context.UserAuthorization = user;
@@ -8948,20 +9049,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                         }
 
                                                             /// <summary>
-                                                            /// Create Comment on Share
+                                                            /// Create Comment on Share/ UGC/ Comment
                                                             /// </summary>
                                                             /// <remarks>
                                                             /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                             /// </remarks>
-                                                            public async Task<SocialActions.CommentResult> CreateCommentOnShareAsync(
+                                                            public async Task<SocialActions.CommentResult> CreateCommentOnUrnAsync(
                                                                   UserAuthorization user 
-                                                                , string shareId 
+                                                                , string urn 
                                                                 , SocialActions.CreateCommentRequest postData
                                                             )
                                                             {
-                                                                string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
-                                                                string skipUrlParamsEscape = "";
-                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
+                                                                string urlFormat = "/v2/socialActions/{urn}/comments";
+                                                                string skipUrlParamsEscape = "urn";
+                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                 var context = new RequestContext();
                                                                 context.UserAuthorization = user;
@@ -8978,20 +9079,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                             }
                                                                 
                                                                 /// <summary>
-                                                                /// Create Comment on UGC Posts
+                                                                /// Create Comment on Share
                                                                 /// </summary>
                                                                 /// <remarks>
                                                                 /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                 /// </remarks>
-                                                                public SocialActions.CommentResult CreateCommentOnUGCPost(
+                                                                public SocialActions.CommentResult CreateCommentOnShare(
                                                                       UserAuthorization user 
-                                                                    , string postId 
+                                                                    , string shareId 
                                                                     , SocialActions.CreateCommentRequest postData
                                                                 )
                                                                 {
-                                                                    string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                                    string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                     string skipUrlParamsEscape = "";
-                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                                     var context = new RequestContext();
                                                                     context.UserAuthorization = user;
@@ -9007,20 +9108,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                 }
 
                                                                     /// <summary>
-                                                                    /// Create Comment on UGC Posts
+                                                                    /// Create Comment on Share
                                                                     /// </summary>
                                                                     /// <remarks>
                                                                     /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                     /// </remarks>
-                                                                    public async Task<SocialActions.CommentResult> CreateCommentOnUGCPostAsync(
+                                                                    public async Task<SocialActions.CommentResult> CreateCommentOnShareAsync(
                                                                           UserAuthorization user 
-                                                                        , string postId 
+                                                                        , string shareId 
                                                                         , SocialActions.CreateCommentRequest postData
                                                                     )
                                                                     {
-                                                                        string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
+                                                                        string urlFormat = "/v2/socialActions/urn:li:share:{ShareId}/comments";
                                                                         string skipUrlParamsEscape = "";
-                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "ShareId", shareId);
 
                                                                         var context = new RequestContext();
                                                                         context.UserAuthorization = user;
@@ -9037,20 +9138,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                     }
                                                                         
                                                                         /// <summary>
-                                                                        /// Create Comment on Comment
+                                                                        /// Create Comment on UGC Posts
                                                                         /// </summary>
                                                                         /// <remarks>
                                                                         /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                         /// </remarks>
-                                                                        public SocialActions.CommentResult CreateCommentOnComment(
+                                                                        public SocialActions.CommentResult CreateCommentOnUGCPost(
                                                                               UserAuthorization user 
-                                                                            , string commentId 
+                                                                            , string postId 
                                                                             , SocialActions.CreateCommentRequest postData
                                                                         )
                                                                         {
-                                                                            string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                                            string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                             string skipUrlParamsEscape = "";
-                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
+                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                             var context = new RequestContext();
                                                                             context.UserAuthorization = user;
@@ -9066,20 +9167,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                         }
 
                                                                             /// <summary>
-                                                                            /// Create Comment on Comment
+                                                                            /// Create Comment on UGC Posts
                                                                             /// </summary>
                                                                             /// <remarks>
                                                                             /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                             /// </remarks>
-                                                                            public async Task<SocialActions.CommentResult> CreateCommentOnCommentAsync(
+                                                                            public async Task<SocialActions.CommentResult> CreateCommentOnUGCPostAsync(
                                                                                   UserAuthorization user 
-                                                                                , string commentId 
+                                                                                , string postId 
                                                                                 , SocialActions.CreateCommentRequest postData
                                                                             )
                                                                             {
-                                                                                string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
+                                                                                string urlFormat = "/v2/socialActions/urn:li:ugcPost:{PostId}/comments";
                                                                                 string skipUrlParamsEscape = "";
-                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
+                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "PostId", postId);
 
                                                                                 var context = new RequestContext();
                                                                                 context.UserAuthorization = user;
@@ -9096,20 +9197,20 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                             }
                                                                                 
                                                                                 /// <summary>
-                                                                                /// Create a Like
+                                                                                /// Create Comment on Comment
                                                                                 /// </summary>
                                                                                 /// <remarks>
-                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
+                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                                 /// </remarks>
-                                                                                public SocialActions.CreateLikeResult CreateLike(
+                                                                                public SocialActions.CommentResult CreateCommentOnComment(
                                                                                       UserAuthorization user 
-                                                                                    , string urn 
-                                                                                    , SocialActions.CreateLikeRequest postData
+                                                                                    , string commentId 
+                                                                                    , SocialActions.CreateCommentRequest postData
                                                                                 )
                                                                                 {
-                                                                                    string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                    string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                     string skipUrlParamsEscape = "";
-                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                                     var context = new RequestContext();
                                                                                     context.UserAuthorization = user;
@@ -9120,25 +9221,25 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                     if (!this.ExecuteQuery(context))
                                                                                         this.HandleJsonErrorResponse(context);
                                                                                     
-                                                                                    var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
+                                                                                    var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                                                     return result;
                                                                                 }
 
                                                                                     /// <summary>
-                                                                                    /// Create a Like
+                                                                                    /// Create Comment on Comment
                                                                                     /// </summary>
                                                                                     /// <remarks>
-                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
+                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment
                                                                                     /// </remarks>
-                                                                                    public async Task<SocialActions.CreateLikeResult> CreateLikeAsync(
+                                                                                    public async Task<SocialActions.CommentResult> CreateCommentOnCommentAsync(
                                                                                           UserAuthorization user 
-                                                                                        , string urn 
-                                                                                        , SocialActions.CreateLikeRequest postData
+                                                                                        , string commentId 
+                                                                                        , SocialActions.CreateCommentRequest postData
                                                                                     )
                                                                                     {
-                                                                                        string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                        string urlFormat = "/v2/socialActions/urn:li:comment:{CommentId}/comments";
                                                                                         string skipUrlParamsEscape = "";
-                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
+                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CommentId", commentId);
 
                                                                                         var context = new RequestContext();
                                                                                         context.UserAuthorization = user;
@@ -9150,85 +9251,85 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                         if (!exec)
                                                                                             this.HandleJsonErrorResponse(context);
                                                                                         
-                                                                                        var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
+                                                                                        var result = this.HandleJsonResponse<SocialActions.CommentResult>(context);
                                                                                         return result;
                                                                                     }
                                                                                         
                                                                                         /// <summary>
-                                                                                        /// Delete a Like
+                                                                                        /// Create a Like
                                                                                         /// </summary>
                                                                                         /// <remarks>
-                                                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
+                                                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
                                                                                         /// </remarks>
-                                                                                        public dynamic DeleteLike(
+                                                                                        public SocialActions.CreateLikeResult CreateLike(
                                                                                               UserAuthorization user 
                                                                                             , string urn 
-                                                                                            , string actorUrn 
-                                                                                            , string creatorActorUrn 
+                                                                                            , SocialActions.CreateLikeRequest postData
                                                                                         )
                                                                                         {
-                                                                                            string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
-                                                                                            string skipUrlParamsEscape = "urn";
-                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
+                                                                                            string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                            string skipUrlParamsEscape = "";
+                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                             var context = new RequestContext();
                                                                                             context.UserAuthorization = user;
-                                                                                            context.Method =  "DELETE";
+                                                                                            context.Method =  "POST";
                                                                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                            this.CreateJsonPostStream(context, postData);
 
                                                                                             if (!this.ExecuteQuery(context))
                                                                                                 this.HandleJsonErrorResponse(context);
                                                                                             
-                                                                                            var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                            var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
                                                                                             return result;
                                                                                         }
 
                                                                                             /// <summary>
-                                                                                            /// Delete a Like
+                                                                                            /// Create a Like
                                                                                             /// </summary>
                                                                                             /// <remarks>
-                                                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
+                                                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-a-like-on-a-share
                                                                                             /// </remarks>
-                                                                                            public async Task<dynamic> DeleteLikeAsync(
+                                                                                            public async Task<SocialActions.CreateLikeResult> CreateLikeAsync(
                                                                                                   UserAuthorization user 
                                                                                                 , string urn 
-                                                                                                , string actorUrn 
-                                                                                                , string creatorActorUrn 
+                                                                                                , SocialActions.CreateLikeRequest postData
                                                                                             )
                                                                                             {
-                                                                                                string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
-                                                                                                string skipUrlParamsEscape = "urn";
-                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
+                                                                                                string urlFormat = "/v2/socialActions/{urn}/likes";
+                                                                                                string skipUrlParamsEscape = "";
+                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                                 var context = new RequestContext();
                                                                                                 context.UserAuthorization = user;
-                                                                                                context.Method =  "DELETE";
+                                                                                                context.Method =  "POST";
                                                                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                                                                this.CreateJsonPostStream(context, postData);
 
                                                                                                 var exec = await this.ExecuteQueryAsync(context);
                                                                                                 if (!exec)
                                                                                                     this.HandleJsonErrorResponse(context);
                                                                                                 
-                                                                                                var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                var result = this.HandleJsonResponse<SocialActions.CreateLikeResult>(context);
                                                                                                 return result;
                                                                                             }
                                                                                                 
                                                                                                 /// <summary>
-                                                                                                /// Delete Comment
+                                                                                                /// Delete a Like
                                                                                                 /// </summary>
                                                                                                 /// <remarks>
-                                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
                                                                                                 /// </remarks>
-                                                                                                public dynamic DeleteComment(
+                                                                                                public dynamic DeleteLike(
                                                                                                       UserAuthorization user 
                                                                                                     , string urn 
-                                                                                                    , string commentId 
                                                                                                     , string actorUrn 
+                                                                                                    , string creatorActorUrn 
                                                                                                 )
                                                                                                 {
-                                                                                                    string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                    string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                     string skipUrlParamsEscape = "urn";
-                                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+                                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                     var context = new RequestContext();
                                                                                                     context.UserAuthorization = user;
@@ -9243,21 +9344,21 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                 }
 
                                                                                                     /// <summary>
-                                                                                                    /// Delete Comment
+                                                                                                    /// Delete a Like
                                                                                                     /// </summary>
                                                                                                     /// <remarks>
-                                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                    /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-a-like
                                                                                                     /// </remarks>
-                                                                                                    public async Task<dynamic> DeleteCommentAsync(
+                                                                                                    public async Task<dynamic> DeleteLikeAsync(
                                                                                                           UserAuthorization user 
                                                                                                         , string urn 
-                                                                                                        , string commentId 
                                                                                                         , string actorUrn 
+                                                                                                        , string creatorActorUrn 
                                                                                                     )
                                                                                                     {
-                                                                                                        string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                        string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
                                                                                                         string skipUrlParamsEscape = "urn";
-                                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+                                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                         var context = new RequestContext();
                                                                                                         context.UserAuthorization = user;
@@ -9272,6 +9373,65 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                         return result;
                                                                                                     }
                                                                                                         
+                                                                                                        /// <summary>
+                                                                                                        /// Delete Comment
+                                                                                                        /// </summary>
+                                                                                                        /// <remarks>
+                                                                                                        /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                        /// </remarks>
+                                                                                                        public dynamic DeleteComment(
+                                                                                                              UserAuthorization user 
+                                                                                                            , string urn 
+                                                                                                            , string commentId 
+                                                                                                            , string actorUrn 
+                                                                                                        )
+                                                                                                        {
+                                                                                                            string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                            string skipUrlParamsEscape = "urn";
+                                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+
+                                                                                                            var context = new RequestContext();
+                                                                                                            context.UserAuthorization = user;
+                                                                                                            context.Method =  "DELETE";
+                                                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                            if (!this.ExecuteQuery(context))
+                                                                                                                this.HandleJsonErrorResponse(context);
+                                                                                                            
+                                                                                                            var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                            return result;
+                                                                                                        }
+
+                                                                                                            /// <summary>
+                                                                                                            /// Delete Comment
+                                                                                                            /// </summary>
+                                                                                                            /// <remarks>
+                                                                                                            /// https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#delete-comment-from-share
+                                                                                                            /// </remarks>
+                                                                                                            public async Task<dynamic> DeleteCommentAsync(
+                                                                                                                  UserAuthorization user 
+                                                                                                                , string urn 
+                                                                                                                , string commentId 
+                                                                                                                , string actorUrn 
+                                                                                                            )
+                                                                                                            {
+                                                                                                                string urlFormat = "/v2/socialActions/{urn}/comments/{commentId}?actor={actorUrn}";
+                                                                                                                string skipUrlParamsEscape = "urn";
+                                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "commentId", commentId, "actorUrn", actorUrn);
+
+                                                                                                                var context = new RequestContext();
+                                                                                                                context.UserAuthorization = user;
+                                                                                                                context.Method =  "DELETE";
+                                                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                                                                if (!exec)
+                                                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                                                
+                                                                                                                var result = this.HandleJsonResponse<dynamic>(context);
+                                                                                                                return result;
+                                                                                                            }
+                                                                                                                
             }
         }
 

@@ -506,6 +506,15 @@
                  Title="Get posts by urn."
                  Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn" />
 
+    <ApiMethod MethodName="DeleteUGCPost" HttpMethod="DELETE"
+                 Path="/v2/ugcPosts/{urn}"
+                 RequiresUserAuthentication="1"
+                 UseFieldSelectors="0"               
+                 ReturnType="dynamic"
+                 IsValueType="1"
+                 Title="Get posts by urn."
+                 Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/ugc-post-api#get-ugc-posts-by-urn" />
+
     <ApiMethod MethodName="GetUGCVideo" HttpMethod="GET"
                  Path="/v2/ugcPosts/{urn}?viewContext=AUTHOR&amp;projection=(specificContent(com.linkedin.ugc.ShareContent(media(*(media~:playableStreams)))))"            
                  ReturnType="UGCVideo"
@@ -719,7 +728,18 @@
              UseFieldSelectors="0"
              Title="Retrieve Comments on Comment"
              Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#retrieve-comments-on-shares" />
-    
+
+    <ApiMethod MethodName="CreateFirstLevelCommentOnUrn"
+             HttpMethod="POST"
+             Path="/v2/socialActions/{urn}/comments"
+             SkipUrlParamsEscape="urn"
+             PostReturnType="CreateFirstLevelCommentRequest"
+             ReturnType="CommentResult"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"
+             Title="Create Comment on Share/ UGC/ Comment"
+             Remark="https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/network-update-social-actions#create-comment" />
+
     <ApiMethod MethodName="CreateCommentOnUrn"
              HttpMethod="POST"
              Path="/v2/socialActions/{urn}/comments"
@@ -801,6 +821,7 @@
     <ReturnType Name="CommentResult" ClassName="CommentResult">
       <Field Name="actor" />
       <Field Name="commentsSummary" Type="CommentsSummary"/>
+      <Field Name="parentComment" />
       <Field Name="agent" />
       <Field Name="created" Type="Common.ShareTime" />
       <Field Name="lastModified" Type="Common.ShareTime" />
@@ -828,6 +849,12 @@
     </ReturnType>
 
     <ReturnType Name="CreateCommentRequest" ClassName="CreateCommentRequest">
+      <Field Name="actor" />
+      <Field Name="message" Type="CommentMessage" />
+      <Field Name="parentComment" />
+    </ReturnType>
+
+    <ReturnType Name="CreateFirstLevelCommentRequest" ClassName="CreateFirstLevelCommentRequest">
       <Field Name="actor" />
       <Field Name="message" Type="CommentMessage" />
     </ReturnType>
