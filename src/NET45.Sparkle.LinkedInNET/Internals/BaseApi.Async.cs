@@ -17,7 +17,7 @@ namespace Sparkle.LinkedInNET.Internals
     /// </summary>
     partial class BaseApi
     {
-        internal async Task<bool> ExecuteQueryAsync(RequestContext context)
+        internal async Task<bool> ExecuteQueryAsync(RequestContext context, bool? useRestliProtocol = false)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
@@ -35,10 +35,10 @@ namespace Sparkle.LinkedInNET.Internals
             var request = (HttpWebRequest)HttpWebRequest.Create(isOctet ? context.UploadUrl : context.UrlPath);
             request.Method = context.Method;
             request.UserAgent = LibraryInfo.UserAgent;
-            if (context.PostDataType == "multipart/form-data" || context.PostDataType == "application/octet-stream")
+            if ((context.PostDataType == "multipart/form-data" || context.PostDataType == "application/octet-stream") && (!useRestliProtocol.HasValue || !useRestliProtocol.Value))
             {
             }
-            else if (!isOctet && context.UrlPath.Contains("ugcPosts"))
+            else if (!isOctet && context.UrlPath.Contains("ugcPosts") || useRestliProtocol.HasValue && useRestliProtocol.Value)
             {             
                 request.Headers.Add("X-Restli-Protocol-Version", "2.0.0");
             }

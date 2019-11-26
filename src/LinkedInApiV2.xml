@@ -5,6 +5,26 @@
       Title="the profile of the current user" Remark="See https://developer.linkedin.com/docs/guide/v2/people/profile-api"
       RequiresUserAuthentication="1" UsesAcceptLanguage="1" />
 
+    <ApiMethod MethodName="GetProfile"
+               HttpMethod="GET"
+               ReturnType="Person"
+               Path="/v2/people/(id:{profileId})?projection=(id,firstName,lastName)"
+               UseRestliProtocol="1"
+               Title="the profile of the current user" Remark="See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api"
+               RequiresUserAuthentication="1"
+               />
+
+    <ApiMethod MethodName="GetProfilesByIds"
+           HttpMethod="GET"
+           ReturnType="PersonList"
+           Path="/v2/people?ids=List({personIds})"
+           UseRestliProtocol="1"
+           SkipUrlParamsEscape="personIds"
+           Title="the profile of the current user" Remark="See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api
+           PersonIds must have the following schema: (id:personId),(id:personId1):(id:personId2)"
+           RequiresUserAuthentication="1"
+           />
+
     <ApiMethod MethodName="GetFirstDegreeConnections" 
                HttpMethod="GET" 
                ReturnType="DegreeSize" 
@@ -63,6 +83,14 @@
       <!--<Field Name="lastModified" Type="long?" Title="a unique identifier token for this member" />
       <Field Name="organizations" Type="JObject" Title="a unique identifier token for this member" />-->
     </ReturnType>
+
+    <ReturnType Name="PersonList" ClassName="PersonList" AutoGenerateFieldSelectors="1">
+      <Field Name="statuses" Type="dynamic"/>
+      <Field Name="results" Type="dynamic" />
+      <Field Name="errors" Type="dynamic"/>
+    </ReturnType>
+
+
 
     <ReturnType Name="location" ClassName="Location">
       <Field Name="countryCode" PropertyName="CountryCode"/>

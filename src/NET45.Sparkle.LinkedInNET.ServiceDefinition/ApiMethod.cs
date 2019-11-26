@@ -29,6 +29,12 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
         [XmlAttribute]
         public string SkipUrlParamsEscape { get; set; }
 
+        /// <summary>
+        /// people, ugc apis work with this protocol
+        /// </summary>
+        [XmlAttribute]
+        public bool UseRestliProtocol { get; set; }
+
         [XmlAttribute]
         public string ReturnType { get; set; }
 

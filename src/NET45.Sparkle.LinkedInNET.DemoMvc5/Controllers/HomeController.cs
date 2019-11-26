@@ -81,8 +81,9 @@
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
+                    await GetProfile(user);
                     //await GetPosts(user);
-                    await GetComemnt(user);
+                    // await GetComemnt(user);
                     // await GetPost(user);
                     // await PublishImage(user);
                     //await PublishTest();                                                 
@@ -462,9 +463,9 @@
             try
             {
                 //// postId
-                var comments = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:share:6603298353402912768");
+                var comments = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:comment:(urn:li:activity:6604993552747380736,6604995118833377280)");
 
-                var comment = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:comment:(urn:li:activity:6603298353843314688,6604756335206645760)");
+                var comment = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:organization:18568129");
                 
                 await ReplyComment(user, comment.Elements.First());
                 //var deleteLike = this.api.SocialActions.DeleteComment(user, comment.Elements.First().Urn, comment.Elements.First().Id, comment.Elements.First().Actor);
@@ -519,6 +520,12 @@
             {
 
             }
+        }
+
+        private async Task GetProfile(UserAuthorization user)
+        {
+            //var profile = await this.api.Profiles.GetProfileAsync(user, "LWq7hpOmwk");
+            var profiles = await this.api.Profiles.GetProfilesByIdsAsync(user, "(id:qhwvZ0K4cr),(id:LWq7hpOmwk)");
         }
     }
 }

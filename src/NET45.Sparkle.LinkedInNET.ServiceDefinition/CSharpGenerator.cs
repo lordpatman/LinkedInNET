@@ -461,7 +461,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 // body / execute
                 this.text.WriteLine();
-                text.WriteLine(indent++, "if (!this.ExecuteQuery(context))");
+                if (method.UseRestliProtocol)
+                {
+                    text.WriteLine(indent++, "if (!this.ExecuteQuery(context, true))");
+                }
+                else
+                {
+                    text.WriteLine(indent++, "if (!this.ExecuteQuery(context))");
+                }
                 ////text.WriteLine(indent--, "this.HandleXmlErrorResponse(context);");
                 ////text.WriteLine(indent, "return this.HandleXmlResponse<" + returnType + ">(context);");
                 text.WriteLine(indent--, "this.HandleJsonErrorResponse(context);");
@@ -617,7 +624,14 @@ namespace Sparkle.LinkedInNET.ServiceDefinition
 
                 // body / execute
                 this.text.WriteLine();
-                text.WriteLine(indent, "var exec = await this.ExecuteQueryAsync(context);");
+                if (method.UseRestliProtocol)
+                {
+                    text.WriteLine(indent, "var exec = await this.ExecuteQueryAsync(context, true);");
+                }
+                else
+                {
+                    text.WriteLine(indent, "var exec = await this.ExecuteQueryAsync(context);");
+                }
                 text.WriteLine(indent++, "if (!exec)");
                 ////text.WriteLine(indent--, "this.HandleXmlErrorResponse(context);");
                 ////text.WriteLine(indent, "return this.HandleXmlResponse<" + returnType + ">(context);");

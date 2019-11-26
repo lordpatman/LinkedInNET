@@ -79,6 +79,45 @@ namespace Sparkle.LinkedInNET.Profiles
     }
 }
 
+// WriteReturnTypes(Profiles, PersonList)
+namespace Sparkle.LinkedInNET.Profiles
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'PersonList'
+    /// </summary>
+    [Serializable, XmlRoot("PersonList")]
+    public class PersonList
+    {
+        /// <summary>
+        /// Field: 'statuses' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "statuses")]
+        [JsonProperty(PropertyName = "statuses")]
+        public dynamic Statuses { get; set; }
+
+        /// <summary>
+        /// Field: 'results' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "results")]
+        [JsonProperty(PropertyName = "results")]
+        public dynamic Results { get; set; }
+
+        /// <summary>
+        /// Field: 'errors' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "errors")]
+        [JsonProperty(PropertyName = "errors")]
+        public dynamic Errors { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Profiles, location)
 namespace Sparkle.LinkedInNET.Profiles
 {
@@ -494,7 +533,7 @@ namespace Sparkle.LinkedInNET.Profiles
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'person', 'location', 'position', 'dateParts', 'richMediaURN', 'profilePicture', 'displayImageLoaded', 'displayImageElements', 'displayImageElementIdentifiers', 'DegreeSize' return types.
+    /// Field selectors for the 'person', 'PersonList', 'location', 'position', 'dateParts', 'richMediaURN', 'profilePicture', 'displayImageLoaded', 'displayImageElements', 'displayImageElementIdentifiers', 'DegreeSize' return types.
     /// </summary>
     public static class ProfilesFields {
         /// <summary>
@@ -552,6 +591,34 @@ namespace Sparkle.LinkedInNET.Profiles
         /// <param name="me">The field selector.</param>
         /// <returns>The field selector.</returns>
         public static FieldSelector<Person> WithAllFields(this FieldSelector<Person> me) { return me.AddRange("id", "firstName", "lastName", "maidenName", "headline", "profilePicture(displayImage~~~playableStreams)", "vanityName"); }
+        
+        /// <summary>
+        /// Includes the field 'statuses'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PersonList> WithStatuses(this FieldSelector<PersonList> me) { return me.Add("statuses"); }
+        
+        /// <summary>
+        /// Includes the field 'results'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PersonList> WithResults(this FieldSelector<PersonList> me) { return me.Add("results"); }
+        
+        /// <summary>
+        /// Includes the field 'errors'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PersonList> WithErrors(this FieldSelector<PersonList> me) { return me.Add("errors"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<PersonList> WithAllFields(this FieldSelector<PersonList> me) { return me.AddRange("statuses", "results", "errors"); }
         
         /// <summary>
         /// Includes the field 'firstDegreeSize'.
@@ -7636,54 +7703,168 @@ namespace Sparkle.LinkedInNET.Profiles
                     }
                         
                         /// <summary>
-                        /// 
+                        /// the profile of the current user
                         /// </summary>
-                        public Profiles.DegreeSize GetFirstDegreeConnections(
+                        /// <remarks>
+                        /// See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api
+                        /// </remarks>
+                        public Profiles.Person GetProfile(
                               UserAuthorization user 
                             , string profileId 
+                            , FieldSelector<Profiles.Person> fields = null
                         )
                         {
-                            string urlFormat = "/v2/connections/urn:li:person:{profileId}";
+                            string urlFormat = "/v2/people/(id:{profileId})?projection=(id,firstName,lastName)";
                             string skipUrlParamsEscape = "";
-                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
+                            var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
 
                             var context = new RequestContext();
                             context.UserAuthorization = user;
                             context.Method =  "GET";
                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
-                            if (!this.ExecuteQuery(context))
+                            if (!this.ExecuteQuery(context, true))
                                 this.HandleJsonErrorResponse(context);
                             
-                            var result = this.HandleJsonResponse<Profiles.DegreeSize>(context);
+                            var result = this.HandleJsonResponse<Profiles.Person>(context);
                             return result;
                         }
 
                             /// <summary>
-                            /// 
+                            /// the profile of the current user
                             /// </summary>
-                            public async Task<Profiles.DegreeSize> GetFirstDegreeConnectionsAsync(
+                            /// <remarks>
+                            /// See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api
+                            /// </remarks>
+                            public async Task<Profiles.Person> GetProfileAsync(
                                   UserAuthorization user 
                                 , string profileId 
+                                , FieldSelector<Profiles.Person> fields = null
                             )
                             {
-                                string urlFormat = "/v2/connections/urn:li:person:{profileId}";
+                                string urlFormat = "/v2/people/(id:{profileId})?projection=(id,firstName,lastName)";
                                 string skipUrlParamsEscape = "";
-                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
+                                var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
 
                                 var context = new RequestContext();
                                 context.UserAuthorization = user;
                                 context.Method =  "GET";
                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
 
-                                var exec = await this.ExecuteQueryAsync(context);
+                                var exec = await this.ExecuteQueryAsync(context, true);
                                 if (!exec)
                                     this.HandleJsonErrorResponse(context);
                                 
-                                var result = this.HandleJsonResponse<Profiles.DegreeSize>(context);
+                                var result = this.HandleJsonResponse<Profiles.Person>(context);
                                 return result;
                             }
                                 
+                                /// <summary>
+                                /// the profile of the current user
+                                /// </summary>
+                                /// <remarks>
+                                /// See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api            PersonIds must have the following schema: (id:personId),(id:personId1):(id:personId2)
+                                /// </remarks>
+                                public Profiles.PersonList GetProfilesByIds(
+                                      UserAuthorization user 
+                                    , string personIds 
+                                    , FieldSelector<Profiles.PersonList> fields = null
+                                )
+                                {
+                                    string urlFormat = "/v2/people?ids=List({personIds})";
+                                    string skipUrlParamsEscape = "personIds";
+                                    var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "personIds", personIds);
+
+                                    var context = new RequestContext();
+                                    context.UserAuthorization = user;
+                                    context.Method =  "GET";
+                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                    if (!this.ExecuteQuery(context, true))
+                                        this.HandleJsonErrorResponse(context);
+                                    
+                                    var result = this.HandleJsonResponse<Profiles.PersonList>(context);
+                                    return result;
+                                }
+
+                                    /// <summary>
+                                    /// the profile of the current user
+                                    /// </summary>
+                                    /// <remarks>
+                                    /// See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api            PersonIds must have the following schema: (id:personId),(id:personId1):(id:personId2)
+                                    /// </remarks>
+                                    public async Task<Profiles.PersonList> GetProfilesByIdsAsync(
+                                          UserAuthorization user 
+                                        , string personIds 
+                                        , FieldSelector<Profiles.PersonList> fields = null
+                                    )
+                                    {
+                                        string urlFormat = "/v2/people?ids=List({personIds})";
+                                        string skipUrlParamsEscape = "personIds";
+                                        var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "personIds", personIds);
+
+                                        var context = new RequestContext();
+                                        context.UserAuthorization = user;
+                                        context.Method =  "GET";
+                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                        var exec = await this.ExecuteQueryAsync(context, true);
+                                        if (!exec)
+                                            this.HandleJsonErrorResponse(context);
+                                        
+                                        var result = this.HandleJsonResponse<Profiles.PersonList>(context);
+                                        return result;
+                                    }
+                                        
+                                        /// <summary>
+                                        /// 
+                                        /// </summary>
+                                        public Profiles.DegreeSize GetFirstDegreeConnections(
+                                              UserAuthorization user 
+                                            , string profileId 
+                                        )
+                                        {
+                                            string urlFormat = "/v2/connections/urn:li:person:{profileId}";
+                                            string skipUrlParamsEscape = "";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
+
+                                            var context = new RequestContext();
+                                            context.UserAuthorization = user;
+                                            context.Method =  "GET";
+                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                            if (!this.ExecuteQuery(context))
+                                                this.HandleJsonErrorResponse(context);
+                                            
+                                            var result = this.HandleJsonResponse<Profiles.DegreeSize>(context);
+                                            return result;
+                                        }
+
+                                            /// <summary>
+                                            /// 
+                                            /// </summary>
+                                            public async Task<Profiles.DegreeSize> GetFirstDegreeConnectionsAsync(
+                                                  UserAuthorization user 
+                                                , string profileId 
+                                            )
+                                            {
+                                                string urlFormat = "/v2/connections/urn:li:person:{profileId}";
+                                                string skipUrlParamsEscape = "";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "profileId", profileId);
+
+                                                var context = new RequestContext();
+                                                context.UserAuthorization = user;
+                                                context.Method =  "GET";
+                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                var exec = await this.ExecuteQueryAsync(context);
+                                                if (!exec)
+                                                    this.HandleJsonErrorResponse(context);
+                                                
+                                                var result = this.HandleJsonResponse<Profiles.DegreeSize>(context);
+                                                return result;
+                                            }
+                                                
             }
         }
 
