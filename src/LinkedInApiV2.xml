@@ -8,7 +8,7 @@
     <ApiMethod MethodName="GetProfile"
                HttpMethod="GET"
                ReturnType="Person"
-               Path="/v2/people/(id:{profileId})?projection=(id,firstName,lastName)"
+               Path="/v2/people/(id:{profileId})?projection=(*,profilePicture(displayImage~:playableStreams))"
                UseRestliProtocol="1"
                Title="the profile of the current user" Remark="See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api"
                RequiresUserAuthentication="1"
@@ -17,7 +17,7 @@
     <ApiMethod MethodName="GetProfilesByIds"
            HttpMethod="GET"
            ReturnType="PersonList"
-           Path="/v2/people?ids=List({personIds})"
+           Path="/v2/people?ids=List({personIds})&amp;projection=(*,results(*(*,profilePicture(displayImage~:playableStreams))))"
            UseRestliProtocol="1"
            SkipUrlParamsEscape="personIds"
            Title="the profile of the current user" Remark="See https://docs.microsoft.com/en-us/linkedin/shared/integrations/people/profile-api

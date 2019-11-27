@@ -524,8 +524,14 @@
 
         private async Task GetProfile(UserAuthorization user)
         {
-            //var profile = await this.api.Profiles.GetProfileAsync(user, "LWq7hpOmwk");
-            var profiles = await this.api.Profiles.GetProfilesByIdsAsync(user, "(id:qhwvZ0K4cr),(id:LWq7hpOmwk)");
+
+            try
+            {
+                // var profile = await this.api.Profiles.GetProfileAsync(user, "LWq7hpOmwk");
+                var profile = await this.api.Profiles.GetProfileAsync(user, "1ky82GzXRL");
+                var profiles = await this.api.Profiles.GetProfilesByIdsAsync(user, "(id:qhwvZ0K4cr),(id:LWq7hpOmwk),(id:1ky82GzXRL)");
+            }
+            catch { }
         }
     }
 }

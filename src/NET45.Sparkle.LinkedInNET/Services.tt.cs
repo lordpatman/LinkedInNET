@@ -7714,7 +7714,7 @@ namespace Sparkle.LinkedInNET.Profiles
                             , FieldSelector<Profiles.Person> fields = null
                         )
                         {
-                            string urlFormat = "/v2/people/(id:{profileId})?projection=(id,firstName,lastName)";
+                            string urlFormat = "/v2/people/(id:{profileId})?projection=(*,profilePicture(displayImage~:playableStreams))";
                             string skipUrlParamsEscape = "";
                             var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
 
@@ -7742,7 +7742,7 @@ namespace Sparkle.LinkedInNET.Profiles
                                 , FieldSelector<Profiles.Person> fields = null
                             )
                             {
-                                string urlFormat = "/v2/people/(id:{profileId})?projection=(id,firstName,lastName)";
+                                string urlFormat = "/v2/people/(id:{profileId})?projection=(*,profilePicture(displayImage~:playableStreams))";
                                 string skipUrlParamsEscape = "";
                                 var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "profileId", profileId);
 
@@ -7771,7 +7771,7 @@ namespace Sparkle.LinkedInNET.Profiles
                                     , FieldSelector<Profiles.PersonList> fields = null
                                 )
                                 {
-                                    string urlFormat = "/v2/people?ids=List({personIds})";
+                                    string urlFormat = "/v2/people?ids=List({personIds})&projection=(*,results(*(*,profilePicture(displayImage~:playableStreams))))";
                                     string skipUrlParamsEscape = "personIds";
                                     var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "personIds", personIds);
 
@@ -7799,7 +7799,7 @@ namespace Sparkle.LinkedInNET.Profiles
                                         , FieldSelector<Profiles.PersonList> fields = null
                                     )
                                     {
-                                        string urlFormat = "/v2/people?ids=List({personIds})";
+                                        string urlFormat = "/v2/people?ids=List({personIds})&projection=(*,results(*(*,profilePicture(displayImage~:playableStreams))))";
                                         string skipUrlParamsEscape = "personIds";
                                         var url = FormatUrl(urlFormat, fields, skipUrlParamsEscape, "personIds", personIds);
 
