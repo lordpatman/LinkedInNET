@@ -9449,7 +9449,7 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                         )
                                                                                         {
                                                                                             string urlFormat = "/v2/socialActions/{urn}/likes";
-                                                                                            string skipUrlParamsEscape = "";
+                                                                                            string skipUrlParamsEscape = "urn";
                                                                                             var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                             var context = new RequestContext();
@@ -9478,7 +9478,7 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                             )
                                                                                             {
                                                                                                 string urlFormat = "/v2/socialActions/{urn}/likes";
-                                                                                                string skipUrlParamsEscape = "";
+                                                                                                string skipUrlParamsEscape = "urn";
                                                                                                 var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn);
 
                                                                                                 var context = new RequestContext();
@@ -9509,7 +9509,7 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                 )
                                                                                                 {
                                                                                                     string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
-                                                                                                    string skipUrlParamsEscape = "urn";
+                                                                                                    string skipUrlParamsEscape = "urn,actorUrn";
                                                                                                     var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                     var context = new RequestContext();
@@ -9538,7 +9538,7 @@ namespace Sparkle.LinkedInNET.SocialActions
                                                                                                     )
                                                                                                     {
                                                                                                         string urlFormat = "/v2/socialActions/{urn}/likes/{actorUrn}?actor={creatorActorUrn}";
-                                                                                                        string skipUrlParamsEscape = "urn";
+                                                                                                        string skipUrlParamsEscape = "urn,actorUrn";
                                                                                                         var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "urn", urn, "actorUrn", actorUrn, "creatorActorUrn", creatorActorUrn);
 
                                                                                                         var context = new RequestContext();

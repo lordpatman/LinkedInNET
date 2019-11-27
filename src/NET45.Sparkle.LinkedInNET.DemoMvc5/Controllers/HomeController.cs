@@ -60,7 +60,7 @@
                 this.ViewBag.Url = null;
             }
 
-            var accessToken = "";
+            var accessToken = "";                
             
             this.data.SaveAccessToken(accessToken);
 
@@ -81,7 +81,8 @@
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
-                    await GetProfile(user);
+                    await CreateLike(user);
+                    // await GetProfile(user);
                     //await GetPosts(user);
                     // await GetComemnt(user);
                     // await GetPost(user);
@@ -532,6 +533,28 @@
                 var profiles = await this.api.Profiles.GetProfilesByIdsAsync(user, "(id:qhwvZ0K4cr),(id:LWq7hpOmwk),(id:1ky82GzXRL)");
             }
             catch { }
+        }
+
+        private async Task CreateLike (UserAuthorization user)
+        {
+            try
+            {
+                var postUrn = "urn:li:comment:(urn:li:activity:6604993552747380736,6605016542239301632)";
+                var actorUrn = "urn:li:organization:18568129";
+
+                var createLikeRequest = new CreateLikeRequest
+                {
+                    Actor = actorUrn,
+                    Object = postUrn
+                };
+
+                var like =  await this.api.SocialActions.CreateLikeAsync(user, postUrn, createLikeRequest);
+                await this.api.SocialActions.DeleteLikeAsync(user, postUrn, actorUrn, actorUrn);
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
     }
 }
