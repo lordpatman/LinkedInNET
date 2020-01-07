@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>LinkedInNET.ApiV2</id>
+    <version>2.0.8</version>
+    <title>LinkedInNET.ApiV2</title>
+    <authors>Sparkle Networks,SandRock,Tazacban,Andrew Clark,Rayyan Tahir,Levente Oláh,Marina Rukavitsyna,Patrick Schäfer</authors>
+    <owners>Sparkle Networks,SandRock,Tazacban,Andrew Clark,Rayyan Tahir,Levente Oláh,Marina Rukavitsyna,Patrick Schäfer</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/SparkleNetworks/LinkedInNET/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/247GradLabs/LinkedInNET</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/SparkleNetworks/LinkedInNET/master/src/LiNET-200.png</iconUrl>
+    <description>Updated to .net framework 4.7.2</description>
+    <releaseNotes>Updated scopes</releaseNotes>
+    <copyright></copyright>
+    <tags>Updated to .net framework 4.7.2</tags>
+    <dependencies>
+      <dependency id="System.Net.Http" version="2.2.29" />
+      <dependency id="Newtonsoft.Json" version="12.0.2" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Debug\LinkedInNET.ApiV2.dll" target="bin\Debug\LinkedInNET.ApiV2.dll" />
+    <file src="bin\Debug\LinkedInNET.ApiV2.pdb" target="bin\Debug\LinkedInNET.ApiV2.pdb" />
+    <file src="bin\Debug\LinkedInNET.ApiV2.xml" target="bin\Debug\LinkedInNET.ApiV2.xml" />
+    <file src="bin\Debug\Newtonsoft.Json.dll" target="bin\Debug\Newtonsoft.Json.dll" />
+    <file src="bin\Debug\Newtonsoft.Json.xml" target="bin\Debug\Newtonsoft.Json.xml" />
+    <file src="bin\Debug\Sparkle.LinkedInNET.ServiceDefinition.dll" target="bin\Debug\Sparkle.LinkedInNET.ServiceDefinition.dll" />
+    <file src="bin\Debug\Sparkle.LinkedInNET.ServiceDefinition.pdb" target="bin\Debug\Sparkle.LinkedInNET.ServiceDefinition.pdb" />
+    <file src="bin\Debug\System.Net.Http.Extensions.dll" target="bin\Debug\System.Net.Http.Extensions.dll" />
+    <file src="bin\Debug\System.Net.Http.Extensions.xml" target="bin\Debug\System.Net.Http.Extensions.xml" />
+    <file src="bin\Debug\System.Net.Http.Primitives.dll" target="bin\Debug\System.Net.Http.Primitives.dll" />
+    <file src="bin\Debug\System.Net.Http.Primitives.xml" target="bin\Debug\System.Net.Http.Primitives.xml" />
+    <file src="bin\Release\LinkedInNET.ApiV2.dll" target="bin\Release\LinkedInNET.ApiV2.dll" />
+    <file src="bin\Release\LinkedInNET.ApiV2.pdb" target="bin\Release\LinkedInNET.ApiV2.pdb" />
+    <file src="bin\Release\LinkedInNET.ApiV2.xml" target="bin\Release\LinkedInNET.ApiV2.xml" />
+    <file src="bin\Release\Newtonsoft.Json.dll" target="bin\Release\Newtonsoft.Json.dll" />
+    <file src="bin\Release\Newtonsoft.Json.xml" target="bin\Release\Newtonsoft.Json.xml" />
+    <file src="bin\Release\Sparkle.LinkedInNET.ServiceDefinition.dll" target="bin\Release\Sparkle.LinkedInNET.ServiceDefinition.dll" />
+    <file src="bin\Release\Sparkle.LinkedInNET.ServiceDefinition.pdb" target="bin\Release\Sparkle.LinkedInNET.ServiceDefinition.pdb" />
+    <file src="bin\Release\System.Net.Http.Extensions.dll" target="bin\Release\System.Net.Http.Extensions.dll" />
+    <file src="bin\Release\System.Net.Http.Extensions.xml" target="bin\Release\System.Net.Http.Extensions.xml" />
+    <file src="bin\Release\System.Net.Http.Primitives.dll" target="bin\Release\System.Net.Http.Primitives.dll" />
+    <file src="bin\Release\System.Net.Http.Primitives.xml" target="bin\Release\System.Net.Http.Primitives.xml" />
+    <file src="Internals\BaseApi.Async.cs" target="Internals\BaseApi.Async.cs" />
+    <file src="Internals\BaseApi.cs" target="Internals\BaseApi.cs" />
+    <file src="Internals\Extensions.cs" target="Internals\Extensions.cs" />
+    <file src="Internals\FX.cs" target="Internals\FX.cs" />
+    <file src="Internals\LibraryInfo.cs" target="Internals\LibraryInfo.cs" />
+    <file src="Internals\RequestContext.cs" target="Internals\RequestContext.cs" />
+    <file src="Internals\Strings.Designer.cs" target="Internals\Strings.Designer.cs" />
+    <file src="Internals\Strings.resx" target="Internals\Strings.resx" />
+    <file src="OAuth2\AuthorizationAccessToken.cs" target="OAuth2\AuthorizationAccessToken.cs" />
+    <file src="OAuth2\AuthorizationScope.cs" target="OAuth2\AuthorizationScope.cs" />
+    <file src="OAuth2\OAuth2Api.Async.cs" target="OAuth2\OAuth2Api.Async.cs" />
+    <file src="OAuth2\OAuth2Api.cs" target="OAuth2\OAuth2Api.cs" />
+    <file src="OAuth2\OAuth2Error.cs" target="OAuth2\OAuth2Error.cs" />
+    <file src="obj\Debug\TempPE\Services.tt.cs.dll" target="obj\Debug\TempPE\Services.tt.cs.dll" />
+    <file src="obj\Debug\DesignTimeResolveAssemblyReferences.cache" target="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <file src="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" target="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <file src="obj\Debug\LinkedInNET.ApiV2.dll" target="obj\Debug\LinkedInNET.ApiV2.dll" />
+    <file src="obj\Debug\LinkedInNET.ApiV2.pdb" target="obj\Debug\LinkedInNET.ApiV2.pdb" />
+    <file src="obj\Debug\Sparkle.LinkedInNET.csproj.CopyComplete" target="obj\Debug\Sparkle.LinkedInNET.csproj.CopyComplete" />
+    <file src="obj\Debug\Sparkle.LinkedInNET.csproj.FileListAbsolute.txt" target="obj\Debug\Sparkle.LinkedInNET.csproj.FileListAbsolute.txt" />
+    <file src="obj\Debug\Sparkle.LinkedInNET.csproj.GenerateResource.cache" target="obj\Debug\Sparkle.LinkedInNET.csproj.GenerateResource.cache" />
+    <file src="obj\Debug\Sparkle.LinkedInNET.csprojAssemblyReference.cache" target="obj\Debug\Sparkle.LinkedInNET.csprojAssemblyReference.cache" />
+    <file src="obj\Debug\Sparkle.LinkedInNET.Internals.Strings.resources" target="obj\Debug\Sparkle.LinkedInNET.Internals.Strings.resources" />
+    <file src="obj\Release\TempPE\Services.tt.cs.dll" target="obj\Release\TempPE\Services.tt.cs.dll" />
+    <file src="obj\Release\LinkedInNET.ApiV2.dll" target="obj\Release\LinkedInNET.ApiV2.dll" />
+    <file src="obj\Release\LinkedInNET.ApiV2.pdb" target="obj\Release\LinkedInNET.ApiV2.pdb" />
+    <file src="obj\Release\Sparkle.LinkedInNET.csproj.CopyComplete" target="obj\Release\Sparkle.LinkedInNET.csproj.CopyComplete" />
+    <file src="obj\Release\Sparkle.LinkedInNET.csproj.FileListAbsolute.txt" target="obj\Release\Sparkle.LinkedInNET.csproj.FileListAbsolute.txt" />
+    <file src="obj\Release\Sparkle.LinkedInNET.csproj.GenerateResource.cache" target="obj\Release\Sparkle.LinkedInNET.csproj.GenerateResource.cache" />
+    <file src="obj\Release\Sparkle.LinkedInNET.csprojAssemblyReference.cache" target="obj\Release\Sparkle.LinkedInNET.csprojAssemblyReference.cache" />
+    <file src="obj\Release\Sparkle.LinkedInNET.Internals.Strings.resources" target="obj\Release\Sparkle.LinkedInNET.Internals.Strings.resources" />
+    <file src="Properties\AssemblyInfo.cs" target="Properties\AssemblyInfo.cs" />
+    <file src="Video\VideoAggregationEnum.cs" target="Video\VideoAggregationEnum.cs" />
+    <file src="Video\VideoAnalyticsTypeEnum.cs" target="Video\VideoAnalyticsTypeEnum.cs" />
+    <file src="Video\VideoUpload.cs" target="Video\VideoUpload.cs" />
+    <file src="ApiError.cs" target="ApiError.cs" />
+    <file src="FieldSelector.cs" target="FieldSelector.cs" />
+    <file src="FieldSelectorValue.cs" target="FieldSelectorValue.cs" />
+    <file src="ILinkedInException.cs" target="ILinkedInException.cs" />
+    <file src="LinkedInApi.cs" target="LinkedInApi.cs" />
+    <file src="LinkedInApiConfiguration.cs" target="LinkedInApiConfiguration.cs" />
+    <file src="LinkedInApiException.cs" target="LinkedInApiException.cs" />
+    <file src="LinkedInNET.ApiV2.2.0.3.nupkg" target="LinkedInNET.ApiV2.2.0.3.nupkg" />
+    <file src="LinkedInNET.ApiV2.2.0.4.nupkg" target="LinkedInNET.ApiV2.2.0.4.nupkg" />
+    <file src="LinkedInNET.ApiV2.2.0.5.nupkg" target="LinkedInNET.ApiV2.2.0.5.nupkg" />
+    <file src="LinkedInNetException.cs" target="LinkedInNetException.cs" />
+    <file src="packages.config" target="packages.config" />
+    <file src="Services.tt" target="Services.tt" />
+    <file src="Services.tt.cs" target="Services.tt.cs" />
+    <file src="Sparkle.LinkedInNET.csproj" target="Sparkle.LinkedInNET.csproj" />
+    <file src="UserAuthorization.cs" target="UserAuthorization.cs" />
+  </files>
+</package>

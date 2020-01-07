@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDoV2.md = ToDoV2.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.DemoMvc5", "NET45.Sparkle.LinkedInNET.DemoMvc5\NET45.Sparkle.LinkedInNET.DemoMvc5.csproj", "{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparkle.LinkedInNET.DemoMvc5", "Sparkle.LinkedInNET.DemoMvc5\Sparkle.LinkedInNET.DemoMvc5.csproj", "{716EF2B0-5139-4ABC-9530-8152D8A0C8D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Lib", "00 Lib", "{D6564F95-4467-467E-8C00-932C46CE8954}"
 EndProject
@@ -21,11 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Code generation", "02 Co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Demo and tests", "01 Demo and tests", "{8D0D8676-86DB-4BFF-AB3D-96754919BBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.Tests", "NET45.Sparkle.LinkedInNET.Tests\NET45.Sparkle.LinkedInNET.Tests.csproj", "{05A8FD90-27BC-4EEF-970F-20914AD9B987}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparkle.LinkedInNET.Tests", "Sparkle.LinkedInNET.Tests\Sparkle.LinkedInNET.Tests.csproj", "{05A8FD90-27BC-4EEF-970F-20914AD9B987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET.ServiceDefinition", "NET45.Sparkle.LinkedInNET.ServiceDefinition\NET45.Sparkle.LinkedInNET.ServiceDefinition.csproj", "{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparkle.LinkedInNET.ServiceDefinition", "Sparkle.LinkedInNET.ServiceDefinition\Sparkle.LinkedInNET.ServiceDefinition.csproj", "{589B7BAE-E19E-43A0-B063-2E017B5E0C1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET45.Sparkle.LinkedInNET", "NET45.Sparkle.LinkedInNET\NET45.Sparkle.LinkedInNET.csproj", "{080DE9CE-B826-49CA-855D-25AED27D488A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sparkle.LinkedInNET", "Sparkle.LinkedInNET\Sparkle.LinkedInNET.csproj", "{080DE9CE-B826-49CA-855D-25AED27D488A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

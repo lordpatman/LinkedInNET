@@ -21,7 +21,7 @@ III. Generate the initial manifest:
 ---------------------------------------------------------
 
 IV. Run the pack command:
-1. nuget pack -Exclude ***.tt
+1. nuget pack [nuspec file name].nuspec -Exclude ***.tt
 2. .nupkg is generated
 
 ---------------------------------------------------------
