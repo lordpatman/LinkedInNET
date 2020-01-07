@@ -17,6 +17,10 @@ III. Generate the initial manifest:
 1. Open a command prompt and navigate to the project folder containing .csproj file 
 2. Run 'nuget spec YourProjectName.csproj'
 3. nuspec (nuget specs) file is created, open and edit.
+4. edit nuspec file:
+  <files>
+    <file src="obj\Release\LinkedInNET.ApiV2.dll" target="lib/net472" />
+  </files>
 
 ---------------------------------------------------------
 
