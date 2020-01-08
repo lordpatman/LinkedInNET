@@ -927,6 +927,18 @@
                Title="To upload video. Gets back the status code of the request."
                Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset" />
     
+    <ApiMethod MethodName="UploadImageAsset"
+               HttpMethod="POST"
+               Path="{UploadUrl}"
+               PostReturnType="UploadAssetRequest"
+               ReturnType="string"
+               IsValueType="1"
+               RequiresUserAuthentication="1"
+               IsStringResultHandeling="1"            
+               UseFieldSelectors="0"
+               Title="To upload an image. Gets back the empty string"
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-image" />
+    
     <ApiMethod MethodName="GetAsset" 
                HttpMethod="GET"
                Path="/v2/assets/{AssetId}"
