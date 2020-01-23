@@ -8516,7 +8516,7 @@ namespace Sparkle.LinkedInNET.Media
                 }
                 
                 /// <summary>
-                /// To upload rich media, attach the media as multipart/form-data.
+                /// This api is deprecated. To upload rich media, attach the media as multipart/form-data.
                 /// </summary>
                 /// <remarks>
                 /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
@@ -8542,7 +8542,7 @@ namespace Sparkle.LinkedInNET.Media
                 }
 
                     /// <summary>
-                    /// To upload rich media, attach the media as multipart/form-data.
+                    /// This api is deprecated. To upload rich media, attach the media as multipart/form-data.
                     /// </summary>
                     /// <remarks>
                     /// See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares
@@ -9759,113 +9759,172 @@ namespace Sparkle.LinkedInNET.Asset
                             }
                                 
                                 /// <summary>
-                                /// Depending on content size, it might take a few minutes for the upload to complete.
+                                /// To upload an image. Gets back the empty string
                                 /// </summary>
                                 /// <remarks>
-                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-image
                                 /// </remarks>
-                                public Asset.AssetResult GetAsset(
+                                public string UploadImageAsset(
                                       UserAuthorization user 
-                                    , string assetId 
+                                    , string uploadUrl 
+                                    , Asset.UploadAssetRequest postData
                                 )
                                 {
-                                    string urlFormat = "/v2/assets/{AssetId}";
+                                    string urlFormat = "{UploadUrl}";
                                     string skipUrlParamsEscape = "";
-                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
+                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                     var context = new RequestContext();
                                     context.UserAuthorization = user;
-                                    context.Method =  "GET";
+                                    context.Method =  "POST";
                                     context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                    this.CreateOctetStream(context, postData);
 
                                     if (!this.ExecuteQuery(context))
                                         this.HandleJsonErrorResponse(context);
                                     
-                                    var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+                                    var result = this.HandleRawResponse(context, System.Text.Encoding.UTF8);
                                     return result;
                                 }
 
                                     /// <summary>
-                                    /// Depending on content size, it might take a few minutes for the upload to complete.
+                                    /// To upload an image. Gets back the empty string
                                     /// </summary>
                                     /// <remarks>
-                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-image
                                     /// </remarks>
-                                    public async Task<Asset.AssetResult> GetAssetAsync(
+                                    public async Task<string> UploadImageAssetAsync(
                                           UserAuthorization user 
-                                        , string assetId 
+                                        , string uploadUrl 
+                                        , Asset.UploadAssetRequest postData
                                     )
                                     {
-                                        string urlFormat = "/v2/assets/{AssetId}";
+                                        string urlFormat = "{UploadUrl}";
                                         string skipUrlParamsEscape = "";
-                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
+                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "UploadUrl", uploadUrl);
 
                                         var context = new RequestContext();
                                         context.UserAuthorization = user;
-                                        context.Method =  "GET";
+                                        context.Method =  "POST";
                                         context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                        this.CreateOctetStream(context, postData);
 
                                         var exec = await this.ExecuteQueryAsync(context);
                                         if (!exec)
                                             this.HandleJsonErrorResponse(context);
                                         
-                                        var result = this.HandleJsonResponse<Asset.AssetResult>(context);
+                                        var result = this.HandleRawResponse(context, System.Text.Encoding.UTF8);
                                         return result;
                                     }
                                         
                                         /// <summary>
-                                        /// To upload video.
+                                        /// Depending on content size, it might take a few minutes for the upload to complete.
                                         /// </summary>
                                         /// <remarks>
                                         /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
                                         /// </remarks>
-                                        public int CompleteMultiPartUpload(
+                                        public Asset.AssetResult GetAsset(
                                               UserAuthorization user 
-                                            , Asset.CompleteMultipartUploadRequest postData
+                                            , string assetId 
                                         )
                                         {
-                                            var url = "/v2/assets?action=completeMultiPartUpload";
+                                            string urlFormat = "/v2/assets/{AssetId}";
+                                            string skipUrlParamsEscape = "";
+                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                             var context = new RequestContext();
                                             context.UserAuthorization = user;
-                                            context.Method =  "POST";
+                                            context.Method =  "GET";
                                             context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                            this.CreateJsonPostStream(context, postData);
 
                                             if (!this.ExecuteQuery(context))
                                                 this.HandleJsonErrorResponse(context);
                                             
-                                            var result = (int)context.HttpStatusCode;
+                                            var result = this.HandleJsonResponse<Asset.AssetResult>(context);
                                             return result;
                                         }
 
                                             /// <summary>
-                                            /// To upload video.
+                                            /// Depending on content size, it might take a few minutes for the upload to complete.
                                             /// </summary>
                                             /// <remarks>
                                             /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
                                             /// </remarks>
-                                            public async Task<int> CompleteMultiPartUploadAsync(
+                                            public async Task<Asset.AssetResult> GetAssetAsync(
                                                   UserAuthorization user 
-                                                , Asset.CompleteMultipartUploadRequest postData
+                                                , string assetId 
                                             )
                                             {
-                                                var url = "/v2/assets?action=completeMultiPartUpload";
+                                                string urlFormat = "/v2/assets/{AssetId}";
+                                                string skipUrlParamsEscape = "";
+                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "AssetId", assetId);
 
                                                 var context = new RequestContext();
                                                 context.UserAuthorization = user;
-                                                context.Method =  "POST";
+                                                context.Method =  "GET";
                                                 context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
-                                                this.CreateJsonPostStream(context, postData);
 
                                                 var exec = await this.ExecuteQueryAsync(context);
                                                 if (!exec)
                                                     this.HandleJsonErrorResponse(context);
                                                 
-                                                var result = (int)context.HttpStatusCode;
+                                                var result = this.HandleJsonResponse<Asset.AssetResult>(context);
                                                 return result;
                                             }
                                                 
+                                                /// <summary>
+                                                /// To upload video.
+                                                /// </summary>
+                                                /// <remarks>
+                                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                                /// </remarks>
+                                                public int CompleteMultiPartUpload(
+                                                      UserAuthorization user 
+                                                    , Asset.CompleteMultipartUploadRequest postData
+                                                )
+                                                {
+                                                    var url = "/v2/assets?action=completeMultiPartUpload";
+
+                                                    var context = new RequestContext();
+                                                    context.UserAuthorization = user;
+                                                    context.Method =  "POST";
+                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                    this.CreateJsonPostStream(context, postData);
+
+                                                    if (!this.ExecuteQuery(context))
+                                                        this.HandleJsonErrorResponse(context);
+                                                    
+                                                    var result = (int)context.HttpStatusCode;
+                                                    return result;
+                                                }
+
+                                                    /// <summary>
+                                                    /// To upload video.
+                                                    /// </summary>
+                                                    /// <remarks>
+                                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/shares/vector-asset-api#upload-the-asset
+                                                    /// </remarks>
+                                                    public async Task<int> CompleteMultiPartUploadAsync(
+                                                          UserAuthorization user 
+                                                        , Asset.CompleteMultipartUploadRequest postData
+                                                    )
+                                                    {
+                                                        var url = "/v2/assets?action=completeMultiPartUpload";
+
+                                                        var context = new RequestContext();
+                                                        context.UserAuthorization = user;
+                                                        context.Method =  "POST";
+                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+                                                        this.CreateJsonPostStream(context, postData);
+
+                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                        if (!exec)
+                                                            this.HandleJsonErrorResponse(context);
+                                                        
+                                                        var result = (int)context.HttpStatusCode;
+                                                        return result;
+                                                    }
+                                                        
             }
         }
 

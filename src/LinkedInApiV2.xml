@@ -496,7 +496,7 @@
                   ReturnType="MediaPostResult"
                   RequiresUserAuthentication="1"
                   UseFieldSelectors="0"
-                  Title="To upload rich media, attach the media as multipart/form-data."
+                  Title="This api is deprecated. To upload rich media, attach the media as multipart/form-data."
                   Remark="See https://developer.linkedin.com/docs/guide/v2/shares/rich-media-shares" />
       
     <ReturnType Name="MediaPostResult" ClassName="MediaPostResult" >
