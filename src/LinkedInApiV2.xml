@@ -421,6 +421,14 @@
                      UseFieldSelectors="0"
                      Title="Fetch lifetime share statistics for two specific organization shares."
                      Remark="See https://developer.linkedin.com/docs/guide/v2/organizations/share-statistics" />
+    
+    <ApiMethod MethodName="GetSharePostStatistics" HttpMethod="GET"
+                     Path="/v2/organizationalEntityShareStatistics?q=organizationalEntity&amp;organizationalEntity=urn:li:organization:{CompanyId}&amp;shares[0]={ShareId}"
+                     ReturnType="PostStatistic"
+                     RequiresUserAuthentication="1"
+                     UseFieldSelectors="0"
+                     Title="Fetch lifetime share post statistics for two specific organization share posts."
+                     Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/share-statistics" />
 
     <ApiMethod MethodName="GetShares" HttpMethod="GET"
                  Path="/v2/shares?q=owners&amp;owners={urn}&amp;sharesPerOwner={int SharesPerOwner = 1000}&amp;count={int Count = 50}&amp;start={int Start = 0}"
@@ -432,6 +440,10 @@
                  Remark="See https://developer.linkedin.com/docs/guide/v2/shares/share-api#types" />
 
     <ReturnType Name="StareStatistic" ClassName="StareStatistic" AutoGenerateFieldSelectors="1">
+      <Field Name="elements" ClassName="ShareStatisticsElement" Type="ShareStatisticsElement" IsCollection="1"/>
+    </ReturnType>
+    
+    <ReturnType Name="PostStatistic" ClassName="PostStatistic" AutoGenerateFieldSelectors="1">
       <Field Name="elements" ClassName="ShareStatisticsElement" Type="ShareStatisticsElement" IsCollection="1"/>
     </ReturnType>
 
@@ -1346,6 +1358,13 @@
     <ApiMethod MethodName="GetAdAnalytics"
              HttpMethod="GET"
              Path="/v2/adAnalyticsV2?q=statistics&amp;pivots[0]=SHARE&amp;dateRange.start.day=&#34; + DateTime.Now.Day + &#34;&amp;dateRange.start.month=&#34; + DateTime.Now.Month + &#34;&amp;dateRange.start.year=&#34; + DateTime.Now.Year + &#34;&amp;timeGranularity=DAILY&amp;shares[0]=urn:li:share:{postId}"
+             ReturnType="AdAnalytics"
+             RequiresUserAuthentication="1"
+             UseFieldSelectors="0"/>
+    
+    <ApiMethod MethodName="GetAdSharePostAnalytics"
+             HttpMethod="GET"
+             Path="/v2/adAnalyticsV2?q=statistics&amp;pivots[0]=SHARE&amp;dateRange.start.day=&#34; + DateTime.Now.Day + &#34;&amp;dateRange.start.month=&#34; + DateTime.Now.Month + &#34;&amp;dateRange.start.year=&#34; + DateTime.Now.Year + &#34;&amp;timeGranularity=DAILY&amp;shares[0]={postId}"
              ReturnType="AdAnalytics"
              RequiresUserAuthentication="1"
              UseFieldSelectors="0"/>
