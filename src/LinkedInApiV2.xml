@@ -266,7 +266,7 @@
 
     <ReturnType Name="OrgFollowerStatistic" ClassName="OrgFollowerStatistic" AutoGenerateFieldSelectors="1">
       <Field Name="elements" ClassName="OrgFollowerStatisticsElement" Type="OrgFollowerStatisticsElement" IsCollection="1"/>
-      <Field Name="organizationalEntity" />
+      <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
     </ReturnType>
     
     <ReturnType Name="OrganizationPageStatistics" ClassName="OrganizationPageStatistics" AutoGenerateFieldSelectors="1">
@@ -370,34 +370,43 @@
       <Field Name="followerCountsByIndustry" ClassName="FollowerByIndustry" Type="FollowerByIndustry" IsCollection="1" />
       <Field Name="followerCountsByAssociationType" ClassName="FollowerCounts" Type="FollowerCounts" IsCollection="1" />
       <Field Name="followerCountsBySeniority" ClassName="FollowerBySeniority" Type="FollowerBySeniority" IsCollection="1" />
-    </ReturnType>
-    
-    <ReturnType Name="FollowerCounts" ClassName="FollowerCounts" AutoGenerateFieldSelectors="1" >
-      <Field Name="organicFollowerCount" Type="int"/>
-      <Field Name="paidFollowerCount" Type="int"/>
+      <Field Name="followerCountsByRegion" ClassName="FollowerByRegion" Type="FollowerByRegion" IsCollection="1" />
+      <Field Name="followerCountsByCountry" ClassName="FollowerByCountry" Type="FollowerByCountry" IsCollection="1" />
+      <Field Name="organizationalEntity" />
     </ReturnType>
 
-     <ReturnType Name="FollowerByFunction" ClassName="FollowerByFunction" AutoGenerateFieldSelectors="1" >
+    <ReturnType Name="FollowerByFunction" ClassName="FollowerByFunction" AutoGenerateFieldSelectors="1" >
       <Field Name="function" />
-       <Field Name="organicFollowerCount" Type="int"/>
-      <Field Name="paidFollowerCount" Type="int"/>
-    </ReturnType>   
-      
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
+    </ReturnType>
+
     <ReturnType Name="FollowerByIndustry" ClassName="FollowerByIndustry" AutoGenerateFieldSelectors="1" >
       <Field Name="industry" />
-       <Field Name="organicFollowerCount" Type="int"/>
-      <Field Name="paidFollowerCount" Type="int"/>
-    </ReturnType>    
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
+    </ReturnType>
 
     <ReturnType Name="FollowerBySeniority" ClassName="FollowerBySeniority" AutoGenerateFieldSelectors="1" >
       <Field Name="seniority" />
-       <Field Name="organicFollowerCount" Type="int"/>
-      <Field Name="paidFollowerCount" Type="int"/>
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
     </ReturnType>
 
-   <ReturnType Name="FollowerByStaffCountRange" ClassName="FollowerByStaffCountRange" AutoGenerateFieldSelectors="1" >
+    <ReturnType Name="FollowerByStaffCountRange" ClassName="FollowerByStaffCountRange" AutoGenerateFieldSelectors="1" >
       <Field Name="staffCountRange" />
-       <Field Name="organicFollowerCount" Type="int"/>
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
+    </ReturnType>
+
+    <ReturnType Name="FollowerByRegion" ClassName="FollowerByRegion" AutoGenerateFieldSelectors="1" >
+      <Field Name="region" />
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
+    </ReturnType>
+
+    <ReturnType Name="FollowerByCountry" ClassName="FollowerByCountry" AutoGenerateFieldSelectors="1" >
+      <Field Name="country" />
+      <Field Name="followerCounts" ClassName="FollowerCounts" Type="FollowerCounts" />
+    </ReturnType>
+
+    <ReturnType Name="FollowerCounts" ClassName="FollowerCounts" AutoGenerateFieldSelectors="1" >
+      <Field Name="organicFollowerCount" Type="int"/>
       <Field Name="paidFollowerCount" Type="int"/>
     </ReturnType>
   
