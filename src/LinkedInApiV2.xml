@@ -220,7 +220,7 @@
     <ApiMethod MethodName="GetOrganizationFollowerCount" 
                HttpMethod="GET" 
                ReturnType="Common.Followers" 
-               Path="/v2/networkSizes/urn:li:organization:{CompanyId}?edgeType=CompanyFollowedByMembe"          
+               Path="/v2/networkSizes/urn:li:organization:{CompanyId}?edgeType=CompanyFollowedByMember"          
                RequiresUserAuthentication="1" 
                UsesAcceptLanguage="0" 
                UseFieldSelectors="0" 
