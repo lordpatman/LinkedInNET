@@ -6223,6 +6223,31 @@ namespace Sparkle.LinkedInNET.Common
     }
 }
 
+// WriteReturnTypes(Common, Followers)
+namespace Sparkle.LinkedInNET.Common
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'Followers'
+    /// </summary>
+    [Serializable, XmlRoot("Followers")]
+    public class Followers
+    {
+        /// <summary>
+        /// Field: 'firstDegreeSize' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "firstDegreeSize")]
+        [JsonProperty(PropertyName = "firstDegreeSize")]
+        public int FirstDegreeSize { get; set; }
+
+    }
+}
+
 // WriteReturnTypeFields(Common)
 namespace Sparkle.LinkedInNET.Common
 {
@@ -6231,7 +6256,7 @@ namespace Sparkle.LinkedInNET.Common
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'PostShare', 'text', 'postShareAnnotations', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'UGCDistribution', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData' return types.
+    /// Field selectors for the 'PostShare', 'text', 'postShareAnnotations', 'postShareContent', 'postShareContentEntities', 'PostShareContentThumbnails', 'PostShareResult', 'multiLocaleString', 'multiLocaleRichText', 'localeString', 'shareCreated', 'UGCDistribution', 'distribution', 'LinkedInDistributionTarget', 'LinkedInTargetedEntity', 'Locale', 'paging', 'LinkPaging', 'mediaUploadData', 'Followers' return types.
     /// </summary>
     public static class CommonFields {
     }
@@ -8347,6 +8372,61 @@ namespace Sparkle.LinkedInNET.Organizations
                                                                 return result;
                                                             }
                                                                 
+                                                                /// <summary>
+                                                                /// Retrieve Follower Count
+                                                                /// </summary>
+                                                                /// <remarks>
+                                                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-lookup-api#retrieve-organization-follower-count
+                                                                /// </remarks>
+                                                                public Common.Followers GetOrganizationFollowerCount(
+                                                                      UserAuthorization user 
+                                                                    , string companyId 
+                                                                )
+                                                                {
+                                                                    string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}?edgeType=CompanyFollowedByMember";
+                                                                    string skipUrlParamsEscape = "";
+                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
+
+                                                                    var context = new RequestContext();
+                                                                    context.UserAuthorization = user;
+                                                                    context.Method =  "GET";
+                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                    if (!this.ExecuteQuery(context))
+                                                                        this.HandleJsonErrorResponse(context);
+                                                                    
+                                                                    var result = this.HandleJsonResponse<Common.Followers>(context);
+                                                                    return result;
+                                                                }
+
+                                                                    /// <summary>
+                                                                    /// Retrieve Follower Count
+                                                                    /// </summary>
+                                                                    /// <remarks>
+                                                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-lookup-api#retrieve-organization-follower-count
+                                                                    /// </remarks>
+                                                                    public async Task<Common.Followers> GetOrganizationFollowerCountAsync(
+                                                                          UserAuthorization user 
+                                                                        , string companyId 
+                                                                    )
+                                                                    {
+                                                                        string urlFormat = "/v2/networkSizes/urn:li:organization:{CompanyId}?edgeType=CompanyFollowedByMember";
+                                                                        string skipUrlParamsEscape = "";
+                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "CompanyId", companyId);
+
+                                                                        var context = new RequestContext();
+                                                                        context.UserAuthorization = user;
+                                                                        context.Method =  "GET";
+                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                        if (!exec)
+                                                                            this.HandleJsonErrorResponse(context);
+                                                                        
+                                                                        var result = this.HandleJsonResponse<Common.Followers>(context);
+                                                                        return result;
+                                                                    }
+                                                                        
             }
         }
 
