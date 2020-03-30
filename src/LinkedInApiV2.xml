@@ -151,7 +151,7 @@
     </ReturnType>
 
     <ReturnType Name="DegreeSize" ClassName="DegreeSize" AutoGenerateFieldSelectors="1">
-      <Field Name="firstDegreeSize" Type="int"/>
+        <Field Name="firstDegreeSize" Type="int"/>
     </ReturnType>
 
     <FieldGroup Name="BasicFields">
@@ -216,6 +216,16 @@
                UseFieldSelectors="0"
                Title="Retrieve Organizations By Key"
                Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-search?context=linkedin/compliance/context#search-by-keywords"/>
+               
+    <ApiMethod MethodName="GetOrganizationFollowerCount" 
+               HttpMethod="GET" 
+               ReturnType="Common.Followers" 
+               Path="/v2/networkSizes/urn:li:organization:{CompanyId}?edgeType=CompanyFollowedByMember"          
+               RequiresUserAuthentication="1" 
+               UsesAcceptLanguage="0" 
+               UseFieldSelectors="0" 
+               Title="Retrieve Follower Count"
+               Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/community-management/organizations/organization-lookup-api#retrieve-organization-follower-count" />
 
     <ReturnType Name="mentions" ClassName="Mentions" AutoGenerateFieldSelectors="1">
       <Field Name="elements" Type="orgElement" IsCollection="1"/>
@@ -1210,6 +1220,10 @@
     <ReturnType Name="mediaUploadData" ClassName="MediaUploadData" IsMultiPartStream="1">
       <Field Name="data" PropertyName="Data" Type="byte[]"/>
     </ReturnType>
+
+    <ReturnType Name="Followers" ClassName="Followers">
+        <Field Name="firstDegreeSize" PropertyName="FirstDegreeSize" Type="int" />
+      </ReturnType>
     
   </ApiGroup>
 
