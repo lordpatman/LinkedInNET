@@ -59,9 +59,8 @@
             {
                 this.ViewBag.Url = null;
             }
-
-            var accessToken = "";                
-            
+                        
+            var accessToken = "";
             this.data.SaveAccessToken(accessToken);
 
 
@@ -81,13 +80,14 @@
                     var fields = FieldSelector.For<Person>().WithAllFields();
                     var profile = await this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields);
 
-                    await CreateLike(user);
-                    // await GetProfile(user);
+                    //await CreateLike(user);
+                    //await GetProfile(user);
                     //await GetPosts(user);
-                    // await GetComemnt(user);
-                    // await GetPost(user);
-                    // await PublishImage(user);
-                    //await PublishTest();                                                 
+                    //await GetComemnt(user);
+                    //await GetPost(user);
+                    //await GetPosts(user);
+                    //await PublishImage(user);
+                    //await PublishTest();
 
 
                     // var originalPicture = await this.api.Profiles.GetOriginalProfilePictureAsync(user);
@@ -454,9 +454,8 @@
         }
 
         private async Task GetPost(UserAuthorization user)
-        {         
-
-            var postId = await this.api.UGCPost.GetUGCPostAsync(user, "urn:li:share:6603298353402912768");
+        {
+            var postId = await this.api.UGCPost.GetUGCPostAsync(user, "");            
         }
 
         private async Task GetComemnt(UserAuthorization user)
@@ -507,7 +506,7 @@
         {
 
             var post = await this.api.UGCPost.GetUGCPostsAsync(user, "urn:li:organization:18568129", 0, 5);
-            await DeletePost(user, post.Elements.Last());
+            // await DeletePost(user, post.Elements.Last());
         }
 
         private async Task DeletePost(UserAuthorization user, UGCPostItemResult post)
