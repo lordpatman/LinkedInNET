@@ -44,7 +44,7 @@
 
             // step 1: configuration
             this.ViewBag.Configuration = this.apiConfig;
-            
+
             // step 2: authorize url
             var scope = AuthorizationScope.ReadEmailAddress | AuthorizationScope.ReadWriteCompanyPage | AuthorizationScope.WriteShare;
             var state = Guid.NewGuid().ToString();
@@ -84,8 +84,9 @@
                     //await GetProfile(user);
                     //await GetPosts(user);
                     //await GetComemnt(user);
-                    //await GetPost(user);
-                    //await GetPosts(user);
+                    // await GetPost(user);
+                    // await GetPosts(user);
+                    // await GetVideo(user);
                     //await PublishImage(user);
                     //await PublishTest();
 
@@ -110,7 +111,7 @@
 
             return this.View();
         }
-                
+
         public async Task<ActionResult> OAuth2(string code, string state, string error, string error_description)
         {
             if (!string.IsNullOrEmpty(error))
@@ -156,7 +157,7 @@
             {
                 ////var profile = this.api.Profiles.GetMyProfile(user);
                 var acceptLanguages = new string[] { culture ?? "en-US", "fr-FR", };
-                var fields = FieldSelector.For<Person>()                   
+                var fields = FieldSelector.For<Person>()
                     .WithAllFields();
                 profile = this.api.Profiles.GetMyProfileAsync(user, acceptLanguages, fields).Result;
 
@@ -201,12 +202,12 @@
 
             var result = new ApiResponse<Sparkle.LinkedInNET.ServiceDefinition.ApisRoot>(builder.Root);
 
-            
+
             MemoryStream stream = new MemoryStream();
             StreamWriter writer = new System.IO.StreamWriter(stream);
             var generator = new ServiceDefinition.CSharpGenerator(writer);
             generator.Run(builder.Definition);
-            stream.Seek(0L, SeekOrigin.Begin);            
+            stream.Seek(0L, SeekOrigin.Begin);
             var serviceResult = new StreamReader(stream).ReadToEnd();
 
 
@@ -242,7 +243,7 @@
             public T Data { get; set; }
         }
 
-        private  async Task PublishTest(UserAuthorization user)
+        private async Task PublishTest(UserAuthorization user)
         {
             //// var getVideo = await this.api.Asset.GetAssetAsync(user, "C4D05AQH5Hen4KpIFqA");
 
@@ -383,7 +384,7 @@
 
 
 
-                                                         
+
 
 
 
@@ -453,11 +454,6 @@
             });
         }
 
-        private async Task GetPost(UserAuthorization user)
-        {
-            var postId = await this.api.UGCPost.GetUGCPostAsync(user, "");            
-        }
-
         private async Task GetComemnt(UserAuthorization user)
         {
             try
@@ -466,7 +462,7 @@
                 var comments = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:comment:(urn:li:activity:6604993552747380736,6604995118833377280)");
 
                 var comment = await this.api.SocialActions.GetCommentsByUrnAsync(user, "urn:li:organization:18568129");
-                
+
                 await ReplyComment(user, comment.Elements.First());
                 //var deleteLike = this.api.SocialActions.DeleteComment(user, comment.Elements.First().Urn, comment.Elements.First().Id, comment.Elements.First().Actor);
             }
@@ -496,23 +492,39 @@
                 var response = await this.api.SocialActions.CreateCommentOnUrnAsync(user,
                     comment.Urn, createCommentRequest);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
         }
+        private async Task GetVideo(UserAuthorization user)
+        {
+            var videoId = "urn:li:digitalmediaAsset:C4E05AQHDEiyF00wWkQ"; // video post on Horvath janos zrt            
+            var postId = "urn:li:ugcPost:6650705316675665920"; // video post on Horvath janos zrt.
+            var video = await this.api.UGCPost.GetUGCVideoAsync(user, postId);
+            var mediaElements = video.SpecificContent.ComLinkedinUgcVideoContent.UGCMedia[0].mediaData.Elements;
+
+            var videoUrl = mediaElements.FirstOrDefault().Identifiers[0].Identifier;
+
+        }
+
+        private async Task GetPost(UserAuthorization user)
+        {
+            var postId = "urn:li:ugcPost:6650705316675665920"; // video post on Horvath janos zrt.
+            var post = await this.api.UGCPost.GetUGCPostAsync(user, postId);
+        }
 
         private async Task GetPosts(UserAuthorization user)
         {
-
-            var post = await this.api.UGCPost.GetUGCPostsAsync(user, "urn:li:organization:18568129", 0, 5);
+            var pageId = "urn:li:organization:18568129"; // Horvath janos zrt.
+            var post = await this.api.UGCPost.GetUGCPostsAsync(user, pageId, 0, 5);
             // await DeletePost(user, post.Elements.Last());
         }
 
         private async Task DeletePost(UserAuthorization user, UGCPostItemResult post)
         {
             try
-            {                
+            {
 
                 var response = await this.api.UGCPost.DeleteUGCPostAsync(user, post.Id);
             }
@@ -534,7 +546,7 @@
             catch { }
         }
 
-        private async Task CreateLike (UserAuthorization user)
+        private async Task CreateLike(UserAuthorization user)
         {
             try
             {
@@ -547,10 +559,10 @@
                     Object = postUrn
                 };
 
-                var like =  await this.api.SocialActions.CreateLikeAsync(user, postUrn, createLikeRequest);
+                var like = await this.api.SocialActions.CreateLikeAsync(user, postUrn, createLikeRequest);
                 await this.api.SocialActions.DeleteLikeAsync(user, postUrn, actorUrn, actorUrn);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
