@@ -43,6 +43,11 @@ VI. Add a new version:
 
 ---------------------------------------------------------
 
+
+
+Alternatively you can use NuGet Package Explorer in windows from windows store
+
+
 For more infos: 
 https://github.com/NuGet/docs.microsoft.com-nuget/blob/master/docs/quickstart/create-and-publish-a-package-using-visual-studio-net-framework.md
 https://github.com/NuGet/docs.microsoft.com-nuget/blob/master/docs/quickstart/create-and-publish-a-package-using-visual-studio.md
