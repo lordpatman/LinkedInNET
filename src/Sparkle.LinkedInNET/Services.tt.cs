@@ -6266,6 +6266,102 @@ namespace Sparkle.LinkedInNET.Common
 
 #region ReturnTypes for Targeting
 
+// WriteReturnTypes(Targeting, TargetingFacets)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'TargetingFacets'
+    /// </summary>
+    [Serializable, XmlRoot("TargetingFacets")]
+    public class TargetingFacets
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<dynamic> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, AudienceCounts)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'AudienceCounts'
+    /// </summary>
+    [Serializable, XmlRoot("AudienceCounts")]
+    public class AudienceCounts
+    {
+        /// <summary>
+        /// Field: 'elements' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "elements")]
+        [JsonProperty(PropertyName = "elements")]
+        public List<AudienceCountElements> Elements { get; set; }
+
+        /// <summary>
+        /// Field: 'paging' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "paging")]
+        [JsonProperty(PropertyName = "paging")]
+        public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(Targeting, AudienceCountElements)
+namespace Sparkle.LinkedInNET.Targeting
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'AudienceCountElements'
+    /// </summary>
+    [Serializable, XmlRoot("AudienceCountElements")]
+    public class AudienceCountElements
+    {
+        /// <summary>
+        /// Field: 'active' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "active")]
+        [JsonProperty(PropertyName = "active")]
+        public int Active { get; set; }
+
+        /// <summary>
+        /// Field: 'total' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "total")]
+        [JsonProperty(PropertyName = "total")]
+        public int Total { get; set; }
+
+    }
+}
+
 // WriteReturnTypes(Targeting, Industries)
 namespace Sparkle.LinkedInNET.Targeting
 {
@@ -6721,9 +6817,72 @@ namespace Sparkle.LinkedInNET.Targeting
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'Industries', 'JobFunctions', 'CountryGroups', 'Countries', 'States', 'Regions', 'Seniorities', 'TargetingBase', 'TargetingCountryGroup', 'TargetingCountry', 'TargetingState', 'TargetingRegion' return types.
+    /// Field selectors for the 'TargetingFacets', 'AudienceCounts', 'AudienceCountElements', 'Industries', 'JobFunctions', 'CountryGroups', 'Countries', 'States', 'Regions', 'Seniorities', 'TargetingBase', 'TargetingCountryGroup', 'TargetingCountry', 'TargetingState', 'TargetingRegion' return types.
     /// </summary>
     public static class TargetingFields {
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TargetingFacets> WithElements(this FieldSelector<TargetingFacets> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TargetingFacets> WithPaging(this FieldSelector<TargetingFacets> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<TargetingFacets> WithAllFields(this FieldSelector<TargetingFacets> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'elements'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCounts> WithElements(this FieldSelector<AudienceCounts> me) { return me.Add("elements"); }
+        
+        /// <summary>
+        /// Includes the field 'paging'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCounts> WithPaging(this FieldSelector<AudienceCounts> me) { return me.Add("paging"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCounts> WithAllFields(this FieldSelector<AudienceCounts> me) { return me.AddRange("elements", "paging"); }
+        
+        /// <summary>
+        /// Includes the field 'active'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCountElements> WithActive(this FieldSelector<AudienceCountElements> me) { return me.Add("active"); }
+        
+        /// <summary>
+        /// Includes the field 'total'.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCountElements> WithTotal(this FieldSelector<AudienceCountElements> me) { return me.Add("total"); }
+        
+        /// <summary>
+        /// Includes all the fields.
+        /// </summary>
+        /// <param name="me">The field selector.</param>
+        /// <returns>The field selector.</returns>
+        public static FieldSelector<AudienceCountElements> WithAllFields(this FieldSelector<AudienceCountElements> me) { return me.AddRange("active", "total"); }
+        
         /// <summary>
         /// Includes the field 'elements'.
         /// </summary>
@@ -10676,6 +10835,110 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                         return result;
                                                                     }
                                                                         
+                                                                        /// <summary>
+                                                                        /// Forecast the reach of the target audience
+                                                                        /// </summary>
+                                                                        /// <remarks>
+                                                                        /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                        /// </remarks>
+                                                                        public Targeting.AudienceCounts GetAudienceCounts(
+                                                                              UserAuthorization user 
+                                                                            , string targetingCriteria 
+                                                                        )
+                                                                        {
+                                                                            string urlFormat = "/v2/audienceCountsV2?q=targetingCriteriaV2&targetingCriteria={targetingCriteria}";
+                                                                            string skipUrlParamsEscape = "targetingCriteria";
+                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "targetingCriteria", targetingCriteria);
+
+                                                                            var context = new RequestContext();
+                                                                            context.UserAuthorization = user;
+                                                                            context.Method =  "GET";
+                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                            if (!this.ExecuteQuery(context, true))
+                                                                                this.HandleJsonErrorResponse(context);
+                                                                            
+                                                                            var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
+                                                                            return result;
+                                                                        }
+
+                                                                            /// <summary>
+                                                                            /// Forecast the reach of the target audience
+                                                                            /// </summary>
+                                                                            /// <remarks>
+                                                                            /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                            /// </remarks>
+                                                                            public async Task<Targeting.AudienceCounts> GetAudienceCountsAsync(
+                                                                                  UserAuthorization user 
+                                                                                , string targetingCriteria 
+                                                                            )
+                                                                            {
+                                                                                string urlFormat = "/v2/audienceCountsV2?q=targetingCriteriaV2&targetingCriteria={targetingCriteria}";
+                                                                                string skipUrlParamsEscape = "targetingCriteria";
+                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "targetingCriteria", targetingCriteria);
+
+                                                                                var context = new RequestContext();
+                                                                                context.UserAuthorization = user;
+                                                                                context.Method =  "GET";
+                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                var exec = await this.ExecuteQueryAsync(context, true);
+                                                                                if (!exec)
+                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                
+                                                                                var result = this.HandleJsonResponse<Targeting.AudienceCounts>(context);
+                                                                                return result;
+                                                                            }
+                                                                                
+                                                                                /// <summary>
+                                                                                /// Forecast the reach of your target audience
+                                                                                /// </summary>
+                                                                                /// <remarks>
+                                                                                /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                                /// </remarks>
+                                                                                public Targeting.TargetingFacets GetTargetingFacets(
+                                                                                      UserAuthorization user 
+                                                                                )
+                                                                                {
+                                                                                    var url = "/v2/adTargetingFacets";
+
+                                                                                    var context = new RequestContext();
+                                                                                    context.UserAuthorization = user;
+                                                                                    context.Method =  "GET";
+                                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                    if (!this.ExecuteQuery(context))
+                                                                                        this.HandleJsonErrorResponse(context);
+                                                                                    
+                                                                                    var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
+                                                                                    return result;
+                                                                                }
+
+                                                                                    /// <summary>
+                                                                                    /// Forecast the reach of your target audience
+                                                                                    /// </summary>
+                                                                                    /// <remarks>
+                                                                                    /// See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts
+                                                                                    /// </remarks>
+                                                                                    public async Task<Targeting.TargetingFacets> GetTargetingFacetsAsync(
+                                                                                          UserAuthorization user 
+                                                                                    )
+                                                                                    {
+                                                                                        var url = "/v2/adTargetingFacets";
+
+                                                                                        var context = new RequestContext();
+                                                                                        context.UserAuthorization = user;
+                                                                                        context.Method =  "GET";
+                                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                        if (!exec)
+                                                                                            this.HandleJsonErrorResponse(context);
+                                                                                        
+                                                                                        var result = this.HandleJsonResponse<Targeting.TargetingFacets>(context);
+                                                                                        return result;
+                                                                                    }
+                                                                                        
             }
         }
 
