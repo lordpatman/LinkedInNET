@@ -1291,7 +1291,41 @@
                           RequiresUserAuthentication="1"
                           UseFieldSelectors="0"
                           Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/seniorities"/>
+    
+    <ApiMethod MethodName="GetAudienceCounts"
+           HttpMethod="GET"
+           Path="/v2/audienceCountsV2?q=targetingCriteriaV2&amp;targetingCriteria={targetingCriteria}"
+           ReturnType="AudienceCounts"
+           Title="Forecast the reach of the target audience"
+           RequiresUserAuthentication="1"
+           UseFieldSelectors="0"
+           UseRestliProtocol ="1"
+           SkipUrlParamsEscape="targetingCriteria"
+           Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts"/>
 
+    <ApiMethod MethodName="GetTargetingFacets"
+           HttpMethod="GET"
+           Path="/v2/adTargetingFacets"
+           ReturnType="TargetingFacets"
+           Title="Forecast the reach of your target audience"
+           RequiresUserAuthentication="1"
+           UseFieldSelectors="0"
+           Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts"/>
+
+    <ReturnType Name="TargetingFacets" ClassName="TargetingFacets" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="dynamic" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+    
+    <ReturnType Name="AudienceCounts" ClassName="AudienceCounts" AutoGenerateFieldSelectors="1">
+      <Field Name="elements"  PropertyName="Elements" Type="AudienceCountElements" IsCollection="1"/>
+      <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
+    </ReturnType>
+
+    <ReturnType Name="AudienceCountElements" ClassName="AudienceCountElements" AutoGenerateFieldSelectors="1">
+      <Field Name="active"  PropertyName="Active" Type="int"/>
+      <Field Name="total"  PropertyName="Total" Type="int" />
+    </ReturnType>
 
     <ReturnType Name="Industries" ClassName="Industries" AutoGenerateFieldSelectors="1">
       <Field Name="elements"  PropertyName="Elements" Type="TargetingBase" IsCollection="1"/>
