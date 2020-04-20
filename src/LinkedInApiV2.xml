@@ -597,11 +597,18 @@
     <ReturnType Name="UGCVideoMedia" ClassName="UGCVideoMedia">
       <Field Name="media~" PropertyName="mediaData" Type="UGCMediaData" />
       <Field Name="media" Type="string"/>
+      <Field Name="media!" PropertyName="mediaDataError" Type="UGCMediaDataError" />
     </ReturnType>
 
     <ReturnType Name="UGCMediaData" ClassName="UGCMediaData">
       <Field Name="elements" Type="UGCMediaElements" IsCollection="1"/>
       <Field Name="paging" ClassName="Paging" Type="Common.Paging" />
+    </ReturnType>
+    
+    <ReturnType Name="UGCMediaDataError" ClassName="UGCMediaDataError">
+      <Field Name="serviceErrorCode"/>
+      <Field Name="message"/>
+      <Field Name="status"/>
     </ReturnType>
 
     <ReturnType Name="UGCMediaElements" ClassName="UGCMediaElements">
