@@ -510,7 +510,7 @@
       <Field Name="entity" />
       <Field Name="statisticsType" />
       <Field Name="timeRange" ClassName="TimeRange" Type="TimeRange" />
-      <Field Name="value" Type="int" />
+      <Field Name="value" Type="long" />
     </ReturnType>
 
     <ReturnType Name="TimeRange" ClassName="TimeRange" >
