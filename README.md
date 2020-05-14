@@ -4,9 +4,10 @@
 LinkedInNET
 ===========
 
-[Sparkle.LinkedInNET](https://github.com/SparkleNetworks/LinkedInNET/) [Nuget](https://www.nuget.org/packages/LinkedInNET.ApiV2/) will help you query the LinkedIn API V2 :)
+[Sparkle.LinkedInNET](https://github.com/247GradLabs/LinkedInNET/) [Nuget](https://www.nuget.org/packages/LinkedInNET.ApiV2/) will help you query the LinkedIn API V2 :)
 
 Have any question? You may reach the authors on the dedicated chat room: [![Join the chat at https://gitter.im/SparkleNetworks/LinkedInNET](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/SparkleNetworks/LinkedInNET?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 
 Motivation
 ------------
@@ -202,3 +203,4 @@ Status
 Because of the API policy changes, most API calls are now reserved to the partners LinkedIn chose. The core team will try to keep up using basic API key.
 
 Check our [internal to-do list](src/ToDoV2.md) to track missing/done things.
+
