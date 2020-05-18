@@ -106,7 +106,6 @@ namespace Sparkle.LinkedInNET.OAuth2
                 Method= "POST",
                 UrlPath = url,
             };
-            context.RequestHeaders.Add("content-length", "0");
             this.ExecuteQuery(context);
 
             AuthorizationAccessToken result = null;
