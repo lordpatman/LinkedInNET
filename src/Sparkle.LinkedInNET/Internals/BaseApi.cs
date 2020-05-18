@@ -253,6 +253,10 @@ namespace Sparkle.LinkedInNET.Internals
                     throw new InvalidOperationException("Error POSTing to API (" + ex.Message + ")", ex);
                 }
             }
+            else
+            {
+                request.ContentLength = 0;
+            }
 
             // get response
             HttpWebResponse response;
