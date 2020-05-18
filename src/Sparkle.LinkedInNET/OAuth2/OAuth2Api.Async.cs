@@ -64,7 +64,6 @@ namespace Sparkle.LinkedInNET.OAuth2
             var bytes = Encoding.UTF8.GetBytes(json);
 
             context.RequestHeaders.Add("x-li-format", "json");
-            context.RequestHeaders.Add("content-length", "0");
             context.PostDataType = "application/json";
             context.PostData = bytes;
             #endregion
