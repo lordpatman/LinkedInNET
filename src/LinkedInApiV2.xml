@@ -1319,6 +1319,33 @@
            UseFieldSelectors="0"
            Remark="See https://docs.microsoft.com/en-us/linkedin/marketing/integrations/ads/advertising-targeting/audience-counts"/>
 
+    <ApiMethod MethodName="GetAllCountries"
+                   HttpMethod="GET"
+                   Path="/v2/countries?locale.language={dataLanguage}&amp;locale.country={dataCountry}"
+                   ReturnType="Countries"
+                   Title=""
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+    
+    <ApiMethod MethodName="GetAllStates"
+                   HttpMethod="GET"
+                   Path="/v2/states?locale.language={dataLanguage}&amp;locale.country={dataCountry}"
+                   ReturnType="States"
+                   Title=""
+                   RequiresUserAuthentication="1"
+                   UseFieldSelectors="0"
+                   Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries"/>
+
+    <ApiMethod MethodName="GetAllRegions"
+                    HttpMethod="GET"
+                    Path="/v2/regions?locale.language={dataLanguage}&amp;locale.country={dataCountry}"
+                    ReturnType="Regions"
+                    Title=""
+                    RequiresUserAuthentication="1"
+                    UseFieldSelectors="0"
+                    Remark="See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions"/>
+    
     <ReturnType Name="TargetingFacets" ClassName="TargetingFacets" AutoGenerateFieldSelectors="1">
       <Field Name="elements"  PropertyName="Elements" Type="dynamic" IsCollection="1"/>
       <Field Name="paging"  PropertyName="Paging" Type="Common.Paging" />
