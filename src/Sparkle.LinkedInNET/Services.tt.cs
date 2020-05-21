@@ -3086,7 +3086,7 @@ namespace Sparkle.LinkedInNET.Videos
         /// </summary>
         [XmlElement(ElementName = "value")]
         [JsonProperty(PropertyName = "value")]
-        public int Value { get; set; }
+        public long Value { get; set; }
 
     }
 }
@@ -3288,6 +3288,13 @@ namespace Sparkle.LinkedInNET.UGCPost
         [JsonProperty(PropertyName = "media")]
         public string Media { get; set; }
 
+        /// <summary>
+        /// Field: 'media!' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "media!")]
+        [JsonProperty(PropertyName = "media!")]
+        public UGCMediaDataError mediaDataError { get; set; }
+
     }
 }
 
@@ -3319,6 +3326,45 @@ namespace Sparkle.LinkedInNET.UGCPost
         [XmlElement(ElementName = "paging")]
         [JsonProperty(PropertyName = "paging")]
         public Common.Paging Paging { get; set; }
+
+    }
+}
+
+// WriteReturnTypes(UGCPost, UGCMediaDataError)
+namespace Sparkle.LinkedInNET.UGCPost
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Xml.Serialization;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+
+    /// <summary>
+    /// Name: 'UGCMediaDataError'
+    /// </summary>
+    [Serializable, XmlRoot("UGCMediaDataError")]
+    public class UGCMediaDataError
+    {
+        /// <summary>
+        /// Field: 'serviceErrorCode' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "serviceErrorCode")]
+        [JsonProperty(PropertyName = "serviceErrorCode")]
+        public string ServiceErrorCode { get; set; }
+
+        /// <summary>
+        /// Field: 'message' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "message")]
+        [JsonProperty(PropertyName = "message")]
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Field: 'status' (on-demand)
+        /// </summary>
+        [XmlElement(ElementName = "status")]
+        [JsonProperty(PropertyName = "status")]
+        public string Status { get; set; }
 
     }
 }
@@ -4256,7 +4302,7 @@ namespace Sparkle.LinkedInNET.UGCPost
     using System.Xml.Serialization;
 
     /// <summary>
-    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaElements', 'UGCMediaType', 'UGCMediaIdentifiers', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'UGCAnnotations', 'valueAnnotation', 'CompanyAttributedEntity', 'MemberAttributedEntity', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
+    /// Field selectors for the 'UGCVideo', 'SpecificVideoContent', 'ComLinkedinUgcVideoContent', 'UGCVideoMedia', 'UGCMediaData', 'UGCMediaDataError', 'UGCMediaElements', 'UGCMediaType', 'UGCMediaIdentifiers', 'UGCPostItems', 'UGCPostItemResult', 'UGCPostData', 'UGCPostResult', 'responseContext', 'SpecificContent', 'comLinkedinUgcShareContent', 'SpecificContent', 'ComLinkedinUgcGetShareContent', 'UGCMedia', 'ImageThumbnail', 'UGCText', 'UGCText', 'UGCAnnotations', 'valueAnnotation', 'CompanyAttributedEntity', 'MemberAttributedEntity', 'LandingPage', 'TargetAudience', 'UGCPostvisibility' return types.
     /// </summary>
     public static class UGCPostFields {
         /// <summary>
@@ -10939,6 +10985,177 @@ namespace Sparkle.LinkedInNET.Targeting
                                                                                         return result;
                                                                                     }
                                                                                         
+                                                                                        /// <summary>
+                                                                                        /// 
+                                                                                        /// </summary>
+                                                                                        /// <remarks>
+                                                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                        /// </remarks>
+                                                                                        public Targeting.Countries GetAllCountries(
+                                                                                              UserAuthorization user 
+                                                                                            , string dataLanguage 
+                                                                                            , string dataCountry 
+                                                                                        )
+                                                                                        {
+                                                                                            string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                            string skipUrlParamsEscape = "";
+                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                            var context = new RequestContext();
+                                                                                            context.UserAuthorization = user;
+                                                                                            context.Method =  "GET";
+                                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                            if (!this.ExecuteQuery(context))
+                                                                                                this.HandleJsonErrorResponse(context);
+                                                                                            
+                                                                                            var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                                                                            return result;
+                                                                                        }
+
+                                                                                            /// <summary>
+                                                                                            /// 
+                                                                                            /// </summary>
+                                                                                            /// <remarks>
+                                                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                            /// </remarks>
+                                                                                            public async Task<Targeting.Countries> GetAllCountriesAsync(
+                                                                                                  UserAuthorization user 
+                                                                                                , string dataLanguage 
+                                                                                                , string dataCountry 
+                                                                                            )
+                                                                                            {
+                                                                                                string urlFormat = "/v2/countries?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                string skipUrlParamsEscape = "";
+                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                var context = new RequestContext();
+                                                                                                context.UserAuthorization = user;
+                                                                                                context.Method =  "GET";
+                                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                                                if (!exec)
+                                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                                
+                                                                                                var result = this.HandleJsonResponse<Targeting.Countries>(context);
+                                                                                                return result;
+                                                                                            }
+                                                                                                
+                                                                                                /// <summary>
+                                                                                                /// 
+                                                                                                /// </summary>
+                                                                                                /// <remarks>
+                                                                                                /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                                /// </remarks>
+                                                                                                public Targeting.States GetAllStates(
+                                                                                                      UserAuthorization user 
+                                                                                                    , string dataLanguage 
+                                                                                                    , string dataCountry 
+                                                                                                )
+                                                                                                {
+                                                                                                    string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                    string skipUrlParamsEscape = "";
+                                                                                                    var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                    var context = new RequestContext();
+                                                                                                    context.UserAuthorization = user;
+                                                                                                    context.Method =  "GET";
+                                                                                                    context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                    if (!this.ExecuteQuery(context))
+                                                                                                        this.HandleJsonErrorResponse(context);
+                                                                                                    
+                                                                                                    var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                                                                    return result;
+                                                                                                }
+
+                                                                                                    /// <summary>
+                                                                                                    /// 
+                                                                                                    /// </summary>
+                                                                                                    /// <remarks>
+                                                                                                    /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/countries
+                                                                                                    /// </remarks>
+                                                                                                    public async Task<Targeting.States> GetAllStatesAsync(
+                                                                                                          UserAuthorization user 
+                                                                                                        , string dataLanguage 
+                                                                                                        , string dataCountry 
+                                                                                                    )
+                                                                                                    {
+                                                                                                        string urlFormat = "/v2/states?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                        string skipUrlParamsEscape = "";
+                                                                                                        var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                        var context = new RequestContext();
+                                                                                                        context.UserAuthorization = user;
+                                                                                                        context.Method =  "GET";
+                                                                                                        context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                        var exec = await this.ExecuteQueryAsync(context);
+                                                                                                        if (!exec)
+                                                                                                            this.HandleJsonErrorResponse(context);
+                                                                                                        
+                                                                                                        var result = this.HandleJsonResponse<Targeting.States>(context);
+                                                                                                        return result;
+                                                                                                    }
+                                                                                                        
+                                                                                                        /// <summary>
+                                                                                                        /// 
+                                                                                                        /// </summary>
+                                                                                                        /// <remarks>
+                                                                                                        /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                                                                        /// </remarks>
+                                                                                                        public Targeting.Regions GetAllRegions(
+                                                                                                              UserAuthorization user 
+                                                                                                            , string dataLanguage 
+                                                                                                            , string dataCountry 
+                                                                                                        )
+                                                                                                        {
+                                                                                                            string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                            string skipUrlParamsEscape = "";
+                                                                                                            var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                            var context = new RequestContext();
+                                                                                                            context.UserAuthorization = user;
+                                                                                                            context.Method =  "GET";
+                                                                                                            context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                            if (!this.ExecuteQuery(context))
+                                                                                                                this.HandleJsonErrorResponse(context);
+                                                                                                            
+                                                                                                            var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                            return result;
+                                                                                                        }
+
+                                                                                                            /// <summary>
+                                                                                                            /// 
+                                                                                                            /// </summary>
+                                                                                                            /// <remarks>
+                                                                                                            /// See https://developer.linkedin.com/docs/ref/v2/standardized-data/locations/regions
+                                                                                                            /// </remarks>
+                                                                                                            public async Task<Targeting.Regions> GetAllRegionsAsync(
+                                                                                                                  UserAuthorization user 
+                                                                                                                , string dataLanguage 
+                                                                                                                , string dataCountry 
+                                                                                                            )
+                                                                                                            {
+                                                                                                                string urlFormat = "/v2/regions?locale.language={dataLanguage}&locale.country={dataCountry}";
+                                                                                                                string skipUrlParamsEscape = "";
+                                                                                                                var url = FormatUrl(urlFormat, default(FieldSelector), skipUrlParamsEscape, "dataLanguage", dataLanguage, "dataCountry", dataCountry);
+
+                                                                                                                var context = new RequestContext();
+                                                                                                                context.UserAuthorization = user;
+                                                                                                                context.Method =  "GET";
+                                                                                                                context.UrlPath = this.LinkedInApi.Configuration.BaseApiUrl + url;
+
+                                                                                                                var exec = await this.ExecuteQueryAsync(context);
+                                                                                                                if (!exec)
+                                                                                                                    this.HandleJsonErrorResponse(context);
+                                                                                                                
+                                                                                                                var result = this.HandleJsonResponse<Targeting.Regions>(context);
+                                                                                                                return result;
+                                                                                                            }
+                                                                                                                
             }
         }
 
